@@ -35,6 +35,7 @@ public class First extends HttpServlet {
 	 */
 	public void destroy() {
 		System.out.println("FirstServlet destroy 수행(server 중지 시)");
+		
 	}
 
 	/**
