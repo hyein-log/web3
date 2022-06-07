@@ -43,7 +43,6 @@ public class MemberDAO {
 	
 	public MemberVO selectById(String user_id, String user_pass) {
 		MemberVO member = null;
-		MemberVO memberVO;
         conn = DBUtil.getConnection();
         try {
             st = conn.prepareStatement(SELECT_MEMBER_BY_ID);
@@ -51,7 +50,7 @@ public class MemberDAO {
             st.setString(2, user_pass);
             rs = st.executeQuery();
             while(rs.next()) {
-				memberVO = makeMember(rs);
+				member = makeMember(rs);
 			}
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,8 +63,8 @@ public class MemberDAO {
 	
 	private MemberVO makeMember(ResultSet rs) throws SQLException {
 		MemberVO member = new MemberVO();
-		member.setId(rs.getString(1));
-		member.setPassword(rs.getString(2));
+		member.setId(rs.getString(3));
+		member.setPassword(rs.getString(4));
 		
 		return member;
 	}
