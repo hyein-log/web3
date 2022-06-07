@@ -13,7 +13,8 @@ public class DBConnectionTest2Cloud {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		System.out.println("1.Driver load ¼º°ø");
 		//2.Connection
-		String url = "jdbc:oracle:thin:@BankDB_medium?TNS_ADMIN=C:/Users/KIM/Desktop/Oracle_DB/Wallet_BankDB/";
+		//String url = "jdbc:oracle:thin:@BankDB_medium?TNS_ADMIN=C:/Users/KIM/Desktop/Oracle_DB/Wallet_BankDB/";
+		String url = "jdbc:oracle:thin:@BankDB_medium?TNS_ADMIN=C:/kosta241/Wallet_BankDB/";
 		String userid = "admin";
 		String password = "Kosta1234567!";
 		
