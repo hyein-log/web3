@@ -7,5 +7,7 @@
 	<welcome-file-list>
 		<welcome-file>main.jsp</welcome-file>
 	</welcome-file-list>
+
 <!-- 주석 -->
+
 </web-app>
