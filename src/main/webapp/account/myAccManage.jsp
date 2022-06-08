@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="button" value="계좌 생성">
+<input type="button" value="계좌 생성" onclick="location.href='acc_create.jsp'">
 <input type="button" value="내 계좌리스트" onclick="location.href='myAccList.jsp'">
 </body>
 </html>
