@@ -11,13 +11,14 @@ public class AccountVO {
 	private int balance;
 	private int acc_pass;
 	private Date makedate;
+	private char limit_ox;
+
 	
 	public AccountVO() {
 		super();
 	}
 
-	public AccountVO(int account_id, int member_id, int accountType, String acc_number, int balance, int acc_pass,
-			Date makedate) {
+	public AccountVO(int account_id, int member_id, int accountType, String acc_number, int balance, int acc_pass,Date makedate, char limit_ox) {
 		super();
 		this.account_id = account_id;
 		this.member_id = member_id;
@@ -26,6 +27,7 @@ public class AccountVO {
 		this.balance = balance;
 		this.acc_pass = acc_pass;
 		this.makedate = makedate;
+		this.limit_ox = limit_ox;
 	}
 
 	public int getAccount_id() {
@@ -84,15 +86,34 @@ public class AccountVO {
 		this.makedate = makedate;
 	}
 
+	public char getLimit_ox() {
+		return limit_ox;
+	}
+
+	public void setLimit_ox(char limit_ox) {
+		this.limit_ox = limit_ox;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("AccountVO [account_id=").append(account_id).append(", member_id=").append(member_id)
-				.append(", accountType=").append(accountType).append(", acc_number=").append(acc_number)
-				.append(", balance=").append(balance).append(", acc_pass=").append(acc_pass).append(", makedate=")
-				.append(makedate).append("]");
+		builder.append("AccountVO [account_id=");
+		builder.append(account_id);
+		builder.append(", member_id=");
+		builder.append(member_id);
+		builder.append(", accountType=");
+		builder.append(accountType);
+		builder.append(", acc_number=");
+		builder.append(acc_number);
+		builder.append(", balance=");
+		builder.append(balance);
+		builder.append(", acc_pass=");
+		builder.append(acc_pass);
+		builder.append(", makedate=");
+		builder.append(makedate);
+		builder.append(", limit_ox=");
+		builder.append(limit_ox);
+		builder.append("]");
 		return builder.toString();
 	}
-	
-	
 }
