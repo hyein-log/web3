@@ -32,8 +32,12 @@ public class DBUtil {
 
 	public static Connection getConnection() {
 		Connection conn = null;
-		//String url = "jdbc:oracle:thin:@bankdb_medium?TNS_ADMIN=C:/Users/KIM/Desktop/Oracle_DB/Wallet_BankDB";
-		String url = "jdbc:oracle:thin:@bankdb_medium?TNS_ADMIN=/Users/jeonmingi/Wallet_BankDB";
+
+//	  String url = "jdbc:oracle:thin:@bankdb_medium?TNS_ADMIN=C:/Users/KIM/Desktop/Oracle_DB/Wallet_BankDB"; 
+		String url = "jdbc:oracle:thin:@bankdb_medium?TNS_ADMIN=C:/kosta241/Wallet_BankDB";
+//		String url = "jdbc:oracle:thin:@bankdb_medium?TNS_ADMIN=/Users/jeonmingi/Wallet_BankDB"; 
+
+
 		String userid = "ADMIN", password="Kosta1234567";
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
