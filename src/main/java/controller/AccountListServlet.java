@@ -30,8 +30,8 @@ public class AccountListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		//Member member = (Member)session.getAttribute("member");
 		int memId = 1 ;
-		
 		AccountService service = new AccountService();
+		
 		List<AccountVO> acc = service.selectById(memId);
 		request.setAttribute("accLists", acc);
 		

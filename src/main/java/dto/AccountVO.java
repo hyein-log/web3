@@ -12,13 +12,13 @@ public class AccountVO {
 	private int acc_pass;
 	private Date makedate;
 	private char limit_ox;
+
 	
 	public AccountVO() {
 		super();
 	}
 
-	public AccountVO(int account_id, int member_id, int accountType, String acc_number, int balance, int acc_pass,
-			Date makedate, char limit_ox) {
+	public AccountVO(int account_id, int member_id, int accountType, String acc_number, int balance, int acc_pass,Date makedate, char limit_ox) {
 		super();
 		this.account_id = account_id;
 		this.member_id = member_id;
@@ -116,5 +116,4 @@ public class AccountVO {
 		builder.append("]");
 		return builder.toString();
 	}
-
 }

@@ -11,4 +11,10 @@ public class MemberService {
 	public MemberVO selectById(String user_id, String user_pass){
         return dao.selectById(user_id,user_pass);
     }
+	public MemberVO selectByEmail(String name, String email) {
+		return dao.selecByEmail(name,email);
+	}
+	public MemberVO selectEmailById(String id) {
+		return dao.selectEmailById(id);
+	}
 }
