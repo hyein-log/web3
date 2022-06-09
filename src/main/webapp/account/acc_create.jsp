@@ -4,19 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>계좌개설</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <h1>계좌개설</h1>	
 
+
+<form action="acc_create.do" method="post">
+
 <input type="radio" name="bank_account" value="0" checked="checked">입출금통장
 <input type="radio" name="bank_account" value="1">적금통장
 <input type="radio" name="bank_account" value="2">예금통장
 
 <br><br>
-
-<form action="acc_create.do" method="post">
 
 <!-- 입출금통장 -->
 <div id="selectIp_account">
@@ -83,6 +85,7 @@
 		});
 	});
 </script>
+
 
 </body>
 </html>
