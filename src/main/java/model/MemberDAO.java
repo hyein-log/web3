@@ -15,9 +15,11 @@ public class MemberDAO {
 	static final String SELECT_MEMBER_BY_ID = "select * from member where id=? and password=?";
 	static final String SELECT_MEMBER_BY_EMAIL = "select * from member where name=? and email=?";
 	static final String SELECT_EMAIL_BY_ID = "select * from member where id=?";
+
 	static final String SELECT_BY_ID_EMAIL = "select * from member where id=? and name=? and email=?";
 	static final String SELECT_BY_EMAIL_FOR_PASS = "select * from member where email=?";
 	static final String PASSWORD_UPDATE = "update member set password=? where email=?";
+
 	
 	Connection conn;
 	PreparedStatement st;
@@ -106,6 +108,7 @@ public class MemberDAO {
         return member;
 	}
 	
+
 	public MemberVO selectByIdEmail(String id, String name, String email) {
 		MemberVO member = null;
         conn = DBUtil.getConnection();
@@ -162,6 +165,7 @@ public class MemberDAO {
 		return result;
 	}
 	
+
 	private MemberVO makeMember(ResultSet rs) throws SQLException {
 		MemberVO member = new MemberVO();
 		member.setName(rs.getString(2));
@@ -171,6 +175,9 @@ public class MemberDAO {
 		
 		return member;
 	}
+
+
+	
 
 	
 
