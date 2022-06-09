@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
  
 <input type="button" value="계좌 생성">
 <input type="button" value="내 계좌 리스트" onclick="location.href='AccountList.do'">

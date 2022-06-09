@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.Arrays;
+
 import java.util.List;
 
 import dto.AccountVO;
@@ -15,17 +17,19 @@ import util.DBUtil;
 public class AccountDAO {
 
 	static final String SELECT_ACCOUNT = "select * from account order by 1 desc";
+
 	static final String SELECT_ACC_MEMBER_ID = "SELECT * FROM account WHERE MEMBER_ID = ?";
 	static final String SQL_INSERT = "INSERT INTO account values( acc_seq.nextval, ?, ?, ?, ?, ?, sysdate)";
 	static final String DELETE_ACC= "DELETE FROM ACCOUNT WHERE ACC_NUMBER = ?";
 	static final String UPDATE_LIMIT= "UPDATE account SET limit_ox = 'O' WHERE ACC_NUMBER =?";
+
 	
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
 	int result;
 	
-	//¿¸√º∏Ò∑œ
+	//Ï†ÑÏ≤¥Î™©Î°ù
 	public List<AccountVO> selectAll() {
 		List<AccountVO> alist = new ArrayList<>();
 		AccountVO account = null;
@@ -46,7 +50,8 @@ public class AccountDAO {
 		return alist;
 	}
 	
-	//»∏ø¯¿« ∞Ë¡¬ ¡∂»∏
+
+	//ÌöåÏõêÏùò Í≥ÑÏ¢å Ï°∞Ìöå
 	public List<AccountVO> selectById(int memId) {
 		List<AccountVO> list = new ArrayList<>();
 		AccountVO account = null;
@@ -71,6 +76,7 @@ public class AccountDAO {
 
 	
 	private AccountVO makeAcc(ResultSet rs) throws SQLException {
+
 		AccountVO acc = new AccountVO();
 		acc.setAcc_number(rs.getString("acc_number"));
 		acc.setAcc_pass(rs.getInt("acc_pass"));
@@ -84,7 +90,8 @@ public class AccountDAO {
 	
 	}
 
-	//∞Ë¡¬ insert
+
+	//Í≥ÑÏ¢å insert
 	public int accInsert(AccountVO acc) {
 
         int result = 0;
@@ -92,12 +99,14 @@ public class AccountDAO {
         conn = DBUtil.getConnection();
         try {
             st = conn.prepareStatement(SQL_INSERT);
+
             st.setInt(1, acc.getMember_id());
             st.setInt(2, acc.getAccountType());
             st.setString(3, acc.getAcc_number());
            // st.setInt(4, acc.getBalance());
             st.setInt(4, acc.getAcc_pass());
             //st.setDate(5, acc.getMakedate());
+
             result = st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,12 +130,13 @@ public class AccountDAO {
 		return result;
 	}
 	
-	//∞Ë¡¬ «ÿ¡ˆ
+	//Í≥ÑÏ¢å Ìï¥ÏßÄ
 	public int deleteAcc(String accNum) {
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(DELETE_ACC);
             st.setString(1, accNum);
+
 			result = st.executeUpdate();			
 		} catch (SQLException e) {
 			e.printStackTrace();

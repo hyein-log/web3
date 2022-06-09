@@ -12,6 +12,7 @@ public class AccountService {
 		return dao.selectAll();
 	}
 	
+
 	public List<AccountVO> selectById(int memId) {
 		return dao.selectById(memId);
 	}
@@ -27,4 +28,5 @@ public class AccountService {
 	public int deleteAcc(String accNum) {
 		return dao.deleteAcc(accNum);
 	}
+
 }
