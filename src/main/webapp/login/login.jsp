@@ -13,9 +13,9 @@
        <input type="password" name="userpass"><br>
        <input type="submit" value="로그인">
        
-       <div>회원가입</div>
+       <div><a href=memberJoin.jsp>회원가입</a></div>
        <div><a href="idSearch.jsp">아이디 찾기</a></div>
-       <div>비밀번호 찾기</div>
+       <div><a href="pwSearch.jsp">비밀번호 찾기</a></div>
  </form>
 </body>
 </html>
