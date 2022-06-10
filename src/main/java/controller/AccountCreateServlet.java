@@ -28,7 +28,6 @@ public class AccountCreateServlet extends HttpServlet {
 		int accountType = Integer.parseInt(request.getParameter("accountType"));
 		String userid = request.getParameter("userid");
 		int acc_pass = Integer.parseInt(request.getParameter("acc_pass"));
-		
 
 		//AccountVO vo = new AccountVO(0, 0, accountType, userid, accountType, acc_pass, null);
 

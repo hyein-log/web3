@@ -12,7 +12,7 @@ import java.util.List;
 import dto.AcclistVO;
 
 public class AcclistDAO {
-	static final String SQL_SELECT_ALL = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID)";
+	static final String SQL_SELECT_ALL = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where member_id=?";
 	static final String SQL_SELECT_ID = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) WHERE TRANS_ID = ?";
 	Connection conn;
 	Statement st;
@@ -40,13 +40,14 @@ public class AcclistDAO {
 		
 		return acc;
 	}
-	public List<AcclistVO> SELECT_ACCLIST_ALL() {
+	public List<AcclistVO> SELECT_ACCLIST_ALL(int memberid) {
 		List<AcclistVO>  acclist = new ArrayList<>();
 		conn = DBUtil.getConnection();
 		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(SQL_SELECT_ALL);
-			
+			 pst = conn.prepareStatement(SQL_SELECT_ALL);
+			 pst.setInt(1, memberid);
+	         rs = pst.executeQuery();
+	           
 			while (rs.next()) {
 				acclist.add(makelist(rs));
 			}

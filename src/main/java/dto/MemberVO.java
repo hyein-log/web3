@@ -26,6 +26,23 @@ public class MemberVO {
 		this.subscri_ox = subscri_ox;
 		this.dropout_ox = dropout_ox;
 	}
+	public MemberVO(String pass, String email) {
+		this.password = pass;
+		this.email = email;
+	}
+	
+	
+
+	public MemberVO(String name, String id, String password, String email, String address, String phoneNum) {
+		super();
+		this.name = name;
+		this.id = id;
+		this.password = password;
+		this.email = email;
+		this.address = address;
+		this.phoneNum = phoneNum;
+	}
+
 	public int getMember_id() {
 		return member_id;
 	}

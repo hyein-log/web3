@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		MemberService service = new MemberService();
 		MemberVO member = service.selectById(id, pass);
 		HttpSession session = request.getSession();
-		
+		System.out.println(member);
 //		
 //		if (session.isNew()){
 //			if(id != null){
@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 			//--------------------------------------
 			if(path==null) {
 				path = request.getContextPath();
-				response.sendRedirect("../main/main.jsp");
+				response.sendRedirect("../master/main.jsp");
 			}
 			//--------------------------------------
 			//response.sendRedirect(path);

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header class="site-navbar js-sticky-header site-navbar-target"
+<header  class="site-navbar js-sticky-header site-navbar-target"
 			role="banner">
 
 			<div class="container">
@@ -15,7 +15,7 @@
 
 					<div class="col-6 col-xl-2">
 						<h1 class="mb-0 site-logo">
-							<a href="index.html" class="h2 mb-0">Finances<span
+							<a href="../master/main.jsp" class="h2 mb-0">COS<span
 								class="text-primary">.</span>
 							</a>
 						</h1>
@@ -27,7 +27,7 @@
 
 							<ul
 								class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-								<li><a href="#home-section" class="nav-link">Home</a></li>
+								<li><a href="#home-section" class="nav-link" style="color: black;">Home</a></li>
 								<li class="has-children"><a href="#about-section"
 									class="nav-link">About Us</a>
 									<ul class="dropdown">
