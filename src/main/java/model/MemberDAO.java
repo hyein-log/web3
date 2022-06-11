@@ -19,8 +19,8 @@ public class MemberDAO {
 	static final String SELECT_BY_ID_EMAIL = "select * from member where id=? and name=? and email=?";
 	static final String SELECT_BY_EMAIL_FOR_PASS = "select * from member where email=?";
 	static final String PASSWORD_UPDATE = "update member set password=? where email=?";
-
-	
+	static final String SELECT_MEMBER_BY_MEMBERID = "select * from member where member_id=?";
+	static final String UPDATE_MEMBER_EMAIL = "UPDATE MEMBER SET EMAIL = ? WHERE MEMBER_ID =?";
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
@@ -184,9 +184,44 @@ public class MemberDAO {
 	
 
 	
+	public MemberVO selectMemberByMemberId(int memberid) {
+		MemberVO member = null;
+        conn = DBUtil.getConnection();
+        try {
+            st = conn.prepareStatement(SELECT_MEMBER_BY_MEMBERID);
+            st.setInt(1, memberid);
+            rs = st.executeQuery();
+            while(rs.next()) {
+				member = makeMember(rs);
+			}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
 
+        return member;
+	}
 	
-
+	public int update_member_email(MemberVO member) {
+		int result = 0;
+		
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(UPDATE_MEMBER_EMAIL); // sql문장 미리 준비
+			st.setString(1, member.getEmail());
+			st.setInt(2, member.getMember_id());
+			
+			result = st.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return result;
+	}
 	
 
 

@@ -181,9 +181,9 @@ table, td {
 
 <jsp:include page="../master/header/header3.jsp"></jsp:include>
 <div class="d" style="font-size: 40px;">
-	<div class="o"">거래내역</div>
+	<div class="o">거래내역</div>
 </div>
-
+<c:set var="path" value="${pageContext.request.contextPath }" />
 
 <div class=parent>
 	<div class="first bg a">
@@ -196,9 +196,11 @@ table, td {
 			<li>특정 계좌의 거래내역도 조회하기버튼을 통해 확인 가능합니다.</li>
 
 		</ul>
-		<p class="text-center">
-			<a href="#" id="all" class="btn btn-outline-primary d">조회하기</a>
-		</p>
+		<form method="get" action="transIn.do">
+			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="kind" value='all'><br> 
+			<input type="submit" value="전체내역 조회" class="btn btn-outline-primary d">
+		</form>
 	</div>
 	<div class="second bg a">
 
@@ -210,9 +212,11 @@ table, td {
 			<li>출금 조회를 하고싶은 특정 계좌를 선택할 수 있습니다.</li>
 			<li>출금내역을 지도와 함께 보며 어디에서 사용된 금액인지 확인해보세요.</li>
 		</ul>
-		<p class="text-center">
-			<a href="#" id="in" class="btn btn-outline-primary d">조회하기</a>
-		</p>
+		<form method="get" action="transIn.do">
+			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="kind" value='출금'><br> 
+			<input type="submit" value="출금내역 조회" class="btn btn-outline-primary d">
+		</form>
 	</div>
 	<div class="third bg a">
 		<h3 class="d">입금 내역</h3>
@@ -223,131 +227,34 @@ table, td {
 			<li>입금 조회를 하고싶은 특정 계좌를 선택할 수 있습니다.</li>
 			<li>고객님 명의의 계좌 잔고를 확인 하실 수 있습니다.</li>
 		</ul>
-		<p class="text-center">
-			<a href="#" id="out" class="btn btn-outline-primary d">조회하기</a>
-		</p>
+		
+		<form method="get" action="transIn.do">
+			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="kind" value='입금'><br> 
+			<input type="submit" value="입금내역 조회" class="btn btn-outline-primary d">
+		</form>
+		
 	</div>
 </div>
 <div class="o"></div>
 
-<div class="background">
-	<div class="window">
-		<div class="popup">
-			<button id="close">닫기</button>
-			<br> <br>
-			<c:if test="${a eq 1}">
-			
-			
-			<%
-			List<AcclistVO> acclist = (List<AcclistVO>) session.getAttribute("acclist");
-			%>
-			<c:if test="${not empty acclist[0].account_id}">
 
-
-				<table id="table1">
-					<tr>
-						<td>NO</td>
-						<td>ACCOUNTTYPE</td>
-						<td>ACC_NUMBER</td>
-						<td>BALANCE</td>
-						<td>MAKEDATE</td>
-						<td>PAST_ACC</td>
-						<td>TRANS_ACC</td>
-						<td>TRANS_DATE</td>
-						<td>TRANS_KIND</td>
-						<td>TRANS_NAME</td>
-
-
-					</tr>
-					<c:forEach items="${acclist }" var="acclist" varStatus="status">
-
-						<td>${status.count }</td>
-						<td>${acclist.accounttype}</td>
-						<td>${acclist.acc_number}</td>
-						<td>${acclist.balance}</td>
-						<td>${acclist.makedate }</td>
-						<td>${acclist.past_acc }</td>
-						<td>${acclist.trans_acc }</td>
-						<td>${acclist.trans_date }</td>
-						<td>${acclist.trans_kind }</td>
-						<td>${acclist.trans_name }</td>
-						<!-- 						<td><input type="button" value="계좌상세보기" -->
-						<!-- 							class="accDetailView btn btn-primary" data-toggle="modal" -->
-						<%-- 							data-target="#myModal" data-location="${acclist.location}" --%>
-						<%-- 							data-id="${acclist.trans_id}"></td> --%>
-
-					</c:forEach>
-
-				</table>
-
-			</c:if>
-			<c:if test="${empty acclist }">
-				<h1>내역을 확인할 계좌가 없습니다.</h1>
-
-			</c:if>
-			</c:if>
-		</div>
-		
-	</div>
-</div>
 <div class="o"></div>
 <jsp:include page="../master/footer/footer3.jsp"></jsp:include>
 
 
 <script>
-	function show() {
-		document.querySelector(".background").className = "background show";
-	}
+// 	function show() {
 
-	function close() {
-		document.querySelector(".background").className = "background";
-	}
+// 		var id = $(this).attr("id");
+// 		<form method="post" action="/mygaeapp">
+// 		<input type="hidden" name="member_id" value=id ><br>
+// 		<input type="hidden" name="kind" value="${acclist[0].trans_kind }"><br>
+// 		<input type="submit" value="전송">
+// 		</form>
 
-// 	document.querySelector("#all").addEventListener("click", show);
-// 	document.querySelector("#in").addEventListener("click", show);
-// 	document.querySelector("#out").addEventListener("click", show);
-	document.querySelector("#close").addEventListener("click", close);
-</script>
-<script type="text/javascript">
-// 	$(function() {
-// 		$("#in").click(function() {
-// 			var Location = $(this).attr("data-location");
-// 			var TRANS_ID = $(this).attr("data-id");
-// 			call(Location);
-// 			$.ajax({
-// 				url : "transdetail.do",
-// 				data : {
-// 					"TRANS_ID" : TRANS_ID
-// 				},
-// 				type : "get",
-// 				success : function(responseData) {
-// 					//중복 :1, 중복아님 : 0
-<%-- <%Object x = request.getAttribute("str"); --%>
-<%-- System.out.println(x);%> --%>
+// 		document.querySelector(".background").className = "background show";
 // 	}
-
-// 			});
-// 		});
-// 	});
-
-$(function(){
-	$("#all").click(function show() {
-		document.querySelector(".background").className = "background show";
-		const a = 1;
-	})
-});
-$(function(){
-	$("#in").click(function show() {
-		document.querySelector(".background").className = "background show";
-		const a = 2;
-	})
-});
-$(function(){
-	$("#out").click(function show() {
-		document.querySelector(".background").className = "background show";
-		const a = 3;
-	})
-});
 </script>
 </body>
 

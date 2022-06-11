@@ -29,18 +29,21 @@ public class TransServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 request.setCharacterEncoding("utf8");
+		   response.setCharacterEncoding("utf8");
 		AcclistService acclistService = new AcclistService();
 		HttpSession session = request.getSession();
 		int id =Integer.parseInt(request.getParameter("memberid"));
 		if(id==0) {
 			
 		}
-		session.setAttribute("acclist", acclistService.SELECT_ACCLIST_ALL(id));
-		//request.setAttribute("acclist", acclistService.SELECT_ACCLIST_ALL());
-		
+		else {
+		//session.setAttribute("acclist", acclistService.SELECT_ACCLIST_ALL(id));
+			 request.setAttribute("memberid", id);
 		RequestDispatcher rd; //위임(요청을 받은 것은 servlet인데 응답은 JSP가 하도록함)
 		rd = request.getRequestDispatcher("new.jsp");
 		rd.forward(request, response);
+		}
 	}
 
 }
