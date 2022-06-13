@@ -101,7 +101,7 @@ label{
 </style>
 </head>
 
-<jsp:include page="../finances-master/header/header1.jsp"></jsp:include>
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
 <form class="sendForm" method="post" encType="UTF-8">
 <h2 id="signIn">ID Search.</h2>
@@ -158,7 +158,7 @@ label{
 
 </script>
 
-<jsp:include page="../finances-master/footer/footer1.jsp"></jsp:include>
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 </body>
 

@@ -101,7 +101,7 @@ label{
 </style>
 </head>
 
-<jsp:include page="../finances-master/header/header1.jsp"></jsp:include>
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 <div class="sendForm">
 <h2 id="signIn">PW Search.</h2>
 <br><br>
@@ -206,7 +206,7 @@ label{
 
 </script>
 
-<jsp:include page="../finances-master/footer/footer1.jsp"></jsp:include>
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 </body>
 
