@@ -8,6 +8,10 @@
 </head>
 <body>
 <h2>자동이체 관리</h2>
+<<<<<<< HEAD
+=======
+<!--  -->
+>>>>>>> branch 'hyeinnew' of https://github.com/hyein-log/web3.git
 <button class="btnAutoInsert" onclick="location.href='autoInsert.jsp'">자동이체 등록</button>
 </body>
 </html>

@@ -1,11 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MailConfirmServlet
@@ -15,18 +18,44 @@ public class MailConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String AuthenticationKey = (String)request.getSession().getAttribute("AuthenticationKey");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
+		HttpSession session = request.getSession();
+		String AuthenticationKey = (String)session.getAttribute("AuthenticationKey");
+		PrintWriter writer = response.getWriter();
+		
+		String id = (String)session.getAttribute("id");
+		System.out.println("id :" + id);
+		String pass = (String)session.getAttribute("pass");
+		System.out.println(pass);
+		String email = (String)session.getAttribute("email");
+		System.out.println(email);
         String AuthenticationUser = request.getParameter("AuthenticationUser");
         
-        System.out.println(AuthenticationKey + " : " + AuthenticationUser);
         if(!AuthenticationKey.equals(AuthenticationUser))
         {
-            System.out.println("ÀÎÁõ¹øÈ£ ÀÏÄ¡ÇÏÁö ¾ÊÀ½");
-            request.setAttribute("msg", "ÀÎÁõ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù");
-            request.setAttribute("loc", "/member/searchPw");
-            request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+
+        	writer.println("<script>alert('ì¸ì¦ë²ˆí˜¸ ì¼ì¹˜í•˜ì§€ ì•ŠìŒ.'); location.href='"+"login.jsp"+"';</script>"); 
+
+        	writer.close();
+            //request.getRequestDispatcher("login.jsp").forward(request, response);
+        	
             return;
+        }
+        if(id!=null) {
+        	
+	        writer.println("<h1>ë‹¹ì‹ ì˜ ì•„ì´ë””ëŠ” : "+id+" ì…ë‹ˆë‹¤.</h1>");
+	        writer.println("<button><a href=login.jsp>ë¡œê·¸ì¸ í•˜ëŸ¬ ê°€ê¸°</a></button>");
+
+
+	        session.removeAttribute("AuthenticationKey");
+	        session.removeAttribute("id");
+	        writer.close();
+        }
+        if(pass!=null) {
+        	request.getRequestDispatcher("pwChange.jsp").forward(request, response);
+        	
         }
         
         

@@ -10,8 +10,12 @@
 <form action="MailConfirm.do" enctype="UTF-8" id="mailConfirm">
 <input type="text" placeholder="인증번호 입력" id="AuthenticationUser" name="AuthenticationUser"><input type="submit" value="확인">
 </form>
+<<<<<<< HEAD
 
 <hr>
 
+=======
+<hr>
+>>>>>>> branch 'hyeinnew' of https://github.com/hyein-log/web3.git
 </body>
 </html>

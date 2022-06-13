@@ -111,4 +111,5 @@ img{
 	
 	<jsp:include page="../finances_master/footer/footer.jsp"></jsp:include>
 </body>
+
 </html>

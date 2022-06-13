@@ -25,16 +25,19 @@ import javax.servlet.http.HttpSession;
 public class MailSendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
+		String pass = request.getParameter("password");
 
-        //mail server ¼³Á¤
-        String user = "oversteam@naver.com"; //ÀÚ½ÅÀÇ ³×ÀÌ¹ö °èÁ¤
-        String password = "8NKEX18265ER";//ÀÚ½ÅÀÇ ³×ÀÌ¹ö ÆĞ½º¿öµå
+
+        //mail server ì„¤ì •
+        String user = "oversteam@naver.com"; //ìì‹ ì˜ ë„¤ì´ë²„ ê³„ì •
+        String password = "8NKEX18265ER";//ìì‹ ì˜ ë„¤ì´ë²„ íŒ¨ìŠ¤ì›Œë“œ
         
         
-        //SMTP ¼­¹ö Á¤º¸¸¦ ¼³Á¤ÇÑ´Ù.
+        //SMTP ì„œë²„ ì •ë³´ë¥¼ ì„¤ì •í•œë‹¤.
+
         Properties props = new Properties();
 //        props.put("mail.smtp.host", "smtp.gmail.com");
 //        props.put("mail.smtp.port", 587);
@@ -47,7 +50,9 @@ public class MailSendServlet extends HttpServlet {
 //        props.put("mail.smtp.ssl.enable", "true");
 //        props.put("mail.smtp.ssl.trust", "smtp.naver.com");
         
-        //ÀÎÁõ ¹øÈ£ »ı¼º±â
+
+        //ì¸ì¦ ë²ˆí˜¸ ìƒì„±ê¸°
+
         StringBuffer temp =new StringBuffer();
         Random rnd = new Random();
         for(int i=0;i<10;i++)
@@ -77,27 +82,43 @@ public class MailSendServlet extends HttpServlet {
             }
         });
         
-        //email Àü¼Û
+
+        //email ì „ì†¡
+
         try {
             MimeMessage msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(user,"KO3BANK"));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             
-            //¸ŞÀÏ Á¦¸ñ
-            msg.setSubject("¾È³çÇÏ¼¼¿ä KO3 BANK ÀÎÁõ ¸ŞÀÏÀÔ´Ï´Ù.");
-            //¸ŞÀÏ ³»¿ë
-            msg.setText("ÀÎÁõ ¹øÈ£´Â :"+temp);
+
+            //ë©”ì¼ ì œëª©
+            msg.setSubject("ì•ˆë…•í•˜ì„¸ìš” KO3 BANK ì¸ì¦ ë©”ì¼ì…ë‹ˆë‹¤.");
+            //ë©”ì¼ ë‚´ìš©
+            msg.setText("ì¸ì¦ ë²ˆí˜¸ëŠ”    :   "+temp);
             
             Transport.send(msg);
-            System.out.println("ÀÌ¸ŞÀÏ Àü¼Û");
+            System.out.println("ì´ë©”ì¼ ì „ì†¡");
+
             
         }catch (Exception e) {
             e.printStackTrace();// TODO: handle exception
         }
+        System.out.println(id);
+        System.out.println(pass);
+        System.out.println(email);
         HttpSession saveKey = request.getSession();
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-      //ÆĞ½º¿öµå ¹Ù²Ü¶§ ¹» ¹Ù²ÜÁö Á¶°Ç¿¡ µé¾î°¡´Â id
-        request.setAttribute("id", id);
+
+        //id ì°¾ê¸° ì¼ë•Œ
+
+        if(id!=null) {
+        	saveKey.setAttribute("id", id);
+        }
+        //passwordì°¾ê¸° ì¼ë•Œ
+        if(pass!=null) {
+        	saveKey.setAttribute("pass", pass);
+        	saveKey.setAttribute("email", email);
+        }
         request.getRequestDispatcher("emailConfirm.jsp").forward(request, response);
 	}
 

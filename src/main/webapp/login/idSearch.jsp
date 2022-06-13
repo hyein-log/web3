@@ -11,7 +11,10 @@
 <body>
 <!-- <form id="idSearch" method="post" action="IdSearch.do" encType="UTF-8"> -->
 	이름<input type="text" name="name" id="name"><br>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'hyeinnew' of https://github.com/hyein-log/web3.git
 	이메일<input type="text" name="email2" id="email2"><br>
   <input type="button" id="confirm_btn" value="인증번호 발송"><br>
 <!-- </form> -->
@@ -20,7 +23,10 @@
   <input type="hidden" name="id" id="id">
   <input type="hidden" name="email" id="email">
 </form>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'hyeinnew' of https://github.com/hyein-log/web3.git
 <script>
 	$("#confirm_btn").on("click", function(){
 		//var frm = $("#idSearch");	
@@ -29,9 +35,13 @@
 			alert("이름을 입력해주세요.");
 			return false;
 		}
+<<<<<<< HEAD
 
 		if($("#email2").val().length < 1){
 
+=======
+		if($("#email2").val().length < 1){
+>>>>>>> branch 'hyeinnew' of https://github.com/hyein-log/web3.git
 			alert("이메일을 정확하게 입력해주세요.");
 			return false;
 		}
@@ -39,7 +49,10 @@
 			url:"IdSearch.do",
 			type:"post",
 			data:{"name":$("#name").val(),
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'hyeinnew' of https://github.com/hyein-log/web3.git
 				"email":$("#email2").val()},
 			success:function(responseData){
 				if(responseData!=0){
@@ -47,7 +60,10 @@
 					$("#email").val($("#email2").val());
 					$("#mailsendfrm").submit();
 				   //location.href="MailSend.do?id=" + responseData+"&email="+$("#email").val();
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'hyeinnew' of https://github.com/hyein-log/web3.git
 				}else{
 					alert("해당하는 id가 없습니다.");
 					$("#name").val("");
