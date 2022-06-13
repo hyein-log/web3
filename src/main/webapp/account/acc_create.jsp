@@ -145,7 +145,7 @@ label{
 </style>
 </head>
 
-<jsp:include page="../finances-master/header/header1.jsp"></jsp:include>
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
 <div id="accSelect">
 	<h2 id="accCreat1">개설계좌선택</h2>
@@ -201,7 +201,7 @@ $(function(){
  
  
 
-<jsp:include page="../finances-master/footer/footer1.jsp"></jsp:include>
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
   
 
