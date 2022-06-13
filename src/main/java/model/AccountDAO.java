@@ -20,7 +20,9 @@ public class AccountDAO {
 	static final String SELECT_ACCOUNT = "select * from account order by 1 desc";
 
 	static final String SELECT_ACC_MEMBER_ID = "SELECT * FROM account WHERE MEMBER_ID = ?";
+
 	static final String SQL_INSERT = "INSERT INTO account values( acc_seq.nextval, ?, ?, ?, 0, ?, sysdate, 'x')";
+
 	static final String DELETE_ACC= "DELETE FROM ACCOUNT WHERE ACC_NUMBER = ?";
 	static final String UPDATE_LIMIT= "UPDATE account SET limit_ox = 'O' WHERE ACC_NUMBER =?";
 
@@ -30,7 +32,9 @@ public class AccountDAO {
 	ResultSet rs;
 	int result;
 	
-	//�쟾泥대ぉ濡�
+
+	//전체목록
+
 	public List<AccountVO> selectAll() {
 		List<AccountVO> alist = new ArrayList<>();
 		AccountVO account = null;
@@ -52,7 +56,8 @@ public class AccountDAO {
 	}
 	
 
-	//�쉶�썝�쓽 怨꾩쥖 議고쉶
+
+	//회원의 계좌 조회
 	public List<AccountVO> selectById(int memId) {
 		List<AccountVO> list = new ArrayList<>();
 		AccountVO account = null;
@@ -135,7 +140,8 @@ public class AccountDAO {
 		return result;
 	}
 	
-	//怨꾩쥖 �빐吏�
+	
+	//계좌 해지
 	public int deleteAcc(String accNum) {
 		conn = DBUtil.getConnection();
 		try {

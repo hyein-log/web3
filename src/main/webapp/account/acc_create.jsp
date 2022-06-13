@@ -4,8 +4,10 @@
 <html lang="en">
 
 <head>
-  <title>Account &mdash; Account create</title>
-  <meta charset="utf-8">
+
+<meta charset="UTF-8">
+
+<title>계좌개설</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
@@ -202,6 +204,7 @@ $(function(){
 <jsp:include page="../finances-master/footer/footer1.jsp"></jsp:include>
 
   
+
 
 
 </body>

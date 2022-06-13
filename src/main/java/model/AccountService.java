@@ -11,7 +11,6 @@ public class AccountService {
 	public List<AccountVO> selectAll(){
 		return dao.selectAll();
 	}
-	
 
 	public List<AccountVO> selectById(int memId) {
 		return dao.selectById(memId);
