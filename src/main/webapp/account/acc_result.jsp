@@ -61,7 +61,7 @@
 </style>
 </head>
 
-<jsp:include page="../finances-master/header/header1.jsp"></jsp:include>
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
 <body>
 
@@ -116,6 +116,6 @@
  
 </body>
 
-<jsp:include page="../finances-master/footer/footer1.jsp"></jsp:include>
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 </html>
