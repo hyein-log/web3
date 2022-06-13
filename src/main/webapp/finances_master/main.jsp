@@ -4,14 +4,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <html lang="en">
 <head>
-<title>Finances &mdash; Website Template by Colorlib</title>
+<title>Hello 'COS BANK';</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
 	rel="stylesheet">
@@ -51,7 +55,7 @@
 
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
+	data-offset="300" style="font-family: 'Nanum Gothic', sans-serif;">
 
 
 	<div id="overlayer"></div>
@@ -61,7 +65,7 @@
 		</div>
 	</div>
 
-	<jsp:include page="../master/header/header1.jsp"></jsp:include>
+	<jsp:include page="../finances_master/header/header1.jsp"></jsp:include>
 	<div class="site-wrap">
 
 
@@ -163,7 +167,7 @@
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="">
 						<div class="team-member a">
-						<form action="../trans/trans.do?memberid=<%=id%>" method="get">
+						<form action="../trans/trans.do" method="post">
 								<input type="hidden"name="memberid" value="<%=id%>" ><br>
 								<input type="image" src="images/list.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 								class="img-fluid mb-4 bg-white visual"
@@ -291,7 +295,7 @@
 		</div>
 
 
-		<jsp:include page="../master/footer/footer.jsp"></jsp:include>
+		<jsp:include page="../finances_master/footer/footer.jsp"></jsp:include>
 
 	</div>
 	<!-- .site-wrap -->

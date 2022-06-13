@@ -16,19 +16,19 @@ import model.AcclistService;
  * Servlet implementation class TransServlet
  */
 @WebServlet("/trans/trans.do")
-public class TransServlet extends HttpServlet {
+public class TransListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TransServlet() {
+    public TransListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 request.setCharacterEncoding("utf8");
 		   response.setCharacterEncoding("utf8");
 		AcclistService acclistService = new AcclistService();
@@ -41,7 +41,7 @@ public class TransServlet extends HttpServlet {
 		//session.setAttribute("acclist", acclistService.SELECT_ACCLIST_ALL(id));
 			 request.setAttribute("memberid", id);
 		RequestDispatcher rd; //위임(요청을 받은 것은 servlet인데 응답은 JSP가 하도록함)
-		rd = request.getRequestDispatcher("new.jsp");
+		rd = request.getRequestDispatcher("transList.jsp");
 		rd.forward(request, response);
 		}
 	}
