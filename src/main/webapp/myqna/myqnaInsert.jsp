@@ -131,7 +131,7 @@ background-color: #fff;
 </style>
 </head>
 
-<jsp:include page="../finances-master/header/header1.jsp"></jsp:include>
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
 
 <form action="qnaInsert.do" class="sendForm" method="get">
@@ -151,7 +151,7 @@ background-color: #fff;
  
  
 
-<jsp:include page="../finances-master/footer/footer1.jsp"></jsp:include>
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
   
 
