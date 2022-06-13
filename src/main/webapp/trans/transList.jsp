@@ -26,6 +26,15 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style type="text/css">
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100%;
+} 
 .sendForm {
 	width: 30%;
 	margin: auto;

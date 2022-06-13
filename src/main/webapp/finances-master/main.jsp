@@ -39,6 +39,15 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Fjalla+One|Libre+Baskerville">
 <style type="text/css">
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100%;
+} 
 .a img {
 	transition: all 0.2s linear;
 }
@@ -57,6 +66,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300" style="font-family: 'Nanum Gothic', sans-serif;">
 
+	<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 
 	<div id="overlayer"></div>
 	<div class="loader">
@@ -65,7 +75,6 @@
 		</div>
 	</div>
 
-	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<div class="site-wrap">
 
 
