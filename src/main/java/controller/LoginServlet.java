@@ -29,8 +29,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		String id = request.getParameter("userid");
 		String pass = request.getParameter("userpass");
+		PrintWriter writer = response.getWriter();
 
 		MemberService service = new MemberService();
 		MemberVO member = service.selectById(id, pass);
@@ -59,12 +62,18 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("path=" + path);
 		
  		if (member == null) {
-			response.sendRedirect("login.do");
+			writer.println("<script>alert('로그인 실패. id와 password를 확인해주세요.'); location.href='"+"login.do"+"';</script>"); 
+        	writer.close();
 		} else {
 			//--------------------------------------
 			if(path==null) {
-				path = request.getContextPath();
-				response.sendRedirect("../main/main.jsp");
+				if(id.equals("admin")) {
+					path = request.getContextPath();
+					response.sendRedirect("../admin/adminMain.jsp");
+				}else {
+					path = request.getContextPath();
+					response.sendRedirect("../finances-master/main.jsp");
+				}
 			}
 			//--------------------------------------
 			//response.sendRedirect(path);

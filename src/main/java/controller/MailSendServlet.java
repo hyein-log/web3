@@ -25,19 +25,19 @@ import javax.servlet.http.HttpSession;
 public class MailSendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 
 
-        //mail server �꽕�젙
-        String user = "oversteam@naver.com"; //�옄�떊�쓽 �꽕�씠踰� 怨꾩젙
-        String password = "8NKEX18265ER";//�옄�떊�쓽 �꽕�씠踰� �뙣�뒪�썙�뱶
+        //mail server 설정
+        String user = "oversteam@naver.com"; //자신의 네이버 계정
+        String password = "8NKEX18265ER";//자신의 네이버 패스워드
         
         
-        //SMTP �꽌踰� �젙蹂대�� �꽕�젙�븳�떎.
+        //SMTP 서버 정보를 설정한다.
+
         Properties props = new Properties();
 //        props.put("mail.smtp.host", "smtp.gmail.com");
 //        props.put("mail.smtp.port", 587);
@@ -50,7 +50,9 @@ public class MailSendServlet extends HttpServlet {
 //        props.put("mail.smtp.ssl.enable", "true");
 //        props.put("mail.smtp.ssl.trust", "smtp.naver.com");
         
-        //�씤利� 踰덊샇 �깮�꽦湲�
+
+        //인증 번호 생성기
+
         StringBuffer temp =new StringBuffer();
         Random rnd = new Random();
         for(int i=0;i<10;i++)
@@ -80,7 +82,9 @@ public class MailSendServlet extends HttpServlet {
             }
         });
         
-        //email �쟾�넚
+
+        //email 전송
+
         try {
             MimeMessage msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(user,"KO3BANK"));
@@ -90,18 +94,15 @@ public class MailSendServlet extends HttpServlet {
             //메일 제목
             msg.setSubject("안녕하세요 KO3 BANK 인증 메일입니다.");
             //메일 내용
-
             msg.setText("인증 번호는    :   "+temp);
-
-
             
             Transport.send(msg);
-            System.out.println("�씠硫붿씪 �쟾�넚");
+            System.out.println("이메일 전송");
+
             
         }catch (Exception e) {
             e.printStackTrace();// TODO: handle exception
         }
-
         System.out.println(id);
         System.out.println(pass);
         System.out.println(email);
@@ -109,6 +110,7 @@ public class MailSendServlet extends HttpServlet {
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
 
         //id 찾기 일때
+
         if(id!=null) {
         	saveKey.setAttribute("id", id);
         }
@@ -117,7 +119,6 @@ public class MailSendServlet extends HttpServlet {
         	saveKey.setAttribute("pass", pass);
         	saveKey.setAttribute("email", email);
         }
-
         request.getRequestDispatcher("emailConfirm.jsp").forward(request, response);
 	}
 

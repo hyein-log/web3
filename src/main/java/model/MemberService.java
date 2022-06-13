@@ -17,7 +17,6 @@ public class MemberService {
 	public MemberVO selectEmailById(String id) {
 		return dao.selectEmailById(id);
 	}
-
 	public MemberVO selectByIdEmail(String id, String name, String email) {
 		return dao.selectByIdEmail(id,name,email);
 	}
@@ -27,5 +26,10 @@ public class MemberService {
 	public int passwordUpdate(MemberVO member) {
 		return dao.passwordUpdate(member);
 	}
-
+	public int idCheck(String id) {
+		return dao.selectAllId(id);
+	}
+	public int emailCheck(String email) {
+		return dao.selectAllEmail(email);
+	}
 }

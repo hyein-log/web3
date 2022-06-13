@@ -15,20 +15,17 @@ public class MemberDAO {
 	static final String SELECT_MEMBER_BY_ID = "select * from member where id=? and password=?";
 	static final String SELECT_MEMBER_BY_EMAIL = "select * from member where name=? and email=?";
 	static final String SELECT_EMAIL_BY_ID = "select * from member where id=?";
-
 	static final String SELECT_BY_ID_EMAIL = "select * from member where id=? and name=? and email=?";
 	static final String SELECT_BY_EMAIL_FOR_PASS = "select * from member where email=?";
 	static final String PASSWORD_UPDATE = "update member set password=? where email=?";
-
+	static final String MEMBER_INSERT = "insert into member values(member_id_seq.nextval,?,?,?,?,?,?,'X','X')";
+	static final String SELECT_ALL_ID = "select id from member where id=?";
+	static final String SELECT_ALL_EMAIL = "select email from member where email=?";
 	
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
 	int result;
-	
-	public int insertMember(MemberVO member) {
-		return 0;
-	}
 
 	public ArrayList<MemberVO> getMembers() {
 		ArrayList<MemberVO> members = new ArrayList<MemberVO>();
@@ -107,8 +104,6 @@ public class MemberDAO {
 
         return member;
 	}
-	
-
 	public MemberVO selectByIdEmail(String id, String name, String email) {
 		MemberVO member = null;
         conn = DBUtil.getConnection();
@@ -164,8 +159,72 @@ public class MemberDAO {
 		
 		return result;
 	}
-	
 
+	public int insertMember(MemberVO member) {
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(MEMBER_INSERT);
+			st.setString(1, member.getName());
+			st.setString(2, member.getId());
+			st.setString(3, member.getPassword());
+			st.setString(4, member.getEmail());
+			st.setString(5, member.getAddress());
+			st.setString(6, member.getPhoneNum());
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		
+		return result;
+	}
+	public int selectAllId(String id) {
+		int sai_result=-1;
+        conn = DBUtil.getConnection();
+        try {
+            st = conn.prepareStatement(SELECT_ALL_ID);
+            st.setString(1, id);
+            rs = st.executeQuery();
+            if(rs.next()) {
+            	sai_result=1; //존재 할 경우
+            	System.out.println("result 값 : "+sai_result);
+            }else {
+            	//존재하지 않을경우
+            	sai_result=0;
+            	System.out.println("result 값 : "+sai_result);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
+        return sai_result;
+	}
+
+	public int selectAllEmail(String email) {
+		int sai_result=-1;
+        conn = DBUtil.getConnection();
+        try {
+            st = conn.prepareStatement(SELECT_ALL_EMAIL);
+            st.setString(1, email);
+            rs = st.executeQuery();
+            if(rs.next()) {
+            	sai_result=1; //존재 할 경우
+            	System.out.println("result 값 : "+sai_result);
+            }else {
+            	//존재하지 않을경우
+            	sai_result=0;
+            	System.out.println("result 값 : "+sai_result);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
+        return sai_result;
+	}
+	
 	private MemberVO makeMember(ResultSet rs) throws SQLException {
 		MemberVO member = new MemberVO();
 		member.setName(rs.getString(2));
@@ -175,19 +234,5 @@ public class MemberDAO {
 		
 		return member;
 	}
-
-
-	
-
-	
-
-	
-
-	
-
-
-	
-
-	
 	
 }
