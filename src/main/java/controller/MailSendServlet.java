@@ -32,12 +32,12 @@ public class MailSendServlet extends HttpServlet {
 		String pass = request.getParameter("password");
 
 
-        //mail server ¼³Á¤
-        String user = "oversteam@naver.com"; //ÀÚ½ÅÀÇ ³×ÀÌ¹ö °èÁ¤
-        String password = "8NKEX18265ER";//ÀÚ½ÅÀÇ ³×ÀÌ¹ö ÆĞ½º¿öµå
+        //mail server ï¿½ê½•ï¿½ì ™
+        String user = "oversteam@naver.com"; //ï¿½ì˜„ï¿½ë–Šï¿½ì“½ ï¿½ê½•ï¿½ì” è¸°ï¿½ æ€¨ê¾©ì ™
+        String password = "8NKEX18265ER";//ï¿½ì˜„ï¿½ë–Šï¿½ì“½ ï¿½ê½•ï¿½ì” è¸°ï¿½ ï¿½ë™£ï¿½ë’ªï¿½ì™ï¿½ë±¶
         
         
-        //SMTP ¼­¹ö Á¤º¸¸¦ ¼³Á¤ÇÑ´Ù.
+        //SMTP ï¿½ê½Œè¸°ï¿½ ï¿½ì ™è¹‚ëŒ€ï¿½ï¿½ ï¿½ê½•ï¿½ì ™ï¿½ë¸³ï¿½ë–.
         Properties props = new Properties();
 //        props.put("mail.smtp.host", "smtp.gmail.com");
 //        props.put("mail.smtp.port", 587);
@@ -50,7 +50,7 @@ public class MailSendServlet extends HttpServlet {
 //        props.put("mail.smtp.ssl.enable", "true");
 //        props.put("mail.smtp.ssl.trust", "smtp.naver.com");
         
-        //ÀÎÁõ ¹øÈ£ »ı¼º±â
+        //ï¿½ì”¤ï§ï¿½ è¸°ëŠìƒ‡ ï¿½ê¹®ï¿½ê½¦æ¹²ï¿½
         StringBuffer temp =new StringBuffer();
         Random rnd = new Random();
         for(int i=0;i<10;i++)
@@ -80,21 +80,23 @@ public class MailSendServlet extends HttpServlet {
             }
         });
         
-        //email Àü¼Û
+        //email ï¿½ìŸ¾ï¿½ë„š
         try {
             MimeMessage msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(user,"KO3BANK"));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             
-            //¸ŞÀÏ Á¦¸ñ
-            msg.setSubject("¾È³çÇÏ¼¼¿ä KO3 BANK ÀÎÁõ ¸ŞÀÏÀÔ´Ï´Ù.");
-            //¸ŞÀÏ ³»¿ë
 
-            msg.setText("ÀÎÁõ ¹øÈ£´Â    :   "+temp);
+            //ë©”ì¼ ì œëª©
+            msg.setSubject("ì•ˆë…•í•˜ì„¸ìš” KO3 BANK ì¸ì¦ ë©”ì¼ì…ë‹ˆë‹¤.");
+            //ë©”ì¼ ë‚´ìš©
+
+            msg.setText("ì¸ì¦ ë²ˆí˜¸ëŠ”    :   "+temp);
+
 
             
             Transport.send(msg);
-            System.out.println("ÀÌ¸ŞÀÏ Àü¼Û");
+            System.out.println("ï¿½ì” ï§ë¶¿ì”ª ï¿½ìŸ¾ï¿½ë„š");
             
         }catch (Exception e) {
             e.printStackTrace();// TODO: handle exception
@@ -105,11 +107,12 @@ public class MailSendServlet extends HttpServlet {
         System.out.println(email);
         HttpSession saveKey = request.getSession();
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-        //id Ã£±â ÀÏ¶§
+
+        //id ì°¾ê¸° ì¼ë•Œ
         if(id!=null) {
         	saveKey.setAttribute("id", id);
         }
-        //passwordÃ£±â ÀÏ¶§
+        //passwordì°¾ê¸° ì¼ë•Œ
         if(pass!=null) {
         	saveKey.setAttribute("pass", pass);
         	saveKey.setAttribute("email", email);

@@ -39,7 +39,9 @@ public class MailConfirmServlet extends HttpServlet {
         
         if(!AuthenticationKey.equals(AuthenticationUser))
         {
+
         	writer.println("<script>alert('인증번호 일치하지 않음.'); location.href='"+"login.jsp"+"';</script>"); 
+
         	writer.close();
             //request.getRequestDispatcher("login.jsp").forward(request, response);
         	
@@ -47,6 +49,7 @@ public class MailConfirmServlet extends HttpServlet {
         }
         if(id!=null) {
         	
+
 	        writer.println("<h1>당신의 아이디는 : "+id+" 입니다.</h1>");
 	        writer.println("<button><a href=login.jsp>로그인 하러 가기</a></button>");
 	        session.removeAttribute("AuthenticationKey");
