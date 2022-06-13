@@ -193,7 +193,7 @@ margin: 10px;
 </style>
 </head>
 
-<jsp:include page="../finances_master/header/header3.jsp"></jsp:include>
+<jsp:include page="../finances_master/header/header.jsp"></jsp:include>
 <div class="d" style="font-size: 40px; font-family: 'Nanum Gothic', sans-serif;">
 	<div class="o">거래내역</div>
 </div>
@@ -259,7 +259,7 @@ margin: 10px;
 
 
 <div class="o"></div>
-<jsp:include page="../finances_master/footer/footer3.jsp"></jsp:include>
+<jsp:include page="../finances_master/footer/footer.jsp"></jsp:include>
 
 
 

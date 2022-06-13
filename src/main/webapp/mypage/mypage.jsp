@@ -73,7 +73,7 @@ img{
 </head>
 <body>
 
-<jsp:include page="../finances_master/header/header3.jsp"></jsp:include>
+<jsp:include page="../finances_master/header/header.jsp"></jsp:include>
 	<p class="mg_8_center">마이페이지</p>
 	<hr>
 	<div id="wrap">
@@ -109,6 +109,6 @@ img{
 	</div>
 	
 	
-	<jsp:include page="../finances_master/footer/footer3.jsp"></jsp:include>
+	<jsp:include page="../finances_master/footer/footer.jsp"></jsp:include>
 </body>
 </html>

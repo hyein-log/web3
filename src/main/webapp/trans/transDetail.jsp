@@ -238,7 +238,7 @@ label {
 
 </head>
 <body>
-	<jsp:include page="../finances_master/header/header3.jsp"></jsp:include>
+	<jsp:include page="../finances_master/header/header.jsp"></jsp:include>
 	<div class="d" style="font-size: 40px;">
 		<div class="o">거래내역</div>
 	</div>
@@ -431,7 +431,7 @@ label {
 	<div class="o"></div>
 
 
-	<jsp:include page="../finances_master/footer/footer3.jsp"></jsp:include>
+	<jsp:include page="../finances_master/footer/footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 	$(function() {

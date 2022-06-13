@@ -65,7 +65,7 @@
 		</div>
 	</div>
 
-	<jsp:include page="../finances_master/header/header1.jsp"></jsp:include>
+	<jsp:include page="../finances_master/header/header.jsp"></jsp:include>
 	<div class="site-wrap">
 
 

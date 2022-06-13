@@ -59,7 +59,7 @@ label{
 </style>
 </head>
 
-<jsp:include page="../finances_master/header/header3.jsp"></jsp:include>
+<jsp:include page="../finances_master/header/header.jsp"></jsp:include>
 
 
 <form action="#" class="sendForm">
@@ -86,7 +86,7 @@ label{
  
  
 
-<jsp:include page="../finances_master/footer/footer3.jsp"></jsp:include>
+<jsp:include page="../finances_master/footer/footer.jsp"></jsp:include>
 
   
 

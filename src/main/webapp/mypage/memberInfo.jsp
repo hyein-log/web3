@@ -146,7 +146,7 @@ label {
 </head>
 <body>
 
-	<jsp:include page="../finances_master/header/header3.jsp"></jsp:include>
+	<jsp:include page="../finances_master/header/header.jsp"></jsp:include>
 
 	<div class="sendDiv align sendForm" style="margin-top: 10%;">
 		<label>성명</label> <label class="form-accSend">${memberinfo.name}</label>
@@ -224,7 +224,7 @@ label {
 			<button onclick="closePopupPW()">닫기</button>
 		</div>
 	</div>
-	<jsp:include page="../finances_master/footer/footer3.jsp"></jsp:include>
+	<jsp:include page="../finances_master/footer/footer.jsp"></jsp:include>
 
 
 </body>
