@@ -32,4 +32,10 @@ public class MemberService {
 	public int emailCheck(String email) {
 		return dao.selectAllEmail(email);
 	}
+	public MemberVO selectMemberByMemberId(int memberid) {
+		return dao.selectMemberByMemberId(memberid);
+	}
+	public int update_member_email(MemberVO member) {
+		return dao.update_member_email(member);
+	}
 }
