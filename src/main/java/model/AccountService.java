@@ -11,13 +11,12 @@ public class AccountService {
 	public List<AccountVO> selectAll(){
 		return dao.selectAll();
 	}
-	
 
 	public List<AccountVO> selectById(int memId) {
 		return dao.selectById(memId);
 	}
 	
-	public int accInsert(AccountVO acc) {
+	public String accInsert(AccountVO acc) {
 		return dao.accInsert(acc);
 	}
 	
