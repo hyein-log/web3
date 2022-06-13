@@ -26,4 +26,10 @@ public class MemberService {
 	public int passwordUpdate(MemberVO member) {
 		return dao.passwordUpdate(member);
 	}
+	public int idCheck(String id) {
+		return dao.selectAllId(id);
+	}
+	public int emailCheck(String email) {
+		return dao.selectAllEmail(email);
+	}
 }

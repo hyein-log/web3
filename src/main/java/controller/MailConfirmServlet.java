@@ -35,7 +35,7 @@ public class MailConfirmServlet extends HttpServlet {
         
         if(!AuthenticationKey.equals(AuthenticationUser))
         {
-        	writer.println("<script>alert('ÀÎÁõ¹øÈ£ ÀÏÄ¡ÇÏÁö ¾ÊÀ½.'); location.href='"+"login.jsp"+"';</script>"); 
+        	writer.println("<script>alert('ì¸ì¦ë²ˆí˜¸ ì¼ì¹˜í•˜ì§€ ì•ŠìŒ.'); location.href='"+"login.jsp"+"';</script>"); 
         	writer.close();
             //request.getRequestDispatcher("login.jsp").forward(request, response);
         	
@@ -43,8 +43,9 @@ public class MailConfirmServlet extends HttpServlet {
         }
         if(id!=null) {
         	
-	        writer.println("<h1>´ç½ÅÀÇ ¾ÆÀÌµğ´Â : "+id+" ÀÔ´Ï´Ù.</h1>");
-	        writer.println("<button><a href=login.jsp>·Î±×ÀÎ ÇÏ·¯ °¡±â</a></button>");
+	        writer.println("<h1>ë‹¹ì‹ ì˜ ì•„ì´ë””ëŠ” : "+id+" ì…ë‹ˆë‹¤.</h1>");
+	        writer.println("<button><a href=login.jsp>ë¡œê·¸ì¸ í•˜ëŸ¬ ê°€ê¸°</a></button>");
+
 	        session.removeAttribute("AuthenticationKey");
 	        session.removeAttribute("id");
 	        writer.close();
