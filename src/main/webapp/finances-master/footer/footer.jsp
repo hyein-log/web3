@@ -1,81 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
+	rel="stylesheet">
+<style type="text/css">
+html, body {
+	width: 100%;
+	margin: 0 auto;
+	font-family: 'Nanum Gothic', sans-serif;
+	margin: 0 auto;
+}
+
+footer {
+	width: 100%;
+	text-align: center;
+	font-size: 0.8em;
+	height: 45px;
+	background-color: #343a40;
+	padding: 0.2em 0;
+	color: #f3f3ed;
+	opacity: 85%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+</style>
 </head>
 <body>
-<footer class="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9">
-						<div class="row">
-							<div class="col-md-5">
-								<h2 class="footer-heading mb-4">About Us</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Neque facere laudantium magnam voluptatum autem. Amet aliquid
-									nesciunt veritatis aliquam.</p>
-							</div>
-							<div class="col-md-3 ml-auto">
-								<h2 class="footer-heading mb-4">Quick Links</h2>
-								<ul class="list-unstyled">
-									<li><a href="#about-section" class="smoothscroll">Terms</a></li>
-									<li><a href="#about-section" class="smoothscroll">Policy</a></li>
-									<li><a href="#about-section" class="smoothscroll">About
-											Us</a></li>
-									<li><a href="#services-section" class="smoothscroll">Services</a></li>
-									<li><a href="#testimonials-section" class="smoothscroll">Testimonials</a></li>
-									<li><a href="#contact-section" class="smoothscroll">Contact
-											Us</a></li>
-								</ul>
-							</div>
-							<div class="col-md-3 footer-social">
-								<h2 class="footer-heading mb-4">Follow Us</h2>
-								<a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-								<a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-								<a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-								<a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
-						<form action="#" method="post" class="footer-subscribe">
-							<div class="input-group mb-3">
-								<input type="text"
-									class="form-control border-secondary text-white bg-transparent"
-									placeholder="Enter Email" aria-label="Enter Email"
-									aria-describedby="button-addon2">
-								<div class="input-group-append">
-									<button class="btn btn-primary text-black" type="button"
-										id="button-addon2">Send</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="row pt-5 mt-5 text-center">
-					<div class="col-md-12">
-						<div class="border-top pt-5">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							<p>
-								Copyright &copy;
-								<script>
-									document.write(new Date().getFullYear());
-								</script>
-								All rights reserved | This template is made with <i
-									class="icon-heart-o" aria-hidden="true"></i> by <a
-									href="https://colorlib.com" target="_blank">Colorlib</a>
-							</p>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</footer>
+	<footer>
+		<p>Copyright ⓒ 2022. COSBANK. All rights reserved.</p>
+	</footer>
 </body>
 </html>

@@ -184,7 +184,7 @@
 						<div class="team-member">
 							<img src="images/notice.png"
 								style="padding: -24px; border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								alt="Image" class="img-fluid mb-4 bg-white">
+								alt="Image" class="img-fluid mb-4 bg-white" onclick="location.href='../notice/NoticeList.do'">
 
 						</div>
 					</div>
