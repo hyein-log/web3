@@ -65,7 +65,7 @@
 		</div>
 	</div>
 
-	<jsp:include page="../master/header/header1.jsp"></jsp:include>
+	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<div class="site-wrap">
 
 
@@ -295,7 +295,7 @@
 		</div>
 
 
-		<jsp:include page="../master/footer/footer.jsp"></jsp:include>
+		<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 	</div>
 	<!-- .site-wrap -->
