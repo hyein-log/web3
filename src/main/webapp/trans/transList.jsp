@@ -262,19 +262,6 @@ margin: 10px;
 <jsp:include page="../master/footer/footer3.jsp"></jsp:include>
 
 
-<script>
-// 	function show() {
-
-// 		var id = $(this).attr("id");
-// 		<form method="post" action="/mygaeapp">
-// 		<input type="hidden" name="member_id" value=id ><br>
-// 		<input type="hidden" name="kind" value="${acclist[0].trans_kind }"><br>
-// 		<input type="submit" value="전송">
-// 		</form>
-
-// 		document.querySelector(".background").className = "background show";
-// 	}
-</script>
 </body>
 
 
