@@ -1,90 +1,207 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+	pageEncoding="UTF-8"%>
+<!doctype html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-
-<title>계좌개설</title>
+  <title>Account &mdash; Account create</title>
+  <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+<style type="text/css">
+
+.sendForm{
+    /*width: 30%;*/
+    margin-left: 520px;
+    font-family: 'Nanum Gothic', sans-serif;
+   /* padding: 3%;
+    margin-top: 10%;*/
+    margin-bottom: 10%;
+}
+
+.form-accSend {
+    width: 350px;
+    height: 30px;
+    display: block;
+    border-radius: 30px;
+    border: 1px solid #ced4da;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+  /*   margin-top: 3%; */
+  	margin-left: 100px;
+}
+
+.form-accSend:active, .form-accSend:focus {
+    outline: 1px solid #007bff;
+}
+.sendDiv {
+    margin-bottom: 30px;
+    color: #007bff;
+    
+   
+}
+
+.sendbtnDiv{
+   /*  text-align: center; */
+   margin-left: 180px;
+}
+label{
+    color:#000;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    margin-left: 100px;
+}
+.btnSubmit {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 400;
+    height: 46px;
+}
+
+
+.btnCencel{
+ 	background-color: #fff;
+    border: 1px solid #007bff;
+    color: #007bff;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #007bff;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 400;
+    height: 46px;
+}
+
+.btnCencel:hover{
+	background-color: #007bff;
+	color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 400;
+    height: 46px;
+}
+
+
+.#accCreat {
+	font-size: 30px;
+	text-align: center;
+}
+
+.signJoin{
+	text-align: center;
+}
+
+
+.joinLink{
+	text-decoration: none;
+	color: #007bff;
+	font-weight: bold;
+}
+
+.accNum{
+	font-weight: bold;
+}
+
+.passLink{
+	text-decoration: none;
+	color: #007bff;
+	font-weight: bold;
+	padding-left: 250px;
+}
+
+.idLink{
+	text-decoration: none;
+	color: #007bff;
+	font-weight: bold;
+	padding-left: 310px;
+}
+
+#accSelect{
+	margin-left: 520px;
+    font-family: 'Nanum Gothic', sans-serif;
+    padding: 3%;
+    margin-top: 10%;
+}
+
+</style>
 </head>
-<body>
-<h1>계좌개설</h1>	
 
+<jsp:include page="../finances-master/header/header1.jsp"></jsp:include>
 
-<form action="acc_create.do" method="post">
-
-<input type="radio" name="bank_account" value="0" checked="checked">입출금통장
-<input type="radio" name="bank_account" value="1">적금통장
-<input type="radio" name="bank_account" value="2">예금통장
-
+<div id="accSelect">
+	<h2 id="accCreat1">개설계좌선택</h2>
+	<br>
+	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금통장" style="margin-left: 50px;" >입출금통장
+	<input type="radio" name="bank_account" value="1" data-bank="적금통장" style="margin-left: 50px;">적금통장
+	<input type="radio" name="bank_account" value="2" data-bank="예금통장" style="margin-left: 50px;">예금통장
+</div>
 <br><br>
 
-<!-- 입출금통장 -->
-<div id="selectIp_account">
-종류 : <input type="text" name="accountType" value="입출금통장" readonly="readonly"><br>
-이름 : <input type="text" name="userid"><br>
+<form action="acc_create.do" class="sendForm" method="post" >
+	<div id="selectIp_account" >
+	
+
+<!-- 	종류 <br>
+	<span id="bankType">입출금통장</span> <input type="hidden" name="bank_account"  id="bank_account" value="0"  > <br>
+회원아이디 : <input type="text" name="member_id" value="1"><br>
 계좌 비밀번호 : <input type="password" name="acc_pass"><br>
-<input type="submit" value="개설하기" >
-<input type="reset" value="취소하기" >
-</div>
+ -->
 
-<!-- 적금통장 -->
-<div id="selectSaving_account">
-종류 : <input type="text" name="accountType" value="적금통장" readonly="readonly"><br>
-이름 : <input type="text" name="userid"><br>
-계좌 비밀번호 : <input type="password" name="acc_pass"><br>
-<input type="submit" value="개설하기" >
-<input type="reset" value="취소하기" >
-</div>
-
-<!-- 예금통장 -->
-<div id="selectYe_account">
-종류 : <input type="text" name="accountType" value="예금통장" readonly="readonly"><br>
-이름 : <input type="text" name="userid"><br>
-계좌 비밀번호 : <input type="password" name="acc_pass"><br>
-<input type="submit" value="개설하기" >
-<input type="reset" value="취소하기" >
-</div>
-
-</form>
-
-
-<script>
-//입출금통장 - id= Ip_account  / 적금통장 : saving_account  / 예금통장 : ye_account
-
-	$(function(){
-		$("#selectSaving_account").hide();
-		$("#selectYe_account").hide();
-		//var selectCheck = $("input[name='bank_account']:checked").val();
-		
-		$("input[name='bank_account']").change(function(){
-		//	 alert("ok");
-		
-			 //적금통장 선택시
-			if($("input[name='bank_account']:checked").val() == "1"){
-				$("#selectIp_account").hide();
-				$("#selectYe_account").hide();
-				$("#selectSaving_account").show();
-				
-			}
-			//예금통장 선택시
-			else if($("input[name='bank_account']:checked").val() == "2"){
-				$("#selectIp_account").hide();
-				$("#selectSaving_account").hide();
-				$("#selectYe_account").show();
-				
-			}
-			//입출금통장 선택시
-			else if($("input[name='bank_account']:checked").val() == "0"){
-				$("#selectYe_account").hide();
-				$("#selectSaving_account").hide();
-				$("#selectIp_account").show();
-				
-			}
-		});
+        <div class="sendDiv align">
+            <label class="accNum">계좌 종류 :</label><br><br>
+           <span id="bankType" style="font-weight: bold;margin-left: 130px;">입출금통장</span>
+           <input type="hidden" name="bank_account"  id="bank_account" value="0">
+        </div>
+        <div class="sendDiv align">
+            <label class="accNum">이름 :</label>
+            <input type="text" name="member_id" value="${member.name }">
+        </div>
+        <div class="sendDiv align">
+            <label class="accNum">계좌 비밀번호 :</label><br><br>
+           <input type="password" name="acc_pass" class="form-accSend">
+        </div>
+        <div class="sendbtnDiv">
+			<input type="submit" class="btnSubmit" value="개설하기" >
+			<input type="reset" class="btnCencel" value="취소" >
+		</div>
+        
+    </div>
+    </form>
+ 
+ <script>
+$(function(){
+	 
+	$("input[name='bank_account']").change(function(){
+		$("#bankType").html( $(this).attr("data-bank") );
+		$("#bank_account").val($(this).val());
 	});
-</script>
+	
+});
+
+ </script>
+ 
+ 
+
+<jsp:include page="../finances-master/footer/footer1.jsp"></jsp:include>
+
+  
 
 
 </body>

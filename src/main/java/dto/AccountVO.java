@@ -18,6 +18,19 @@ public class AccountVO {
 		super();
 	}
 
+	public AccountVO(int member_id, int accountType, String acc_number, int acc_pass) {
+		super();
+		this.member_id = member_id;
+		this.accountType = accountType;
+		this.acc_number = acc_number;
+		this.acc_pass = acc_pass;
+	}
+
+
+
+
+
+
 	public AccountVO(int account_id, int member_id, int accountType, String acc_number, int balance, int acc_pass,Date makedate, char limit_ox) {
 		super();
 		this.account_id = account_id;

@@ -108,7 +108,7 @@ public class MemberDAO {
 		member.setId(rs.getString(3));
 		member.setPassword(rs.getString(4));
 		member.setEmail(rs.getString(5));
-		
+		member.setMember_id(rs.getInt("Member_id"));
 		return member;
 	}
 

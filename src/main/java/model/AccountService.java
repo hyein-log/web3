@@ -17,7 +17,7 @@ public class AccountService {
 		return dao.selectById(memId);
 	}
 	
-	public int accInsert(AccountVO acc) {
+	public String accInsert(AccountVO acc) {
 		return dao.accInsert(acc);
 	}
 	

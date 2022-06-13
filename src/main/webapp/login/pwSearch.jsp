@@ -8,7 +8,7 @@
   <meta charset="utf-8">
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <style type="text/css">
 
 .sendForm{
@@ -102,23 +102,71 @@ label{
 </head>
 
 <jsp:include page="../finances-master/header/header1.jsp"></jsp:include>
-
-<form class="sendForm" method="post" encType="UTF-8">
-<h2 id="signIn">ID Search.</h2>
+<div class="sendForm">
+<h2 id="signIn">PW Search.</h2>
 <br><br>
         <div class="sendDiv align">
             <label class="accNum">ID *</label>
+            <input type="text" class="form-accSend" name="id" id="id">
+        </div>
+        <div class="sendDiv align">
+            <label class="accNum">Name *</label>
             <input type="text" class="form-accSend" name="name" id="name">
         </div>
         <div class="sendDiv align">
             <label class="accNum">Email *</label>
-            <input type="text" class="form-accSend" name="email" id="email">
+            <input type="text" class="form-accSend" name="email2" id="email2">
         </div>
           <div class="sendbtnDiv">
-        	<input type="button" id="confirm_btn" class="btnSubmit" value="Send by email">
+       		<input type="button" id="confirm_btn" class="btnSubmit" value="Send by email">
         </div>
-    </form>
+</div>
  
+ <form action="MailSend.do" method="post" id="mailsendfrm">
+  <input type="hidden" name="password" id="password">
+  <input type="hidden" name="email" id="email">
+</form>
+<script>
+	$("#confirm_btn").on("click", function(){
+		//var frm = $("#idSearch");	
+		if($("#id").val().length < 1){
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		if($("#name").val().length < 1){
+			alert("이름을 입력해주세요.");
+			return false;
+		}
+		if($("#email2").val().length < 1){
+			alert("이메일을 정확하게 입력해주세요.");
+			return false;
+		}
+		$.ajax({
+			url:"pwSearch.do",
+			type:"post",
+			data:{"id":$("#id").val(),
+				"name":$("#name").val(),
+				"email":$("#email2").val()},
+			success:function(responseData){
+				if(responseData!=0){
+					$("#password").val(responseData);
+					$("#email").val($("#email2").val());
+					$("#mailsendfrm").submit();
+				   //location.href="MailSend.do?id=" + responseData+"&email="+$("#email").val();
+				}else{
+					alert("해당하는 id가 없습니다.");
+					$("#id").val("");
+					$("#name").val("");
+					$("#email").val("");
+					$("#id").focus();
+				}
+			}
+		});
+		
+	});  
+	
+
+</script>
  
 
 

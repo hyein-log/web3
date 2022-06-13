@@ -1,0 +1,39 @@
+package controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dto.MyQnaVO;
+import model.MyQnaService;
+
+/**
+ * Servlet implementation class MyQnaInsertServlet
+ */
+@WebServlet("/myqna/qnaInsert.do")
+public class MyQnaInsertServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		int member_id = Integer.parseInt(request.getParameter("member_id"));//È¸¿øid
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		MyQnaVO vo = new MyQnaVO(member_id, title, content);
+		System.out.println(vo);
+		int result = new MyQnaService().myInsert(vo);
+		
+		
+		response.sendRedirect("myqnalist.do");
+	}
+
+
+
+}

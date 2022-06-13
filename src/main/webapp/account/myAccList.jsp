@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +10,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-
-	$(document).ready(function() { 
-		var limit=
-		if(limit=='O')
-			$(".btnLimit").attr("disabled", true);
-		else 
-			$(".btnLimit").attr("disabled", false);
-			
-	});
-
 	$(function() {
 		$(".btnDel").click(function() {
 			var accNum = $(this).attr("data-accNum");
@@ -51,11 +42,23 @@
 		<c:forEach items="${accLists }" var="acc">
 			<tr>
 				<td>${acc. makedate}</td>
-				<td>${acc. accountType}</td>
+				<td>
+					<c:if test="${acc. accountType==0}">입출금 통장</c:if>
+					<c:if test="${acc. accountType==1}">예금 통장</c:if>
+					<c:if test="${acc. accountType==2}">적금 통장</c:if>
+				</td>
 				<td>${acc. acc_number}</td>
 				<td>${acc. balance}</td>
-				<td><button class="btnDel btn-primary" data-accNum="${acc.acc_number}">해지하기</button></td>
-				<td><button class="btnLimit" data-accNum="${acc.acc_number} ">한도 변경</button></td>
+				<td><button class="btnDel" data-accNum="${acc.acc_number}">해지하기</button></td>
+				<td>
+				   <c:if test="${fn:substring(acc.limit_ox,0,1)=='O'}">
+					   <button class="btnLimit" data-accNum="${acc.acc_number}">한도 변경</button>
+				   </c:if>
+				   <c:if test="${ fn:substring(acc.limit_ox,0,1)=='X'}">
+					   <button class="btnLimit" disabled="disabled" data-accNum="${acc.acc_number}">한도 변경</button>
+				   </c:if>
+				</td>
+				<td><button class="btnAuto" onclick="location.href='../autosend/autoList.jsp'">자동이체 관리</button></td>
 			</tr>
 		</c:forEach>
 	</table>

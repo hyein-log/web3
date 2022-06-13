@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.Arrays;
-
+import java.util.Date;
 import java.util.List;
+
 
 import dto.AccountVO;
 import util.DBUtil;
@@ -19,7 +20,7 @@ public class AccountDAO {
 	static final String SELECT_ACCOUNT = "select * from account order by 1 desc";
 
 	static final String SELECT_ACC_MEMBER_ID = "SELECT * FROM account WHERE MEMBER_ID = ?";
-	static final String SQL_INSERT = "INSERT INTO account values( acc_seq.nextval, ?, ?, ?, ?, ?, sysdate)";
+	static final String SQL_INSERT = "INSERT INTO account values( acc_seq.nextval, ?, ?, ?, 0, ?, sysdate, 'x')";
 	static final String DELETE_ACC= "DELETE FROM ACCOUNT WHERE ACC_NUMBER = ?";
 	static final String UPDATE_LIMIT= "UPDATE account SET limit_ox = 'O' WHERE ACC_NUMBER =?";
 
@@ -29,7 +30,7 @@ public class AccountDAO {
 	ResultSet rs;
 	int result;
 	
-	//전체목록
+	//�쟾泥대ぉ濡�
 	public List<AccountVO> selectAll() {
 		List<AccountVO> alist = new ArrayList<>();
 		AccountVO account = null;
@@ -51,7 +52,7 @@ public class AccountDAO {
 	}
 	
 
-	//회원의 계좌 조회
+	//�쉶�썝�쓽 怨꾩쥖 議고쉶
 	public List<AccountVO> selectById(int memId) {
 		List<AccountVO> list = new ArrayList<>();
 		AccountVO account = null;
@@ -91,29 +92,33 @@ public class AccountDAO {
 	}
 
 
-	//계좌 insert
-	public int accInsert(AccountVO acc) {
+	//怨꾩쥖 insert
+	public String accInsert(AccountVO acc) {
 
         int result = 0;
-
+        
+        String c = new Date().getTime() + "000";
+        String s = c.substring(0,4) + "-" +
+        c.substring(4,7) + "-" + c.substring(7,10) + c.substring(10,13);
+        
         conn = DBUtil.getConnection();
         try {
             st = conn.prepareStatement(SQL_INSERT);
-
-            st.setInt(1, acc.getMember_id());
+            st.setInt(1, acc.getMember_id());	//외래키
             st.setInt(2, acc.getAccountType());
-            st.setString(3, acc.getAcc_number());
-           // st.setInt(4, acc.getBalance());
+            st.setString(3, s);
+            //st.setInt(4, acc.getBalance());
             st.setInt(4, acc.getAcc_pass());
             //st.setDate(5, acc.getMakedate());
 
             result = st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+            s = null;
         } finally {
             DBUtil.dbClose(rs, st, conn);
         }
-        return result;
+        return s;
     }
 	
 	public int updateLimit(String accNum) {
@@ -130,7 +135,7 @@ public class AccountDAO {
 		return result;
 	}
 	
-	//계좌 해지
+	//怨꾩쥖 �빐吏�
 	public int deleteAcc(String accNum) {
 		conn = DBUtil.getConnection();
 		try {
@@ -145,5 +150,6 @@ public class AccountDAO {
 		}		
 		return result;
 	}
+	
 	
 }
