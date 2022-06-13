@@ -25,9 +25,12 @@ import javax.servlet.http.HttpSession;
 public class MailSendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
+		String pass = request.getParameter("password");
+
 
         //mail server 설정
         String user = "oversteam@naver.com"; //자신의 네이버 계정
@@ -86,7 +89,9 @@ public class MailSendServlet extends HttpServlet {
             //메일 제목
             msg.setSubject("안녕하세요 KO3 BANK 인증 메일입니다.");
             //메일 내용
-            msg.setText("인증 번호는 :"+temp);
+
+            msg.setText("인증 번호는    :   "+temp);
+
             
             Transport.send(msg);
             System.out.println("이메일 전송");
@@ -94,10 +99,22 @@ public class MailSendServlet extends HttpServlet {
         }catch (Exception e) {
             e.printStackTrace();// TODO: handle exception
         }
+
+        System.out.println(id);
+        System.out.println(pass);
+        System.out.println(email);
         HttpSession saveKey = request.getSession();
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-      //패스워드 바꿀때 뭘 바꿀지 조건에 들어가는 id
-        request.setAttribute("id", id);
+        //id 찾기 일때
+        if(id!=null) {
+        	saveKey.setAttribute("id", id);
+        }
+        //password찾기 일때
+        if(pass!=null) {
+        	saveKey.setAttribute("pass", pass);
+        	saveKey.setAttribute("email", email);
+        }
+
         request.getRequestDispatcher("emailConfirm.jsp").forward(request, response);
 	}
 

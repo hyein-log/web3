@@ -29,7 +29,9 @@ public class AccountDAO {
 	ResultSet rs;
 	int result;
 	
-	//�쟾泥대ぉ濡�
+
+	//전체목록
+
 	public List<AccountVO> selectAll() {
 		List<AccountVO> alist = new ArrayList<>();
 		AccountVO account = null;
@@ -51,7 +53,9 @@ public class AccountDAO {
 	}
 	
 
-	//�쉶�썝�쓽 怨꾩쥖 議고쉶
+
+	//회원의 계좌 조회
+
 	public List<AccountVO> selectById(int memId) {
 		List<AccountVO> list = new ArrayList<>();
 		AccountVO account = null;
@@ -92,7 +96,9 @@ public class AccountDAO {
 	}
 
 
-	//怨꾩쥖 insert
+
+	//계좌 insert
+
 	public int accInsert(AccountVO acc) {
 
         int result = 0;
@@ -131,7 +137,9 @@ public class AccountDAO {
 		return result;
 	}
 	
-	//怨꾩쥖 �빐吏�
+
+	//계좌 해지
+
 	public int deleteAcc(String accNum) {
 		conn = DBUtil.getConnection();
 		try {
