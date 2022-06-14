@@ -1,13 +1,21 @@
+<%@page import="java.util.List"%>
+<%@page import="dto.MemberVO"%>
+<%@page import="java.util.Iterator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <html lang="en">
 <head>
-<title>Finances &mdash; Website Template by Colorlib</title>
+<title>Hello 'COS BANK';</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
 	rel="stylesheet">
@@ -28,11 +36,37 @@
 <link rel="stylesheet" href="css/aos.css">
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Fjalla+One|Libre+Baskerville">
+<style type="text/css">
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100%;
+} 
+.a img {
+	transition: all 0.2s linear;
+}
+
+.a:hover img {
+	transform: scale(1.1);
+}
+
+.visual {
+	/* 마우스 커서를 포인터 모양으로 변경 */
+	cursor: pointer;
+}
+</style>
 
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
+	data-offset="300" style="font-family: 'Nanum Gothic', sans-serif;">
 
+	<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 
 	<div id="overlayer"></div>
 	<div class="loader">
@@ -41,68 +75,62 @@
 		</div>
 	</div>
 
-
 	<div class="site-wrap">
 
-		<div class="site-mobile-menu site-navbar-target">
-			<div class="site-mobile-menu-header">
-				<div class="site-mobile-menu-close mt-3">
-					<span class="icon-close2 js-menu-toggle"></span>
-				</div>
-			</div>
-			<div class="site-mobile-menu-body"></div>
-		</div>
 
-		<jsp:include page="header/header.jsp"></jsp:include>
+
 
 		<div class="site-blocks-cover overlay"
-			style="background-image: url(images/hero_2.jpg);" data-aos="fade"
+			style="background-image: url(images/bank_back.jpg);" data-aos="fade"
 			id="home-section">
 
-			<div class="container">
+			<div class="container ">
 				<div class="row align-items-center justify-content-center">
 
 
 					<div class="col-md-10 mt-lg-5 text-center">
 						<div class="single-text owl-carousel">
-							<div class="slide">
-								<h1 class="text-uppercase" data-aos="fade-up">Banking
-									Solutions</h1>
-								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem
-									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-									minima delectus accusamus accusantium deleniti libero excepturi
-									porro illo.</p>
+							<div>
+								<h1 data-aos="fade-up"
+									style="font-family: Georgia, serif; font-size: 80px; color: white;">Hello
+									"COS"</h1>
+								<br>
+								<div>
+									<p style="font-size: 46px; font-weight: bold;">모두를 위한, 새로운
+										금융을 만들고자 합니다.</p>
+									<p style="font-size: 30px;">한 사람, 한 사람이 작성한 코드가 모여 마침내 코스가
+										되었습니다.</p>
+								</div>
+								<br> <br>
 								<div data-aos="fade-up" data-aos-delay="100">
-									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get
-										In Touch</a>
+									<a href="../login/login.jsp" class="btn  btn-primary mr-2 mb-2">Login</a>
 								</div>
 							</div>
+							<!-- 							<div class="slide"> -->
+							<!-- 								<h1 class="text-uppercase" data-aos="fade-up">Financing -->
+							<!-- 									Solutions</h1> -->
+							<!-- 								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem -->
+							<!-- 									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae -->
+							<!-- 									minima delectus accusamus accusantium deleniti libero excepturi -->
+							<!-- 									porro illo.</p> -->
+							<!-- 								<div data-aos="fade-up" data-aos-delay="100"> -->
+							<!-- 									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get -->
+							<!-- 										In Touch</a> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
 
-							<div class="slide">
-								<h1 class="text-uppercase" data-aos="fade-up">Financing
-									Solutions</h1>
-								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem
-									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-									minima delectus accusamus accusantium deleniti libero excepturi
-									porro illo.</p>
-								<div data-aos="fade-up" data-aos-delay="100">
-									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get
-										In Touch</a>
-								</div>
-							</div>
-
-							<div class="slide">
-								<h1 class="text-uppercase" data-aos="fade-up">Savings
-									Accounts</h1>
-								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem
-									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-									minima delectus accusamus accusantium deleniti libero excepturi
-									porro illo.</p>
-								<div data-aos="fade-up" data-aos-delay="100">
-									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get
-										In Touch</a>
-								</div>
-							</div>
+							<!-- 							<div class="slide"> -->
+							<!-- 								<h1 class="text-uppercase" data-aos="fade-up">Savings -->
+							<!-- 									Accounts</h1> -->
+							<!-- 								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem -->
+							<!-- 									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae -->
+							<!-- 									minima delectus accusamus accusantium deleniti libero excepturi -->
+							<!-- 									porro illo.</p> -->
+							<!-- 								<div data-aos="fade-up" data-aos-delay="100"> -->
+							<!-- 									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get -->
+							<!-- 										In Touch</a> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
 
 						</div>
 					</div>
@@ -122,31 +150,52 @@
 					<div class="col-md-8 text-center">
 						<h2 class="section-title mb-3" data-aos="fade-up"
 							data-aos-delay=""></h2>
-						<p class="lead" data-aos="fade-up" data-aos-delay="100">A
-							small river named Duden flows by their place and supplies it with
-							the necessary regelialia.</p>
+						<p class="lead" data-aos="fade-up" data-aos-delay="100"
+							style="font-weight: bold; font-size: 30px; color: black;">
+							<br>이제껏 경험 못 했던 쉽고 편리한 금융 서비스, <br>코스와 함께라면 당신의 일상이
+							새로워질 거예요.
+						</p>
 					</div>
 				</div>
+				<%
+				int id = 0;
+				MemberVO member = (MemberVO) session.getAttribute("member");
+				System.out.println("1" + member);
+				String m = "";
+				if (member != null) {
+					id = member.getMember_id();
+					m = member.getId();
+					if (id == 0) {
+						System.out.println("lk");
+					}
+				}
+				%>
 				<div class="row">
 
 
-
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="">
-						<div class="team-member">
-							<div class="main" style="position: relative;">
-								<img src="images/list.png"
-									style="padding: -24px; border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-									alt="Image" class="img-fluid mb-4 bg-white">
-							</div>
+						<div class="team-member a">
+						<form action="../trans/trans.do" method="post">
+								<input type="hidden"name="memberid" value="<%=id%>" ><br>
+								<input type="image" src="images/list.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+								class="img-fluid mb-4 bg-white visual"
+									alt="제출버튼">
+							</form>
+							
 						</div>
+
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="">
-						<div class="team-member">
-							<img src="images/account.png"
-								style="padding: -24px; border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								alt="Image" class="img-fluid mb-4 bg-white">
+						<div class="team-member a">
+						<form action="../account/acc_create.jsp" method="post">
+								<input type="hidden"name="memberid" value="<%=id%>" ><br>
+								<input type="image" src="images/account.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+								class="img-fluid mb-4 bg-white visual"
+									alt="제출버튼">
+							</form>
+							
 
 						</div>
 					</div>
@@ -154,10 +203,14 @@
 
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="200">
-						<div class="team-member">
-							<img src="images/money.png"
-								style="padding: -24px; border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								alt="Image" class="img-fluid mb-4 bg-white">
+						<div class="team-member a">
+							<form action="../account/accSend.do" method="post">
+								<input type="hidden"name="memberid" value="<%=id%>" ><br>
+								<input type="image" src="images/money.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+								class="img-fluid mb-4 bg-white visual"
+									alt="제출버튼">
+							</form>
+							
 						</div>
 					</div>
 
@@ -172,30 +225,39 @@
 
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
-						<div class="team-member">
-							<img src="images/mypage.png"
-								style="padding: -24px; border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								alt="Image" class="img-fluid mb-4 bg-white">
-
+						<div class="team-member a">
+						<form action="../mypage/mypage.do" method="post">
+								<input type="hidden"name="memberid" value="<%=id%>" ><br>
+								<input type="image" src="images/mypage.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+								class="img-fluid mb-4 bg-white visual"
+									alt="제출버튼">
+							</form>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
-						<div class="team-member">
-							<img src="images/notice.png"
-								style="padding: -24px; border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								alt="Image" class="img-fluid mb-4 bg-white" onclick="location.href='../notice/NoticeList.do'">
+						<div class="team-member a">
+						<form action="../notice/NoticeUserList.do">
+								<input type="hidden"name="memberid" value="<%=id%>" ><br>
+								<input type="image" src="images/notice.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+								class="img-fluid mb-4 bg-white visual"
+									alt="제출버튼">
+							</form>
+							
 
 						</div>
 					</div>
 
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="200">
-						<div class="team-member">
-							<img src="images/membership.png"
-								style="padding: -24px; border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								alt="Image" class="img-fluid mb-4 bg-white">
-
+						<div class="team-member a">
+						<form action="../membership/membershipMain.jsp">
+								<input type="hidden"name="memberid" value="<%=id%>" ><br>
+								<input type="image" src="images/membership.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+								class="img-fluid mb-4 bg-white visual"
+									alt="제출버튼">
+							</form>
+						
 						</div>
 					</div>
 
@@ -205,15 +267,15 @@
 			</div>
 		</section>
 
-		<div class="site-section cta-big-image" id="about-section">
+		<div class="site-section cta-big-image" id="next">
 			<div class="container">
 				<div class="row mb-5 justify-content-center">
 					<div class="col-md-8 text-center">
 						<h2 class="section-title mb-3" data-aos="fade-up"
-							data-aos-delay="">About Us</h2>
-						<p class="lead" data-aos="fade-up" data-aos-delay="100">Lorem
-							ipsum dolor sit amet consectetur adipisicing elit. Minus minima
-							neque tempora reiciendis.</p>
+							data-aos-delay="" style="font-size: 50px">About COS</h2>
+						<p class="lead" data-aos="fade-up" data-aos-delay="100"
+							style="font-size: 30px; color: black; font-weight: bold;">Coin
+							- Confidence - Convenient</p>
 					</div>
 				</div>
 				<div class="row">
@@ -227,16 +289,13 @@
 					<div class="col-lg-5 ml-auto" data-aos="fade-up"
 						data-aos-delay="100">
 
-						<h3 class="text-black mb-4">We Solve Your Financial Problem</h3>
+						<h3 class="text-black mb-4"></h3>
 
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.</p>
-
-						<p>A small river named Duden flows by their place and supplies
-							it with the necessary regelialia. It is a paradisematic country,
-							in which roasted parts of sentences fly into your mouth.</p>
+						<p>cos는 가상 은행 서비스의 브랜드 네임이며, co로 시작하는 세 단어를 가리키는 co-three의
+							축약어입니다.</p>
+						<p>신뢰성있는 금융 거래과 간편하고 직관적인 금융 서비스 제공을 개발 방향성으로 추구했습니다.</p>
+						<p>회원 관리, 입금, 출금, 자동이체, 거래내역, 마이페이지 등의 기능이 담긴 은행 페이지입니다. 추가적으로
+							지도를 통해 거래내역 정보를 볼 수 있습니다.</p>
 
 					</div>
 				</div>
@@ -244,941 +303,8 @@
 			</div>
 		</div>
 
-		<div class="site-section" id="next">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-md-4 text-center" data-aos="fade-up"
-						data-aos-delay="">
-						<img src="images/flaticon-svg/svg/001-wallet.svg"
-							alt="Free Website Template by Free-Template.co"
-							class="img-fluid w-25 mb-4">
-						<h3 class="card-title">Money Savings</h3>
-						<p>A small river named Duden flows by their place and supplies
-							it with the necessary regelialia.</p>
-					</div>
-					<div class="col-md-4 text-center" data-aos="fade-up"
-						data-aos-delay="100">
-						<img src="images/flaticon-svg/svg/004-cart.svg"
-							alt="Free Website Template by Free-Template.co"
-							class="img-fluid w-25 mb-4">
-						<h3 class="card-title">Online Shoppings</h3>
-						<p>A small river named Duden flows by their place and supplies
-							it with the necessary regelialia.</p>
-					</div>
-					<div class="col-md-4 text-center" data-aos="fade-up"
-						data-aos-delay="200">
-						<img src="images/flaticon-svg/svg/006-credit-card.svg"
-							alt="Free Website Template by Free-Template.co"
-							class="img-fluid w-25 mb-4">
-						<h3 class="card-title">Credit / Debit Cards</h3>
-						<p>A small river named Duden flows by their place and supplies
-							it with the necessary regelialia.</p>
-					</div>
 
-				</div>
-
-				<div class="row">
-					<div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-						<figure class="circle-bg">
-							<img src="images/about_2.jpg"
-								alt="Free Website Template by Free-Template.co"
-								class="img-fluid">
-						</figure>
-					</div>
-					<div class="col-lg-5 ml-auto" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="mb-4">
-							<h3 class="h3 mb-4 text-black">Banking Solutions Is Our
-								Priority</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
-
-						</div>
-
-						<div class="mb-4">
-							<ul class="list-unstyled ul-check success">
-								<li>Officia quaerat eaque neque</li>
-								<li>Lorem ipsum dolor sit amet</li>
-								<li>Consectetur adipisicing elit</li>
-							</ul>
-
-						</div>
-
-
-
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-
-		<section class="site-section border-bottom" id="team-section">
-			<div class="container">
-				<div class="row mb-5 justify-content-center">
-					<div class="col-md-8 text-center">
-						<h2 class="section-title mb-3" data-aos="fade-up"
-							data-aos-delay="">Meet Team</h2>
-						<p class="lead" data-aos="fade-up" data-aos-delay="100">A
-							small river named Duden flows by their place and supplies it with
-							the necessary regelialia.</p>
-					</div>
-				</div>
-				<div class="row">
-
-
-
-					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
-						data-aos-delay="">
-						<div class="team-member">
-							<figure>
-								<ul class="social">
-									<li><a href="#"><span class="icon-facebook"></span></a></li>
-									<li><a href="#"><span class="icon-twitter"></span></a></li>
-									<li><a href="#"><span class="icon-linkedin"></span></a></li>
-									<li><a href="#"><span class="icon-instagram"></span></a></li>
-								</ul>
-								<img src="images/person_1.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<div class="p-3">
-								<h3>Kaiara Spencer</h3>
-								<span class="position">Accountant</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="team-member">
-							<figure>
-								<ul class="social">
-									<li><a href="#"><span class="icon-facebook"></span></a></li>
-									<li><a href="#"><span class="icon-twitter"></span></a></li>
-									<li><a href="#"><span class="icon-linkedin"></span></a></li>
-									<li><a href="#"><span class="icon-instagram"></span></a></li>
-								</ul>
-								<img src="images/person_2.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<div class="p-3">
-								<h3>Dave Simpson</h3>
-								<span class="position">Bank Teller</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="team-member">
-							<figure>
-								<ul class="social">
-									<li><a href="#"><span class="icon-facebook"></span></a></li>
-									<li><a href="#"><span class="icon-twitter"></span></a></li>
-									<li><a href="#"><span class="icon-linkedin"></span></a></li>
-									<li><a href="#"><span class="icon-instagram"></span></a></li>
-								</ul>
-								<img src="images/person_3.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<div class="p-3">
-								<h3>Ben Thompson</h3>
-								<span class="position">Bank Teller</span>
-							</div>
-						</div>
-					</div>
-
-
-
-				</div>
-			</div>
-		</section>
-
-		<section class="site-section" id="gallery-section" data-aos="fade">
-
-
-			<div class="container">
-
-				<div class="row mb-3">
-					<div class="col-12 text-center">
-						<h2 class="section-title mb-3">Gallery</h2>
-					</div>
-				</div>
-
-
-
-				<div id="posts" class="row no-gutter">
-					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_1.jpg" class="item-wrap fancybox"> <span
-							class="icon-search2"></span> <img class="img-fluid"
-							src="images/img_1.jpg">
-						</a>
-					</div>
-					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_2.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_2.jpg">
-						</a>
-					</div>
-
-					<div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_3.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_3.jpg">
-						</a>
-					</div>
-
-					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-
-						<a href="images/img_4.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_4.jpg">
-						</a>
-
-					</div>
-
-					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_5.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_5.jpg">
-						</a>
-					</div>
-
-					<div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_1.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_1.jpg">
-						</a>
-					</div>
-
-					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_2.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_2.jpg">
-						</a>
-					</div>
-
-					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_3.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_3.jpg">
-						</a>
-					</div>
-
-					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_4.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_4.jpg">
-						</a>
-					</div>
-
-					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_5.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_5.jpg">
-						</a>
-					</div>
-
-					<div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_1.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_1.jpg">
-						</a>
-					</div>
-
-					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_2.jpg" class="item-wrap fancybox"
-							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_2.jpg">
-						</a>
-					</div>
-
-
-				</div>
-			</div>
-
-		</section>
-
-
-		<section class="site-section">
-			<div class="container">
-
-				<div class="row mb-5 justify-content-center">
-					<div class="col-md-7 text-center">
-						<h2 class="section-title mb-3" data-aos="fade-up"
-							data-aos-delay="">How It Works</h2>
-						<p class="lead" data-aos="fade-up" data-aos-delay="100">Lorem
-							ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
-							fugiat molestiae eligendi repudiandae error?</p>
-					</div>
-				</div>
-
-				<div class="row align-items-lg-center">
-					<div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-
-						<div class="owl-carousel slide-one-item-alt">
-							<img src="images/img_1.jpg" alt="Image" class="img-fluid">
-							<img src="images/img_2.jpg" alt="Image" class="img-fluid">
-							<img src="images/img_3.jpg" alt="Image" class="img-fluid">
-						</div>
-						<div class="custom-direction">
-							<a href="#" class="custom-prev"><span><span
-									class="icon-keyboard_backspace"></span></span></a><a href="#"
-								class="custom-next"><span><span
-									class="icon-keyboard_backspace"></span></span></a>
-						</div>
-
-					</div>
-					<div class="col-lg-5 ml-auto" data-aos="fade-up"
-						data-aos-delay="100">
-
-						<div class="owl-carousel slide-one-item-alt-text">
-							<div>
-								<h2 class="section-title mb-3">01. Online Applications</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque nisi, deserunt necessitatibus odio magnam nihil illum
-									neque voluptas?</p>
-
-								<p>
-									<a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a>
-								</p>
-							</div>
-							<div>
-								<h2 class="section-title mb-3">02. Get an approval</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque nisi, deserunt necessitatibus odio magnam nihil illum
-									neque voluptas?</p>
-								<p>
-									<a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a>
-								</p>
-							</div>
-							<div>
-								<h2 class="section-title mb-3">03. Card delivery</h2>
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-									Inventore sapiente labore eius ullam? Iusto?</p>
-
-								<p>
-									<a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a>
-								</p>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="site-section border-bottom bg-light"
-			id="services-section">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-12 text-center" data-aos="fade">
-						<h2 class="section-title mb-3">Our Services</h2>
-					</div>
-				</div>
-				<div class="row align-items-stretch">
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-						<div class="unit-4">
-							<div class="unit-4-icon">
-								<img src="images/flaticon-svg/svg/001-wallet.svg"
-									alt="Free Website Template by Free-Template.co"
-									class="img-fluid w-25 mb-4">
-							</div>
-							<div>
-								<h3>Business Consulting</h3>
-								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-									Ratione animi tempora sint hic quod!</p>
-								<p>
-									<a href="#">Learn More</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="unit-4">
-							<div class="unit-4-icon">
-								<img src="images/flaticon-svg/svg/006-credit-card.svg"
-									alt="Free Website Template by Free-Template.co"
-									class="img-fluid w-25 mb-4">
-							</div>
-							<div>
-								<h3>Credit Card</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Asperiores nemo beatae minus incidunt voluptates?</p>
-								<p>
-									<a href="#">Learn More</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="unit-4">
-							<div class="unit-4-icon">
-								<img src="images/flaticon-svg/svg/002-rich.svg"
-									alt="Free Website Template by Free-Template.co"
-									class="img-fluid w-25 mb-4">
-							</div>
-							<div>
-								<h3>Income Monitoring</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Dolores optio veritatis aperiam consequuntur qui.</p>
-								<p>
-									<a href="#">Learn More</a>
-								</p>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="">
-						<div class="unit-4">
-							<div class="unit-4-icon">
-								<img src="images/flaticon-svg/svg/003-notes.svg"
-									alt="Free Website Template by Free-Template.co"
-									class="img-fluid w-25 mb-4">
-							</div>
-							<div>
-								<h3>Insurance Consulting</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Mollitia labore suscipit distinctio inventore doloribus
-									deserunt!</p>
-								<p>
-									<a href="#">Learn More</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="unit-4">
-							<div class="unit-4-icon">
-								<img src="images/flaticon-svg/svg/004-cart.svg"
-									alt="Free Website Template by Free-Template.co"
-									class="img-fluid w-25 mb-4">
-							</div>
-							<div>
-								<h3>Financial Investment</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio voluptatibus repellat hic officia quibusdam!</p>
-								<p>
-									<a href="#">Learn More</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="unit-4">
-							<div class="unit-4-icon">
-								<img src="images/flaticon-svg/svg/005-megaphone.svg"
-									alt="Free Website Template by Free-Template.co"
-									class="img-fluid w-25 mb-4">
-							</div>
-							<div>
-								<h3>Financial Management</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									In, iusto eaque velit saepe nobis ipsa?</p>
-								<p>
-									<a href="#">Learn More</a>
-								</p>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-		<section class="site-section testimonial-wrap"
-			id="testimonials-section" data-aos="fade">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-12 text-center">
-						<h2 class="section-title mb-3">Happy Customers</h2>
-					</div>
-				</div>
-			</div>
-			<div class="slide-one-item home-slider owl-carousel">
-				<div>
-					<div class="testimonial">
-
-						<blockquote class="mb-5">
-							<p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing
-								elit. Deleniti tenetur ad perspiciatis quam atque eius quia
-								suscipit repudiandae animi voluptatem.&rdquo;</p>
-						</blockquote>
-
-						<figure
-							class="mb-4 d-flex align-items-center justify-content-center">
-							<div>
-								<img src="images/person_1.jpg" alt="Image"
-									class="w-50 img-fluid mb-3">
-							</div>
-							<p>John Smith</p>
-						</figure>
-					</div>
-				</div>
-				<div>
-					<div class="testimonial">
-
-						<blockquote class="mb-5">
-							<p>&ldquo;Lorem ipsum, dolor sit amet consectetur adipisicing
-								elit. Voluptates exercitationem ut totam distinctio magnam
-								quisquam, unde iure. Labore!.&rdquo;</p>
-						</blockquote>
-						<figure
-							class="mb-4 d-flex align-items-center justify-content-center">
-							<div>
-								<img src="images/person_2.jpg" alt="Image"
-									class="w-50 img-fluid mb-3">
-							</div>
-							<p>Christine Aguilar</p>
-						</figure>
-
-					</div>
-				</div>
-
-				<div>
-					<div class="testimonial">
-
-						<blockquote class="mb-5">
-							<p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing
-								elit. Maxime eligendi odio nihil officia quasi nostrum, ipsa
-								est? Culpa, ullam dolorem!&rdquo;</p>
-						</blockquote>
-						<figure
-							class="mb-4 d-flex align-items-center justify-content-center">
-							<div>
-								<img src="images/person_3.jpg" alt="Image"
-									class="w-50 img-fluid mb-3">
-							</div>
-							<p>Robert Spears</p>
-						</figure>
-
-
-					</div>
-				</div>
-
-				<div>
-					<div class="testimonial">
-
-						<blockquote class="mb-5">
-							<p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing
-								elit. Nihil veniam tempora beatae animi in sapiente quos maiores
-								ex aut.&rdquo;</p>
-						</blockquote>
-						<figure
-							class="mb-4 d-flex align-items-center justify-content-center">
-							<div>
-								<img src="images/person_1.jpg" alt="Image"
-									class="w-50 img-fluid mb-3">
-							</div>
-							<p>Bruce Rogers</p>
-						</figure>
-
-					</div>
-				</div>
-
-			</div>
-		</section>
-
-		<section class="site-section bg-light" id="pricing-section">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-12 text-center" data-aos="fade-up">
-						<h2 class="section-title mb-3">Pricing</h2>
-					</div>
-				</div>
-				<div class="row mb-5">
-					<div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up"
-						data-aos-delay="">
-						<div class="pricing">
-							<h3 class="text-center text-black">Basic</h3>
-							<div class="price text-center mb-4 ">
-								<span><span>$47</span> / year</span>
-							</div>
-							<ul class="list-unstyled ul-check success mb-5">
-
-								<li>Officia quaerat eaque neque</li>
-								<li>Possimus aut consequuntur incidunt</li>
-								<li class="remove">Lorem ipsum dolor sit amet</li>
-								<li class="remove">Consectetur adipisicing elit</li>
-								<li class="remove">Dolorum esse odio quas architecto sint</li>
-							</ul>
-							<p class="text-center">
-								<a href="#" class="btn btn-secondary">Buy Now</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-6 mb-4 mb-lg-0 col-lg-4 pricing-popular"
-						data-aos="fade-up" data-aos-delay="100">
-						<div class="pricing">
-							<h3 class="text-center text-black">Premium</h3>
-							<div class="price text-center mb-4 ">
-								<span><span>$200</span> / year</span>
-							</div>
-							<ul class="list-unstyled ul-check success mb-5">
-
-								<li>Officia quaerat eaque neque</li>
-								<li>Possimus aut consequuntur incidunt</li>
-								<li>Lorem ipsum dolor sit amet</li>
-								<li>Consectetur adipisicing elit</li>
-								<li class="remove">Dolorum esse odio quas architecto sint</li>
-							</ul>
-							<p class="text-center">
-								<a href="#" class="btn btn-primary">Buy Now</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="pricing">
-							<h3 class="text-center text-black">Professional</h3>
-							<div class="price text-center mb-4 ">
-								<span><span>$750</span> / year</span>
-							</div>
-							<ul class="list-unstyled ul-check success mb-5">
-
-								<li>Officia quaerat eaque neque</li>
-								<li>Possimus aut consequuntur incidunt</li>
-								<li>Lorem ipsum dolor sit amet</li>
-								<li>Consectetur adipisicing elit</li>
-								<li>Dolorum esse odio quas architecto sint</li>
-							</ul>
-							<p class="text-center">
-								<a href="#" class="btn btn-secondary">Buy Now</a>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="row site-section" id="faq-section">
-					<div class="col-12 text-center" data-aos="fade">
-						<h2 class="section-title">Frequently Ask Questions</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">Can I accept both Paypal and
-								Stripe?</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean.</p>
-						</div>
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">What available is refund
-								period?</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean.</p>
-						</div>
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">Can I accept both Paypal and
-								Stripe?</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean.</p>
-						</div>
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">What available is refund
-								period?</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean.</p>
-						</div>
-					</div>
-					<div class="col-lg-6">
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">Where are you from?</h3>
-							<p>Voluptatum nobis obcaecati perferendis dolor totam unde
-								dolores quod maxime corporis officia et. Distinctio assumenda
-								minima maiores.</p>
-						</div>
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">What is your opening time?</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean.</p>
-						</div>
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">Can I accept both Paypal and
-								Stripe?</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean.</p>
-						</div>
-
-						<div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-							<h3 class="text-black h4 mb-4">What available is refund
-								period?</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right at the coast of the
-								Semantics, a large language ocean.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="site-section" id="about-section">
-			<div class="container">
-
-				<div class="row">
-					<div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-						<figure class="circle-bg">
-							<img src="images/img_4.jpg"
-								alt="Free Website Template by Free-Template.co"
-								class="img-fluid">
-						</figure>
-					</div>
-					<div class="col-lg-5 ml-auto" data-aos="fade-up"
-						data-aos-delay="100">
-
-
-						<div class="row">
-
-
-
-							<div class="col-12 mb-4" data-aos="fade-up" data-aos-delay="">
-								<div class="unit-4 d-flex">
-									<div class="unit-4-icon mr-4 mb-3">
-										<span class="text-primary flaticon-head"></span>
-									</div>
-									<div>
-										<h3>Bank Loan</h3>
-										<p>Far far away, behind the word mountains, far from the
-											countries Vokalia and Consonantia, there live the blind
-											texts.</p>
-										<p class="mb-0">
-											<a href="#">Learn More</a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
-								<div class="unit-4 d-flex">
-									<div class="unit-4-icon mr-4 mb-3">
-										<span class="text-primary flaticon-smartphone"></span>
-									</div>
-									<div>
-										<h3>Banking Consulation</h3>
-										<p>Separated they live in Bookmarksgrove right at the
-											coast of the Semantics, a large language ocean.</p>
-										<p class="mb-0">
-											<a href="#">Learn More</a>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
-					</div>
-				</div>
-
-
-			</div>
-		</section>
-
-
-
-
-		<section class="site-section" id="blog-section">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-12 text-center" data-aos="fade">
-						<h2 class="section-title mb-3">Our Blog</h2>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="">
-						<div class="h-entry">
-							<a href="single.html"> <img src="images/img_1.jpg"
-								alt="Image" class="img-fluid">
-							</a>
-							<h2 class="font-size-regular">
-								<a href="#">Banking is good for business? Why?</a>
-							</h2>
-							<div class="meta mb-4">
-								Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span
-									class="mx-2">&bullet;</span> <a href="#">News</a>
-							</div>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Natus eligendi nobis ea maiores sapiente veritatis reprehenderit
-								suscipit quaerat rerum voluptatibus a eius.</p>
-							<p>
-								<a href="#">Continue Reading...</a>
-							</p>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="h-entry">
-							<a href="single.html"> <img src="images/img_4.jpg"
-								alt="Image" class="img-fluid">
-							</a>
-							<h2 class="font-size-regular">
-								<a href="#">Banking is good for business? Why?</a>
-							</h2>
-							<div class="meta mb-4">
-								James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span
-									class="mx-2">&bullet;</span> <a href="#">News</a>
-							</div>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Natus eligendi nobis ea maiores sapiente veritatis reprehenderit
-								suscipit quaerat rerum voluptatibus a eius.</p>
-							<p>
-								<a href="#">Continue Reading...</a>
-							</p>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="h-entry">
-							<a href="single.html"> <img src="images/img_3.jpg"
-								alt="Image" class="img-fluid">
-							</a>
-							<h2 class="font-size-regular">
-								<a href="#">Banking is good for business? Why?</a>
-							</h2>
-							<div class="meta mb-4">
-								James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span
-									class="mx-2">&bullet;</span> <a href="#">News</a>
-							</div>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Natus eligendi nobis ea maiores sapiente veritatis reprehenderit
-								suscipit quaerat rerum voluptatibus a eius.</p>
-							<p>
-								<a href="#">Continue Reading...</a>
-							</p>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="site-section bg-light" id="contact-section"
-			data-aos="fade">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-12 text-center">
-						<h2 class="section-title mb-3">Contact Us</h2>
-					</div>
-				</div>
-				<div class="row mb-5">
-
-
-
-					<div class="col-md-4 text-center">
-						<p class="mb-4">
-							<span class="icon-room d-block h2 text-primary"></span> <span>203
-								Fake St. Mountain View, San Francisco, California, USA</span>
-						</p>
-					</div>
-					<div class="col-md-4 text-center">
-						<p class="mb-4">
-							<span class="icon-phone d-block h2 text-primary"></span> <a
-								href="#">+1 232 3235 324</a>
-						</p>
-					</div>
-					<div class="col-md-4 text-center">
-						<p class="mb-0">
-							<span class="icon-mail_outline d-block h2 text-primary"></span> <a
-								href="#">youremail@domain.com</a>
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 mb-5">
-
-
-
-						<form action="#" class="p-5 bg-white">
-
-							<h2 class="h4 text-black mb-5">Contact Form</h2>
-
-							<div class="row form-group">
-								<div class="col-md-6 mb-3 mb-md-0">
-									<label class="text-black" for="fname">First Name</label> <input
-										type="text" id="fname" class="form-control">
-								</div>
-								<div class="col-md-6">
-									<label class="text-black" for="lname">Last Name</label> <input
-										type="text" id="lname" class="form-control">
-								</div>
-							</div>
-
-							<div class="row form-group">
-
-								<div class="col-md-12">
-									<label class="text-black" for="email">Email</label> <input
-										type="email" id="email" class="form-control">
-								</div>
-							</div>
-
-							<div class="row form-group">
-
-								<div class="col-md-12">
-									<label class="text-black" for="subject">Subject</label> <input
-										type="subject" id="subject" class="form-control">
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label class="text-black" for="message">Message</label>
-									<textarea name="message" id="message" cols="30" rows="7"
-										class="form-control"
-										placeholder="Write your notes or questions here..."></textarea>
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<input type="submit" value="Send Message"
-										class="btn btn-primary btn-md text-white">
-								</div>
-							</div>
-
-
-						</form>
-					</div>
-
-				</div>
-			</div>
-		</section>
-		
-		<jsp:include page="footer/footer.jsp"></jsp:include>
+		<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 	</div>
 	<!-- .site-wrap -->

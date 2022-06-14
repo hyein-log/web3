@@ -8,6 +8,7 @@
 </head>
 <body>
 <form action="noticeInsert.do" method="post">
+	<input type="hidden" value="${accid }">
 	 제목:<input type="text" name="title"  value=""><br>
 	 내용:<input type="text" name="content"  value=""><br>
 	  <input type="submit" value="등록">

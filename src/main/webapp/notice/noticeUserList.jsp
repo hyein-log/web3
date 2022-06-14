@@ -26,10 +26,10 @@
 		</tr>
 		<c:forEach items="${notiList }" var = "notice" varStatus="status">
 			
-				<tr class="clickList" onclick="location.href='noticeDetail.do?noticeid=${notice.notic_id}'">
+				<tr class="clickList" onclick="location.href='noticeUserDetail.do?noticeid=${notice.notice_id}'">
 					<td>${status.count}</td>
-					<td>${notice. notic_date}</td>
-					<td>${notice.notic_title }</td>
+					<td>${notice. notice_date}</td>
+					<td>${notice.notice_title }</td>
 				</tr>
 			
 		</c:forEach>

@@ -9,26 +9,7 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
 
-	$(function() {
-		$(".btnDel").click(function() {
-			var accNum = $(this).attr("data-accNum");
-			if (confirm(accNum + " 계좌를 삭제하시겠습니까?")) {
-				location.href = "${path}/three_project/account/accountDelete.do?accNum=" + accNum;
-			}
-		});
-	});
-	
-	$(function() {
-		$(".btnLimit").click(function() {
-			var accNum = $(this).attr("data-accNum");
-			if (confirm(accNum + " 계좌의 한도를 변경하시겠습니까?")) {
-				location.href = "${path}/three_project/account/accountLimit.do?accNum=" + accNum;
-			}
-		});
-	});
-</script>
 </head>
 <body>
 	<h2>나의 계좌 리스트</h2>
@@ -53,15 +34,36 @@
 				<td><button class="btnDel" data-accNum="${acc.acc_number}">해지하기</button></td>
 				<td>
 				   <c:if test="${fn:substring(acc.limit_ox,0,1)=='O'}">
-					   <button class="btnLimit" data-accNum="${acc.acc_number}">한도 변경</button>
-				   </c:if>
-				   <c:if test="${ fn:substring(acc.limit_ox,0,1)=='X'}">
 					   <button class="btnLimit" disabled="disabled" data-accNum="${acc.acc_number}">한도 변경</button>
 				   </c:if>
+				   <c:if test="${ fn:substring(acc.limit_ox,0,1)=='X'}">
+					   <button class="btnLimit" data-accNum="${acc.acc_number}">한도 변경</button>
+				   </c:if>
 				</td>
-				<td><button class="btnAuto" onclick="location.href='../autosend/autoList.jsp'">자동이체 관리</button></td>
+				<td><button class="btnAuto" onclick="location.href = '../autosend/AutoSendList.do?accid=${acc.account_id}'">자동이체 관리</button></td>
 			</tr>
 		</c:forEach>
 	</table>
 </body>
+<script>
+
+	$(function() {
+		$(".btnDel").click(function() {
+			var accNum = $(this).attr("data-accNum");
+			if (confirm(accNum + " 계좌를 삭제하시겠습니까?")) {
+				location.href = "${path}/three_project/account/accountDelete.do?accNum=" + accNum;
+			}
+		});
+	});
+	
+	$(function() {
+		$(".btnLimit").click(function() {
+			var accNum = $(this).attr("data-accNum");
+			if (confirm(accNum + " 계좌의 한도를 변경하시겠습니까?")) {
+				location.href = "${path}/three_project/account/accountLimit.do?accNum=" + accNum;
+			}
+		});
+	});
+	
+</script>
 </html>

@@ -1,6 +1,6 @@
 package dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class AutoSendVO {
 	private int auto_id;
@@ -8,15 +8,25 @@ public class AutoSendVO {
 	private String auto_content;
 	private int auto_amonut;
 	private Date expiry_date;
-	private Date auto_date;
+	private int auto_date;
 	private int delay_count;
 
 	public AutoSendVO() {
 		super();
 	}
 
+	public AutoSendVO(int auto_id, String auto_content, int auto_amonut, Date expiry_date,
+			int auto_date) {
+		super();
+		this.auto_id = auto_id;
+		this.auto_content = auto_content;
+		this.auto_amonut = auto_amonut;
+		this.expiry_date = expiry_date;
+		this.auto_date = auto_date;
+	}
+	
 	public AutoSendVO(int auto_id, int account_id, String auto_content, int auto_amonut, Date expiry_date,
-			Date auto_date, int delay_count) {
+			int auto_date, int delay_count) {
 		super();
 		this.auto_id = auto_id;
 		this.account_id = account_id;
@@ -67,11 +77,11 @@ public class AutoSendVO {
 		this.expiry_date = expiry_date;
 	}
 
-	public Date getAuto_date() {
+	public int getAuto_date() {
 		return auto_date;
 	}
 
-	public void setAuto_date(Date auto_date) {
+	public void setAuto_date(int auto_date) {
 		this.auto_date = auto_date;
 	}
 
@@ -103,5 +113,6 @@ public class AutoSendVO {
 		builder.append("]");
 		return builder.toString();
 	}
+
 
 }

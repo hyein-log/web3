@@ -107,6 +107,12 @@ public class MemberVO {
 				.append(", dropout_ox=").append(dropout_ox).append("]");
 		return builder.toString();
 	}
+
+	public MemberVO(int member_id, String email) {
+		super();
+		this.member_id = member_id;
+		this.email = email;
+	}
 	
 	
 	
