@@ -14,7 +14,11 @@ html {
 *::after {
   -webkit-box-sizing: inherit;
   box-sizing: inherit; }
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> branch 'jihye' of https://github.com/hyein-log/web3.git
 .container {
   width: 100%;
   padding-right: 15px;
