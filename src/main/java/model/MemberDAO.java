@@ -189,12 +189,12 @@ public class MemberDAO {
             st.setString(1, id);
             rs = st.executeQuery();
             if(rs.next()) {
-            	sai_result=1; //존재 할 경우
-            	System.out.println("result 값 : "+sai_result);
+            	sai_result=1; //존재 ?�� 경우
+            	System.out.println("result �? : "+sai_result);
             }else {
-            	//존재하지 않을경우
+            	//존재?���? ?��?��경우
             	sai_result=0;
-            	System.out.println("result 값 : "+sai_result);
+            	System.out.println("result �? : "+sai_result);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -212,12 +212,12 @@ public class MemberDAO {
             st.setString(1, email);
             rs = st.executeQuery();
             if(rs.next()) {
-            	sai_result=1; //존재 할 경우
-            	System.out.println("result 값 : "+sai_result);
+            	sai_result=1; //존재 ?�� 경우
+            	System.out.println("result �? : "+sai_result);
             }else {
-            	//존재하지 않을경우
+            	//존재?���? ?��?��경우
             	sai_result=0;
-            	System.out.println("result 값 : "+sai_result);
+            	System.out.println("result �? : "+sai_result);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -264,7 +264,7 @@ public class MemberDAO {
 		
 		conn = DBUtil.getConnection();
 		try {
-			st = conn.prepareStatement(UPDATE_MEMBER_EMAIL); // sql문장 미리 준비
+			st = conn.prepareStatement(UPDATE_MEMBER_EMAIL); // sql문장 미리 �?�?
 			st.setString(1, member.getEmail());
 			st.setInt(2, member.getMember_id());
 			
