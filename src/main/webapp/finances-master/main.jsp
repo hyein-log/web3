@@ -15,7 +15,9 @@
 <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
+	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
 	rel="stylesheet">
@@ -40,14 +42,15 @@
 	href="https://fonts.googleapis.com/css?family=Fjalla+One|Libre+Baskerville">
 <style type="text/css">
 html {
-    position: relative;
-    min-height: 100%;
-    margin: 0;
+	position: relative;
+	min-height: 100%;
+	margin: 0;
 }
 
 body {
-    min-height: 100%;
-} 
+	min-height: 100%;
+}
+
 .a img {
 	transition: all 0.2s linear;
 }
@@ -144,7 +147,7 @@ body {
 			</a>
 		</div>
 
-		<section class="site-section border-bottom" id="team-section">
+		<section class="site-section border-bottom" id="team-section" >
 			<div class="container">
 				<div class="row mb-5 justify-content-center">
 					<div class="col-md-8 text-center">
@@ -176,27 +179,41 @@ body {
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="">
 						<div class="team-member a">
-						<form action="../trans/trans.do" method="post">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/list.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
-							
+							<c:if test="${not empty member }">
+								<form action="../trans/trans.do" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/list.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/list.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
+
 						</div>
 
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="">
 						<div class="team-member a">
-						<form action="../account/acc_create.jsp" method="post">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/account.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
-							
-
+							<c:if test="${not empty member }">
+								<form action="../account/acc_create.jsp" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/account.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/account.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
 						</div>
 					</div>
 
@@ -204,13 +221,20 @@ body {
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="200">
 						<div class="team-member a">
-							<form action="../account/accSend.do" method="post">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/money.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
-							
+							<c:if test="${not empty member }">
+								<form action="../account/accSendList.do" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/money.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/money.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
 						</div>
 					</div>
 
@@ -226,24 +250,39 @@ body {
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
 						<div class="team-member a">
-						<form action="../mypage/mypage.do" method="post">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/mypage.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
+							<c:if test="${not empty member }">
+								<form action="../mypage/mypage.do" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/mypage.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/mypage.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
 						<div class="team-member a">
-						<form action="../notice/noticeList.jsp" method="post">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/notice.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
-							
+							<c:if test="${not empty member }">
+								<form action="../notice/noticeList.jsp" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/notice.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/notice.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
 
 						</div>
 					</div>
@@ -251,13 +290,20 @@ body {
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="200">
 						<div class="team-member a">
-						<form action="../membership/membershipMain.jsp">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/membership.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
-						
+							<c:if test="${not empty member }">
+								<form action="../membership/membershipMain.jsp">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/membership.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/membership.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
 						</div>
 					</div>
 
@@ -323,7 +369,12 @@ body {
 
 
 	<script src="js/main.js"></script>
-
+	<script>
+		function empty() {
+			alert('로그인을 해주세요.');
+			location.href = 'main.jsp';
+		}
+	</script>
 
 </body>
 </html>

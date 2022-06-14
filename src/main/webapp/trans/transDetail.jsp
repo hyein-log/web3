@@ -314,6 +314,7 @@ label {
 	<c:if test="${empty alist }">
 		<script type="text/javascript">
 			alert("거래내역이 존재하지 않습니다.");
+			location.href='../finances-master/main.jsp';
 		</script>
 	</c:if>
 

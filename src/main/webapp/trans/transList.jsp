@@ -211,6 +211,7 @@ margin: 10px;
 <div class=parent style="font-family: 'Nanum Gothic', sans-serif;">
 	<div class="first bg a">
 		<h3 class="d">전체 거래내역</h3>
+		
 		<br>
 		<div class="text">
 		<ul>
@@ -239,7 +240,7 @@ margin: 10px;
 			<li>출금내역을 지도와 함께 보며 어디에서 사용된 금액인지 확인해보세요.</li>
 		</ul>
 		</div>
-		<form method="get" action="transIn.do">
+		<form method="post" action="transIn.do">
 			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
 			<input type="hidden" name="kind" value='출금'><br> 
 			<input type="submit" value="출금내역 조회" class="btn btn-outline-primary d buttonWH">
@@ -256,7 +257,7 @@ margin: 10px;
 			<li>고객님 명의의 계좌 잔고를 확인 하실 수 있습니다.</li>
 		</ul>
 		</div>
-		<form method="get" action="transIn.do">
+		<form method="post" action="transIn.do">
 			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
 			<input type="hidden" name="kind" value='입금'><br> 
 			<input type="submit" value="입금내역 조회" class="btn btn-outline-primary d buttonWH">
