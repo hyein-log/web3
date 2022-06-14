@@ -31,7 +31,8 @@ public class MyQnaListServlet extends HttpServlet {
 		
 		MyQnaService service = new MyQnaService();
 		List<MyQnaVO> mlist = service.selectById(memId);
-		System.out.println(mlist);
+		//List<MyQnaVO> mlist = service.selectAll();
+		//System.out.println(mlist);
 		request.setAttribute("myqnaDatas", mlist);
 		
 		RequestDispatcher rd;

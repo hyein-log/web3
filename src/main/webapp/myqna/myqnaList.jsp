@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,15 +8,53 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+.container{
+	/* border: 1px solid black; */
+	margin-top: 100px;
+	margin-left: 350px
+}
+
+h3{
+	padding-left: 250px;
+}
+
+
+.btnWrite{
+	margin-left:  1000px;
+}
+
+a:hover{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+</style>
+	
 </head>
 <body>
-	<h2>1:1 문의 내역</h2>
-	<table>
-		<tr>
-			<td>글번호</td>
-			<td>제목</td>
-			<td>작성일</td>
+<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
+
+<div class="container">
+	<h3>Q & A</h3>
+	<br><br>
+	<table class="table table-hover" style="width: 750px;">
+	<thead >
+		<tr align="center">
+			<th align="center">no</th>
+			<th align="center">title</th>
+			<th align="center">date</th>
 		</tr>
+		</thead>
+		<tbody>
 		<c:forEach items="${myqnaDatas}" var="myqna">
 			<tr>
 				<td>${myqna.qa_id}</td>
@@ -25,9 +62,13 @@
 				<td>${myqna.qa_date}</td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
-	<button type="button" onclick="hrefLink()" class="btnWrite" >문의하기</button>
+	</div>
 	
+	<button type="button" onclick="hrefLink()" class="btnWrite" >글쓰기</button>
+	
+	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 <script>
 link = '../myqna/myqnaInsert.jsp';
 
@@ -35,30 +76,8 @@ function hrefLink() {
 	location.href = link;
 }
 </script>
-</body>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h2> 1:1 문의 내역</h2>
 
 
-<table>
- <tr>
-   <td>번호</td>
-   <td>제목</td>
-   <td>내용</td>
-   <td>작성자</td>
-   <td>작성일</td>
-   <td></td>
- </tr>
- </table>
 </body>
->>>>>>> branch 'jihye' of https://github.com/hyein-log/web3.git
+
 </html>
