@@ -145,7 +145,6 @@ label {
 </script>
 </head>
 <body>
-
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
 	<div class="sendDiv align sendForm" style="margin-top: 10%;">
@@ -181,6 +180,12 @@ label {
 				value="${memberinfo.password}">
 			<button onclick="showPopup3()">비밀번호변경</button>
 		</div>
+		<div class="sendDiv align sendForm" style="margin-bottom: 10%;">
+
+			<input class="form-control" type="hidden" name="password"
+				value="${memberinfo.password}">
+			<button onclick="showPopup3()">회원탈퇴하기</button>
+		</div>
 
 <!-- 		<input class="btn btn-primary" type="submit" value="수정하기"> <input -->
 <!-- 			class="btn btn-danger" type="reset" value="취소하기"> -->
@@ -204,7 +209,7 @@ label {
 					<input type="hidden"name="subscri_ox" value="${memberinfo.subscri_ox}" >
 					<input class="form-accSend" type="text" name="email"
 						value="${memberinfo.email}">
-				<input class="btn btn-primary" type="submit" value="이메일변경">
+				<input class="btn btn-primary" type="submit" value="이메일 변경">
 				<input type="button" value="닫기"onClick="javascript:closePopupEmail();">
 				</div>
 			</form>
@@ -214,14 +219,48 @@ label {
 	</div>
 	<div id="popupPhone" class="hide">
 		<div class="content">
-			<p>여기에 팝업창 내용이 나타납니다.</p>
-			<button onclick="closePopupPhone()">닫기</button>
+			<p>
+			<form action="memberInfoUpdate.do" method="post">
+				<div class="sendDiv align">
+					<label class="">전화번호</label>
+					<input type="hidden"name="memberid" value="${memberinfo.member_id}" >
+					<input type="hidden"name="address" value="${memberinfo.address}" >
+					<input type="hidden"name=dropout_ox value="${memberinfo.dropout_ox}" >
+					<input type="hidden"name="id" value="${memberinfo.id}" >
+					<input type="hidden"name="name" value="${memberinfo.name}" >
+					<input type="hidden"name="password" value="${memberinfo.password}" >
+					<input type="hidden"name="email" value="${memberinfo.email}">
+					<input type="hidden"name="subscri_ox" value="${memberinfo.subscri_ox}" >
+					<input class="form-accSend" type="text" name="phonenum"
+						value="${memberinfo.phoneNum}" >
+				<input class="btn btn-primary" type="submit" value="전화번호 변경">
+				<input type="button" value="닫기"onClick="javascript:closePopupPhone();">
+				</div>
+				</form>
+				</p>
 		</div>
 	</div>
 	<div id="popupPW" class="hide">
 		<div class="content">
-			<p>여기에 팝업창 내용이 나타납니다.</p>
-			<button onclick="closePopupPW()">닫기</button>
+			<p>
+			<form action="memberInfoUpdate.do" method="post">
+				<div class="sendDiv align">
+					<label class="">비밀번호</label>
+					<input type="hidden"name="memberid" value="${memberinfo.member_id}" >
+					<input type="hidden"name="address" value="${memberinfo.address}" >
+					<input type="hidden"name=dropout_ox value="${memberinfo.dropout_ox}" >
+					<input type="hidden"name="id" value="${memberinfo.id}" >
+					<input type="hidden"name="name" value="${memberinfo.name}" >
+					<input type="hidden"name="phonenum" value="${memberinfo.phoneNum}" >
+					<input type="hidden"name="email" value="${memberinfo.email}">
+					<input type="hidden"name="subscri_ox" value="${memberinfo.subscri_ox}" >
+					<input class="form-accSend" type="text" name="password"
+						value="${memberinfo.password}" >
+				<input class="btn btn-primary" type="submit" value="비밀번호 변경">
+				<input type="button" value="닫기"onClick="javascript:closePopupPW();">
+				</div>
+				</form>
+				</p>
 		</div>
 	</div>
 	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>

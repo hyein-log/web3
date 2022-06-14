@@ -22,7 +22,7 @@ public class MemberDAO {
 	static final String SELECT_ALL_ID = "select id from member where id=?";
 	static final String SELECT_ALL_EMAIL = "select email from member where email=?";
 	static final String SELECT_MEMBER_BY_MEMBERID = "select * from member where member_id=?";
-	static final String UPDATE_MEMBER_EMAIL = "UPDATE MEMBER SET EMAIL = ? WHERE MEMBER_ID =?";
+	static final String UPDATE_MEMBER_INFO = "UPDATE MEMBER SET EMAIL = ?, phonenum =?, password =? WHERE MEMBER_ID =?";
 	
 	Connection conn;
 	PreparedStatement st;
@@ -109,11 +109,15 @@ public class MemberDAO {
 	
 	private MemberVO makeMember(ResultSet rs) throws SQLException {
 		MemberVO member = new MemberVO();
+		member.setMember_id(rs.getInt(1));
 		member.setName(rs.getString(2));
 		member.setId(rs.getString(3));
 		member.setPassword(rs.getString(4));
 		member.setEmail(rs.getString(5));
-		member.setMember_id(rs.getInt("Member_id"));
+		member.setAddress(rs.getString(6));
+		member.setPhoneNum(rs.getString(7));
+		member.setSubscri_ox(rs.getString(8).charAt(0));
+		member.setDropout_ox(rs.getString(9).charAt(0));
 		return member;
 	}
 
@@ -201,10 +205,10 @@ public class MemberDAO {
             st.setString(1, id);
             rs = st.executeQuery();
             if(rs.next()) {
-            	sai_result=1; //議댁옱 �븷 寃쎌슦
+            	sai_result=1; 
             	System.out.println("result 媛� : "+sai_result);
             }else {
-            	//議댁옱�븯吏� �븡�쓣寃쎌슦
+            	
             	sai_result=0;
             	System.out.println("result 媛� : "+sai_result);
             }
@@ -259,14 +263,17 @@ public class MemberDAO {
         return member;
 	}
 	
-	public int update_member_email(MemberVO member) {
+	public int update_member_info(MemberVO member) {
 		int result = 0;
 		
 		conn = DBUtil.getConnection();
 		try {
-			st = conn.prepareStatement(UPDATE_MEMBER_EMAIL); // sql臾몄옣 誘몃━ 以�鍮�
+			st = conn.prepareStatement(UPDATE_MEMBER_INFO); 
+
 			st.setString(1, member.getEmail());
-			st.setInt(2, member.getMember_id());
+			st.setString(2, member.getPhoneNum());
+			st.setString(3, member.getPassword());
+			st.setInt(4, member.getMember_id());
 			
 			result = st.executeUpdate();
 			

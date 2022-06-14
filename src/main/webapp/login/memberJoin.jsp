@@ -5,26 +5,175 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<style type="text/css">
+
+.sendForm{
+    width: 30%;
+    margin: auto;
+    font-family: 'Nanum Gothic', sans-serif;
+    padding: 3%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.form-accSend {
+    width: 90%;
+    height: 30px;
+    display: block;
+    border-radius: 30px;
+    border: 1px solid #ced4da;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    margin-top: 3%;
+}
+
+.form-accSend:active, .form-accSend:focus {
+    outline: 1px solid #007bff;
+}
+.sendDiv {
+    margin-bottom: 30px;
+    
+}
+
+.sendbtnDiv{
+    text-align: center;
+}
+label{
+    color:#000;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+}
+.btnSubmit ,.checkEmail, .checkId{
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 400;
+    height: 46px;
+}
+
+.btnCencel{
+ 	background-color: #fff;
+    border: 1px solid #007bff;
+    color: #007bff;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #007bff;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 400;
+    height: 46px;
+}
+
+.btnCencel:hover{
+	background-color: #007bff;
+	color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 400;
+    height: 46px;
+}
+
+#signIn {
+	font-size: 30px;
+	text-align: center;
+}
+
+.signJoin{
+	text-align: center;
+}
+
+
+.joinLink{
+	text-decoration: none;
+	color: #007bff;
+	font-weight: bold;
+}
+
+.accNum{
+	font-weight: bold;
+}
+
+.passLink{
+	text-decoration: none;
+	color: #007bff;
+	font-weight: bold;
+	padding-left: 250px;
+}
+
+.idLink{
+	text-decoration: none;
+	color: #007bff;
+	font-weight: bold;
+	padding-left: 310px;
+}
+
+
+.accNum {
+	color: #007bff;
+}
+</style>
+
 </head>
 <body>
-<form id="joinForm" name="joinForm">
-	아이디<input type="text" name="id" id="id" onkeydown="inputIdChk()" required>
+<form id="joinForm" name="joinForm" class="sendForm" encType="UTF-8">
+<h2 id="signIn">Create an account.</h2>
+<br><br>
+<div class="sendDiv align">
+	<label class="accNum">ID</label>
+	<input type="text" name="id" id="id" class="form-accSend" onkeydown="inputIdChk()" required>
 	<button id="dbCheckId" onclick="fn_dbCheckId();" class="checkId">중복확인</button>
-	<input type="hidden" id="idDuplication" name="idDuplication" value="idUncheck"><br>
-	비밀번호<input type="text" name="password1" id="password1" required><br>
-	비밀번호 확인<input type="text" name="password2" id="password2" required><br>
-	이름<input type="text" name="name" id="name" required><br>
-	이메일<input type="text" name="email" id="email" onkeydown="inputEmailChk()" required>
-	<button id="dbCheckEmail" onclick="fn_dbCheckEmail();" class="checkEmail">중복확인</button>
-	<input type="hidden" id="emailDuplication" name="emailDuplication" value="emailUncheck"><br>
-	주소<input id="member_post"  type="text" placeholder="Zip Code" readonly onclick="findAddr()">
-  		<input id="member_addr" type="text" placeholder="Address" readonly> <br>
-  		<input type="text" placeholder="Detailed Address" id="addressDetail"> <br>
-	전화번호<input type="text" name="phone" id="phone" required><br>
-	<input type="button" id="join_btn" value="가입하기"><br>
+	<input type="hidden" id="idDuplication" name="idDuplication" value="idUncheck">
+</div>
+<div class="sendDiv align">
+	<label class="accNum">Pass Word</label>
+	<input type="text" name="password1" id="password1" class="form-accSend" required>
+</div>
+<div class="sendDiv align">
+	<label class="accNum">Confirm password</label>
+	<input type="text" name="password2" id="password2" class="form-accSend" required>
+</div>
+<div class="sendDiv align">
+	<label class="accNum">Name</label>
+	<input type="text" name="name" id="name" class="form-accSend" required>
+</div>
+<div class="sendDiv align">
+	<label class="accNum">Email</label>
+	<input type="text" name="email" id="email" onkeydown="inputEmailChk()" class="form-accSend" required>
+	<button id="dbCheckEmail" onclick="fn_dbCheckEmail();" class="checkEmail" >중복확인</button>
+	<input type="hidden" id="emailDuplication" name="emailDuplication" value="emailUncheck">
+</div>
+<div class="sendDiv align">
+	<label class="accNum">Address</label>
+	<input id="member_post"  type="text" placeholder="Zip Code" class="form-accSend" readonly onclick="findAddr()">
+  	<input id="member_addr" type="text" placeholder="Address" class="form-accSend" readonly>
+  	<input type="text" placeholder="Detailed Address" id="addressDetail" class="form-accSend">
+</div>
+<div class="sendDiv align">
+	<label class="accNum">Phone</label>
+	<input type="text" name="phone" id="phone" class="form-accSend" required>
+</div>
+<div class="sendbtnDiv">
+	<input type="button" id="join_btn" class="btnSubmit" value="Create">
+</div>
 </form>
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 <script>
 	$("#join_btn").on("click",function(){
 		if($("#id").val().length < 1){
