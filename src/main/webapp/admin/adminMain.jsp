@@ -13,7 +13,7 @@
 <script>
 $(function(){
 	$("#notice_list_btn").click(function(){
-		location.href = "../notice/noticelist.do";
+		location.href = "../notice/NoticeList.do";
 	});
 });
 </script>

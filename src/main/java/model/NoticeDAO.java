@@ -11,6 +11,7 @@ import dto.NoticeVO;
 import util.DBUtil;
 
 public class NoticeDAO {
+
 	static final String SQL_SELECT_ALL = "select * from notice order by 1 desc";
 	static final String SQL_SELECT_BY_ID = "select * from notice where notic_id = ?";
 	static final String SQL_DELETE = "delete from notice where notic_id = ?";
@@ -20,6 +21,7 @@ public class NoticeDAO {
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
+
 	
 	int result;
 	
@@ -56,9 +58,12 @@ public class NoticeDAO {
 		} finally {
 			DBUtil.dbClose(rs, st, conn);
 		}
-		
+
 		return notice;
+		
 	}
+
+
 	
 	public int delete(int nno) {
 		conn = DBUtil.getConnection();
@@ -123,5 +128,6 @@ public class NoticeDAO {
 	
 
 	
+
 
 }

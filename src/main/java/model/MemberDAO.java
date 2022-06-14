@@ -21,6 +21,8 @@ public class MemberDAO {
 	static final String MEMBER_INSERT = "insert into member values(member_id_seq.nextval,?,?,?,?,?,?,'X','X')";
 	static final String SELECT_ALL_ID = "select id from member where id=?";
 	static final String SELECT_ALL_EMAIL = "select email from member where email=?";
+	static final String SELECT_MEMBER_BY_MEMBERID = "select * from member where member_id=?";
+	static final String UPDATE_MEMBER_EMAIL = "UPDATE MEMBER SET EMAIL = ? WHERE MEMBER_ID =?";
 	
 	Connection conn;
 	PreparedStatement st;
@@ -187,12 +189,12 @@ public class MemberDAO {
             st.setString(1, id);
             rs = st.executeQuery();
             if(rs.next()) {
-            	sai_result=1; //Á¸Àç ÇÒ °æ¿ì
-            	System.out.println("result °ª : "+sai_result);
+            	sai_result=1; //ì¡´ì¬ í•  ê²½ìš°
+            	System.out.println("result ê°’ : "+sai_result);
             }else {
-            	//Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì
+            	//ì¡´ì¬í•˜ì§€ ì•Šì„ê²½ìš°
             	sai_result=0;
-            	System.out.println("result °ª : "+sai_result);
+            	System.out.println("result ê°’ : "+sai_result);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -210,12 +212,12 @@ public class MemberDAO {
             st.setString(1, email);
             rs = st.executeQuery();
             if(rs.next()) {
-            	sai_result=1; //Á¸Àç ÇÒ °æ¿ì
-            	System.out.println("result °ª : "+sai_result);
+            	sai_result=1; //ì¡´ì¬ í•  ê²½ìš°
+            	System.out.println("result ê°’ : "+sai_result);
             }else {
-            	//Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì
+            	//ì¡´ì¬í•˜ì§€ ì•Šì„ê²½ìš°
             	sai_result=0;
-            	System.out.println("result °ª : "+sai_result);
+            	System.out.println("result ê°’ : "+sai_result);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -227,12 +229,53 @@ public class MemberDAO {
 	
 	private MemberVO makeMember(ResultSet rs) throws SQLException {
 		MemberVO member = new MemberVO();
+		member.setMember_id(rs.getInt(1));
 		member.setName(rs.getString(2));
 		member.setId(rs.getString(3));
 		member.setPassword(rs.getString(4));
 		member.setEmail(rs.getString(5));
-		
+		member.setAddress(rs.getString(6));
+		member.setPhoneNum(rs.getString(7));
+		member.setSubscri_ox(rs.getString(8).charAt(0));
+		member.setDropout_ox(rs.getString(9).charAt(0));
 		return member;
 	}
+	public MemberVO selectMemberByMemberId(int memberid) {
+		MemberVO member = null;
+        conn = DBUtil.getConnection();
+        try {
+            st = conn.prepareStatement(SELECT_MEMBER_BY_MEMBERID);
+            st.setInt(1, memberid);
+            rs = st.executeQuery();
+            while(rs.next()) {
+				member = makeMember(rs);
+			}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
+
+        return member;
+	}
 	
+	public int update_member_email(MemberVO member) {
+		int result = 0;
+		
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(UPDATE_MEMBER_EMAIL); // sqlë¬¸ì¥ ë¯¸ë¦¬ ì¤€ë¹„
+			st.setString(1, member.getEmail());
+			st.setInt(2, member.getMember_id());
+			
+			result = st.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return result;
+	}
 }

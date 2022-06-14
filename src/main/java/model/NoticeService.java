@@ -6,6 +6,7 @@ import dto.NoticeVO;
 
 public class NoticeService {
 	NoticeDAO dao = new NoticeDAO();
+
 	public List<NoticeVO> selectAll(){
 		return dao.selectAll();
 	}
@@ -20,5 +21,6 @@ public class NoticeService {
 	}
 	public int update(NoticeVO notice) {
 		return dao.update(notice); 
+
 	}
 }
