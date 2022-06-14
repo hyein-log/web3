@@ -13,63 +13,22 @@ import dto.AcclistVO;
 
 public class AcclistDAO {
 	static final String SQL_SELECT_ALL = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where member_id=?";
-	static final String SQL_SELECT_ID = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) WHERE TRANS_ID = ?";
 	static final String SQL_SELECT_KIND = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where  member_id=? and TRANS_KIND = ?";
-	static final String SQL_SELECT_MAP = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where  ACCOUNT_ID=? and TRANS_ID = ?";
 	Connection conn;
-	Statement st;
-	PreparedStatement pst; // 바인딩변수지원 [?]
+	PreparedStatement st; 
 	ResultSet rs;
 	int result;
 	
 
-	public AcclistVO SELECT_ACCLIST_MAP(int ACCOUNT_ID, int TRANS_ID) {
-		AcclistVO  acc = null;
-		conn = DBUtil.getConnection();
-		try {
-			pst = conn.prepareStatement(SQL_SELECT_MAP);
-			pst.setInt(1, ACCOUNT_ID);
-			pst.setInt(2, TRANS_ID);
-			rs = pst.executeQuery();
-			while(rs.next()) {
-				acc = makelist(rs);
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally {
-			DBUtil.dbClose(rs, st, conn);
-		}
-		
-		return acc;
-	}
-	public AcclistVO SELECT_ACCLIST_BYID(int TRANS_ID) {
-		AcclistVO  acc = null;
-		conn = DBUtil.getConnection();
-		 try {
-			 pst = conn.prepareStatement(SQL_SELECT_ID);
-			 pst.setInt(1, TRANS_ID);
-	            rs = pst.executeQuery();
-	            while(rs.next()) {
-	            	acc = makelist(rs);
-				}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally {
-			DBUtil.dbClose(rs, st, conn);
-		}
-		
-		return acc;
-	}
+	
 	public List<AcclistVO> SQL_SELECT_KIND(int memberid, String kind) {
 		List<AcclistVO>  acclist = new ArrayList<>();
 		conn = DBUtil.getConnection();
 		try {
-			 pst = conn.prepareStatement(SQL_SELECT_KIND);
-			 pst.setInt(1, memberid);
-			 pst.setString(2, kind);
-	         rs = pst.executeQuery();
+			 st = conn.prepareStatement(SQL_SELECT_KIND);
+			 st.setInt(1, memberid);
+			 st.setString(2, kind);
+	         rs = st.executeQuery();
 	           
 			while (rs.next()) {
 				acclist.add(makelist(rs));
@@ -88,9 +47,9 @@ public class AcclistDAO {
 		List<AcclistVO>  acclist = new ArrayList<>();
 		conn = DBUtil.getConnection();
 		try {
-			pst = conn.prepareStatement(SQL_SELECT_ALL);
-			pst.setInt(1, memberid);
-			rs = pst.executeQuery();
+			st = conn.prepareStatement(SQL_SELECT_ALL);
+			st.setInt(1, memberid);
+			rs = st.executeQuery();
 			
 			while (rs.next()) {
 				acclist.add(makelist(rs));

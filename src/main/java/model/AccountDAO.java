@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-
+import dto.AcclistVO;
 import dto.AccountVO;
 import util.DBUtil;
 
@@ -23,11 +23,11 @@ public class AccountDAO {
 	static final String SELECT_ACC_MEMBER_ID = "SELECT * FROM account WHERE MEMBER_ID = ?";
 
 	static final String SQL_INSERT = "INSERT INTO account values( acc_seq.nextval, ?, ?, ?, 0, ?, sysdate, 'x')";
-
+	static final String UPDATE_BALANCE="UPDATE ACCOUNT SET BALANCE = ? WHERE ACCOUNT_ID =?"; 
 	static final String DELETE_ACC= "DELETE FROM ACCOUNT WHERE ACC_NUMBER = ?";
 	static final String UPDATE_LIMIT= "UPDATE account SET limit_ox = 'O' WHERE ACC_NUMBER =?";
-
-	
+	static final String SELECT_ACCMEM_BYID_TYPE0 = "SELECT * FROM account WHERE MEMBER_ID = ? AND ACCOUNTTYPE =0";
+	static final String SELECT_ACCID_BY_ACCNUM = "SELECT * FROM ACCOUNT WHERE ACC_NUMBER=?";
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
@@ -158,6 +158,60 @@ public class AccountDAO {
 		return result;
 	}
 	
+	public List<AccountVO> SELECT_ACCMEM_BYID_TYPE0(int memberid) {
+		List<AccountVO> list = new ArrayList<>();
+		AccountVO account = null;
+		conn = DBUtil.getConnection();
+		
+		try {
+			st = conn.prepareStatement(SELECT_ACCMEM_BYID_TYPE0);
+			st.setInt(1, memberid);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				account= makeAcc(rs);
+				list.add(account);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return list;
+	}
 	
+	public AccountVO SELECT_ACCID_BY_ACCNUM(String acc_number) {
+		AccountVO  acc = null;
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(SELECT_ACCID_BY_ACCNUM);
+			st.setString(1, acc_number);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				acc = makeAcc(rs);
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		
+		return acc;
+	}
+
+	public int UPDATE_BALANCE(int balance , int account_id) {
+		conn=DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(UPDATE_BALANCE);
+			st.setInt(1, balance);
+			st.setInt(2, account_id);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return result;
+	}
 }
 

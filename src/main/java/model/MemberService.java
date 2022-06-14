@@ -35,7 +35,7 @@ public class MemberService {
 	public MemberVO selectMemberByMemberId(int memberid) {
 		return dao.selectMemberByMemberId(memberid);
 	}
-	public int update_member_email(MemberVO member) {
-		return dao.update_member_email(member);
+	public int update_member_info(MemberVO member) {
+		return dao.update_member_info(member);
 	}
 }
