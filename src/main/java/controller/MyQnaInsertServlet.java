@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.MemberVO;
 import dto.MyQnaVO;
 import model.MyQnaService;
 
 /**
  * Servlet implementation class MyQnaInsertServlet
  */
-@WebServlet("/myqna/qnaInsert.do")
+@WebServlet("/myqna/myqnaInsert.do")
 public class MyQnaInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,12 +23,14 @@ public class MyQnaInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		int member_id = Integer.parseInt(request.getParameter("member_id"));//È¸¿øid
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		int memId = member.getMember_id();
+		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		MyQnaVO vo = new MyQnaVO(member_id, title, content);
-		System.out.println(vo);
+		MyQnaVO vo = new MyQnaVO(memId, title, content);
+		System.out.println("memId" + vo);
 		int result = new MyQnaService().myInsert(vo);
 		
 		

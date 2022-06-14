@@ -1,8 +1,13 @@
+
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +93,7 @@
 		</tr>
 		<tr>
 			<td>계좌생성일</td>
-			<td style="color: gray;"><%=new Date()%> </td> 
+			<td style="color: gray;"><%=LocalDate.now()%> </td> 
 		</tr>
 		<tr>
 			<td>계좌 잔액</td>
@@ -119,3 +124,4 @@
 <jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 </html>
+
