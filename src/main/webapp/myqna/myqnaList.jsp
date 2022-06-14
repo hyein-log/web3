@@ -11,23 +11,28 @@
 </head>
 <body>
 	<h2>1:1 문의 내역</h2>
-
-
 	<table>
 		<tr>
-			<td>번호</td>
+			<td>글번호</td>
 			<td>제목</td>
-			<td>내용</td>
 			<td>작성일</td>
 		</tr>
 		<c:forEach items="${myqnaDatas}" var="myqna">
 			<tr>
 				<td>${myqna.qa_id}</td>
-				<td>${myqna.qa_title}</td>
-				<td>${myqna.qa_content}</td>
+				<td><a href="myqnaDetail.do?qaid=${myqna.qa_id}">${myqna.qa_title}</a></td>
 				<td>${myqna.qa_date}</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<button type="button" onclick="hrefLink()" class="btnWrite" >문의하기</button>
+	
+<script>
+link = '../myqna/myqnaInsert.jsp';
+
+function hrefLink() {
+	location.href = link;
+}
+</script>
 </body>
 </html>

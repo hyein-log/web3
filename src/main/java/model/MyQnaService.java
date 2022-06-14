@@ -13,7 +13,7 @@ public class MyQnaService {
 		return dao.selectAll();
 	}
 	
-	public MyQnaVO selectById(int memId) {
+	public List<MyQnaVO> selectById(int memId) {
 		return dao.selectById(memId);
 	}
 	
@@ -27,6 +27,10 @@ public class MyQnaService {
 	
 	public int myDelete(int qaId) {
 		return dao.myDelete(qaId);
+	}
+	
+	public MyQnaVO selectQaId(int qaId) {
+		return dao.selectQaId(qaId);
 	}
 }
 	

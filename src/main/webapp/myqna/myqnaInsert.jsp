@@ -134,14 +134,14 @@ background-color: #fff;
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
 
-<form action="qnaInsert.do" class="sendForm" method="get">
+<form action="myqnaInsert.do" class="sendForm" method="get">
 	<h2>1:1 문의하기</h2>
 	<br>
         <div class="title">
           제목 : <pre><input type="text" class="form-accSend" name="title"> </pre>
         </div>
         <div class="content">
-          내용 : <pre><input type="text" class="form-content" name="content"></pre>
+          내용 : <pre><textarea type="text" class="form-content" name="content"></textarea></pre>
         </div>
       <div class="sendbtnDiv">
 			<input type="submit" class="btnSubmit" value="글쓰기" >

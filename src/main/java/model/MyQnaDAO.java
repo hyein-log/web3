@@ -7,17 +7,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import dto.AccountVO;
 import dto.MyQnaVO;
+import dto.NoticeVO;
 import util.DBUtil;
 
 public class MyQnaDAO {
 
 	static final String SELECT_MYQNA = "select * from QnA order by 1 desc";
 	static final String SELECT_BYID = "SELECT * FROM QnA WHERE MEMBER_ID = ?";
+	static final String SELECT_QAID = "select * from QnA where qa_id = ?";
 	static final String INSERT_MYQNA = "INSERT INTO QnA values(qna_seq.nextval, ?, ?, ?, null, sysdate, null)";
+	static final String UPDATE_MYQNA = "update QnA set qa_title = ?, qa_content=?, qa_date=sysdate where qa_id = ?";
 	static final String DELETE_MYQNA = "delete from QnA where qa_id = ? ";
-	static final String UPDATE_MYQNA = "update QnA set qa_title = ?, qa_content=?, updatedate=sysdate where qa_id = ?";
 	
 	Connection conn;
 	PreparedStatement st;
@@ -28,14 +30,14 @@ public class MyQnaDAO {
 	//전체 목록 조회
 	public List<MyQnaVO> selectAll() {
 		List<MyQnaVO> mlist = new ArrayList<>();
-		MyQnaVO my = null;
+		MyQnaVO myqna = null;
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(SELECT_MYQNA);
 			rs = st.executeQuery();
 			while(rs.next()) {
-				my = makeMyqna(rs);
-				mlist.add(my);
+				myqna = makeMyqna(rs);
+				mlist.add(myqna);
 				
 			}				
 		} catch (SQLException e) {
@@ -46,8 +48,9 @@ public class MyQnaDAO {
 		return mlist;
 	}
 
-	//조회
-	public MyQnaVO selectById(int memId) {
+	//회원 목록 조회
+	public List<MyQnaVO> selectById(int memId) {
+		List<MyQnaVO> list = new ArrayList<>();
 		MyQnaVO myqna = null;
 		conn = DBUtil.getConnection();
 		try {
@@ -56,6 +59,7 @@ public class MyQnaDAO {
 			rs = st.executeQuery();
 			while(rs.next()) {
 				myqna = makeMyqna(rs);
+				list.add(myqna);
 				
 			}				
 		} catch (SQLException e) {
@@ -63,24 +67,45 @@ public class MyQnaDAO {
 		} finally {
 			DBUtil.dbClose(rs, st, conn);
 		}		
-		return myqna;
+		return list;
 	}
 	
 	
+	public MyQnaVO selectQaId(int qaId) {
+		MyQnaVO myqna = null;
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(SELECT_QAID);
+			st.setInt(1, qaId);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				myqna = makeMyqna(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+
+		return myqna;
+		
+	}
+	
 
 	private MyQnaVO makeMyqna(ResultSet rs) throws SQLException {
-		
 		MyQnaVO my = new MyQnaVO();
-		my.setMember_id(rs.getInt("qa_id"));
+		my.setMember_id(rs.getInt("member_id"));
 		my.setQa_answer(rs.getString("qa_answer"));
 		my.setQa_answer_date(rs.getDate("qa_answer_date"));
 		my.setQa_content(rs.getString("qa_content"));
 		my.setQa_date(rs.getDate("qa_date"));
-		my.setQa_id(rs.getInt("member_id"));
+		my.setQa_id(rs.getInt("qa_id"));
 		my.setQa_title(rs.getString("qa_title"));
 		
 		return my;
 	}
+	
+	//
 	
 	//insert
 	public int myInsert(MyQnaVO my) {
