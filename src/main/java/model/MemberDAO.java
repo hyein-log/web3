@@ -109,11 +109,15 @@ public class MemberDAO {
 	
 	private MemberVO makeMember(ResultSet rs) throws SQLException {
 		MemberVO member = new MemberVO();
+		member.setMember_id(rs.getInt(1));
 		member.setName(rs.getString(2));
 		member.setId(rs.getString(3));
 		member.setPassword(rs.getString(4));
 		member.setEmail(rs.getString(5));
-		member.setMember_id(rs.getInt("Member_id"));
+		member.setAddress(rs.getString(6));
+		member.setPhoneNum(rs.getString(7));
+		member.setSubscri_ox(rs.getString(8).charAt(0));
+		member.setDropout_ox(rs.getString(9).charAt(0));
 		return member;
 	}
 
