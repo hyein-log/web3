@@ -106,6 +106,18 @@ public class MemberDAO {
 
         return member;
 	}
+	
+	private MemberVO makeMember(ResultSet rs) throws SQLException {
+		MemberVO member = new MemberVO();
+		member.setName(rs.getString(2));
+		member.setId(rs.getString(3));
+		member.setPassword(rs.getString(4));
+		member.setEmail(rs.getString(5));
+		member.setMember_id(rs.getInt("Member_id"));
+		return member;
+	}
+
+
 	public MemberVO selectByIdEmail(String id, String name, String email) {
 		MemberVO member = null;
         conn = DBUtil.getConnection();
@@ -189,10 +201,10 @@ public class MemberDAO {
             st.setString(1, id);
             rs = st.executeQuery();
             if(rs.next()) {
-            	sai_result=1; //議댁옱 �븷 寃쎌슦
+            	sai_result=1; 
             	System.out.println("result 媛� : "+sai_result);
             }else {
-            	//議댁옱�븯吏� �븡�쓣寃쎌슦
+            	
             	sai_result=0;
             	System.out.println("result 媛� : "+sai_result);
             }
@@ -227,19 +239,7 @@ public class MemberDAO {
         return sai_result;
 	}
 	
-	private MemberVO makeMember(ResultSet rs) throws SQLException {
-		MemberVO member = new MemberVO();
-		member.setMember_id(rs.getInt(1));
-		member.setName(rs.getString(2));
-		member.setId(rs.getString(3));
-		member.setPassword(rs.getString(4));
-		member.setEmail(rs.getString(5));
-		member.setAddress(rs.getString(6));
-		member.setPhoneNum(rs.getString(7));
-		member.setSubscri_ox(rs.getString(8).charAt(0));
-		member.setDropout_ox(rs.getString(9).charAt(0));
-		return member;
-	}
+
 	public MemberVO selectMemberByMemberId(int memberid) {
 		MemberVO member = null;
         conn = DBUtil.getConnection();
@@ -265,6 +265,7 @@ public class MemberDAO {
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(UPDATE_MEMBER_INFO); 
+
 			st.setString(1, member.getEmail());
 			st.setString(2, member.getPhoneNum());
 			st.setString(3, member.getPassword());

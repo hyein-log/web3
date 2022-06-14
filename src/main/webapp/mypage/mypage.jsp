@@ -88,7 +88,7 @@ img{
 	</div>
 	<div style="background-color: #fbfbfd;" class="a visual">
 	<div><p class="center bold">1:1 문의</p></div>
-	<div ><img src="financial.png "onclick="location.href='qnaList.jsp'"></div>
+	<div ><img src="financial.png "onclick="location.href='../myqna/myqnalist.do'"></div>
 	</div>
 	<div style="background-color: #fbfbfd;" class="a visual">
 	<div><p class="center bold">개인정보관리</p></div>

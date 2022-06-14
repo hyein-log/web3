@@ -44,5 +44,5 @@ public class InsertMemberServlet extends HttpServlet {
         	writer.close();
 		}
 	}
-
 }
+

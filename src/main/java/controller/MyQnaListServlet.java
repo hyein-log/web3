@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dto.MemberVO;
 import dto.MyQnaVO;
 import model.MyQnaService;
 
@@ -23,9 +25,13 @@ public class MyQnaListServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		MyQnaService service = new MyQnaService();
-		List<MyQnaVO> mlist = service.selectAll();
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		int memId = member.getMember_id();
 		
+		MyQnaService service = new MyQnaService();
+		List<MyQnaVO> mlist = service.selectById(memId);
+		System.out.println(mlist);
 		request.setAttribute("myqnaDatas", mlist);
 		
 		RequestDispatcher rd;
