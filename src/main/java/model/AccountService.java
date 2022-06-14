@@ -1,3 +1,4 @@
+
 package model;
 
 import java.util.List;
@@ -27,5 +28,14 @@ public class AccountService {
 	public int deleteAcc(String accNum) {
 		return dao.deleteAcc(accNum);
 	}
-
+	public List<AccountVO> SELECT_ACCMEM_BYID_TYPE0(int memberid) {
+		return dao.SELECT_ACCMEM_BYID_TYPE0(memberid);
+	}
+	public AccountVO SELECT_ACCID_BY_ACCNUM(String acc_number) {
+		return dao.SELECT_ACCID_BY_ACCNUM(acc_number);
+	}
+	public int UPDATE_BALANCE(int balance , int account_id) {
+		return dao.UPDATE_BALANCE(balance, account_id);
+	}
+	
 }
