@@ -18,8 +18,8 @@ import model.AccountService;
 /**
  * Servlet implementation class AccountList
  */
-@WebServlet("/account/AccountList.do")
-public class AccountListServlet extends HttpServlet {
+@WebServlet("/trans/MyAccountList.do")
+public class MyAccountListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +36,7 @@ public class AccountListServlet extends HttpServlet {
 		request.setAttribute("accLists", acc);
 		
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("myAccList.jsp");
+		rd = request.getRequestDispatcher("my_AccList.jsp");
 		rd.forward(request, response);
 	}
 

@@ -1,3 +1,5 @@
+<%@page import="dto.PagingVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="dto.AcclistVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -238,6 +240,20 @@ label {
 
 </head>
 <body>
+	<%
+	String accNum = (String) request.getAttribute("accNum");
+	String kind = (String) request.getAttribute("kind");
+	long balance = (long)request.getAttribute("balance");
+	System.out.println(accNum);
+	System.out.println(balance);
+	ArrayList<AcclistVO> list = (ArrayList) session.getAttribute("alist");
+	if (list == null) {
+		list = new ArrayList<AcclistVO>();
+	}
+	session.setAttribute("alist", list);
+	PagingVO paging = (PagingVO) session.getAttribute("paging");
+	System.out.println("++++++++" + list);
+	%>
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<div class="d" style="font-size: 40px;">
 		<div class="o">거래내역</div>
@@ -246,14 +262,13 @@ label {
 	<c:set var="path" value="${pageContext.request.contextPath }" />
 
 	<c:if test="${not empty alist }">
+	<div>계좌번호 : <%=accNum %></div>
+	<div>잔액 : <%=balance %></div>
 		<table id="table1" class="table">
 			<thead style="background-color: skyblue;">
 				<tr>
 					<td>NO</td>
 					<td>ACCOUNTTYPE</td>
-					<td>ACC_NUMBER</td>
-					<td>BALANCE</td>
-					<td>MAKEDATE</td>
 					<td>PAST_ACC</td>
 					<td>TRANS_ACC</td>
 					<td>TRANS_DATE</td>
@@ -270,10 +285,6 @@ label {
 						<td><c:if test="${acclist.accounttype==0}">입출금 통장</c:if> <c:if
 								test="${acclist.accounttype==1}">예금 통장</c:if> <c:if
 								test="${acclist.accounttype==2}">적금 통장</c:if></td>
-
-						<td>${acclist.acc_number}</td>
-						<td>${acclist.balance}</td>
-						<td>${acclist.makedate }</td>
 						<td>${acclist.past_acc }</td>
 						<td>${acclist.trans_acc }</td>
 						<td>${acclist.trans_date }</td>
@@ -307,16 +318,26 @@ label {
 								test="${acclist.trans_kind=='자동이체'}">자동이체</c:if> <c:if
 								test="${acclist.trans_kind=='출금'}">출금</c:if></td>
 				</tbody>
-			</c:forEach>
 
+			</c:forEach>
 		</table>
+		<jsp:include page="paging.jsp">
+			<jsp:param value="${paging.page }" name="page" />
+			<jsp:param value="${paging.beginPage }" name="beginPage" />
+			<jsp:param value="${paging.endPage }" name="endPage" />
+			<jsp:param value="${paging.prev }" name="prev" />
+			<jsp:param value="${paging.next }" name="next" />
+			<jsp:param value="<%=kind %>" name="kind" />
+			<jsp:param value="${acclist.acc_number}" name="accNum" />
+		</jsp:include>
 	</c:if>
 	<c:if test="${empty alist }">
 		<script type="text/javascript">
 			alert("거래내역이 존재하지 않습니다.");
-			location.href='../finances-master/main.jsp';
+			location.href = '../finances-master/main.jsp';
 		</script>
 	</c:if>
+
 
 	<div class="o"></div>
 

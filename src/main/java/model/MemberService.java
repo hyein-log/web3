@@ -38,4 +38,7 @@ public class MemberService {
 	public int update_member_info(MemberVO member) {
 		return dao.update_member_info(member);
 	}
+	public int DELETE_MEMBER(int  memberid) {
+		return dao.DELETE_MEMBER(memberid);
+	}
 }

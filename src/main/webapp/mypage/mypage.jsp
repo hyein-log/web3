@@ -95,9 +95,13 @@ img{
 	<div>
 	<%
 	System.out.println("memberinfo : " + session.getAttribute("memberinfo"));
+	System.out.println("email : " + session.getAttribute("memberemail"));
+	
 	%>
 	<form action="memberInfo.jsp" method="post">
 								<input type="hidden"name="memberInfo" value="${memberinfo}" ><br>
+								<input type="hidden"name="memberemail" value="${memberemail}" ><br>
+								
 								<input type="image" src="financial.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 								class="img-fluid mb-4 bg-white visual"
 									alt="개인정보관리">

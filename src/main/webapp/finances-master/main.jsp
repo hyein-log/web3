@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="java.util.List"%>
 <%@page import="dto.MemberVO"%>
 <%@page import="java.util.Iterator"%>
@@ -165,10 +164,8 @@ body {
 				int id = 0;
 				MemberVO member = (MemberVO) session.getAttribute("member");
 				System.out.println("1" + member);
-				String m = "";
 				if (member != null) {
 					id = member.getMember_id();
-					m = member.getId();
 					if (id == 0) {
 						System.out.println("lk");
 					}
@@ -181,7 +178,7 @@ body {
 						data-aos-delay="">
 						<div class="team-member a">
 							<c:if test="${not empty member }">
-								<form action="../trans/trans.do" method="post">
+								<form action="../trans/MyAccountList.do" method="post">
 									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="image" src="images/list.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
@@ -254,6 +251,7 @@ body {
 							<c:if test="${not empty member }">
 								<form action="../mypage/mypage.do" method="post">
 									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="image" src="images/mypage.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
@@ -271,7 +269,7 @@ body {
 						data-aos-delay="100">
 						<div class="team-member a">
 							<c:if test="${not empty member }">
-								<form action="../notice/noticeList.jsp" method="post">
+								<form action="../notice/NoticeList.do" method="post">
 									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="image" src="images/notice.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
