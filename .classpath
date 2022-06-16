@@ -16,5 +16,7 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="C:/Users/임세은/Downloads/activation-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/임세은/Downloads/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/Users/jeonmingi/Downloads/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/Users/jeonmingi/Downloads/activation-1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

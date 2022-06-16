@@ -55,7 +55,6 @@ public class AccountDAO {
 		return alist;
 	}
 
-	// 회원의 계좌 조회
 	public List<AccountVO> selectById(int memId) {
 		List<AccountVO> list = new ArrayList<>();
 		AccountVO account = null;

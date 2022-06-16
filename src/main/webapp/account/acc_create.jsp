@@ -166,14 +166,7 @@ label{
 <br><br>
 
 <form action="acc_create.do" class="sendForm" method="post" >
-	<div id="selectIp_account" >
-	
 
-<!-- 	종류 <br>
-	<span id="bankType">입출금통장</span> <input type="hidden" name="bank_account"  id="bank_account" value="0"  > <br>
-회원아이디 : <input type="text" name="member_id" value="1"><br>
-계좌 비밀번호 : <input type="password" name="acc_pass"><br>
- -->
 
         <div class="sendDiv align">
             <label class="accNum">계좌 종류 :</label>
@@ -193,7 +186,6 @@ label{
 			<input type="reset" class="btnCencel" value="취소" >
 		</div>
         
-    </div>
     </form>
  </div>
  <script>
@@ -207,7 +199,6 @@ $(function(){
 });
 
  </script>
- 
  
 
 <jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>

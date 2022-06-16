@@ -73,7 +73,7 @@ body {
 
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
-<body>
+
 	<div class="wrap">
 		<div class="sendForm">
 			<div>
@@ -111,6 +111,7 @@ body {
 			<br> <br>
 			<button onclick="hrefLink()" class="btnSubmit">확인</button>
 		</div>
+
 	</div>
 
 

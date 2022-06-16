@@ -54,21 +54,32 @@ nav ul li a {
 }
  nav ul li a:hover{color: #007bff;}
 </style>
+<%@page import="dto.MemberVO"%>
+<%
+	MemberVO member = (MemberVO) request.getSession().getAttribute("member");
+	System.out.println(member);
+%>
 <body>
 <header>
-    <div class="logo">
-        <a href="../finances-master/main.jsp">
-            <h2>COSBANK</h2>
-        </a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="../finances-master/main.jsp">Home</a></li>
-            <li><a href="#next">About Us</a></li>
-            <li><a href="../login/login.jsp">Sign in</a></li>
-            <li><a href="../login/memberJoin.jsp">Sign up</a></li>
-        </ul>
-    </nav>
-</header>
+
+            <div class="logo">
+                <a href="${pageContext.request.contextPath}/finances-master/main.jsp">
+                    <h2>COSBANK</h2>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#About">About Us</a></li>
+                    <%if(member == null) {%>
+                    <li><a href="${pageContext.request.contextPath}/login/login.jsp">Sign in</a></li>
+                    <li><a href="${pageContext.request.contextPath}/login/memberJoin.jsp">Sign up</a></li>
+                    <%} else { %>
+                    <li><a href="${pageContext.request.contextPath}/login/logout.do">Log out</a></li>
+                    <%} %>
+                </ul>
+            </nav>
+        </header>
+
 </body>
 </html>

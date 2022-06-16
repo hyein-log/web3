@@ -71,6 +71,7 @@ body {
 </style>
 
 </head>
+  
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300" style="font-family: 'Nanum Gothic', sans-serif;">
 
@@ -82,7 +83,19 @@ body {
 			<span class="sr-only">Loading...</span>
 		</div>
 	</div>
-
+				<%
+				int id = 0;
+				MemberVO member = (MemberVO) session.getAttribute("member");
+				System.out.println("1" + member);
+				String m = "";
+				if (member != null) {
+					id = member.getMember_id();
+					m = member.getId();
+					if (id == 0) {
+						System.out.println("lk");
+					}
+				}
+				%>
 	<div class="site-wrap">
 
 
@@ -111,7 +124,11 @@ body {
 								</div>
 								<br> <br>
 								<div data-aos="fade-up" data-aos-delay="100">
+								<%if(member == null) {%>
 									<a href="../login/login.jsp" class="btn  btn-primary mr-2 mb-2">Login</a>
+									<%} else { %>
+									<a href="../login/logout.do" class="btn  btn-primary mr-2 mb-2">Logout</a>
+									<%} %>
 								</div>
 							</div>
 							<!-- 							<div class="slide"> -->
@@ -165,17 +182,7 @@ body {
 						</p>
 					</div>
 				</div>
-				<%
-				int id = 0;
-				MemberVO member = (MemberVO) session.getAttribute("member");
-				System.out.println("1" + member);
-				if (member != null) {
-					id = member.getMember_id();
-					if (id == 0) {
-						System.out.println("lk");
-					}
-				}
-				%>
+
 				<div class="row">
 
 

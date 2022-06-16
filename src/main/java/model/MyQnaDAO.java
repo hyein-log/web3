@@ -14,11 +14,12 @@ import util.DBUtil;
 public class MyQnaDAO {
 
 	static final String SELECT_MYQNA = "select * from QnA order by 1 desc";
-	static final String SELECT_BYID = "SELECT * FROM QnA WHERE MEMBER_ID = ?";
+	static final String SELECT_BYID = "SELECT * FROM QnA WHERE MEMBER_ID = ? order by 1 desc";
 	static final String SELECT_QAID = "select * from QnA where qa_id = ?";
 	static final String INSERT_MYQNA = "INSERT INTO QnA values(qna_seq.nextval, ?, ?, ?, null, sysdate, null)";
 	static final String UPDATE_MYQNA = "update QnA set qa_title = ?, qa_content=?, qa_date=sysdate where qa_id = ?";
 	static final String DELETE_MYQNA = "delete from QnA where qa_id = ? ";
+	static final String UPDATE_ANSWER = "update QnA set qa_answer = ? where qa_id = ?";
 	
 	Connection conn;
 	PreparedStatement st;
@@ -47,7 +48,7 @@ public class MyQnaDAO {
 		return mlist;
 	}
 
-	//회원 목록 조회
+	//로그인한 회원 게시판만 보이게 
 	public List<MyQnaVO> selectById(int memId) {
 		List<MyQnaVO> list = new ArrayList<>();
 		MyQnaVO myqna = null;
@@ -155,6 +156,24 @@ public class MyQnaDAO {
 		try {
 			st = conn.prepareStatement(DELETE_MYQNA);
 			st.setInt(1, qaId);	//외래키
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return result;
+	}
+
+	public int updateAnswer(MyQnaVO myqna) {
+		int result = 0;
+		
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(UPDATE_ANSWER);
+			st.setString(1,myqna.getQa_answer());
+			st.setInt(2, myqna.getQa_id());
+			
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
