@@ -33,6 +33,10 @@ public class MyQnaService {
 	public MyQnaVO selectQaId(int qaId) {
 		return dao.selectQaId(qaId);
 	}
+
+	public int updateAnswer(MyQnaVO myqna) {
+		return dao.updateAnswer(myqna);
+	}
 }
 	
 	

@@ -28,15 +28,24 @@ public class MyQnaListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		int memId = member.getMember_id();
-		
-		MyQnaService service = new MyQnaService();
-		List<MyQnaVO> mlist = service.selectById(memId);
-		System.out.println(mlist);
-		request.setAttribute("myqnaDatas", mlist);
-		
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("myqnaList.jsp");
-		rd.forward(request, response);
+		MyQnaService service = new MyQnaService();
+		
+		if(memId == 1) {
+			List<MyQnaVO> mlist = service.selectAll();
+			request.setAttribute("qnaDatas", mlist);
+			rd = request.getRequestDispatcher("../admin/qnaList.jsp");
+			rd.forward(request, response);
+		}else {
+			List<MyQnaVO> mlist = service.selectById(memId);
+			request.setAttribute("myqnaDatas", mlist);
+			rd = request.getRequestDispatcher("myqnaList.jsp");
+			rd.forward(request, response);
+		}
+		
+		
+		
+		
 	}
 
 	
