@@ -13,5 +13,10 @@ public class AcclistService {
 	public List<AcclistVO> SQL_SELECT_KIND(String ACC_NUMBER, String kind, int page) {
 		return acclistdao.SQL_SELECT_KIND(ACC_NUMBER, kind, page);
 	}
-	
+	public List<AcclistVO> SQL_SELECT_TERM(String acc_num ,String start_Term, String end_Term,int page) {
+		return acclistdao.SQL_SELECT_TERM(acc_num, start_Term, end_Term, page);
+	}
+	public int SQL_SELECT_TERM_COUNT(String acc_num, String start_Term, String end_Term ) {
+		return acclistdao.SQL_SELECT_TERM_COUNT(acc_num, start_Term, end_Term);
+	}
 }

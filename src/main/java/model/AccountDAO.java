@@ -266,4 +266,22 @@ public class AccountDAO {
 		}
 		return sum;
 	}
+	public int selectAccID(String accNum) {
+		AccountVO acc = null;
+		conn = DBUtil.getConnection();
+
+		try {
+			st = conn.prepareStatement(SELECT_ACCID_BY_ACCNUM);
+			st.setString(1, accNum);
+			rs = st.executeQuery();
+			while (rs.next()) {
+				acc = makeAcc(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return acc.getAccount_id();
+	}
 }

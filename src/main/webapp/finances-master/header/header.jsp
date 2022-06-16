@@ -73,7 +73,7 @@ nav ul li a {
             </div>
             <nav>
                 <ul>
-                    <li><a href="#Home">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/finances-master/main.jsp">Home</a></li>
                     <li><a href="#About">About Us</a></li>
                     <%if(member == null) {%>
                     <li><a href="${pageContext.request.contextPath}/login/login.jsp">Sign in</a></li>
