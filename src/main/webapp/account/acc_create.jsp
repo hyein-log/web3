@@ -27,18 +27,23 @@ body {
 	padding-top: 5rem;
 } 
 .sendForm{
-    /*width: 30%;*/
+
+    width: 35%;
+    margin-left: 470px;
     font-family: 'Nanum Gothic', sans-serif;
-   /* padding: 3%;*/
+    padding: 2%;
+    /* margin-top: 10%; */
+    margin-top: 0px;
     margin-bottom: 10%;
-    margin-left: 50px;
+    border: 7px solid #B6D9FF;
+
 }
 
 .form-accSend {
     width: 350px;
     height: 30px;
     display: block;
-    border-radius: 30px;
+    border-radius: 20px;
     border: 1px solid #ced4da;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
@@ -128,6 +133,7 @@ label{
 
 .accNum{
 	font-weight: bold;
+	font-size: 15px;
 }
 
 .passLink{
@@ -145,23 +151,48 @@ label{
 }
 
 #accSelect{
-	/* margin-left: 400xpx; */
+
+	margin-left: 470px;
+
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
     margin-top: 10%;
+    border: 7px solid #B6D9FF;
+    width: 33%;
+    positon :relative;
+    font-weight: bold;
+    color: black;
 }
+
+
+#accCreat1{
+	margin-left: 500px;
+    font-family: 'Nanum Gothic', sans-serif;
+    padding: 3%; 
+    margin-top: -80px;
+    background-color: white;
+    border: 1px solid white;
+    width: 140px;
+    height: 4px;
+    position: absolute;
+}
+
 
 </style>
 </head>
 
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-<div class="wrap"> 
+
+
+<div id="accCreat1"><h2 >개설계좌선택</h2></div>
+
 <div id="accSelect">
-	<h2 id="accCreat1">개설계좌선택</h2>
 	<br>
-	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금통장" style="margin-left: 40px;" >입출금통장
-	<input type="radio" name="bank_account" value="1" data-bank="적금통장" style="margin-left: 50px;">적금통장
-	<input type="radio" name="bank_account" value="2" data-bank="예금통장" style="margin-left: 50px;">예금통장
+
+	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금 통장" style="margin-left: 50px;" >입출금 통장
+	<input type="radio" name="bank_account" value="1" data-bank="적금 통장" style="margin-left: 50px;">적금 통장
+	<input type="radio" name="bank_account" value="2" data-bank="예금 통장" style="margin-left: 50px;">예금 통장
+
 </div>
 <br><br>
 
@@ -169,14 +200,16 @@ label{
 
 
         <div class="sendDiv align">
-            <label class="accNum">계좌 종류 :</label>
-           <span id="bankType" style="font-weight: bold;">입출금통장</span>
+
+            <label class="accNum">계좌 종류 :</label><br><br>
+           <span id="bankType" style="font-weight: bold;margin-left: 180px;font-size: 18px;">입출금 통장</span>
+
            <input type="hidden" name="bank_account"  id="bank_account" value="0">
-        </div>
+        </div><br>
         <div class="sendDiv align">
-            <label class="accNum">이름 :</label>
-            <input type="text" name="member_id" value="${member.name }">
-        </div>
+            <label class="accNum">성함 : </label>
+            <input type="text" name="member_id" value="${member.name }" style="border: none;font-size: 15px;"> 
+        </div><br>
         <div class="sendDiv align">
             <label class="accNum">계좌 비밀번호 :</label><br><br>
            <input type="password" name="acc_pass" class="form-accSend">
@@ -187,7 +220,7 @@ label{
 		</div>
         
     </form>
- </div>
+
  <script>
 $(function(){
 	 

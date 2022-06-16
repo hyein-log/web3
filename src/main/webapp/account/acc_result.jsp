@@ -30,15 +30,25 @@ body {
 
 
 
+
+.sendForm{
+    width: 30%;
+    margin-left: 650px;
+    font-family: 'Nanum Gothic', sans-serif;
+    /* padding: 3%; */
+    margin-top: 10%;
+
 .h3_2 {
 	padding-top: 50px;
 }
+
 
 .wrap {
 	width: 20%;
 	margin: auto;
 	padding-top: 10rem;
 }
+
 
 .sendForm {
 	font-family: 'Nanum Gothic', sans-serif;
@@ -48,25 +58,36 @@ body {
 }
 
 .sendForm2 {
-	font-family: 'Nanum Gothic', sans-serif;
-	/*  padding: 3%;
+width: 20%;
+    margin-left: 630px;
+    font-family: 'Nanum Gothic', sans-serif;
+  /*  padding: 3%;
      margin-top: 10%; */
 	margin-bottom: 10%;
 }
 
 .btnSubmit {
-	background-color: #007bff;
-	border: none;
-	color: #fff;
-	font-size: 16px;
-	border-radius: 30px;
-	color: #fff;
-	font-size: 16px;
-	border-radius: 30px;
-	padding: 10px 30px;
-	font-weight: 400;
-	height: 46px;
-	width: 100%;
+
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 400;
+    height: 46px;
+    width: 300px;
+    margin-left: 5px;
+}
+
+.td2{
+	color: gray;
+	margin: auto;
+	text-align: right;
+
 }
 </style>
 </head>
@@ -89,28 +110,37 @@ body {
 			<table>
 				<%-- 		 <tr>
 			<td>계좌 종류 </td>
-			<td style="color: gray;">${accountType==0 }</td>
-			<td style="color: gray;">${accountType==1 }</td>
-			<td style="color: gray;">${accountType==2 }</td>
-		</tr> --%>
-				<tr>
-					<td>계좌 번호</td>
-					<td style="color: gray;">${acc }</td>
-				</tr>
-				<tr>
-					<td>계좌생성일</td>
-					<td style="color: gray;"><%=LocalDate.now()%></td>
-				</tr>
-				<tr>
-					<td>계좌 잔액</td>
-					<td style="color: gray;">0 원</td>
-				</tr>
 
-
-			</table>
-			<br> <br>
-			<button onclick="hrefLink()" class="btnSubmit">확인</button>
-		</div>
+			<c:if test="${accountType==0}">입출금 통장</c:if>
+			<c:if test="${accountType==1}">예금 통장</c:if>
+			<c:if test="${accountType==2}">적금 통장</c:if>
+		</tr>  --%>
+		<tr>
+			<td>계좌 번호</td>
+			<td style="color: gray;text-align: right;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			${acc }</td>
+		</tr>
+		<tr>
+			<td>계좌생성일</td>
+			<td style="color: gray;text-align: right;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<%=LocalDate.now()%> </td> 
+		</tr>
+		<tr>
+			<td>계좌 잔액</td>
+			<td style="color: gray;text-align: right;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			0 원 </td>
+		</tr>
+	
+	
+	</table>
+	<br><br>
+	<button onclick="hrefLink()" class="btnSubmit" >확인</button>
 
 	</div>
 
