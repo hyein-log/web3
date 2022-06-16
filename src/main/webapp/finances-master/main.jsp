@@ -131,31 +131,6 @@ body {
 									<%} %>
 								</div>
 							</div>
-							<!-- 							<div class="slide"> -->
-							<!-- 								<h1 class="text-uppercase" data-aos="fade-up">Financing -->
-							<!-- 									Solutions</h1> -->
-							<!-- 								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem -->
-							<!-- 									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae -->
-							<!-- 									minima delectus accusamus accusantium deleniti libero excepturi -->
-							<!-- 									porro illo.</p> -->
-							<!-- 								<div data-aos="fade-up" data-aos-delay="100"> -->
-							<!-- 									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get -->
-							<!-- 										In Touch</a> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
-
-							<!-- 							<div class="slide"> -->
-							<!-- 								<h1 class="text-uppercase" data-aos="fade-up">Savings -->
-							<!-- 									Accounts</h1> -->
-							<!-- 								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem -->
-							<!-- 									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae -->
-							<!-- 									minima delectus accusamus accusantium deleniti libero excepturi -->
-							<!-- 									porro illo.</p> -->
-							<!-- 								<div data-aos="fade-up" data-aos-delay="100"> -->
-							<!-- 									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get -->
-							<!-- 										In Touch</a> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 
 						</div>
 					</div>
@@ -182,7 +157,6 @@ body {
 						</p>
 					</div>
 				</div>
-
 				<div class="row">
 
 
@@ -190,7 +164,7 @@ body {
 						data-aos-delay="">
 						<div class="team-member a">
 							<c:if test="${not empty member }">
-								<form action="../trans/trans.do" method="post">
+								<form action="../trans/MyAccountList.do" method="post">
 									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="image" src="images/list.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
@@ -262,6 +236,7 @@ body {
 						<div class="team-member a">
 							<c:if test="${not empty member }">
 								<form action="../mypage/mypage.do" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="image" src="images/mypage.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"

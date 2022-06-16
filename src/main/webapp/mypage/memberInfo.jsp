@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>개인정보관리</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+</script>
 <style type="text/css">
 html {
 	position: relative;
@@ -192,56 +194,50 @@ button:hover {
 </head>
 <body>
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
+	<%String memberemail = request.getParameter("memberemail");
+		System.out.println(memberemail);%>
+	<div style="margin-bottom: 30px;">
+		<div class="sendDiv align sendForm" style="margin-top: 10%;">
+			<label>성명</label> <label class="form-accSend">${memberinfo.name}</label>
+			<input class="form-control" type="hidden" name="name"
+				value="${memberinfo.name}">
+		</div>
+		<div class="sendDiv align sendForm">
+			<label class="">아이디</label> <label class="form-accSend">${memberinfo.id}</label>
+			<input class="form-control" type="hidden" name="id"
+				value="${memberinfo.id}">
+		</div>
+		<div class="sendDiv align sendForm">
+			<label class="">이메일</label> <label class="form-accSend">${memberinfo.email}</label>
+			<input class="form-control" type="hidden" name="email"
+				value="${memberinfo.email}">
+			<button onclick="showPopup1()">이메일변경</button>
+		</div>
+		<div class="sendDiv align sendForm">
+			<label class="">주소</label> <label class="form-accSend">${memberinfo.address}</label>
+			<input class="form-control" type="hidden" name="address"
+				value="${memberinfo.address}">
+		</div>
+		<div class="sendDiv align sendForm">
+			<label class="">전화번호</label> <label class="form-accSend">${memberinfo.phoneNum}</label>
+			<input class="form-control" type="hidden" name="phoneNum"
+				value="${memberinfo.phoneNum}">
+			<button onclick="showPopup2()">전화번호변경</button>
+		</div>
+		<div class="sendDiv align sendForm"
+			style="margin-bottom: 10%; margin: auto; display: block;">
 
-	<div class="sendDiv align sendForm" style="margin-top: 10%;">
-		<label>성명</label> <label class="form-accSend">${memberinfo.name}</label>
-		<input class="form-control" type="hidden" name="name"
-			value="${memberinfo.name}">
-	</div>
-	<div class="sendDiv align sendForm">
-		<label class="">아이디</label> <label class="form-accSend">${memberinfo.id}</label>
-		<input class="form-control" type="hidden" name="id"
-			value="${memberinfo.id}">
-	</div>
-	<div class="sendDiv align sendForm">
-		<label class="">이메일</label> <label class="form-accSend">${memberinfo.email}</label>
-		<input class="form-control" type="hidden" name="email"
-			value="${memberinfo.email}">
-		<button onclick="showPopup1()">이메일변경</button>
-	</div>
-	<div class="sendDiv align sendForm">
-		<label class="">주소</label> <label class="form-accSend">${memberinfo.address}</label>
-		<input class="form-control" type="hidden" name="address"
-			value="${memberinfo.address}">
-	</div>
-	<div class="sendDiv align sendForm">
-		<label class="">전화번호</label> <label class="form-accSend">${memberinfo.phoneNum}</label>
-		<input class="form-control" type="hidden" name="phoneNum"
-			value="${memberinfo.phoneNum}">
-		<button onclick="showPopup2()">전화번호변경</button>
-	</div>
-	<div class="sendDiv align sendForm" style="margin-bottom: 10%;">
+			<input class="form-control" type="hidden" name="password"
+				value="${memberinfo.password}">
+			<button onclick="showPopup3()">비밀번호변경</button>
+			<input type="button" class="deleteBtn" data-memberid="${memberinfo.member_id}" value="탈퇴하기">
+		</div>
 
-		<input class="form-control" type="hidden" name="password"
-			value="${memberinfo.password}">
-		<button onclick="showPopup3()">비밀번호변경</button>
-	</div>
-	<div class="sendDiv align sendForm" style="margin-bottom: 10%;">
-
-		<input class="form-control" type="hidden" name="password"
-			value="${memberinfo.password}">
-		<button onclick="showPopup3()">회원탈퇴하기</button>
 	</div>
 
-	<!-- 		<input class="btn btn-primary" type="submit" value="수정하기"> <input -->
-	<!-- 			class="btn btn-danger" type="reset" value="취소하기"> -->
-
-	<!-- 	<button onclick="showPopup1()">이메일변경</button> -->
-	<!-- 	<button onclick="showPopup2()">전화번호변경</button> -->
-	<!-- 	<button onclick="showPopup3()">비밀번호변경</button> -->
 	<div id="popupEmail" class="hide">
 		<div class="content">
-			<p>
+
 			<form action="memberInfoUpdate.do" method="post">
 				<div class="sendDiv align">
 					<label class="">이메일</label> <input type="hidden" name="memberid"
@@ -261,13 +257,13 @@ button:hover {
 						onClick="javascript:closePopupEmail();">
 				</div>
 			</form>
-			</p>
+
 
 		</div>
 	</div>
 	<div id="popupPhone" class="hide">
 		<div class="content">
-			<p>
+
 			<form action="memberInfoUpdate.do" method="post">
 				<div class="sendDiv align">
 					<label class="">전화번호</label> <input type="hidden" name="memberid"
@@ -290,29 +286,48 @@ button:hover {
 			</p>
 		</div>
 	</div>
+
 	<div id="popupPW" class="hide">
 		<div class="content">
-			<p>
-			<form action="memberInfoUpdate.do" method="post">
+
+			
 				<div class="sendDiv align">
-					<label class="">비밀번호</label> <input type="hidden" name="memberid"
-						value="${memberinfo.member_id}"> <input type="hidden"
-						name="address" value="${memberinfo.address}"> <input
-						type="hidden" name=dropout_ox value="${memberinfo.dropout_ox}">
-					<input type="hidden" name="id" value="${memberinfo.id}"> <input
-						type="hidden" name="name" value="${memberinfo.name}"> <input
-						type="hidden" name="phonenum" value="${memberinfo.phoneNum}">
-					<input type="hidden" name="email" value="${memberinfo.email}">
-					<input type="hidden" name="subscri_ox"
-						value="${memberinfo.subscri_ox}"> <input
-						class="form-accSend popwidth" type="text" name="password"
-						value="${memberinfo.password}"> <input
-						class="btn btn-primary" type="submit" value="비밀번호 변경"> <input
-						type="button" value="닫기" class="button"
-						onClick="javascript:closePopupPW();">
+					<input   type="hidden" name="subscri_ox" value="${memberinfo.subscri_ox}"> 새 비밀번호
+						<input class="form-accSend" type="text" name="password1" id="password1"><br> 새 비밀번호 확인
+						<input  class="form-accSend" type="text" name="password2" id="password2"><br>
+					<input class="btn btn-primary" type="button" id="change_btn" value="비밀번호 변경"><br>
+					<script>
+						$("#change_btn")
+								.on(
+										"click",
+										function() {
+											
+											var email = "<%=memberemail%>"
+											
+											var password1 = $("#password1")
+													.val();
+											var password2 = $("#password2")
+													.val();
+											if (password1.length < 1
+													&& password2.length < 1) {
+												alert("패드워드를 입력해주세요!");
+												//alert(email);
+												return false;
+											}
+											if ($("#password1").val() != $(
+													"#password2").val()) {
+												alert("비밀번호 확인 실패.");
+												return false;
+											}
+											location.href = "../login/pwChange.do?password="
+													+ password1+"&email="+email;
+										});
+					</script>
+					<input
+						type="button" value="닫기" onClick="javascript:closePopupPW();">
 				</div>
-			</form>
-			</p>
+			
+
 		</div>
 	</div>
 	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
@@ -320,6 +335,9 @@ button:hover {
 
 </body>
 <script type="text/javascript">
+<%
+session.setAttribute("email", memberemail);
+%>
 	function showPopup1() {
 		const popup = document.querySelector('#popupEmail');
 
@@ -348,5 +366,14 @@ button:hover {
 		const popup = document.querySelector('#popupPW');
 		popup.classList.add('hide');
 	}
+	$(function() {
+		$(".deleteBtn").click(function() {
+			var data_memberid = $(this).attr("data-memberid");
+			if (confirm("탈퇴 하시겠습니까?")) {
+				location.href = "memberDelete.do?data_memberid=" + data_memberid;
+			}
+		});
+
+	});
 </script>
 </html>

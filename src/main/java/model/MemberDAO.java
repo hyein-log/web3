@@ -23,7 +23,7 @@ public class MemberDAO {
 	static final String SELECT_ALL_EMAIL = "select email from member where email=?";
 	static final String SELECT_MEMBER_BY_MEMBERID = "select * from member where member_id=?";
 	static final String UPDATE_MEMBER_INFO = "UPDATE MEMBER SET EMAIL = ?, phonenum =?, password =? WHERE MEMBER_ID =?";
-	
+	static final String DELETE_MEMBER = "DELETE FROM MEMBER WHERE MEMBER_ID =?";
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
@@ -284,5 +284,20 @@ public class MemberDAO {
 			DBUtil.dbClose(rs, st, conn);
 		}
 		return result;
+	}
+	public int DELETE_MEMBER(int  memberid) {
+		int result = 0;
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(DELETE_MEMBER);
+			st.setInt(1, memberid);	//외래키
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return result;
+
 	}
 }

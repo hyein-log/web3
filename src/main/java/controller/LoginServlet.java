@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		MemberService service = new MemberService();
 		MemberVO member = service.selectById(id, pass);
 		HttpSession session = request.getSession();
-		
+		System.out.println(member);
 //		
 //		if (session.isNew()){
 //			if(id != null){
@@ -74,6 +74,7 @@ public class LoginServlet extends HttpServlet {
 					path = request.getContextPath();
 					response.sendRedirect("../finances-master/main.jsp");
 				}
+
 			}
 			//--------------------------------------
 			//response.sendRedirect(path);

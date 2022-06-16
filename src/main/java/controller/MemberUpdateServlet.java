@@ -23,18 +23,14 @@ public class MemberUpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		 request.setCharacterEncoding("utf8");
+		   response.setCharacterEncoding("utf8");
 		PrintWriter writer = response.getWriter();
 		MemberVO member = makeMember(request);
 		MemberService service = new MemberService();
 		int result = service.update_member_info(member);
-		if (result > 0) {
-			writer.println("<script>alert('개인정보가 변경되었습니다.');</script>");
-			response.setHeader("refresh", "0;url=mypage.do");
-			
-		} else {
-			writer.println("<script>alert('개인정보가 변경되지 않았습니다.\n다시 시도해주세요');</script>");
-		}
-		RequestDispatcher rd = request.getRequestDispatcher("memberInfo.jsp");
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("result.jsp");
 		rd.forward(request, response);
 	}
 

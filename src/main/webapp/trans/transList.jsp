@@ -1,3 +1,5 @@
+<%@page import="dto.PagingVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="dto.AcclistVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -200,6 +202,7 @@ margin: 10px;
 }
 </style>
 </head>
+<body>
 
 <jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 <div class="d" style="font-size: 40px; font-family: 'Nanum Gothic', sans-serif;">
@@ -222,8 +225,8 @@ margin: 10px;
 		</ul>
 		</div>
 		<form method="post" action="transIn.do">
-			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
-			<input type="hidden" name="kind" value='all'><br> 
+			<input type="hidden" name="accNum" value="<%=request.getAttribute("accNum") %>"><br>
+			<input type="hidden" name="kind" value='all'><br> 			
 			<input type="submit" value="전체내역 조회" class="btn btn-outline-primary d buttonWH">
 		</form>
 	</div>
@@ -240,7 +243,7 @@ margin: 10px;
 		</ul>
 		</div>
 		<form method="post" action="transIn.do">
-			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="accNum" value="<%=request.getAttribute("accNum") %>"><br>
 			<input type="hidden" name="kind" value='출금'><br> 
 			<input type="submit" value="출금내역 조회" class="btn btn-outline-primary d buttonWH">
 		</form>
@@ -257,7 +260,7 @@ margin: 10px;
 		</ul>
 		</div>
 		<form method="post" action="transIn.do">
-			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="accNum" value="<%=request.getAttribute("accNum") %>"><br>
 			<input type="hidden" name="kind" value='입금'><br> 
 			<input type="submit" value="입금내역 조회" class="btn btn-outline-primary d buttonWH">
 		</form>
