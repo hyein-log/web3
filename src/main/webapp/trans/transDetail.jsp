@@ -28,6 +28,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style type="text/css">
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
 .sendForm {
 	width: 30%;
 	margin: auto;
@@ -62,16 +70,6 @@
 .sendbtnDiv {
 	text-align: center;
 }
-/* table { */
-/*   border-collapse: collapse; */
-/*   width: 100%; */
-/* } */
-
-/* th, td { */
-/*   padding: 8px; */
-/*   text-align: left; */
-/*   border-bottom: 1px solid #ddd; */
-/* } */
 label {
 	color: #000;
 	margin-bottom: 0.5rem;
@@ -92,9 +90,11 @@ label {
 }
 
 .o {
-	margin-top: 8rem;
+	margin: 5rem 0;
 }
-
+.n {
+	margin: 8rem 0;
+}
 .d {
 	text-align: center;
 	margin-top: 4rem;
@@ -234,6 +234,10 @@ label {
 	padding: 0;
 	margin: 0;
 }
+#table1 {
+	width: 90%;
+	margin: auto;
+}
 </style>
 
 
@@ -257,7 +261,6 @@ label {
 	<div class="d" style="font-size: 40px;">
 		<div class="o">거래내역</div>
 	</div>
-	<div class="o"></div>
 	<c:set var="path" value="${pageContext.request.contextPath }" />
 
 	<c:if test="${not empty alist }">
@@ -444,7 +447,7 @@ label {
 	<div class="o"></div>
 
 
-	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+	<jsp:include page="../finances-master/footer/Mainfooter.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 	$(function() {

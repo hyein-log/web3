@@ -10,29 +10,35 @@
 <meta charset="UTF-8">
 <title>개인정보관리</title>
 <style type="text/css">
-.mg_8_center{
-margin-top: 8rem;
-text-align: center;
-font-size: 40px;
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
 }
-.center{
-text-align: center;
-margin-top: 4rem;
+
+body {
+	min-height: 100%;
 }
-.bold{
-font-weight: 400;
-font-size: 30px;
+
+.mg_8_center {
+	margin-top: 6rem;
+	text-align: center;
+	font-size: 40px;
 }
-.mg{
-margin-top: 4rem;
+
+.center {
+	text-align: center;
+	margin-top: 4rem;
 }
-#wrap{
-width: 1500px;
-margin: 0 auto;
-overflow: hidden;
-padding-top: 50px;
-padding-bottom: 50px;
+
+#wrap {
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	padding-top: 1%;
+	padding-bottom: 8%;
 }
+
 .a {
 	transition: all 0.2s linear;
 	border-radius: 20px 20px;
@@ -45,74 +51,82 @@ padding-bottom: 50px;
 .visual {
 	/* 마우스 커서를 포인터 모양으로 변경 */
 	cursor: pointer;
+	display: inline-block;
 }
-div> article{
- float: left;
- margin-left: 10px;
- margin-bottom: block;
+
+div>article {
+	float: left;
+	margin-left: 10px;
+	margin-bottom: block;
 }
-img{
-  display: inline-block;
-    overflow: hidden;
-    object-fit: cover;
-    max-height:100%;
-    max-width:100%;
+.mb-4 {
+	width:350px;
 }
-	
-.container {
-	display: grid;
+img {
+	display: inline-block;
+	overflow: hidden;
+	object-fit: cover;
+	max-height: 100%;
+	max-width: 100%;
+	border-radius: 20px 20px;
+	box-shadow: 5px 5px 10px grey;
+}
+
+ .container {
+	/* display: grid;
 	grid-template-columns: 600px 600px;
 	grid-template-rows: 600px 600px;
 	column-gap: 30px;
 	row-gap: 30px;
 	align-content: center;
-	justify-content: center;
+	justify-content: center; */
+}  
+.leftmargin1 {
+	margin-left: 18%;
 }
-
+.leftmargin2 {
+	margin-left: 5%;
+}
 </style>
 </head>
 <body>
 
-<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-	<p class="mg_8_center">마이페이지</p>
-	<hr>
+	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
+	<p class="mg_8_center">My Page</p>
 	<div id="wrap">
-	<div class="container">
-	<div style="background-color: #fbfbfd; height: 600px;" class="a visual">내 계좌 관리
-	<img style="height:100%;
-    width:100%;"  src="financial.png "onclick="location.href='../account/AccountList.do'">
+		<div class="container">
+			<!--계좌관리 -->
+			<div style="background-color: #fbfbfd;" class="a visual leftmargin1">
+				<img src="accManage.png"
+					onclick="location.href='../account/AccountList.do'" class="mb-4 ">
+			</div>
+			<!-- 개인정보관리 -->
+			<div style="background-color: #fbfbfd;" class="a visual leftmargin2">
+					<%
+					System.out.println("memberinfo : " + session.getAttribute("memberinfo"));
+					%>
+					<form action="memberInfo.jsp" method="post">
+						<input type="hidden" name="memberInfo" value="${memberinfo}"><br>
+						<input type="image" src="infoManage.png"
+							style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+							class="img-fluid mb-4 bg-white visual" alt="개인정보관리">
+					</form>
+			</div>
+			
+			<!-- 1:1 문의 -->
+			<!-- <div style="background-color: #fbfbfd;" class="a visual">
+				<div>
+					<p class="center bold">1:1 문의</p>
+				</div>
+				<div>
+					<img src="financial.png "
+						onclick="location.href='../myqna/myqnalist.do'">
+				</div>
+			</div> -->
+		</div>
 	</div>
-	<div style="background-color: #fbfbfd;" class="a visual">
-	<div><p class="center bold">알림</p></div>
-	<div ><img src="financial.png " onclick="location.href='alarmList.jsp'"></div>
-	</div>
-	<div style="background-color: #fbfbfd;" class="a visual">
-	<div><p class="center bold">1:1 문의</p></div>
-	<div ><img src="financial.png "onclick="location.href='../myqna/myqnalist.do'"></div>
-	</div>
-	<div style="background-color: #fbfbfd;" class="a visual">
-	<div><p class="center bold">개인정보관리</p></div>
-	<div>
-	<%
-	System.out.println("memberinfo : " + session.getAttribute("memberinfo"));
-	System.out.println("email : " + session.getAttribute("memberemail"));
-	
-	%>
-	<form action="memberInfo.jsp" method="post">
-								<input type="hidden"name="memberInfo" value="${memberinfo}" ><br>
-								<input type="hidden"name="memberemail" value="${memberemail}" ><br>
-								
-								<input type="image" src="financial.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="개인정보관리">
-							</form>
-	</div>
-	</div>
-	
-	</div>
-	</div>
-	
-	
+
+
 	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 </body>
 </html>

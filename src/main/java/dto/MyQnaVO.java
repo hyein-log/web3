@@ -18,6 +18,13 @@ public class MyQnaVO {
 	}
 	
 
+	public MyQnaVO(int qa_id, String qa_answer) {
+		super();
+		this.qa_id = qa_id;
+		this.qa_answer = qa_answer;
+	}
+
+
 	public MyQnaVO(int member_id, String qa_title, String qa_content) {
 		super();
 		this.member_id = member_id;

@@ -27,16 +27,23 @@ public class accountDeleteServlet extends HttpServlet {
 		String accNum = request.getParameter("accNum");
 
 		AccountService service = new AccountService();
-		int result = service.deleteAcc(accNum);
-
+		int money = service.selectBal(accNum);
 		PrintWriter writer = response.getWriter();
-		// 삭제 시 팝업 띄우고 내 계좌 리스트로 이동
-		if (result > 0) {
-			response.setHeader("refresh", "0;url=AccountList.do");
-			writer.println("<script>alert('삭제되었습니다.');</script>");
+		if(money == 0) {
+			int result = service.deleteAcc(accNum);
+			// 삭제 시 팝업 띄우고 내 계좌 리스트로 이동
+			if (result > 0) {
+				writer.println("<script>alert('삭제되었습니다.');</script>");
+				response.setHeader("refresh", "0;url=AccountList.do");
+			} else {
+				writer.println("<script>alert('다시 시도해주세요.');</script>");
+				response.setHeader("refresh", "0;url=AccountList.do");
+			}
 		} else {
-			writer.println("<script>alert('다시 시도해주세요.');</script>");
+			writer.println("<script>alert('잔액이 남은 계좌는 해지할 수 없습니다!');</script>");
+			response.setHeader("refresh", "0;url=AccountList.do");
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

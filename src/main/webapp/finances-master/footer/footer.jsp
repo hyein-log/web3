@@ -11,22 +11,22 @@
 html, body {
 	width: 100%;
 	margin: 0 auto;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Nanum Gothic';
 	margin: 0 auto;
 }
 
 footer {
 	width: 100%;
+	height:45px;
 	text-align: center;
 	font-size: 0.8em;
-	height: 45px;
 	background-color: #343a40;
-	padding: 0.2em 0;
 	color: #f3f3ed;
 	opacity: 85%;
 	position: absolute;
 	left: 0;
 	bottom: 0;
+	font-family: 'Nanum Gothic';
 }
 </style>
 </head>

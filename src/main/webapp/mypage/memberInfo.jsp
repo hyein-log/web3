@@ -11,6 +11,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
 </script>
 <style type="text/css">
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
+
+body {
+	min-height: 100%;
+}
+
 .sendForm {
 	width: 30%;
 	margin: auto;
@@ -19,16 +29,17 @@
 
 .form-accSend {
 	width: 100%;
-	height: 30px;
+	height: 25px;
 	display: block;
 	border-radius: 30px;
 	border: 1px solid #ced4da;
-	padding: 0.375rem 0.75rem;
+	padding: 0.45rem 0.75rem;
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #495057;
 	background-color: #fff;
+	margin-top: 5px;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -49,17 +60,23 @@ label {
 	font-size: 16px;
 }
 
-.btnSubmit {
-	background-color: #007bff;
-	border: none;
-	color: #fff;
+button {
+	background-color: #fff;
+	border: 1px solid #007bff;
+	color: #007bff;
 	font-size: 16px;
 	border-radius: 30px;
-	color: #fff;
-	font-size: 16px;
+	color: #007bff;
+	font-size: 13px;
 	border-radius: 30px;
-	padding: 10px 30px;
+	padding: 5px 10px;
 	font-weight: 400;
+	height: 30px;
+}
+
+button:hover {
+	color: #fff;
+	background-color: #007bff;
 }
 
 #popupEmail {
@@ -86,7 +103,7 @@ label {
 	background: #fff;
 	border-radius: 5px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
-	height: 200px;
+	height: 160px;
 	width: 350px;
 }
 
@@ -135,11 +152,40 @@ label {
 	display: none;
 }
 
+.popwidth {
+	width: 92%;
+	height: 22px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 #popupPW .content {
 	padding: 20px;
 	background: #fff;
 	border-radius: 5px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+
+.content {
+	width: 25%;
+}
+
+.btn-primary, .button {
+	background-color: #fff;
+	border: 1px solid #007bff;
+	color: #007bff;
+	font-size: 16px;
+	border-radius: 30px;
+	color: #007bff;
+	font-size: 13px;
+	border-radius: 30px;
+	padding: 5px 10px;
+	font-weight: 400;
+	height: 30px;
+}
+.button:hover, .btn-primary:hover {
+	color :#fff;
+	background-color: #007bff;
 }
 </style>
 <script type="text/javascript">
@@ -204,10 +250,11 @@ label {
 					<input type="hidden" name="phonenum" value="${memberinfo.phoneNum}">
 					<input type="hidden" name="subscri_ox"
 						value="${memberinfo.subscri_ox}"> <input
-						class="form-accSend" type="text" name="email"
+						class="form-accSend popwidth" type="text" name="email"
 						value="${memberinfo.email}"> <input
 						class="btn btn-primary" type="submit" value="이메일 변경"> <input
-						type="button" value="닫기" onClick="javascript:closePopupEmail();">
+						type="button" value="닫기" class="button"
+						onClick="javascript:closePopupEmail();">
 				</div>
 			</form>
 
@@ -228,13 +275,15 @@ label {
 						type="hidden" name="password" value="${memberinfo.password}">
 					<input type="hidden" name="email" value="${memberinfo.email}">
 					<input type="hidden" name="subscri_ox"
-						value="${memberinfo.subscri_ox}"> 
-						<input class="form-accSend" type="text" name="phonenum" value="${memberinfo.phoneNum}"> 
-						<input class="btn btn-primary" type="submit" value="전화번호 변경"> <input
-						type="button" value="닫기" onClick="javascript:closePopupPhone();">
+						value="${memberinfo.subscri_ox}"> <input
+						class="form-accSend popwidth" type="text" name="phonenum"
+						value="${memberinfo.phoneNum}"> <input
+						class="btn btn-primary" type="submit" value="전화번호 변경"> <input
+						type="button" value="닫기" class="button"
+						onClick="javascript:closePopupPhone();">
 				</div>
 			</form>
-
+			</p>
 		</div>
 	</div>
 

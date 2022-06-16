@@ -27,12 +27,14 @@ public class MyQnaDetailServlet extends HttpServlet {
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		int memId = member.getMember_id();
 		
+		int admin = Integer.parseInt(request.getParameter("admin"));
 		int qaid = Integer.parseInt(request.getParameter("qaid"));
 		MyQnaService service = new MyQnaService();
 		
 		MyQnaVO vo = service.selectQaId(qaid);
 		System.out.println(vo);
 		request.setAttribute("myqna", vo);
+		request.setAttribute("admin", admin);
 		
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("myqnaDetail.jsp");

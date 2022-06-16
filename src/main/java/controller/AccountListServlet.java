@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.lang.reflect.Member;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.AccountVO;
+import dto.MemberVO;
 import model.AccountService;
 
 /**
@@ -28,11 +28,10 @@ public class AccountListServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//Member member = (Member)session.getAttribute("member");
-		int memId =Integer.parseInt(request.getParameter("memberid"));
-		AccountService service = new AccountService();
+		MemberVO member = (MemberVO)session.getAttribute("member");
 		
-		List<AccountVO> acc = service.selectById(memId);
+		AccountService service = new AccountService();
+		List<AccountVO> acc = service.selectById(member.getMember_id());
 		request.setAttribute("accLists", acc);
 		
 		RequestDispatcher rd;

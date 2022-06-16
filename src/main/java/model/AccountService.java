@@ -17,6 +17,10 @@ public class AccountService {
 		return dao.selectById(memId);
 	}
 	
+	public int selectPw(int accid) {
+		return dao.selectPw(accid);
+	}
+	
 	public String accInsert(AccountVO acc) {
 		return dao.accInsert(acc);
 	}
@@ -39,5 +43,8 @@ public class AccountService {
 	}
 	public int selectMemBal(int memberid) {
 		return dao.selectMemBal(memberid);
+  }
+  public int selectBal(String accNum) {
+		return dao.selectBal(accNum);
 	}
 }

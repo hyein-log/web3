@@ -10,16 +10,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 <style type="text/css">
-
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
 .sendForm{
     width: 30%;
     margin: auto;
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5rem;
 }
-
 .form-accSend {
     width: 90%;
     height: 30px;
@@ -33,6 +38,7 @@
     color: #495057;
     background-color: #fff;
     margin-top: 3%;
+    margin-right: 0;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -88,29 +94,53 @@ label{
 	text-decoration: none;
 	color: #007bff;
 	font-weight: bold;
-	padding-left: 250px;
+	float:right;
+	margin-right: 20px;
 }
 
 .idLink{
 	text-decoration: none;
 	color: #007bff;
 	font-weight: bold;
-	padding-left: 310px;
+	float:right;
+	margin-right: 20px;
 }
 
 </style>
 </head>
 
-<body>
-<h1>KO3 BANK</h1>
-<form name="frmLogin" method="post" encType="UTF-8" action="login.do">
-	  	<input type="text" name="userid"><br>
-       <input type="password" name="userpass"><br>
-       <input type="submit" value="로그인">
-       <div><a href=memberJoin.jsp>회원가입</a></div>
-       <div><a href="idSearch.jsp">아이디 찾기</a></div>
-       <div><a href="pwSearch.jsp">비밀번호 찾기</a></div>
- </form>
+
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
+
+<form action="login.do" class="sendForm" name="frmLogin" method="post" encType="UTF-8">
+<h2 id="signIn">Sign in to COS.</h2>
+<br><br>
+        <div class="sendDiv align">
+            <label class="accNum">ID</label>
+            <span><a href="../login/idSearch.jsp" class="idLink">Forget id?</a></span>
+            <input type="text" class="form-accSend" name="userid">
+        </div>
+        <div class="sendDiv align">
+            <label class="accNum">Pass Word</label>
+            <span><a href="../login/pwSearch.jsp" class="passLink"> Forget password?</a></span>
+            <input type="password" class="form-accSend" name="userpass">
+        </div>
+        <div class="sendbtnDiv">
+            <button type="submit" class="btnSubmit" value="Sign in">Sign in</button>
+        </div>
+        <br>
+        <div class="signJoin">
+              <span>New to KO3? <a href="../login/memberJoin.jsp" class="joinLink"> Create an account.</a></span>
+  		</div>
+    </form>
+ 
+ 
+
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+
+  
+
+
 
 </body>
 

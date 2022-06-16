@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta name="viewport"
+content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="accStyle.css" />
 <script>
 
 $(function() {
@@ -34,14 +36,16 @@ $(function() {
 </script>
 </head>
 <body>
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<h2>나의 계좌 리스트</h2>
 	<c:set var="path" value="${pageContext.request.contextPath }"/>
-	<table>
-		<tr>
-			<td>생성일자</td>
-			<td>통장종류</td>
-			<td>계좌번호</td>
-			<td>잔액</td>
+	<table class="sendTable">
+		<tr class="repeat">
+			<th>생성일자</th>
+			<th>통장종류</th>
+			<th>계좌번호</th>
+			<th>잔액</th>
+			<th></th>
 		</tr>
 		<c:forEach items="${accListType0 }" var="acc">
 			<tr>
@@ -52,11 +56,12 @@ $(function() {
 					<c:if test="${acc. accountType==2}">적금 통장</c:if>
 				</td>
 				<td>${acc. acc_number}</td>
-				<td>${acc. balance}</td>
+				<td>${acc. balance}원</td>
 				<td><button class="btnSel" data-accNum="${acc.acc_number}">선택하기</button></td>
 				
 			</tr>
 		</c:forEach>
 	</table>
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 </body>
 </html>

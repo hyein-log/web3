@@ -33,10 +33,9 @@ html {
     min-height: 100%;
     margin: 0;
 }
-
 body {
     min-height: 100%;
-} 
+}
 .sendForm {
 	width: 30%;
 	margin: auto;
@@ -92,12 +91,12 @@ label {
 }
 
 .o {
-	margin-top: 8rem;
+	margin-top: 7rem;
 }
 
 .d {
 	text-align: center;
-	margin-top: 4rem;
+	margin-top: 2.1rem;
 }
 
 .parent {
@@ -105,7 +104,7 @@ label {
 	margin: 10px auto;
 	display: flex;
 	height: 50%;
-	margin-top: 4rem;
+	margin-top: 2rem;
 }
 
 .first {
@@ -205,9 +204,9 @@ margin: 10px;
 </head>
 <body>
 
-<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
+<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 <div class="d" style="font-size: 40px; font-family: 'Nanum Gothic', sans-serif;">
-	<div class="o">거래내역</div>
+	<div>거래내역</div>
 </div>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
@@ -272,7 +271,7 @@ margin: 10px;
 
 
 <div class="o"></div>
-<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+<jsp:include page="../finances-master/footer/Mainfooter.jsp"></jsp:include>
 
 
 </body>
