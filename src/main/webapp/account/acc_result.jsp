@@ -81,12 +81,12 @@
 	<h3 class="h3_2">계좌정보</h3>
 	<hr >
 	<table>
-<%-- 		 <tr>
+		<%--  <tr>
 			<td>계좌 종류 </td>
-			<td style="color: gray;">${accountType==0 }</td>
-			<td style="color: gray;">${accountType==1 }</td>
-			<td style="color: gray;">${accountType==2 }</td>
-		</tr> --%> 
+			<c:if test="${accountType==0}">입출금 통장</c:if>
+			<c:if test="${accountType==1}">예금 통장</c:if>
+			<c:if test="${accountType==2}">적금 통장</c:if>
+		</tr>  --%>
 		<tr>
 			<td>계좌 번호 </td>
 			<td style="color: gray;">${acc }</td>

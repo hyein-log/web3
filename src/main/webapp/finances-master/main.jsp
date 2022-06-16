@@ -273,21 +273,12 @@ body {
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
 						<div class="team-member a">
-							<c:if test="${not empty member }">
-								<form action="../notice/noticeList.jsp" method="post">
-									<input type="hidden" name="memberid" value="<%=id%>"><br>
-									<input type="image" src="images/notice.png"
-										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
-								</form>
-							</c:if>
-							<c:if test="${empty member }">
-								<input type="image" src="images/notice.png"
-									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
-									onclick="empty();">
-							</c:if>
-
+						<form action="../notice/NoticeUserList.do">
+								<input type="hidden"name="memberid" value="<%=id%>" ><br>
+								<input type="image" src="images/notice.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+								class="img-fluid mb-4 bg-white visual"
+									alt="제출버튼">
+							</form>
 						</div>
 					</div>
 

@@ -58,7 +58,7 @@ public class AccountDAO {
 	
 
 
-	//회원의 계좌 조회
+	
 	public List<AccountVO> selectById(int memId) {
 		List<AccountVO> list = new ArrayList<>();
 		AccountVO account = null;
@@ -92,6 +92,7 @@ public class AccountDAO {
 		acc.setBalance(rs.getInt("balance"));
 		acc.setMember_id(rs.getInt("member_id"));
 		acc.setMakedate(rs.getDate("makedate"));
+		acc.setLimit_ox(rs.getString("limit_ox").charAt(0));
 		
 		return acc;
 	

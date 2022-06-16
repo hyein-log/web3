@@ -30,6 +30,7 @@ public class MyQnaListServlet extends HttpServlet {
 		int memId = member.getMember_id();
 		RequestDispatcher rd;
 		MyQnaService service = new MyQnaService();
+
 		
 		if(memId == 1) {
 			List<MyQnaVO> mlist = service.selectAll();

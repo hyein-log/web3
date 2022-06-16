@@ -14,7 +14,7 @@ import util.DBUtil;
 public class MyQnaDAO {
 
 	static final String SELECT_MYQNA = "select * from QnA order by 1 desc";
-	static final String SELECT_BYID = "SELECT * FROM QnA WHERE MEMBER_ID = ?";
+	static final String SELECT_BYID = "SELECT * FROM QnA WHERE MEMBER_ID = ? order by 1 desc";
 	static final String SELECT_QAID = "select * from QnA where qa_id = ?";
 	static final String INSERT_MYQNA = "INSERT INTO QnA values(qna_seq.nextval, ?, ?, ?, null, sysdate, null)";
 	static final String UPDATE_MYQNA = "update QnA set qa_title = ?, qa_content=?, qa_date=sysdate where qa_id = ?";
@@ -48,7 +48,7 @@ public class MyQnaDAO {
 		return mlist;
 	}
 
-	//회원 목록 조회
+	//로그인한 회원 게시판만 보이게 
 	public List<MyQnaVO> selectById(int memId) {
 		List<MyQnaVO> list = new ArrayList<>();
 		MyQnaVO myqna = null;
