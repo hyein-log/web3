@@ -9,11 +9,13 @@
 <style type="text/css">
 .sendForm{
     width: 35%;
-    margin: auto;
-    font-family: "Open Sans";
+/*     margin: auto;
+ */   
+  font-family: "Open Sans";
     padding: 3%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 10%;
+    margin-left: 500px;
 }
 
 .form-accSend {
@@ -79,7 +81,7 @@ label{
 
 
 h2{
-	margin-left: 180px;
+	/* margin-left: 180px; */
 
 }
 
@@ -87,41 +89,35 @@ h2{
  	background-color: #fff;
     border: 1px solid #007bff;
     color: #007bff;
-    font-size: 16px;
-    border-radius: 10px;
     color: #007bff;
-    font-size: 16px;
-    border-radius: 10px;
+    font-size: 15px;
+    border-radius: 8px;
     padding: 10px 30px;
     font-weight: 400;
-    height: 45px;
+    height: 40px;
 }
 
 .btnCencel:hover , .btnSubmit:hover{
 	background-color: #007bff;
 	color: #fff;
-    font-size: 16px;
-    border-radius: 10px;
+    font-size: 15px;
+    border-radius: 8px;
     color: #fff;
-    font-size: 16px;
-    border-radius: 10px;
     padding: 10px 30px;
     font-weight: 400;
-    height: 46px;
+    height: 40px;
 }
 
 .btnSubmit {
 background-color: #fff;
     border: 1px solid #007bff;
     color: #007bff;
-    font-size: 16px;
-    border-radius: 10px;
-    color: #007bff;
-    font-size: 16px;
-    border-radius: 10px;
+    font-size: 15px;
+    border-radius: 8px;
     padding: 10px 30px;
     font-weight: 400;
-    height: 45px;
+    height: 40px;
+
 }
 
 .sendbtnDiv{
@@ -136,12 +132,16 @@ background-color: #fff;
 
 <form action="myqnaInsert.do" class="sendForm" method="get">
 	<h2>1:1 문의하기</h2>
+	<p style="font-size: 13px;">
+	· 문의글의 답변은 마이페이지 > 1:1문의내역에서 조회 가능합니다.<br>
+	<span style="color: #007bff;font-weight: bold;">· 서비스 운영시간 : 오전 9시 ~ 오후 6시 월 ~ 금 (토, 일, 공휴일 제외)</span>
+	</p>
 	<br>
-        <div class="title">
-          제목 : <pre><input type="text" class="form-accSend" name="title"> </pre>
+        <div class="title" style="color: black;font-weight: bold;">
+          제목  <pre><input type="text" class="form-accSend" name="title"> </pre>
         </div>
-        <div class="content">
-          내용 : <pre><textarea type="text" class="form-content" name="content"></textarea></pre>
+        <div class="content" style="color: black;font-weight: bold;">
+          내용  <pre><textarea class="form-content" name="content"></textarea></pre>
         </div>
       <div class="sendbtnDiv">
 			<input type="submit" class="btnSubmit" value="글쓰기" >

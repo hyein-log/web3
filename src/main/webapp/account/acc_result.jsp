@@ -31,7 +31,7 @@
 
 .sendForm{
     width: 30%;
-    margin-left: 740px;
+    margin-left: 650px;
     font-family: 'Nanum Gothic', sans-serif;
     /* padding: 3%; */
     margin-top: 10%;
@@ -41,7 +41,7 @@
 
 .sendForm2{
     width: 20%;
-    margin-left: 700px;
+    margin-left: 630px;
     font-family: 'Nanum Gothic', sans-serif;
   /*  padding: 3%;
      margin-top: 10%; */
@@ -61,7 +61,13 @@
     font-weight: 400;
     height: 46px;
     width: 300px;
-    margin-left: 30px;
+    margin-left: 5px;
+}
+
+.td2{
+	color: gray;
+	margin: auto;
+	text-align: right;
 }
 </style>
 </head>
@@ -88,16 +94,25 @@
 			<c:if test="${accountType==2}">적금 통장</c:if>
 		</tr>  --%>
 		<tr>
-			<td>계좌 번호 </td>
-			<td style="color: gray;">${acc }</td>
+			<td>계좌 번호</td>
+			<td style="color: gray;text-align: right;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			${acc }</td>
 		</tr>
 		<tr>
 			<td>계좌생성일</td>
-			<td style="color: gray;"><%=LocalDate.now()%> </td> 
+			<td style="color: gray;text-align: right;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<%=LocalDate.now()%> </td> 
 		</tr>
 		<tr>
 			<td>계좌 잔액</td>
-			<td style="color: gray;">0 원 </td>
+			<td style="color: gray;text-align: right;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			0 원 </td>
 		</tr>
 	
 	
