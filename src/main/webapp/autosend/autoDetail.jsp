@@ -32,15 +32,18 @@
 	$("#autoSelect").change(function() {
 		var type = $("#autoSelect option:selected").text();
 		if (type == "기타") {
-			$("#seltype").show();
-		} else {
-			$("#seltype").css('display', 'none');
-		}
-		
-		if(type == "공과금"){
-			$(".endDate").attr("disabled", true);
-		} else {
+			$("#seltype").attr('value', '');
+			$("#seltype").show(); 
 			$(".endDate").attr("disabled", false);
+		} else if(type=="정기적금"){
+			$("#seltype").attr('value', '정기적금');
+			$("#seltype").css('display', 'none');
+			$(".endDate").attr("disabled", false);
+		} else {
+			$("#seltype").attr('value', '공과금');
+			$("#seltype").css('display', 'none');
+			$(".endDate").attr("disabled", true);
+			
 		}
 	});
 </script>

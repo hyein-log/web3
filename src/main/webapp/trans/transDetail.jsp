@@ -26,6 +26,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style type="text/css">
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
 .sendForm {
 	width: 30%;
 	margin: auto;
@@ -90,9 +98,11 @@ label {
 }
 
 .o {
-	margin-top: 8rem;
+	margin: 5rem 0;
 }
-
+.n {
+	margin: 8rem 0;
+}
 .d {
 	text-align: center;
 	margin-top: 4rem;
@@ -232,17 +242,20 @@ label {
 	padding: 0;
 	margin: 0;
 }
+#table1 {
+	width: 90%;
+	margin: auto;
+}
 </style>
 
 
 
 </head>
 <body>
-	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
+	<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 	<div class="d" style="font-size: 40px;">
 		<div class="o">거래내역</div>
 	</div>
-	<div class="o"></div>
 	<c:set var="path" value="${pageContext.request.contextPath }" />
 
 	<c:if test="${not empty alist }">
@@ -318,7 +331,7 @@ label {
 		</script>
 	</c:if>
 
-	<div class="o"></div>
+	<div class="n"></div>
 
 	<!-- modal 영역 -->
 	<div class="modal-bg" onClick="javascript:popClose();"></div>
@@ -432,7 +445,7 @@ label {
 	<div class="o"></div>
 
 
-	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+	<jsp:include page="../finances-master/footer/Mainfooter.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 	$(function() {

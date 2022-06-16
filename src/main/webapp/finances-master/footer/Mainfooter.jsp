@@ -26,6 +26,7 @@ footer {
 	position: absolute;
 	left: 0;
 	bottom: 0;
+	padding: 1em 0;
 	font-family: 'Nanum Gothic';
 }
 </style>
