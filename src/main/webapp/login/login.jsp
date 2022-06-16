@@ -10,16 +10,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 <style type="text/css">
-
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
 .sendForm{
     width: 30%;
     margin: auto;
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5rem;
 }
-
 .form-accSend {
     width: 90%;
     height: 30px;
@@ -33,6 +38,7 @@
     color: #495057;
     background-color: #fff;
     margin-top: 3%;
+    margin-right: 0;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -88,14 +94,16 @@ label{
 	text-decoration: none;
 	color: #007bff;
 	font-weight: bold;
-	padding-left: 250px;
+	float:right;
+	margin-right: 20px;
 }
 
 .idLink{
 	text-decoration: none;
 	color: #007bff;
 	font-weight: bold;
-	padding-left: 310px;
+	float:right;
+	margin-right: 20px;
 }
 
 </style>

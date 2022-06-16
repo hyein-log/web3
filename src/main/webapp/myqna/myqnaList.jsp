@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>1:1 문의</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -147,7 +147,7 @@ th{
 		<c:forEach items="${myqnaDatas}" var="myqna">
 			<tr>
 				<td>${myqna.qa_id}</td>
-				<td><a href="myqnaDetail.do?qaid=${myqna.qa_id}">${myqna.qa_title}</a></td>
+				<td><a href="myqnaDetail.do?qaid=${myqna.qa_id}&admin=0">${myqna.qa_title}</a></td>
 				<td>${myqna.qa_date}</td>
 			</tr>
 		</c:forEach>
@@ -165,6 +165,8 @@ function hrefLink() {
 	location.href = link;
 }
 </script>
+
+
 
 
 </body>

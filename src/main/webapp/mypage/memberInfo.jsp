@@ -9,6 +9,16 @@
 <meta charset="UTF-8">
 <title>개인정보관리</title>
 <style type="text/css">
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
+
+body {
+	min-height: 100%;
+}
+
 .sendForm {
 	width: 30%;
 	margin: auto;
@@ -17,16 +27,17 @@
 
 .form-accSend {
 	width: 100%;
-	height: 30px;
+	height: 25px;
 	display: block;
 	border-radius: 30px;
 	border: 1px solid #ced4da;
-	padding: 0.375rem 0.75rem;
+	padding: 0.45rem 0.75rem;
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #495057;
 	background-color: #fff;
+	margin-top: 5px;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -47,17 +58,23 @@ label {
 	font-size: 16px;
 }
 
-.btnSubmit {
-	background-color: #007bff;
-	border: none;
-	color: #fff;
+button {
+	background-color: #fff;
+	border: 1px solid #007bff;
+	color: #007bff;
 	font-size: 16px;
 	border-radius: 30px;
-	color: #fff;
-	font-size: 16px;
+	color: #007bff;
+	font-size: 13px;
 	border-radius: 30px;
-	padding: 10px 30px;
+	padding: 5px 10px;
 	font-weight: 400;
+	height: 30px;
+}
+
+button:hover {
+	color: #fff;
+	background-color: #007bff;
 }
 
 #popupEmail {
@@ -84,7 +101,7 @@ label {
 	background: #fff;
 	border-radius: 5px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
-	height: 200px;
+	height: 160px;
 	width: 350px;
 }
 
@@ -133,11 +150,40 @@ label {
 	display: none;
 }
 
+.popwidth {
+	width: 92%;
+	height: 22px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 #popupPW .content {
 	padding: 20px;
 	background: #fff;
 	border-radius: 5px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+
+.content {
+	width: 25%;
+}
+
+.btn-primary, .button {
+	background-color: #fff;
+	border: 1px solid #007bff;
+	color: #007bff;
+	font-size: 16px;
+	border-radius: 30px;
+	color: #007bff;
+	font-size: 13px;
+	border-radius: 30px;
+	padding: 5px 10px;
+	font-weight: 400;
+	height: 30px;
+}
+.button:hover, .btn-primary:hover {
+	color :#fff;
+	background-color: #007bff;
 }
 </style>
 <script type="text/javascript">
@@ -157,60 +203,62 @@ label {
 		<input class="form-control" type="hidden" name="id"
 			value="${memberinfo.id}">
 	</div>
-		<div class="sendDiv align sendForm">
-			<label class="">이메일</label> <label class="form-accSend">${memberinfo.email}</label>
-			<input class="form-control" type="hidden" name="email"
-				value="${memberinfo.email}">
-			<button onclick="showPopup1()">이메일변경</button>
-		</div>
+	<div class="sendDiv align sendForm">
+		<label class="">이메일</label> <label class="form-accSend">${memberinfo.email}</label>
+		<input class="form-control" type="hidden" name="email"
+			value="${memberinfo.email}">
+		<button onclick="showPopup1()">이메일변경</button>
+	</div>
 	<div class="sendDiv align sendForm">
 		<label class="">주소</label> <label class="form-accSend">${memberinfo.address}</label>
 		<input class="form-control" type="hidden" name="address"
 			value="${memberinfo.address}">
 	</div>
-		<div class="sendDiv align sendForm">
-			<label class="">전화번호</label> <label class="form-accSend">${memberinfo.phoneNum}</label>
-			<input class="form-control" type="hidden" name="phoneNum"
-				value="${memberinfo.phoneNum}">
-			<button onclick="showPopup2()">전화번호변경</button>
-		</div>
-		<div class="sendDiv align sendForm" style="margin-bottom: 10%;">
+	<div class="sendDiv align sendForm">
+		<label class="">전화번호</label> <label class="form-accSend">${memberinfo.phoneNum}</label>
+		<input class="form-control" type="hidden" name="phoneNum"
+			value="${memberinfo.phoneNum}">
+		<button onclick="showPopup2()">전화번호변경</button>
+	</div>
+	<div class="sendDiv align sendForm" style="margin-bottom: 10%;">
 
-			<input class="form-control" type="hidden" name="password"
-				value="${memberinfo.password}">
-			<button onclick="showPopup3()">비밀번호변경</button>
-		</div>
-		<div class="sendDiv align sendForm" style="margin-bottom: 10%;">
+		<input class="form-control" type="hidden" name="password"
+			value="${memberinfo.password}">
+		<button onclick="showPopup3()">비밀번호변경</button>
+	</div>
+	<div class="sendDiv align sendForm" style="margin-bottom: 10%;">
 
-			<input class="form-control" type="hidden" name="password"
-				value="${memberinfo.password}">
-			<button onclick="showPopup3()">회원탈퇴하기</button>
-		</div>
+		<input class="form-control" type="hidden" name="password"
+			value="${memberinfo.password}">
+		<button onclick="showPopup3()">회원탈퇴하기</button>
+	</div>
 
-<!-- 		<input class="btn btn-primary" type="submit" value="수정하기"> <input -->
-<!-- 			class="btn btn-danger" type="reset" value="취소하기"> -->
+	<!-- 		<input class="btn btn-primary" type="submit" value="수정하기"> <input -->
+	<!-- 			class="btn btn-danger" type="reset" value="취소하기"> -->
 
-<!-- 	<button onclick="showPopup1()">이메일변경</button> -->
-<!-- 	<button onclick="showPopup2()">전화번호변경</button> -->
-<!-- 	<button onclick="showPopup3()">비밀번호변경</button> -->
+	<!-- 	<button onclick="showPopup1()">이메일변경</button> -->
+	<!-- 	<button onclick="showPopup2()">전화번호변경</button> -->
+	<!-- 	<button onclick="showPopup3()">비밀번호변경</button> -->
 	<div id="popupEmail" class="hide">
 		<div class="content">
 			<p>
 			<form action="memberInfoUpdate.do" method="post">
 				<div class="sendDiv align">
-					<label class="">이메일</label>
-					<input type="hidden"name="memberid" value="${memberinfo.member_id}" >
-					<input type="hidden"name="address" value="${memberinfo.address}" >
-					<input type="hidden"name=dropout_ox value="${memberinfo.dropout_ox}" >
-					<input type="hidden"name="id" value="${memberinfo.id}" >
-					<input type="hidden"name="name" value="${memberinfo.name}" >
-					<input type="hidden"name="password" value="${memberinfo.password}" >
-					<input type="hidden"name="phonenum" value="${memberinfo.phoneNum}" >
-					<input type="hidden"name="subscri_ox" value="${memberinfo.subscri_ox}" >
-					<input class="form-accSend" type="text" name="email"
-						value="${memberinfo.email}">
-				<input class="btn btn-primary" type="submit" value="이메일 변경">
-				<input type="button" value="닫기"onClick="javascript:closePopupEmail();">
+					<label class="">이메일</label> <input type="hidden" name="memberid"
+						value="${memberinfo.member_id}"> <input type="hidden"
+						name="address" value="${memberinfo.address}"> <input
+						type="hidden" name=dropout_ox value="${memberinfo.dropout_ox}">
+					<input type="hidden" name="id" value="${memberinfo.id}"> <input
+						type="hidden" name="name" value="${memberinfo.name}"> <input
+						type="hidden" name="password" value="${memberinfo.password}">
+					<input type="hidden" name="phonenum" value="${memberinfo.phoneNum}">
+					<input type="hidden" name="subscri_ox"
+						value="${memberinfo.subscri_ox}"> <input
+						class="form-accSend popwidth" type="text" name="email"
+						value="${memberinfo.email}"> <input
+						class="btn btn-primary" type="submit" value="이메일 변경"> <input
+						type="button" value="닫기" class="button"
+						onClick="javascript:closePopupEmail();">
 				</div>
 			</form>
 			</p>
@@ -222,22 +270,24 @@ label {
 			<p>
 			<form action="memberInfoUpdate.do" method="post">
 				<div class="sendDiv align">
-					<label class="">전화번호</label>
-					<input type="hidden"name="memberid" value="${memberinfo.member_id}" >
-					<input type="hidden"name="address" value="${memberinfo.address}" >
-					<input type="hidden"name=dropout_ox value="${memberinfo.dropout_ox}" >
-					<input type="hidden"name="id" value="${memberinfo.id}" >
-					<input type="hidden"name="name" value="${memberinfo.name}" >
-					<input type="hidden"name="password" value="${memberinfo.password}" >
-					<input type="hidden"name="email" value="${memberinfo.email}">
-					<input type="hidden"name="subscri_ox" value="${memberinfo.subscri_ox}" >
-					<input class="form-accSend" type="text" name="phonenum"
-						value="${memberinfo.phoneNum}" >
-				<input class="btn btn-primary" type="submit" value="전화번호 변경">
-				<input type="button" value="닫기"onClick="javascript:closePopupPhone();">
+					<label class="">전화번호</label> <input type="hidden" name="memberid"
+						value="${memberinfo.member_id}"> <input type="hidden"
+						name="address" value="${memberinfo.address}"> <input
+						type="hidden" name=dropout_ox value="${memberinfo.dropout_ox}">
+					<input type="hidden" name="id" value="${memberinfo.id}"> <input
+						type="hidden" name="name" value="${memberinfo.name}"> <input
+						type="hidden" name="password" value="${memberinfo.password}">
+					<input type="hidden" name="email" value="${memberinfo.email}">
+					<input type="hidden" name="subscri_ox"
+						value="${memberinfo.subscri_ox}"> <input
+						class="form-accSend popwidth" type="text" name="phonenum"
+						value="${memberinfo.phoneNum}"> <input
+						class="btn btn-primary" type="submit" value="전화번호 변경"> <input
+						type="button" value="닫기" class="button"
+						onClick="javascript:closePopupPhone();">
 				</div>
-				</form>
-				</p>
+			</form>
+			</p>
 		</div>
 	</div>
 	<div id="popupPW" class="hide">
@@ -245,22 +295,24 @@ label {
 			<p>
 			<form action="memberInfoUpdate.do" method="post">
 				<div class="sendDiv align">
-					<label class="">비밀번호</label>
-					<input type="hidden"name="memberid" value="${memberinfo.member_id}" >
-					<input type="hidden"name="address" value="${memberinfo.address}" >
-					<input type="hidden"name=dropout_ox value="${memberinfo.dropout_ox}" >
-					<input type="hidden"name="id" value="${memberinfo.id}" >
-					<input type="hidden"name="name" value="${memberinfo.name}" >
-					<input type="hidden"name="phonenum" value="${memberinfo.phoneNum}" >
-					<input type="hidden"name="email" value="${memberinfo.email}">
-					<input type="hidden"name="subscri_ox" value="${memberinfo.subscri_ox}" >
-					<input class="form-accSend" type="text" name="password"
-						value="${memberinfo.password}" >
-				<input class="btn btn-primary" type="submit" value="비밀번호 변경">
-				<input type="button" value="닫기"onClick="javascript:closePopupPW();">
+					<label class="">비밀번호</label> <input type="hidden" name="memberid"
+						value="${memberinfo.member_id}"> <input type="hidden"
+						name="address" value="${memberinfo.address}"> <input
+						type="hidden" name=dropout_ox value="${memberinfo.dropout_ox}">
+					<input type="hidden" name="id" value="${memberinfo.id}"> <input
+						type="hidden" name="name" value="${memberinfo.name}"> <input
+						type="hidden" name="phonenum" value="${memberinfo.phoneNum}">
+					<input type="hidden" name="email" value="${memberinfo.email}">
+					<input type="hidden" name="subscri_ox"
+						value="${memberinfo.subscri_ox}"> <input
+						class="form-accSend popwidth" type="text" name="password"
+						value="${memberinfo.password}"> <input
+						class="btn btn-primary" type="submit" value="비밀번호 변경"> <input
+						type="button" value="닫기" class="button"
+						onClick="javascript:closePopupPW();">
 				</div>
-				</form>
-				</p>
+			</form>
+			</p>
 		</div>
 	</div>
 	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>

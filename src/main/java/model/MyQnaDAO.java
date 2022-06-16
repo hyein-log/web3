@@ -19,6 +19,7 @@ public class MyQnaDAO {
 	static final String INSERT_MYQNA = "INSERT INTO QnA values(qna_seq.nextval, ?, ?, ?, null, sysdate, null)";
 	static final String UPDATE_MYQNA = "update QnA set qa_title = ?, qa_content=?, qa_date=sysdate where qa_id = ?";
 	static final String DELETE_MYQNA = "delete from QnA where qa_id = ? ";
+	static final String UPDATE_ANSWER = "update QnA set qa_answer = ? where qa_id = ?";
 	
 	Connection conn;
 	PreparedStatement st;
@@ -155,6 +156,24 @@ public class MyQnaDAO {
 		try {
 			st = conn.prepareStatement(DELETE_MYQNA);
 			st.setInt(1, qaId);	//¿Ü·¡Å°
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return result;
+	}
+
+	public int updateAnswer(MyQnaVO myqna) {
+		int result = 0;
+		
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(UPDATE_ANSWER);
+			st.setString(1,myqna.getQa_answer());
+			st.setInt(2, myqna.getQa_id());
+			
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

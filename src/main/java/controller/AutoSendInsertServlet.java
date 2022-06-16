@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.AutoSendVO;
 import dto.NoticeVO;
+import model.AccountService;
 import model.AutoSendService;
 import model.NoticeService;
 
@@ -26,14 +28,24 @@ public class AutoSendInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 
 		int accid = Integer.parseInt(request.getParameter("accid"));
 		String autoContent = request.getParameter("autoContent");
 		int autoCost = Integer.parseInt(request.getParameter("autoCost"));
 		int autoDate = Integer.parseInt(request.getParameter("autoDate"));
+		int pw = Integer.parseInt(request.getParameter("pw"));
 		String autoEnd = request.getParameter("autoEnd");
 		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
 		Date endto;
+		
+		PrintWriter writer = response.getWriter();
+		
+		AccountService accService = new AccountService();
+		int pwReal = accService.selectPw(accid);
+		System.out.println(pwReal);
+		System.out.println(pw);
 		
 		try {
 			endto = fm.parse(autoEnd);
@@ -41,10 +53,15 @@ public class AutoSendInsertServlet extends HttpServlet {
 			java.sql.Date date1 = new java.sql.Date(timein);
 			AutoSendVO vo = new AutoSendVO(accid,  autoContent, autoCost, date1 ,autoDate);
 			
-			AutoSendService service = new AutoSendService();
-			int result = service.insertAuto(vo);
-			
-			response.sendRedirect("AutoSendList.do?accid=" + accid);
+			if(pw==pwReal) {
+				AutoSendService service = new AutoSendService();
+				int result = service.insertAuto(vo);
+				writer.println("<script>alert('자동이체가 설정되었습니다.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+				writer.close();
+			} else {
+	        	writer.println("<script>alert('잘못된 비밀번호입니다.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+	        	writer.close();
+			}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

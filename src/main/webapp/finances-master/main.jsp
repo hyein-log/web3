@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="java.util.List"%>
 <%@page import="dto.MemberVO"%>
 <%@page import="java.util.Iterator"%>
@@ -13,15 +12,15 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
 	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
 	rel="stylesheet">
+<script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link rel="stylesheet" href="fonts/icomoon/style.css">
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -55,7 +54,12 @@ body {
 .a img {
 	transition: all 0.2s linear;
 }
-
+.img-fluid {
+	transition: all 0.2s linear;
+}
+.img-fluid:hover {
+	transform: scale(1.1);
+}
 .a:hover img {
 	transform: scale(1.1);
 }
@@ -67,6 +71,7 @@ body {
 </style>
 
 </head>
+  
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300" style="font-family: 'Nanum Gothic', sans-serif;">
 
@@ -78,7 +83,19 @@ body {
 			<span class="sr-only">Loading...</span>
 		</div>
 	</div>
-
+				<%
+				int id = 0;
+				MemberVO member = (MemberVO) session.getAttribute("member");
+				System.out.println("1" + member);
+				String m = "";
+				if (member != null) {
+					id = member.getMember_id();
+					m = member.getId();
+					if (id == 0) {
+						System.out.println("lk");
+					}
+				}
+				%>
 	<div class="site-wrap">
 
 
@@ -107,7 +124,11 @@ body {
 								</div>
 								<br> <br>
 								<div data-aos="fade-up" data-aos-delay="100">
+								<%if(member == null) {%>
 									<a href="../login/login.jsp" class="btn  btn-primary mr-2 mb-2">Login</a>
+									<%} else { %>
+									<a href="../login/logout.do" class="btn  btn-primary mr-2 mb-2">Logout</a>
+									<%} %>
 								</div>
 							</div>
 							<!-- 							<div class="slide"> -->
@@ -161,19 +182,7 @@ body {
 						</p>
 					</div>
 				</div>
-				<%
-				int id = 0;
-				MemberVO member = (MemberVO) session.getAttribute("member");
-				System.out.println("1" + member);
-				String m = "";
-				if (member != null) {
-					id = member.getMember_id();
-					m = member.getId();
-					if (id == 0) {
-						System.out.println("lk");
-					}
-				}
-				%>
+
 				<div class="row">
 
 
@@ -270,12 +279,21 @@ body {
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
 						<div class="team-member a">
-						<form action="../notice/NoticeUserList.do">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/notice.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
+							<c:if test="${not empty member }">
+								<form action="../notice/NoticeUserList.do">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/notice.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/notice.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
+
 						</div>
 					</div>
 
@@ -283,9 +301,9 @@ body {
 						data-aos-delay="200">
 						<div class="team-member a">
 							<c:if test="${not empty member }">
-								<form action="../membership/membershipMain.jsp">
+								<form action="../myqna/myqnalist.do">
 									<input type="hidden" name="memberid" value="<%=id%>"><br>
-									<input type="image" src="images/membership.png"
+									<input type="image" src="images/qna.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
 								</form>
@@ -342,7 +360,7 @@ body {
 		</div>
 
 
-		<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+		<jsp:include page="../finances-master/footer/Mainfooter.jsp"></jsp:include>
 
 	</div>
 	<!-- .site-wrap -->

@@ -13,8 +13,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 <style type="text/css">
-
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
+.wrap {
+	width:35%;
+	margin: auto;
+	padding-top: 5rem;
+} 
 .sendForm{
+
     width: 35%;
     margin-left: 470px;
     font-family: 'Nanum Gothic', sans-serif;
@@ -23,6 +36,7 @@
     margin-top: 0px;
     margin-bottom: 10%;
     border: 7px solid #B6D9FF;
+
 }
 
 .form-accSend {
@@ -38,7 +52,6 @@
     color: #495057;
     background-color: #fff;
   /*   margin-top: 3%; */
-  	margin-left: 100px;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -52,14 +65,12 @@
 }
 
 .sendbtnDiv{
-   /*  text-align: center; */
-   margin-left: 180px;
+   margin-left: 15%;
 }
 label{
     color:#000;
     margin-bottom: 0.5rem;
     font-size: 16px;
-    margin-left: 100px;
 }
 .btnSubmit {
     background-color: #007bff;
@@ -129,7 +140,7 @@ label{
 	text-decoration: none;
 	color: #007bff;
 	font-weight: bold;
-	padding-left: 250px;
+	/* padding-left: 250px; */
 }
 
 .idLink{
@@ -140,7 +151,9 @@ label{
 }
 
 #accSelect{
+
 	margin-left: 470px;
+
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
     margin-top: 10%;
@@ -170,12 +183,16 @@ label{
 
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
+
 <div id="accCreat1"><h2 >개설계좌선택</h2></div>
+
 <div id="accSelect">
 	<br>
+
 	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금 통장" style="margin-left: 50px;" >입출금 통장
 	<input type="radio" name="bank_account" value="1" data-bank="적금 통장" style="margin-left: 50px;">적금 통장
 	<input type="radio" name="bank_account" value="2" data-bank="예금 통장" style="margin-left: 50px;">예금 통장
+
 </div>
 <br><br>
 
@@ -183,8 +200,10 @@ label{
 
 
         <div class="sendDiv align">
+
             <label class="accNum">계좌 종류 :</label><br><br>
            <span id="bankType" style="font-weight: bold;margin-left: 180px;font-size: 18px;">입출금 통장</span>
+
            <input type="hidden" name="bank_account"  id="bank_account" value="0">
         </div><br>
         <div class="sendDiv align">
@@ -201,6 +220,7 @@ label{
 		</div>
         
     </form>
+
  <script>
 $(function(){
 	 

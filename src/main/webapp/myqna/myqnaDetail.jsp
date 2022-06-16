@@ -67,6 +67,7 @@
 <body>
 	<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 	
+
 <h2 class="h2">문의 상세보기</h2>	
 
 <form action="myqnaUpdate.do" method="post" class="sendForm">
@@ -108,11 +109,53 @@
 	<input type="button" class="deleteBtn" data-qaid="${myqna.qa_id}" value="삭제">
 </div>
 
+
 </form>
 
 	<script type="text/javascript">
-		//목록가기
+	$("#answer_btn").on("click",function(){
+		location.href = "UpdateAnswer.do?qa_id="+$("#qaid").val()
+										+"&qa_content="+$("#qna_answer").val();
+	});
+	jQuery(function ($) {
 
+        $.fn.getUrlParameter = function (sParam) {
+
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+
+                    sURLVariables = sPageURL.split('&'),
+
+                    sParameterName,
+
+                    i;
+
+
+
+            for (i = 0; i < sURLVariables.length; i++) {
+
+                sParameterName = sURLVariables[i].split('=');
+
+
+
+                if (sParameterName[0] === sParam) {
+
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+
+                }
+
+            }
+
+        };
+        var admin = $.fn.getUrlParameter('admin');
+		if(admin == "1"){
+			$("#user_detail").hide();
+			$("#admin_detail").show();
+		}else{
+			$("#user_detail").show();
+			$("#admin_detail").hide();
+		}
+	});
+		//목록가기
 		$(function() {
 			$(".btnList").click(function() {
 				location.href = "../myqna/myqnalist.do";
