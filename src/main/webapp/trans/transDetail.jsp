@@ -244,15 +244,14 @@ label {
 	String accNum = (String) request.getAttribute("accNum");
 	String kind = (String) request.getAttribute("kind");
 	long balance = (long)request.getAttribute("balance");
-	System.out.println(accNum);
-	System.out.println(balance);
+// 	System.out.println(accNum);
+// 	System.out.println(balance);
 	ArrayList<AcclistVO> list = (ArrayList) session.getAttribute("alist");
 	if (list == null) {
 		list = new ArrayList<AcclistVO>();
 	}
 	session.setAttribute("alist", list);
 	PagingVO paging = (PagingVO) session.getAttribute("paging");
-	System.out.println("++++++++" + list);
 	%>
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<div class="d" style="font-size: 40px;">
@@ -367,6 +366,7 @@ label {
 
 				// 지도를 생성합니다    
 				map = new kakao.maps.Map(mapContainer, mapOption);
+				
 				var mapTypeControl = new kakao.maps.MapTypeControl();
 				map.addControl(mapTypeControl,
 						kakao.maps.ControlPosition.TOPRIGHT);
@@ -398,16 +398,7 @@ label {
 												position : coords
 											});
 
-											// 인포윈도우로 장소에 대한 설명을 표시합니다
-											/*
-											var infowindow = new daum.maps.InfoWindow(
-											        {
-											            // content : '<div style="width:50px;text-align:center;padding:3px 0;">I</div>'
-											            content : '<div style="color:red;">' +  number + '</div>'
-											        });
-											infowindow.open(map, marker);
-											 */
-
+											
 											// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 											var content = '<div class="customoverlay">'
 													+ '    <span class="title">'

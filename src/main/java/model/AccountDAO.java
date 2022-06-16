@@ -213,5 +213,27 @@ public class AccountDAO {
 		}
 		return result;
 	}
+	public int selectMemBal(int memberid) {
+		List<AccountVO> acc = new ArrayList<AccountVO>();
+		conn = DBUtil.getConnection();
+		int sum = 0;
+		try {
+			st = conn.prepareStatement(SELECT_ACC_MEMBER_ID);
+			st.setInt(1, memberid);
+			rs = st.executeQuery();
+			while (rs.next()) {
+				acc.add(makeAcc(rs));
+			}
+			
+			for(int i=0; i<acc.size(); i++) {
+				sum += acc.get(i).getBalance();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return sum;
+	}
 }
 

@@ -37,5 +37,7 @@ public class AccountService {
 	public int UPDATE_BALANCE(int balance , int account_id) {
 		return dao.UPDATE_BALANCE(balance, account_id);
 	}
-	
+	public int selectMemBal(int memberid) {
+		return dao.selectMemBal(memberid);
+	}
 }
