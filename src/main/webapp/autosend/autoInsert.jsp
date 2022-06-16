@@ -15,7 +15,7 @@ String accid = request.getParameter("accid");
 <body>
 	<form action="AutoSendInsert.do" method="post">
 	<input type="hidden" value="<%= accid %>" name="accid">
-		자동이체 종류 <select name="autoCate" id="autoSelect">
+		자동이체 종류 <select id="autoSelect">
 			<option value="auto1" >정기적금</option>
 			<option value="auto2">공과금</option>
 			<option value="auto3">기타</option>
@@ -24,7 +24,7 @@ String accid = request.getParameter("accid");
 		자동이체 금액 <input type="number" name="autoCost"><br /> 
 		이체일 <input type="number" name="autoDate"><br />
 		만기일 <input type="date" class="endDate" name="autoEnd"><br /> 
-		계좌 비밀번호 <input type="password"><br />
+		계좌 비밀번호 <input type="password" name="pw"><br />
 		<input type="submit" value="자동이체 등록" >
 	</form>
 </body>
@@ -32,15 +32,18 @@ String accid = request.getParameter("accid");
 	$("#autoSelect").change(function() {
 		var type = $("#autoSelect option:selected").text();
 		if (type == "기타") {
-			$("#seltype").show();
-		} else {
-			$("#seltype").css('display', 'none');
-		}
-		
-		if(type == "공과금"){
-			$(".endDate").attr("disabled", true);
-		} else {
+			$("#seltype").attr('value', '');
+			$("#seltype").show(); 
 			$(".endDate").attr("disabled", false);
+		} else if(type=="정기적금"){
+			$("#seltype").attr('value', '정기적금');
+			$("#seltype").css('display', 'none');
+			$(".endDate").attr("disabled", false);
+		} else {
+			$("#seltype").attr('value', '공과금');
+			$("#seltype").css('display', 'none');
+			$(".endDate").attr("disabled", true);
+			
 		}
 	});
 </script>

@@ -13,14 +13,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 <style type="text/css">
-
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
+.wrap {
+	width:35%;
+	margin: auto;
+	padding-top: 5rem;
+} 
 .sendForm{
     /*width: 30%;*/
-    margin-left: 520px;
     font-family: 'Nanum Gothic', sans-serif;
-   /* padding: 3%;
-    margin-top: 10%;*/
+   /* padding: 3%;*/
     margin-bottom: 10%;
+    margin-left: 50px;
 }
 
 .form-accSend {
@@ -36,7 +47,6 @@
     color: #495057;
     background-color: #fff;
   /*   margin-top: 3%; */
-  	margin-left: 100px;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -50,14 +60,12 @@
 }
 
 .sendbtnDiv{
-   /*  text-align: center; */
-   margin-left: 180px;
+   margin-left: 15%;
 }
 label{
     color:#000;
     margin-bottom: 0.5rem;
     font-size: 16px;
-    margin-left: 100px;
 }
 .btnSubmit {
     background-color: #007bff;
@@ -126,7 +134,7 @@ label{
 	text-decoration: none;
 	color: #007bff;
 	font-weight: bold;
-	padding-left: 250px;
+	/* padding-left: 250px; */
 }
 
 .idLink{
@@ -137,7 +145,7 @@ label{
 }
 
 #accSelect{
-	margin-left: 520px;
+	/* margin-left: 400xpx; */
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
     margin-top: 10%;
@@ -147,11 +155,11 @@ label{
 </head>
 
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-
+<div class="wrap"> 
 <div id="accSelect">
 	<h2 id="accCreat1">개설계좌선택</h2>
 	<br>
-	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금통장" style="margin-left: 50px;" >입출금통장
+	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금통장" style="margin-left: 40px;" >입출금통장
 	<input type="radio" name="bank_account" value="1" data-bank="적금통장" style="margin-left: 50px;">적금통장
 	<input type="radio" name="bank_account" value="2" data-bank="예금통장" style="margin-left: 50px;">예금통장
 </div>
@@ -168,8 +176,8 @@ label{
  -->
 
         <div class="sendDiv align">
-            <label class="accNum">계좌 종류 :</label><br><br>
-           <span id="bankType" style="font-weight: bold;margin-left: 130px;">입출금통장</span>
+            <label class="accNum">계좌 종류 :</label>
+           <span id="bankType" style="font-weight: bold;">입출금통장</span>
            <input type="hidden" name="bank_account"  id="bank_account" value="0">
         </div>
         <div class="sendDiv align">
@@ -187,7 +195,7 @@ label{
         
     </div>
     </form>
- 
+ </div>
  <script>
 $(function(){
 	 
