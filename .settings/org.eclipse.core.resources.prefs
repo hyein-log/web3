@@ -1,12 +1,9 @@
 =\=\=\=\=\=\=
-
 eclipse.preferences.version=1
 encoding//src/main/java/controller/MailConfirmServlet.java=UTF-8
 encoding//src/main/java/controller/MailSendServlet.java=UTF-8
 encoding//src/main/java/mailTest.java=UTF-8
 encoding//src/main/java/model/AccountDAO.java=UTF-8
 encoding//src/main/java/model/MemberDAO.java=UTF-8
-
 encoding//src/main/webapp/login/join.jsp=UTF-8
-
 encoding/<project>=MS949

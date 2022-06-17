@@ -1,3 +1,7 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="dto.PagingVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="dto.AcclistVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -31,10 +35,9 @@ html {
     min-height: 100%;
     margin: 0;
 }
-
 body {
     min-height: 100%;
-} 
+}
 .sendForm {
 	width: 30%;
 	margin: auto;
@@ -90,12 +93,12 @@ label {
 }
 
 .o {
-	margin-top: 8rem;
+	margin-top: 7rem;
 }
 
 .d {
 	text-align: center;
-	margin-top: 4rem;
+	margin-top: 2.1rem;
 }
 
 .parent {
@@ -103,7 +106,7 @@ label {
 	margin: 10px auto;
 	display: flex;
 	height: 50%;
-	margin-top: 4rem;
+	margin-top: 2rem;
 }
 
 .first {
@@ -201,10 +204,17 @@ margin: 10px;
 }
 </style>
 </head>
-
-<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
+<body>
+<%
+LocalDate date = LocalDate.now(); 
+DateTimeFormatter fm = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+String end = date.format(fm);
+LocalDate end1 = date.minusYears(1);
+String start = end1.format(fm);
+%>
+<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 <div class="d" style="font-size: 40px; font-family: 'Nanum Gothic', sans-serif;">
-	<div class="o">거래내역</div>
+	<div>거래내역</div>
 </div>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
@@ -223,8 +233,11 @@ margin: 10px;
 		</ul>
 		</div>
 		<form method="post" action="transIn.do">
-			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="accNum" value="<%=request.getAttribute("accNum") %>"><br>
 			<input type="hidden" name="kind" value='all'><br> 
+			<input type="hidden" name="sel" value="0">			
+			<input type="hidden" name="searchEndDate" value="<%=end%>">			
+			<input type="hidden" name="searchStartDate" value="<%=start%>">			
 			<input type="submit" value="전체내역 조회" class="btn btn-outline-primary d buttonWH">
 		</form>
 	</div>
@@ -241,8 +254,11 @@ margin: 10px;
 		</ul>
 		</div>
 		<form method="post" action="transIn.do">
-			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="accNum" value="<%=request.getAttribute("accNum") %>"><br>
 			<input type="hidden" name="kind" value='출금'><br> 
+			<input type="hidden" name="sel" value="0">			
+			<input type="hidden" name="searchEndDate" value="<%=end%>">			
+			<input type="hidden" name="searchStartDate" value="<%=start%>">		
 			<input type="submit" value="출금내역 조회" class="btn btn-outline-primary d buttonWH">
 		</form>
 	</div>
@@ -258,8 +274,11 @@ margin: 10px;
 		</ul>
 		</div>
 		<form method="post" action="transIn.do">
-			<input type="hidden" name="member_id" value="<%=request.getAttribute("memberid") %>"><br>
+			<input type="hidden" name="accNum" value="<%=request.getAttribute("accNum") %>"><br>
 			<input type="hidden" name="kind" value='입금'><br> 
+			<input type="hidden" name="sel" value="0">			
+			<input type="hidden" name="searchEndDate" value="<%=end%>">			
+			<input type="hidden" name="searchStartDate" value="<%=start%>">		
 			<input type="submit" value="입금내역 조회" class="btn btn-outline-primary d buttonWH">
 		</form>
 		
@@ -269,7 +288,7 @@ margin: 10px;
 
 
 <div class="o"></div>
-<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+<jsp:include page="../finances-master/footer/Mainfooter.jsp"></jsp:include>
 
 
 </body>

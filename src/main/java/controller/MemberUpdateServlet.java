@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.MemberVO;
 import model.MemberService;
@@ -23,50 +24,34 @@ public class MemberUpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		HttpSession session = request.getSession();
 		PrintWriter writer = response.getWriter();
-		MemberVO member = makeMember(request);
+		int memberid = Integer.parseInt(request.getParameter("memberid"));
+		System.out.println(memberid);
+		String password = (String)request.getParameter("password");
+		System.out.println(password);
+		String email = (String)request.getParameter("email");
+		System.out.println(email);
+		String phonenum = (String)request.getParameter("phonenum");
+		String address = (String)request.getParameter("address");
+		char dropout_ox = (char)request.getParameter("dropout_ox").charAt(0);
+		String id = (String)request.getParameter("id");
+		char subscri_ox = (char)request.getParameter("subscri_ox").charAt(0);
+		String name = (String)request.getParameter("name");
+		System.out.println(phonenum);
+		MemberVO member = new MemberVO(memberid,name, id, password, email, address, phonenum,subscri_ox, dropout_ox );
 		MemberService service = new MemberService();
 		int result = service.update_member_info(member);
-		if (result > 0) {
-			writer.println("<script>alert('개인정보가 변경되었습니다.');</script>");
-			response.setHeader("refresh", "0;url=mypage.do");
-			
-		} else {
-			writer.println("<script>alert('개인정보가 변경되지 않았습니다.\n다시 시도해주세요');</script>");
+		if(result >0) {
+			writer.println("<script>alert('회원 정보가 변경되었습니다.');</script>");
+			response.setHeader("refresh", "0;url=memberInfo.jsp");
+		}else {
+			writer.println("<script>alert('회원 정보가 변경되지 않았습니다.');</script>");
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("memberInfo.jsp");
-		rd.forward(request, response);
-	}
-
-	private MemberVO makeMember(HttpServletRequest request) {
-		MemberVO vo = new MemberVO();
-		int memberid = readInt(request, "memberid");
-		String email = request.getParameter("email");
-		String address = request.getParameter("address");
-		String dropout_ox = request.getParameter("dropout_ox");
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-		String phonenum = request.getParameter("phonenum");
-		String subscri_ox = request.getParameter("subscri_ox");
-		
-		vo.setEmail(email);
-		vo.setMember_id(memberid);
-		vo.setAddress(address);
-		vo.setDropout_ox(dropout_ox.charAt(0));
-		vo.setId(id);
-		vo.setName(name);
-		vo.setPassword(password);
-		vo.setPhoneNum(phonenum);
-		vo.setSubscri_ox(subscri_ox.charAt(0));
-
-		return vo;
-
-	}
-
-	private int readInt(HttpServletRequest request, String str) {
-		String data = request.getParameter(str);
-		return Integer.parseInt(data);
+		session.setAttribute("member", member);
 	}
 
 }

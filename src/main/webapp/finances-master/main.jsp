@@ -12,15 +12,15 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
 	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
 	rel="stylesheet">
+<script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link rel="stylesheet" href="fonts/icomoon/style.css">
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -54,7 +54,12 @@ body {
 .a img {
 	transition: all 0.2s linear;
 }
-
+.img-fluid {
+	transition: all 0.2s linear;
+}
+.img-fluid:hover {
+	transform: scale(1.1);
+}
 .a:hover img {
 	transform: scale(1.1);
 }
@@ -66,6 +71,7 @@ body {
 </style>
 
 </head>
+  
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300" style="font-family: 'Nanum Gothic', sans-serif;">
 
@@ -80,14 +86,11 @@ body {
 				<%
 				int id = 0;
 				MemberVO member = (MemberVO) session.getAttribute("member");
-				System.out.println("1" + member);
+				session.setAttribute("member", member);
 				String m = "";
 				if (member != null) {
 					id = member.getMember_id();
 					m = member.getId();
-					if (id == 0) {
-						System.out.println("lk");
-					}
 				}
 				%>
 	<div class="site-wrap">
@@ -125,31 +128,6 @@ body {
 									<%} %>
 								</div>
 							</div>
-							<!-- 							<div class="slide"> -->
-							<!-- 								<h1 class="text-uppercase" data-aos="fade-up">Financing -->
-							<!-- 									Solutions</h1> -->
-							<!-- 								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem -->
-							<!-- 									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae -->
-							<!-- 									minima delectus accusamus accusantium deleniti libero excepturi -->
-							<!-- 									porro illo.</p> -->
-							<!-- 								<div data-aos="fade-up" data-aos-delay="100"> -->
-							<!-- 									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get -->
-							<!-- 										In Touch</a> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
-
-							<!-- 							<div class="slide"> -->
-							<!-- 								<h1 class="text-uppercase" data-aos="fade-up">Savings -->
-							<!-- 									Accounts</h1> -->
-							<!-- 								<p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Lorem -->
-							<!-- 									ipsum dolor sit amet consectetur adipisicing elit. Repudiandae -->
-							<!-- 									minima delectus accusamus accusantium deleniti libero excepturi -->
-							<!-- 									porro illo.</p> -->
-							<!-- 								<div data-aos="fade-up" data-aos-delay="100"> -->
-							<!-- 									<a href="#" target="_blank" class="btn  btn-primary mr-2 mb-2">Get -->
-							<!-- 										In Touch</a> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 
 						</div>
 					</div>
@@ -176,15 +154,14 @@ body {
 						</p>
 					</div>
 				</div>
-				
 				<div class="row">
 
-
+					<!-- 거래내역 -->
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="">
 						<div class="team-member a">
 							<c:if test="${not empty member }">
-								<form action="../trans/trans.do" method="post">
+								<form action="../trans/MyAccountList.do" method="post">
 									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="image" src="images/list.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
@@ -197,10 +174,10 @@ body {
 									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
 									onclick="empty();">
 							</c:if>
-
 						</div>
-
 					</div>
+					
+					<!-- 계좌개설 -->
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="">
 						<div class="team-member a">
@@ -220,37 +197,8 @@ body {
 							</c:if>
 						</div>
 					</div>
-
-
-					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="team-member a">
-							<c:if test="${not empty member }">
-								<form action="../account/accSendList.do" method="post">
-									<input type="hidden" name="memberid" value="<%=id%>"><br>
-									<input type="image" src="images/money.png"
-										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
-								</form>
-							</c:if>
-							<c:if test="${empty member }">
-								<input type="image" src="images/money.png"
-									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
-									onclick="empty();">
-							</c:if>
-						</div>
-					</div>
-
-
-
-				</div>
-			</div>
-			<div class="container">
-
-				<div class="row">
-
-
+					
+					<!-- 마이페이지 -->
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
 						<div class="team-member a">
@@ -270,31 +218,27 @@ body {
 							</c:if>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="team-member a">
-						<form action="../notice/NoticeUserList.do">
-								<input type="hidden"name="memberid" value="<%=id%>" ><br>
-								<input type="image" src="images/notice.png" style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-								class="img-fluid mb-4 bg-white visual"
-									alt="제출버튼">
-							</form>
-						</div>
-					</div>
 
+					</div>
+				</div>
+			<div class="container">
+
+				<div class="row">
+
+					<!-- 입금하기 -->
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="200">
 						<div class="team-member a">
 							<c:if test="${not empty member }">
-								<form action="../membership/membershipMain.jsp">
-									<input type="hidden" name="memberid" value="<%=id%>"><br>
-									<input type="image" src="images/membership.png"
+								<form action="" method="post">
+									<input type="hidden" name="memberid"><br>
+									<input type="image" src="images/deposit.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
 								</form>
 							</c:if>
 							<c:if test="${empty member }">
-								<input type="image" src="images/membership.png"
+								<input type="image" src="images/deposit.png"
 									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
 									onclick="empty();">
@@ -302,10 +246,52 @@ body {
 						</div>
 					</div>
 
+					<!-- 이체하기 -->
+					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
+						data-aos-delay="200">
+						<div class="team-member a">
+							<c:if test="${not empty member }">
+								<form action="../account/accSendList.do" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/money.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/money.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
+						</div>
+					</div>
+						
+					<!-- 공지사항 -->
+					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
+						data-aos-delay="100">
+						<div class="team-member a">
+							<c:if test="${not empty member }">
+								<form action="../notice/NoticeUserList.do">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/notice.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/notice.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
 
+						</div>
+					</div>
 
 				</div>
 			</div>
+
 		</section>
 
 		<div class="site-section cta-big-image" id="next">
@@ -345,7 +331,7 @@ body {
 		</div>
 
 
-		<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+		<jsp:include page="../finances-master/footer/Mainfooter.jsp"></jsp:include>
 
 	</div>
 	<!-- .site-wrap -->
@@ -367,7 +353,7 @@ body {
 	<script>
 		function empty() {
 			alert('로그인을 해주세요.');
-			location.href = 'main.jsp';
+			location.href = '../login/login.jsp';
 		}
 	</script>
 

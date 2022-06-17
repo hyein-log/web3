@@ -4,20 +4,28 @@
 <html lang="en">
 
 <head>
-  <title>Finances &mdash; Website Template by Colorlib</title>
+  <title>COS BANK 아이디찾기</title>
   <meta charset="utf-8">
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style type="text/css">
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
 
+body {
+	min-height: 100%;
+}
 .sendForm{
     width: 30%;
     margin: auto;
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 7%;
+    margin-bottom: 7%;
 }
 
 .form-accSend {

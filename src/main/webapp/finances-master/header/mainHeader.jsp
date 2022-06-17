@@ -21,6 +21,9 @@ header h2{
     display: inline-block; 
     color: #007bff;
     font-weight: bold;
+    margin-top: 0.8rem;
+    font-size: 2rem;
+	font-family: "Open Sans";
 }
 .logo{
     float: left; 
@@ -28,23 +31,28 @@ header h2{
     height: 100%;
 }
 
-nav{display: inline-block; float: right; height: 100%;}
+nav{
+	display: inline-block; 
+	float: right; 
+	height: 100%;
+}
 nav ul{
-        margin: 0 auto;
+    margin: 0 auto;
 }
 nav ul li{
-            float: left; list-style: none; 
-            display: inline-block; 
-            padding: 20px 50px;
-            cursor:pointer;
+	float: left; 
+	list-style: none; 
+	display: inline-block; 
+	padding: 15px 50px;
+	cursor:pointer;
 }
 nav ul li a {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #444444; 
-            text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #444444; 
+    text-decoration: none;
 }
- nav ul li a:hover{color: #4767ba;}
+ nav ul li a:hover{color: #007bff;}
 </style>
 <%@page import="dto.MemberVO"%>
 <%
@@ -53,6 +61,7 @@ nav ul li a {
 %>
 <body>
 <header>
+
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/finances-master/main.jsp">
                     <h2>COSBANK</h2>
@@ -60,8 +69,8 @@ nav ul li a {
             </div>
             <nav>
                 <ul>
-                    <li><a href="#Home">Home</a></li>
-                    <li><a href="#About">About Us</a></li>
+                    <li><a href="${pageContext.request.contextPath}/finances-master/main.jsp">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/finances-master/main.jsp#next">About Us</a></li>
                     <%if(member == null) {%>
                     <li><a href="${pageContext.request.contextPath}/login/login.jsp">Sign in</a></li>
                     <li><a href="${pageContext.request.contextPath}/login/memberJoin.jsp">Sign up</a></li>
@@ -71,5 +80,6 @@ nav ul li a {
                 </ul>
             </nav>
         </header>
+
 </body>
 </html>

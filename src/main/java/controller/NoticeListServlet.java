@@ -27,7 +27,7 @@ public class NoticeListServlet extends HttpServlet {
 		request.setAttribute("notiList", noti);
 		
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("noticeLIst.jsp");
+		rd = request.getRequestDispatcher("noticeList.jsp");
 		rd.forward(request, response);
 	}
 }
