@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>계좌 생성완료</title>
 <style type="text/css">
 html {
 	position: relative;
@@ -31,12 +31,12 @@ body {
 
 
 
-.sendForm{
+/* .sendForm{
     width: 30%;
     margin-left: 650px;
     font-family: 'Nanum Gothic', sans-serif;
     /* padding: 3%; */
-    margin-top: 10%;
+    margin-top: 10%; */
 
 .h3_2 {
 	padding-top: 50px;
@@ -58,8 +58,8 @@ body {
 }
 
 .sendForm2 {
-width: 20%;
-    margin-left: 630px;
+/* width: 20%;
+    margin-left: 630px; */
     font-family: 'Nanum Gothic', sans-serif;
   /*  padding: 3%;
      margin-top: 10%; */
@@ -79,16 +79,21 @@ width: 20%;
     padding: 10px 30px;
     font-weight: 400;
     height: 46px;
-    width: 300px;
-    margin-left: 5px;
+    width: 100%;
+   /*  margin-left: 5px; */
+}
+
+.td1{
+	font-weight: bold;
 }
 
 .td2{
 	color: gray;
 	margin: auto;
 	text-align: right;
-
+	font-weight: bold;
 }
+
 </style>
 </head>
 
@@ -100,7 +105,7 @@ width: 20%;
 			<div>
 				<img alt="createicon" src="../finances-master/images/createicon.png"
 					class="createIcon">
-				<h3 class="h3_1">계좌개설이 완료되었습니다.</h3>
+				<h3 class="h3_1">계좌개설이 완료되었습니다.</h3><br><br>
 			</div>
 		</div>
 
@@ -116,22 +121,22 @@ width: 20%;
 			<c:if test="${accountType==2}">적금 통장</c:if>
 		</tr>  --%>
 		<tr>
-			<td>계좌 번호</td>
-			<td style="color: gray;text-align: right;">
+			<td class="td1">계좌 번호</td>
+			<td class="td2">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
 			${acc }</td>
 		</tr>
 		<tr>
-			<td>계좌생성일</td>
-			<td style="color: gray;text-align: right;">
+			<td class="td1">계좌생성일</td>
+			<td class="td2">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<%=LocalDate.now()%> </td> 
 		</tr>
 		<tr>
-			<td>계좌 잔액</td>
-			<td style="color: gray;text-align: right;">
+			<td class="td1">계좌 잔액</td>
+			<td class="td2">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			0 원 </td>
@@ -144,7 +149,7 @@ width: 20%;
 
 	</div>
 
-
+</div>
 
 	<script type="text/javascript">
 		link = '../finances-master/main.jsp';
@@ -153,7 +158,6 @@ width: 20%;
 			location.href = link;
 		}
 	</script>
-
 </body>
 
 <jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>

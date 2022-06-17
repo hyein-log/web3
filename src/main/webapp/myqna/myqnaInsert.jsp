@@ -4,10 +4,17 @@
 <html lang="en">
 
 <head>
-<title>Finances &mdash; Website Template by Colorlib</title>
+<title>1:1 문의하기</title>
 <meta charset="utf-8">
 <style type="text/css">
-
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
 .sendForm{
     width: 35%;
 /*     margin: auto;
@@ -143,7 +150,7 @@ background-color: #fff;
 
 
 
-<form action="myqnaInsert.do" class="sendForm" method="get">
+<form action="myqnaInsert.do" class="sendForm" method="post">
 	<h2>1:1 문의하기</h2>
 	<p style="font-size: 13px;">
 	· 문의글의 답변은 마이페이지 > 1:1문의내역에서 조회 가능합니다.<br>
@@ -151,24 +158,21 @@ background-color: #fff;
 	</p>
 	<br>
         <div class="title" style="color: black;font-weight: bold;">
-          제목  <pre><input type="text" class="form-accSend" name="title"> </pre>
+          제목  <pre><input type="text" class="form-accSend" name="title" placeholder="제목을 입력해주세요."> </pre>
         </div>
         <div class="content" style="color: black;font-weight: bold;">
-          내용  <pre><textarea class="form-content" name="content"></textarea></pre>
+          내용  <pre><textarea class="form-content" name="content" placeholder="내용을 입력해주세요."></textarea></pre>
         </div>
       <div class="sendbtnDiv">
 			<input type="submit" class="btnSubmit" value="글쓰기" >
 			<input type="reset" class="btnCencel" value="취소" >
 
 		</div>
-		<div class="sendbtnDiv">
-			<input type="submit" class="btnSubmit" value="글쓰기"> <input
-				type="reset" class="btnCencel" value="취소">
-		</div>
+		
 	</form>
 
 
-</div>
+
 <jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 

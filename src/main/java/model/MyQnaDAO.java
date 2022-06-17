@@ -67,6 +67,7 @@ public class MyQnaDAO {
 		} finally {
 			DBUtil.dbClose(rs, st, conn);
 		}		
+		//System.out.println(list);
 		return list;
 	}
 	
