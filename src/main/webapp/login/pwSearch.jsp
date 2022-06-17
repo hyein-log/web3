@@ -10,14 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <style type="text/css">
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
 
+body {
+	min-height: 100%;
+}
 .sendForm{
     width: 30%;
     margin: auto;
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 4%;
+    margin-bottom: 4%;
 }
 
 .form-accSend {

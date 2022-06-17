@@ -14,7 +14,6 @@ html, body {
 	font-family: 'Nanum Gothic';
 	margin: 0 auto;
 }
-
 footer {
 	width: 100%;
 	height:45px;
