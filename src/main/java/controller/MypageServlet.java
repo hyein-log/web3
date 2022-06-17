@@ -39,6 +39,7 @@ public class MypageServlet extends HttpServlet {
 	        memberinfo = service.selectMemberByMemberId(i_memberid);
 	        System.out.println("member == "+memberinfo);
 	        session.setAttribute("memberinfo", memberinfo);
+	        session.setAttribute("memberemail", memberinfo.getEmail());
 		   RequestDispatcher rd;
 		   rd = request.getRequestDispatcher("mypage.jsp");
 			rd.forward(request, response);
