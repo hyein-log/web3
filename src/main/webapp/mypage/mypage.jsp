@@ -102,11 +102,9 @@ img {
 			</div>
 			<!-- 개인정보관리 -->
 			<div style="background-color: #fbfbfd;" class="a visual leftmargin2">
-					<%
-					System.out.println("memberinfo : " + session.getAttribute("memberinfo"));
-					%>
+					
 					<form action="memberInfo.jsp" method="post">
-						<input type="hidden" name="memberInfo" value="${memberinfo}"><br>
+						<input type="hidden" name="member" value="${member}"><br>
 						<input type="image" src="infoManage.png"
 							style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 							class="img-fluid mb-4 bg-white visual" alt="개인정보관리">

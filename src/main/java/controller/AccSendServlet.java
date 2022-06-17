@@ -36,13 +36,13 @@ public class AccSendServlet extends HttpServlet {
 			writer.println(0);
 		}
 		else {
-			//writer.println(member.getId());
+			
 			session.setAttribute("acc_pass", memberaccount.getAcc_pass());
 			session.setAttribute("acc_balance", memberaccount.getBalance());
 			session.setAttribute("name", memberaccount.getName());
 			session.setAttribute("acc_num", memberaccount.getAcc_number());
 		}
-		System.out.println("memberaccount:"+memberaccount);
+	
 		RequestDispatcher rd = request.getRequestDispatcher("accSend.jsp");
 		rd.forward(request, response);
 	}

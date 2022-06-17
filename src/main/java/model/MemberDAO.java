@@ -274,7 +274,10 @@ public class MemberDAO {
 			st.setString(2, member.getPhoneNum());
 			st.setString(3, member.getPassword());
 			st.setInt(4, member.getMember_id());
-			
+			System.out.println("1 = "+member.getEmail());
+			System.out.println("2 = "+member.getPhoneNum());
+			System.out.println("3 = "+member.getPassword());
+			System.out.println("4 = "+member.getMember_id());
 			result = st.executeUpdate();
 			
 		} catch (SQLException e) {

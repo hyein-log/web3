@@ -15,6 +15,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 $(function() {
 	$(".btnSel").click(function() {
+		
 		var accNum = $(this).attr("data-accNum");
 		if (confirm(accNum + " 계좌를 선택하시겠습니까?")) {
 			var form = document.createElement('form'); // 폼객체 생성

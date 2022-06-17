@@ -121,7 +121,7 @@
 		<div>
 			잔액 :
 			<%=balance%></div>
-	 <form action="transIn.do">
+	 <form action="transIn.do" autocomplete="off">
 
 		<!-- search -->
 		<table class="searchBox">

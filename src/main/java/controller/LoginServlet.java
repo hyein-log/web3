@@ -34,7 +34,6 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("userid");
 		String pass = request.getParameter("userpass");
 		PrintWriter writer = response.getWriter();
-
 		MemberService service = new MemberService();
 		MemberVO member = service.selectById(id, pass);
 		HttpSession session = request.getSession();

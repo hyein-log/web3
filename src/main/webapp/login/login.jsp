@@ -121,7 +121,7 @@ label{
             <input type="text" class="form-accSend" name="userid">
         </div>
         <div class="sendDiv align">
-            <label class="accNum">Pass Word</label>
+            <label class="accNum">Password</label>
             <span><a href="../login/pwSearch.jsp" class="passLink"> Forget password?</a></span>
             <input type="password" class="form-accSend" name="userpass">
         </div>
@@ -130,7 +130,7 @@ label{
         </div>
         <br>
         <div class="signJoin">
-              <span>New to KO3? <a href="../login/memberJoin.jsp" class="joinLink"> Create an account.</a></span>
+              <span>New to CO3? <a href="../login/memberJoin.jsp" class="joinLink"> Create an account.</a></span>
   		</div>
     </form>
  

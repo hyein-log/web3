@@ -87,14 +87,10 @@ body {
 				int id = 0;
 				MemberVO member = (MemberVO) session.getAttribute("member");
 				session.setAttribute("member", member);
-				System.out.println("1" + member);
 				String m = "";
 				if (member != null) {
 					id = member.getMember_id();
 					m = member.getId();
-					if (id == 0) {
-						System.out.println("lk");
-					}
 				}
 				%>
 	<div class="site-wrap">
@@ -296,6 +292,7 @@ body {
 
 				</div>
 			</div>
+
 		</section>
 
 		<div class="site-section cta-big-image" id="next">
