@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -22,23 +23,27 @@ import model.MyQnaService;
 public class MyQnaListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		int memId = member.getMember_id();
 		RequestDispatcher rd;
 		MyQnaService service = new MyQnaService();
-
-		
-		if(memId == 1) {
-			List<MyQnaVO> mlist = service.selectAll();
+		System.out.println("memId =" +memId);
+		List<MyQnaVO> mlist = new ArrayList<MyQnaVO>();
+		if(memId == 0) {
+			mlist = service.selectAll();
 			request.setAttribute("qnaDatas", mlist);
 			rd = request.getRequestDispatcher("../admin/qnaList.jsp");
 			rd.forward(request, response);
-		}else {
-			List<MyQnaVO> mlist = service.selectById(memId);
+		}
+		else {
+			mlist = service.selectById(memId);
+			System.out.println("mlist : "+mlist);
 			request.setAttribute("myqnaDatas", mlist);
 			rd = request.getRequestDispatcher("myqnaList.jsp");
 			rd.forward(request, response);

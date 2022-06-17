@@ -18,7 +18,7 @@ public class MemberDAO {
 	static final String SELECT_BY_ID_EMAIL = "select * from member where id=? and name=? and email=?";
 	static final String SELECT_BY_EMAIL_FOR_PASS = "select * from member where email=?";
 	static final String PASSWORD_UPDATE = "update member set password=? where email=?";
-	static final String MEMBER_INSERT = "insert into member values(member_id_seq.nextval,?,?,?,?,?,?,'X','X')";
+	static final String MEMBER_INSERT = "insert into member values(mem_seq.nextval,?,?,?,?,?,?,'X','X')";
 	static final String SELECT_ALL_ID = "select id from member where id=?";
 	static final String SELECT_ALL_EMAIL = "select email from member where email=?";
 	static final String SELECT_MEMBER_BY_MEMBERID = "select * from member where member_id=?";

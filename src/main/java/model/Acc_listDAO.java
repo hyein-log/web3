@@ -4,12 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import dto.Acc_listVO;
+import dto.AcclistVO;
 import util.DBUtil;
 
 public class Acc_listDAO {
 	static final String INSERT_ACCLIST = "INSERT INTO ACC_LIST (TRANS_ID , ACCOUNT_ID, PAST_ACC, TRANS_ACC, TRANS_KIND) VALUES (acc_list_seq.nextval,?,?,?,?)";
-	
+	static final String SELECT_LIST_BY_TERM ="SELECT * FROM ACC_LIST al WHERE ACCOUNT_ID =? AND TRANS_DATE BETWEEN ? AND ?";
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
@@ -29,5 +33,40 @@ public class Acc_listDAO {
 			DBUtil.dbClose(rs, st, conn);
 		}
 		return result;
+	}
+	public List<Acc_listVO> SELECT_ACCLIST_ALL(int account_id, String startDate, String EndDate) {
+		List<Acc_listVO>  acclist = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(SELECT_LIST_BY_TERM);
+			st.setInt(1, account_id);
+			st.setString(2, startDate);
+			st.setString(3, EndDate);
+			rs = st.executeQuery();
+			
+			while (rs.next()) {
+				acclist.add(makelist(rs));
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		
+		return acclist;
+	}
+	private Acc_listVO makelist(ResultSet rs) throws SQLException {
+		Acc_listVO acclist = new Acc_listVO();
+		
+		acclist.setAccount_id(rs.getInt("account_id"));
+		acclist.setLocation(rs.getString("location"));
+		acclist.setPast_acc(rs.getLong("past_acc"));
+		acclist.setTrans_acc(rs.getLong("trans_acc"));
+		acclist.setTrans_date(rs.getDate("trans_date"));
+		acclist.setTrans_id(rs.getInt("trans_id"));
+		acclist.setTrans_kind(rs.getString("trans_kind"));
+		acclist.setTrans_name(rs.getString("trans_name"));
+		return acclist;
 	}
 }

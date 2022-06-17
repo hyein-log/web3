@@ -86,6 +86,7 @@ body {
 				<%
 				int id = 0;
 				MemberVO member = (MemberVO) session.getAttribute("member");
+				session.setAttribute("member", member);
 				System.out.println("1" + member);
 				String m = "";
 				if (member != null) {
@@ -275,15 +276,15 @@ body {
 						data-aos-delay="200">
 						<div class="team-member a">
 							<c:if test="${not empty member }">
-								<form action="../myqna/myqnalist.do">
-									<input type="hidden" name="memberid" value="<%=id%>"><br>
+								<form action="../myqna/myqnalist.do", method="post">
+									<input type="hidden" name="memberid"><br>
 									<input type="image" src="images/qna.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
 								</form>
 							</c:if>
 							<c:if test="${empty member }">
-								<input type="image" src="images/membership.png"
+								<input type="image" src="images/qna.png"
 									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
 									onclick="empty();">
