@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-  <title>Finances &mdash; Website Template by Colorlib</title>
+  <title>COS BANK 로그인</title>
   <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@ body {
     margin: auto;
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 .form-accSend {
     width: 90%;

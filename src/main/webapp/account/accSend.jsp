@@ -15,21 +15,31 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="accStyle.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style type="text/css">
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
 
+body {
+	min-height: 100%;
+}
+.wrap {
+	margin-top: 11rem;
+}
 .sendForm{
     /*width: 30%;*/
-    margin-left: 520px;
     font-family: 'Nanum Gothic', sans-serif;
-    margin-bottom: 10%;
+    width: 30%;
+	margin: auto;
 }
 
 .form-accSend {
-    width: 350px;
+    width: 100%;
     height: 30px;
     display: block;
     border-radius: 30px;
@@ -40,8 +50,8 @@
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
-  /*   margin-top: 3%; */
-  	margin-left: 100px;
+  	margin-top: 3%;
+  	margin-bottom: 8%;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -50,87 +60,55 @@
 .sendDiv {
     margin-bottom: 30px;
     color: #007bff;
-    
-   
 }
 
 .sendbtnDiv{
-   /*  text-align: center; */
-   margin-left: 180px;
+   width:105%;
 }
 label{
     color:#000;
     margin-bottom: 0.5rem;
     font-size: 16px;
-    margin-left: 100px;
 }
 .btnSubmit {
     background-color: #007bff;
     border: none;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 30px;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 30px;
-    padding: 10px 30px;
+    padding: 5px 30px;
     font-weight: 400;
-    height: 46px;
+    height: 45px;
+    margin-top: 2%;
+    float: right;
 }
-
-
-.btnCencel{
+.btnSubmit:hover{
  	background-color: #fff;
     border: 1px solid #007bff;
     color: #007bff;
-    font-size: 16px;
-    border-radius: 30px;
-    color: #007bff;
-    font-size: 16px;
-    border-radius: 30px;
-    padding: 10px 30px;
-    font-weight: 400;
-    height: 46px;
-}
-
-.btnCencel:hover{
-	background-color: #007bff;
-	color: #fff;
-    font-size: 16px;
-    border-radius: 30px;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 30px;
-    padding: 10px 30px;
-    font-weight: 400;
-    height: 46px;
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-	<div style="margin: 30px;">
-		<div class="sendDiv align sendForm" style="margin-top : 100px;">
+	<div class="wrap">
+		<div class="sendDiv align sendForm">
 			<label class="accNum">이체할 계좌번호를 입력하세요.</label> <input type="text"
 				class="form-accSend" type="text" name="memAccount" value=""
 				id="acc_num">
-		</div>
-		<div class="sendDiv align sendForm">
 			<label class="accMoney">이체할 금액을 입력하세요.</label> <input type="text"
 				class="form-accSend" type="text" name="trans_acc" value=""
 				id="Amount">
-		</div>
 
-		<div class="sendDiv align sendForm">
-			<label class="accPass">계좌 비밀번호를 입력하세요.</label> <input type="text"
+			<label class="accPass">계좌 비밀번호를 입력하세요.</label> <input type="password"
 				class="form-accSend" type="text" name="acc_pass" value="" id="pw">
+				
+			<div class="sendbtnDiv">
+				<input type="button" value="이체하기" class="btnSubmit btn-primary"
+					data-location="${acclist.location}" data-id="${acclist.trans_id}"
+					onClick="javascript:Transfer();">	
+			</div>
 		</div>
-		<div class="sendbtnDiv">
-			<input type="button" value="이체하기" class="btn btn-primary"
-				data-location="${acclist.location}" data-id="${acclist.trans_id}"
-				onClick="javascript:Transfer();">
-		</div>
-
 	</div>
 
 <form action="InsertAcclist.do" method="post" id="accSend">

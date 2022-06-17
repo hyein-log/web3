@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,15 +31,15 @@ public class MyQnaListServlet extends HttpServlet {
 		int memId = member.getMember_id();
 		RequestDispatcher rd;
 		MyQnaService service = new MyQnaService();
+		List<MyQnaVO> mlist = new ArrayList<MyQnaVO>();
 
-		
 		if(memId == 1) {
-			List<MyQnaVO> mlist = service.selectAll();
+			mlist = service.selectAll();
 			request.setAttribute("qnaDatas", mlist);
 			rd = request.getRequestDispatcher("../admin/qnaList.jsp");
 			rd.forward(request, response);
 		}else {
-			List<MyQnaVO> mlist = service.selectById(memId);
+			mlist = service.selectById(memId);
 			request.setAttribute("myqnaDatas", mlist);
 			rd = request.getRequestDispatcher("myqnaList.jsp");
 			rd.forward(request, response);
