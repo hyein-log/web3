@@ -16,9 +16,9 @@ String accid = request.getParameter("accid");
 	<form action="AutoSendInsert.do" method="post">
 	<input type="hidden" value="<%= accid %>" name="accid">
 		자동이체 종류 <select name="autoCate" id="autoSelect">
-			<option value="auto1" >정기적금</option>
-			<option value="auto2">공과금</option>
-			<option value="auto3">기타</option>
+			<option>정기적금</option>
+			<option>공과금</option>
+			<option>기타</option>
 		</select> 
 		<input type="text" id="seltype" name="autoContent" placeholder="종류를 직접 입력하세요." style="display: none;"> <br />
 		자동이체 금액 <input type="number" name="autoCost"><br /> 

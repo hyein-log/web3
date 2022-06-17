@@ -28,10 +28,16 @@ public class AutoSendInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		int accid = Integer.parseInt(request.getParameter("accid"));
+		String autoCate = request.getParameter("autoCate");
 		String autoContent = request.getParameter("autoContent");
+		if(!autoCate.equals("±‚≈∏")){
+			autoContent = autoCate;
+		}
 		int autoCost = Integer.parseInt(request.getParameter("autoCost"));
 		int autoDate = Integer.parseInt(request.getParameter("autoDate"));
 		String autoEnd = request.getParameter("autoEnd");
+		if(autoEnd == null) autoEnd = "9998-12-31";
+		
 		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
 		Date endto;
 		
