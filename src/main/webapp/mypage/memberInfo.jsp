@@ -20,7 +20,10 @@ html {
 body {
 	min-height: 100%;
 }
-
+.wrap {
+	margin-top: 7rem;
+	margin-bottom: 7%;
+}
 .sendForm {
 	width: 30%;
 	margin: auto;
@@ -64,9 +67,6 @@ button {
 	background-color: #fff;
 	border: 1px solid #007bff;
 	color: #007bff;
-	font-size: 16px;
-	border-radius: 30px;
-	color: #007bff;
 	font-size: 13px;
 	border-radius: 30px;
 	padding: 5px 10px;
@@ -78,7 +78,12 @@ button:hover {
 	color: #fff;
 	background-color: #007bff;
 }
-
+.wid {
+	width:34%;
+}
+.marBtn{
+	margin-left: 6%;
+}
 #popupEmail {
 	display: flex;
 	justify-content: center;
@@ -147,7 +152,9 @@ button:hover {
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
 }
-
+.widinput {
+	width: 94%;
+}
 #popupPW.hide {
 	display: none;
 }
@@ -164,6 +171,7 @@ button:hover {
 	background: #fff;
 	border-radius: 5px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+	width: 30%;
 }
 
 .content {
@@ -173,9 +181,6 @@ button:hover {
 .btn-primary, .button {
 	background-color: #fff;
 	border: 1px solid #007bff;
-	color: #007bff;
-	font-size: 16px;
-	border-radius: 30px;
 	color: #007bff;
 	font-size: 13px;
 	border-radius: 30px;
@@ -187,6 +192,22 @@ button:hover {
 	color :#fff;
 	background-color: #007bff;
 }
+.deleteBtn {
+	float: right;
+	background-color: #c8c8c8;
+	border: none;
+	color: #fff;
+	font-size: 13px;
+	border-radius: 30px;
+	padding: 5px 10px;
+	font-weight: 400;
+	height: 30px;
+}
+.deleteBtn:hover {
+	color : #c8c8c8;
+	background-color: #fff;
+	border: 1px solid #c8c8c8;
+}
 </style>
 <script type="text/javascript">
 	
@@ -195,8 +216,8 @@ button:hover {
 <body>
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<%String memberemail = request.getParameter("memberemail");%>
-	<div style="margin-bottom: 30px;">
-		<div class="sendDiv align sendForm" style="margin-top: 10%;">
+	<div class="wrap">
+		<div class="sendDiv align sendForm">
 			<label>성명</label> <label class="form-accSend">${memberinfo.name}</label>
 			<input class="form-control" type="hidden" name="name"
 				value="${memberinfo.name}">
@@ -223,12 +244,11 @@ button:hover {
 				value="${memberinfo.phoneNum}">
 			<button onclick="showPopup2()">전화번호변경</button>
 		</div>
-		<div class="sendDiv align sendForm"
-			style="margin-bottom: 10%; margin: auto; display: block;">
+		<div class="sendDiv align sendForm wid">
 
 			<input class="form-control" type="hidden" name="password"
 				value="${memberinfo.password}">
-			<button onclick="showPopup3()">비밀번호변경</button>
+			<button class="marBtn" onclick="showPopup3()">비밀번호변경</button>
 			<input type="button" class="deleteBtn" data-memberid="${memberinfo.member_id}" value="탈퇴하기">
 		</div>
 
@@ -292,9 +312,10 @@ button:hover {
 			
 				<div class="sendDiv align">
 					<input   type="hidden" name="subscri_ox" value="${memberinfo.subscri_ox}"> 새 비밀번호
-						<input class="form-accSend" type="text" name="password1" id="password1"><br> 새 비밀번호 확인
-						<input  class="form-accSend" type="text" name="password2" id="password2"><br>
-					<input class="btn btn-primary" type="button" id="change_btn" value="비밀번호 변경"><br>
+						<input class="form-accSend widinput" type="password" name="password1" id="password1"><br> 새 비밀번호 확인
+						<input  class="form-accSend widinput" type="password" name="password2" id="password2"><br>
+					<input class="btn btn-primary" type="button" id="change_btn" value="비밀번호 변경">
+					<input class="btn btn-primary" type="button" value="닫기" onClick="javascript:closePopupPW();">
 					<script>
 						$("#change_btn")
 								.on(
@@ -322,8 +343,7 @@ button:hover {
 													+ password1+"&email="+email;
 										});
 					</script>
-					<input
-						type="button" value="닫기" onClick="javascript:closePopupPW();">
+					
 				</div>
 			
 
@@ -368,7 +388,7 @@ session.setAttribute("email", memberemail);
 	$(function() {
 		$(".deleteBtn").click(function() {
 			var data_memberid = $(this).attr("data-memberid");
-			if (confirm("탈퇴 하시겠습니까?")) {
+			if (confirm("탈퇴하시겠습니까?")) {
 				location.href = "memberDelete.do?data_memberid=" + data_memberid;
 			}
 		});
