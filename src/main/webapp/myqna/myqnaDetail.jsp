@@ -157,6 +157,31 @@ body {
 	
 }
 
+#qna_answer{
+	/* border: none; */
+	font-size: 14px;
+	resize: none;
+	margin-left: 50px;
+}
+
+#answer_btn{
+	margin-left: 50px;
+}
+
+
+.admin2{
+	font-weight: bold;
+	color: gray;
+}
+
+.time2{
+	color: gray;
+	font-size: 12px;
+}
+
+/* #admin_time{
+	visibility: hidden;
+} */
 
 </style>
 </head>
@@ -176,7 +201,7 @@ body {
 <!-- 글번호 -->
 <img alt="" src="../finances-master/images/num5.png" class="num">
 <span class="num2"> ${myqna.qa_id} 
-<input type="hidden" name="qaid" value="${myqna.qa_id}"></span>
+<input type="hidden" name="qaid" value="${myqna.qa_id}" id="qaid"></span>
 
 <!-- 작성자 -->
 <span class="user2">
@@ -198,9 +223,36 @@ body {
 <hr style="color: gray;">
 
 <p>
-<span><img alt="" src="../finances-master/images/admin.jpg" class="admin">
-<span style="font-weight: bold;color: gray;">관리자 &nbsp; </span> <span style="color: gray;font-size: 12px;"><img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date }</span> 
-<br><br><span style="margin-left: 40px;font-size: 14px; ">${myqna.qa_answer}</span></span>
+<br>
+<c:if test="${not empty myqna.qa_answer}">
+<span id="admin_time">
+	<span><img alt="" src="../finances-master/images/admin.jpg" class="admin"></span>
+	<span class="admin2">관리자 &nbsp; </span> 
+	<span class="time2"><img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date }</span> 
+</span><br><br>
+    <span style="margin-left: 40px;font-size: 14px;" name="user_detail">${myqna.qa_answer}</span>
+
+</c:if>
+
+<c:if test="${member.id=='admin'}">
+<!-- 사진+시간 -->
+<span id="admin_time">
+	<span><img alt="" src="../finances-master/images/admin.jpg" class="admin"></span>
+	<span class="admin2">관리자 &nbsp; </span> 
+	<span class="time2"><img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date }</span> 
+</span>
+
+<br>
+<!-- 관리자 댓글 -->
+<span name="admin_detail" id="admin_detail">
+	<br>
+	<textarea rows="6" cols="60" name="qna_answer" id="qna_answer"></textarea>
+	<br>
+    <input type="button" id="answer_btn" value="답변하기">
+    </span>
+
+
+</c:if>
 </p>
 
 <br><br><br>
@@ -218,6 +270,9 @@ body {
 		location.href = "UpdateAnswer.do?qa_id="+$("#qaid").val()
 										+"&qa_content="+$("#qna_answer").val();
 	});
+	
+	
+	/*
 	jQuery(function ($) {
 
         $.fn.getUrlParameter = function (sParam) {
@@ -251,11 +306,14 @@ body {
 		if(admin == "1"){
 			$("#user_detail").hide();
 			$("#admin_detail").show();
+			$("#admin_time").show();
 		}else{
 			$("#user_detail").show();
 			$("#admin_detail").hide();
+			$("#admin_time").hide();
 		}
-	});
+	});*/
+	
 		//목록가기
 		$(function() {
 			$(".btnList").click(function() {
@@ -269,7 +327,7 @@ body {
 			//삭제하기
 			$(".deleteBtn").click(function() {
 				var qaid = $(this).attr("data-qaid");
-				if (confirm(qaid + "번을 정말 삭제하시겠습니까?")) {
+				if (confirm(qaid + "번 게시물을 정말 삭제하시겠습니까?")) {
 					location.href = "../myqna/myqnaDelete.do?qaid=" + qaid;
 				}
 			});
