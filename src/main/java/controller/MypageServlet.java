@@ -21,13 +21,15 @@ import model.MemberService;
 public class MypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 request.setCharacterEncoding("utf8");
-		   response.setCharacterEncoding("utf8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		doPost(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 request.setCharacterEncoding("utf8");
-		   response.setCharacterEncoding("utf8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		   HttpSession session = request.getSession();
 		PrintWriter writer = response.getWriter();
 		   String memberid = request.getParameter("memberid");
@@ -38,7 +40,7 @@ public class MypageServlet extends HttpServlet {
 	        int i_memberid =Integer.parseInt(memberid);
 	        memberinfo = service.selectMemberByMemberId(i_memberid);
 	        System.out.println("member == "+memberinfo);
-	        session.setAttribute("memberinfo", memberinfo);
+	        session.setAttribute("member", memberinfo);
 	        session.setAttribute("memberemail", memberinfo.getEmail());
 		   RequestDispatcher rd;
 		   rd = request.getRequestDispatcher("mypage.jsp");

@@ -24,7 +24,7 @@ public class noticeDeleteServlet extends HttpServlet {
 	    
 	    NoticeService service = new NoticeService();
 	    int result = service.delete(nno);
-	    RequestDispatcher rd = request.getRequestDispatcher("noticelist.do");
+	    RequestDispatcher rd = request.getRequestDispatcher("NoticeList.do");
 	    rd.forward(request, response);
 	}
 

@@ -41,7 +41,7 @@ public class noticeInsertServlet extends HttpServlet {
 		NoticeService service = new NoticeService();
 		service.insert(notice);
 
-		response.sendRedirect("noticelist.do");
+		response.sendRedirect("NoticeList.do");
 	}
 
 }

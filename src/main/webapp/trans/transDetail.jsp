@@ -121,7 +121,7 @@
 		<div>
 			잔액 :
 			<%=balance%></div>
-	 <form action="transIn.do">
+	 <form action="transIn.do" autocomplete="off">
 
 		<!-- search -->
 		<table class="searchBox">
@@ -216,9 +216,9 @@
 							<td>${acclist.trans_acc }</td>
 							<td>${acclist.trans_date }</td>
 							<td>${acclist.trans_name }</td>
-
-							<td><c:if test="${acclist.trans_kind=='결제'}">
-
+							<td>
+							<c:choose>
+							<c:when test="${acclist.trans_kind=='결제'}">
 									<!-- 전체 레이아웃 -->
 									<div id="wrap">
 										<!-- Content -->
@@ -240,9 +240,10 @@
 									</div>
 									<!-- //전체 레이아웃 -->
 
-								</c:if> <c:if test="${acclist.trans_kind=='입금'}">입금</c:if> <c:if
-									test="${acclist.trans_kind=='자동이체'}">자동이체</c:if> <c:if
-									test="${acclist.trans_kind=='출금'}">출금</c:if></td>
+								</c:when> 
+								<c:otherwise>${acclist.trans_kind}
+									</c:otherwise>
+								</c:choose>	</td>
 					</tbody>
 
 				</c:forEach>

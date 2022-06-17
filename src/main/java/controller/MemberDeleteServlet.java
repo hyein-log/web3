@@ -23,21 +23,22 @@ public class MemberDeleteServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		// MemberVO member = (MemberVO) session.getAttribute("member");
-		// int memId = member.getMember_id();
-
-		int data_memberid = Integer.parseInt(request.getParameter("data_memberid"));
-		System.out.println(data_memberid);
-		session.setAttribute("memberid",data_memberid);
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		int memberid = Integer.parseInt(request.getParameter("data_memberid"));
+		System.out.println(memberid);
+		session.setAttribute("memberid",memberid);
 		AccountService service = new AccountService();
-		int money = service.selectMemBal(data_memberid);
+		int money = service.selectMemBal(memberid);
 		PrintWriter writer = response.getWriter();
 		if (money == 0) {
 			MemberService memserService = new MemberService();
-			int result = memserService.DELETE_MEMBER(data_memberid);
+			int result = memserService.DELETE_MEMBER(memberid);
 			if (result > 0) {
+				session.setAttribute("memberid",memberid);
 				writer.println("<script>alert('삭제되었습니다.');</script>");
-				response.setHeader("refresh", "0;url=../finances-master/main.jsp");
+				response.setHeader("refresh", "0;url=memDelete.jsp");
 			} else {
 				writer.println("<script>alert('다시 시도해주세요.');</script>");
 				response.setHeader("refresh", "0;url=../finances-master/main.jsp");
@@ -46,9 +47,6 @@ public class MemberDeleteServlet extends HttpServlet {
 			writer.println("<script>alert('잔액이 남은 계좌는 해지할 수 없습니다!');</script>");
 			response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 		}
-		// 위임
-		RequestDispatcher rd = request.getRequestDispatcher("../finances-master/main.jsp");
-		rd.forward(request, response);
 	}
 
 }

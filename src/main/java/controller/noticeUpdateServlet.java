@@ -51,7 +51,7 @@ public class noticeUpdateServlet extends HttpServlet {
 		int result = service.update(notice);
 		System.out.println("update°á°ú : " + result);
 
-		response.sendRedirect("noticelist.do");
+		response.sendRedirect("NoticeList.do");
 	}
 
 }

@@ -7,8 +7,26 @@
 <meta charset="UTF-8">
 <title>1:1문의</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style type="text/css">
-	
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+	font-family: 'Nanum Gothic';
+}
+
+body {
+	min-height: 100%;
+}	
+
+.wrap {
+	width:35%;
+	margin: auto;
+	padding-top: 5rem;
+} 
+
 .sendForm{
     width: 40%;
     margin-left: 520px;
@@ -18,12 +36,13 @@
     margin-bottom: 10%;
     margin-left: 400px;
  /*    margin: auto; */
-    border: 1px solid #E0E0E0;
+    border: 10px solid #B6D9FF;
 }
 
 .h2{
 	margin-left: 400px;
 	margin-top: 100px; 
+	color: #007bff;
 }
 	
 	
@@ -44,65 +63,199 @@
 }
 
 
-.sendDiv {
-    margin-bottom: 30px;
+.sendbtnDiv{
+    margin-bottom: 10px;
+    margin-left: 380px;
     color: #007bff;
 }
-/* 
-.btnList, #updateBtn, .deleteBtn {
+.btnList, #updateBtn, .deleteBtn{
+    background-color: white;
+    border: 1px solid #007bff;
+    color: #007bff;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-weight: 400;
+    height: 46px;
+} 
+
+.btnList {
     background-color: #007bff;
     border: none;
     color: #fff;
-    font-size: 16px;
-    border-radius: 30px;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 30px;
-    padding: 10px 30px;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 10px 20px;
     font-weight: 400;
     height: 46px;
+} 
+
+ #updateBtn:hover, .deleteBtn:hover {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-weight: 400;
+    height: 46px;
+} 
+
+.title{
+	font-size: 15px;
+	color: black;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.title2{
+	border: none;
+	font-size: 25px;
+	font-weight: bold;
+	color:#007bff;
+	width: 500px;
+	margin-left: 20px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.num2{
+	color: gray;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: 'Nanum Gothic', sans-serif;
+	
+}
+
+.user2{
+	margin-left: 30px;
+	color: gray;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.date{
+	margin-left: 30px;
+	color: gray;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.content{
+	border: none;
+	font-size: 14px;
+	 font-weight: bold; 
+	color: #424242;
+	resize: none;
+	font-family: 'Nanum Gothic', sans-serif;
+	line-height: 25px;
+}
+
+.content2{
+	font-size: 15px;
+	color: black;
+	font-family: 'Nanum Gothic', sans-serif;
+	
+}
+
+#qna_answer{
+	/* border: none; */
+	font-size: 14px;
+	resize: none;
+	margin-left: 50px;
+}
+
+#answer_btn{
+	margin-left: 50px;
+}
+
+
+.admin2{
+	font-weight: bold;
+	color: gray;
+}
+
+.time2{
+	color: gray;
+	font-size: 12px;
+}
+
+/* #admin_time{
+	visibility: hidden;
 } */
+
 </style>
 </head>
 <body>
 	<jsp:include page="../finances-master/header/mainHeader.jsp"></jsp:include>
 	
-
-<h2 class="h2">문의 상세보기</h2>	
+<div id="wrab">
+<h2 class="h2">[문의 내용]</h2>	
 
 <form action="myqnaUpdate.do" method="post" class="sendForm">
 
-<span style="font-size: 15px;color: gray;">제목 :</span> 
-<input type="text" name="title"  value="${myqna.qa_title }" style="border: none;font-size: 30px;font-weight: bold;color:#007bff; ">
-<br><br>
+<span class="title">제목 :</span> 
+<input type="text" name="title"  value="${myqna.qa_title }"  class="title2">
+<hr style="width: 480px;margin-left: 2px">
+
 
 <!-- 글번호 -->
-<img alt="" src="../finances-master/images/num5.png" class="num"><span style="color: gray;font-size: 13px;font-weight: bold;"> ${myqna.qa_id} 
-<input type="hidden" name="qaid" value="${myqna.qa_id}"></span>
+<img alt="" src="../finances-master/images/num5.png" class="num">
+<span class="num2"> ${myqna.qa_id} 
+<input type="hidden" name="qaid" value="${myqna.qa_id}" id="qaid"></span>
 
 <!-- 작성자 -->
-<span style="margin-left: 30px;color: gray;font-size: 13px;font-weight: bold;">
+<span class="user2">
 <img alt="" src="../finances-master/images/user2.png" class="user"> ${member.id}</span>
 
 <!-- 작성일 -->
-<span style="margin-left: 30px;color: gray;font-size: 13px;font-weight: bold;">
+<span class="date">
 <img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date}</span>
 
 <br><br><br><br>
 
-<span style="font-size: 15px;color: gray;">내용 :</span> <br><br>
-<input type="text" name="content"  value="${myqna.qa_content }" style="border: none;font-size: 20px;font-weight: bold;color: #424242;">
+<span class="content2">내용 :</span> <br><br>
+<textarea rows="5" cols="70" name="content" class="content">${myqna.qa_content }</textarea>
+<%-- <input type="text" name="content"  value="${myqna.qa_content }" class="content">  --%>
 
-<br><br><br><br>
+
+<br><br>
 
 <hr style="color: gray;">
 
 <p>
-<span><img alt="" src="../finances-master/images/admin.jpg" class="admin"><span style="font-weight: bold;color: gray;">관리자 &nbsp; </span> <span style="color: gray;font-size: 12px;"><img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date }</span> 
-<br><br><span style="margin-left: 40px;font-size: 14px; ">${myqna.qa_answer}</span></span>
+<br>
+<c:if test="${not empty myqna.qa_answer}">
+<span id="admin_time">
+	<span><img alt="" src="../finances-master/images/admin.jpg" class="admin"></span>
+	<span class="admin2">관리자 &nbsp; </span> 
+	<span class="time2"><img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date }</span> 
+</span><br><br>
+    <span style="margin-left: 40px;font-size: 14px;" name="user_detail">${myqna.qa_answer}</span>
+
+</c:if>
+
+<c:if test="${member.id=='admin'}">
+<!-- 사진+시간 -->
+<span id="admin_time">
+	<span><img alt="" src="../finances-master/images/admin.jpg" class="admin"></span>
+	<span class="admin2">관리자 &nbsp; </span> 
+	<span class="time2"><img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date }</span> 
+</span>
+
+<br>
+<!-- 관리자 댓글 -->
+<span name="admin_detail" id="admin_detail">
+	<br>
+	<textarea rows="6" cols="60" name="qna_answer" id="qna_answer"></textarea>
+	<br>
+    <input type="button" id="answer_btn" value="답변하기">
+    </span>
+
+
+</c:if>
 </p>
 
-<br><br>
+<br><br><br>
 <div class="sendbtnDiv">
 	<input type="button"   class="btnList" value="목록"> 
 	<input type="submit" id="updateBtn" value="수정">
@@ -111,12 +264,15 @@
 
 
 </form>
-
+</div>
 	<script type="text/javascript">
 	$("#answer_btn").on("click",function(){
 		location.href = "UpdateAnswer.do?qa_id="+$("#qaid").val()
 										+"&qa_content="+$("#qna_answer").val();
 	});
+	
+	
+	/*
 	jQuery(function ($) {
 
         $.fn.getUrlParameter = function (sParam) {
@@ -150,11 +306,14 @@
 		if(admin == "1"){
 			$("#user_detail").hide();
 			$("#admin_detail").show();
+			$("#admin_time").show();
 		}else{
 			$("#user_detail").show();
 			$("#admin_detail").hide();
+			$("#admin_time").hide();
 		}
-	});
+	});*/
+	
 		//목록가기
 		$(function() {
 			$(".btnList").click(function() {
@@ -168,7 +327,7 @@
 			//삭제하기
 			$(".deleteBtn").click(function() {
 				var qaid = $(this).attr("data-qaid");
-				if (confirm(qaid + "번을 정말 삭제하시겠습니까?")) {
+				if (confirm(qaid + "번 게시물을 정말 삭제하시겠습니까?")) {
 					location.href = "../myqna/myqnaDelete.do?qaid=" + qaid;
 				}
 			});

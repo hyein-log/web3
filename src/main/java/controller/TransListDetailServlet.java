@@ -37,14 +37,13 @@ public class TransListDetailServlet extends HttpServlet {
 	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("¾ßÈ£");
 		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf8");
-		response.setCharacterEncoding("utf8");
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
 		String kind = request.getParameter("kind");
@@ -74,8 +73,7 @@ public class TransListDetailServlet extends HttpServlet {
 		paging.setTotalCount(count);
 		AcclistService acclistService = new AcclistService();
 		List<AcclistVO> alist = new ArrayList<AcclistVO>();
-		if (kind == null)
-			return;
+	
 		if(sel.equals("1")) {
 		if (kind.equals("all")) {
 			alist = acclistService.SQL_SELECT_TERM(accNum,searchStartDate, searchEndDate, page);
