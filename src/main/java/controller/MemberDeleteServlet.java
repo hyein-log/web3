@@ -23,8 +23,8 @@ public class MemberDeleteServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		// MemberVO member = (MemberVO) session.getAttribute("member");
-		// int memId = member.getMember_id();
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("UTF-8");
 
 		int data_memberid = Integer.parseInt(request.getParameter("data_memberid"));
 		System.out.println(data_memberid);
@@ -36,17 +36,17 @@ public class MemberDeleteServlet extends HttpServlet {
 			MemberService memserService = new MemberService();
 			int result = memserService.DELETE_MEMBER(data_memberid);
 			if (result > 0) {
-				writer.println("<script>alert('»èÁ¦µÇ¾ú½À´Ï´Ù.');</script>");
+				writer.println("<script>alert('ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.');</script>");
 				response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 			} else {
-				writer.println("<script>alert('´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.');</script>");
+				writer.println("<script>alert('ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.');</script>");
 				response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 			}
 		} else {
-			writer.println("<script>alert('ÀÜ¾×ÀÌ ³²Àº °èÁÂ´Â ÇØÁöÇÒ ¼ö ¾ø½À´Ï´Ù!');</script>");
+			writer.println("<script>alert('ì”ì•¡ì´ ë‚¨ì€ ê³„ì¢ŒëŠ” í•´ì§€í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤!');</script>");
 			response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 		}
-		// À§ÀÓ
+		// ìœ„ì„
 		RequestDispatcher rd = request.getRequestDispatcher("../finances-master/main.jsp");
 		rd.forward(request, response);
 	}
