@@ -233,13 +233,7 @@ $(function(){
 });
 
  </script>
- 
-
 <jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
-
-  
-
-
 
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>COS BANK 이체하기</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta name="viewport"
 content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,7 +38,8 @@ $(function() {
 </head>
 <body>
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-	<h2>나의 계좌 리스트</h2>
+	<h2 class="listTitle">내 계좌 리스트</h2>
+	<div class="txt">이체할 계좌를 선택하세요.</div>
 	<c:set var="path" value="${pageContext.request.contextPath }"/>
 	<table class="sendTable">
 		<tr class="repeat">
@@ -49,7 +50,7 @@ $(function() {
 			<th></th>
 		</tr>
 		<c:forEach items="${accListType0 }" var="acc">
-			<tr>
+			<tr class="trContent">
 				<td>${acc. makedate}</td>
 				<td>
 					<c:if test="${acc. accountType==0}">입출금 통장</c:if>

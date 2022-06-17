@@ -32,7 +32,7 @@ body {
 }
 
 #wrap {
-	width: 80%;
+	width: 75%;
 	margin: auto;
 	overflow: hidden;
 	padding-top: 1%;
@@ -82,10 +82,9 @@ img {
 	justify-content: center; */
 }  
 .leftmargin1 {
-	margin-left: 18%;
 }
 .leftmargin2 {
-	margin-left: 5%;
+	margin-left: 3%;
 }
 </style>
 </head>
@@ -112,15 +111,11 @@ img {
 			</div>
 			
 			<!-- 1:1 문의 -->
-			<!-- <div style="background-color: #fbfbfd;" class="a visual">
+			<div style="background-color: #fbfbfd;" class="a visual leftmargin2">
 				<div>
-					<p class="center bold">1:1 문의</p>
+					<img src="qna.png" class="mb-4" onclick="location.href='../myqna/myqnalist.do'">
 				</div>
-				<div>
-					<img src="financial.png "
-						onclick="location.href='../myqna/myqnalist.do'">
-				</div>
-			</div> -->
+			</div>
 		</div>
 	</div>
 

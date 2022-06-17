@@ -12,15 +12,23 @@ body {
 	margin: auto;
 	font-family: "Open Sans";
 	padding: 3%;
-	margin-top: 10%;
 	margin-bottom: 10%;
+}
+.listTitle {
+	margin-top: 8rem;
+	margin-left: 3%;
+}
+.txt{
+	font-size: 14px;
+	margin-left: 3%;
+	margin-bottom: 3%;
 }
 .sendTable {
 	width: 90%;
 	margin: auto;
-	margin-top:8%;
 	margin-bottom: 10%;
 	text-align: center;
+	border-collapse: collapse;
 }
 .form-accSend {
 	width: 100%;
@@ -43,7 +51,18 @@ body {
 .sendDiv {
 	margin-bottom: 30px;
 }
+.repeat {
+	font-weight: bold;
+	font-size: 17px;
+	color: #007bff;
+	background-color: #ECF7FF;
+}
 
+.trContent {
+	font-size: 15px;
+	font-weight: bold;
+	color: #616161;
+}
 .sendbtnDiv{
 	text-align: center;
 }
@@ -81,11 +100,8 @@ label{
 	color: #fff;
 }
 th ,td{
-	border-bottom: 1px solid #c8c8c8;
+	border-bottom: 1px solid #007bff;
 }
 tr {
 	height: 50px;
 }
-td {
-	
-}	

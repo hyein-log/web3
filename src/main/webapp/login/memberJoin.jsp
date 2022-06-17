@@ -8,14 +8,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <style type="text/css">
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
 
+body {
+	min-height: 100%;
+}
 .sendForm{
     width: 30%;
     margin: auto;
     font-family: 'Nanum Gothic', sans-serif;
     padding: 3%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 4rem;
+    margin-bottom: 5%;
 }
 
 .form-accSend {
@@ -49,7 +57,7 @@ label{
     margin-bottom: 0.5rem;
     font-size: 16px;
 }
-.btnSubmit ,.checkEmail, .checkId{
+.btnSubmit{
     background-color: #007bff;
     border: none;
     color: #fff;
@@ -62,7 +70,17 @@ label{
     font-weight: 400;
     height: 46px;
 }
-
+.checkEmail, .checkId{
+	background-color: #fff;
+	border: 1px solid #007bff;
+	color: #007bff;
+	font-size: 13px;
+	border-radius: 30px;
+	padding: 5px 10px;
+	font-weight: 400;
+	height: 30px;
+	margin-top: 3%;
+}
 .btnCencel{
  	background-color: #fff;
     border: 1px solid #007bff;
@@ -132,6 +150,7 @@ label{
 
 </head>
 <body>
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 <form id="joinForm" name="joinForm" class="sendForm" encType="UTF-8">
 <h2 id="signIn">Create an account.</h2>
 <br><br>
@@ -143,11 +162,11 @@ label{
 </div>
 <div class="sendDiv align">
 	<label class="accNum">Pass Word</label>
-	<input type="text" name="password1" id="password1" class="form-accSend" required>
+	<input type="password" name="password1" id="password1" class="form-accSend" required>
 </div>
 <div class="sendDiv align">
 	<label class="accNum">Confirm password</label>
-	<input type="text" name="password2" id="password2" class="form-accSend" required>
+	<input type="password" name="password2" id="password2" class="form-accSend" required>
 </div>
 <div class="sendDiv align">
 	<label class="accNum">Name</label>
