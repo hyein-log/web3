@@ -20,14 +20,14 @@ import model.NoticeService;
 public class NoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		NoticeService service = new NoticeService();
 		
 		List<NoticeVO> noti = service.selectAll();
 		request.setAttribute("notiList", noti);
 		
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("noticeLIst.jsp");
+		rd = request.getRequestDispatcher("noticeList.jsp");
 		rd.forward(request, response);
 	}
 }

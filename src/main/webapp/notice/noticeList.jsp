@@ -14,7 +14,7 @@
         <td>작성일</td>
         <td></td>
     </tr>
-    <c:forEach items="${noticeDatas}" var="notice">
+    <c:forEach items="${notiList}" var="notice">
         <tr>
             <td><a href="noticeDetail.do?noticeid=${notice.notice_id}">${notice.notice_id}</a></td>
             <td><a href="noticeDetail.do?noticeid=${notice.notice_id}">${notice.notice_title}</a></td>
