@@ -14,10 +14,12 @@ import dto.AcclistVO;
 public class AcclistDAO {
 	static final String SQL_SELECT_ALL = "SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=?";
 	static final String SQL_SELECT_ALL_COUNT = "SELECT COUNT(*) FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=?";
-	static final String SQL_SELECT_ALL_COUNT_IN = "SELECT COUNT(*) FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=? AND TRANS_KIND='입금'";
-	static final String SQL_SELECT_ALL_COUNT_OUT = "SELECT COUNT(*) FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=?AND TRANS_KIND='출금'";
+	static final String SQL_SELECT_ALL_COUNT_IN = "SELECT COUNT(*) FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=? AND TRANS_KIND='입금' and TRANS_DATE BETWEEN ? AND ? ORDER BY TRANS_DATE desc";
+	static final String SQL_SELECT_ALL_COUNT_OUT = "SELECT COUNT(*) FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=?AND TRANS_KIND='출금' and TRANS_DATE BETWEEN ? AND ? ORDER BY TRANS_DATE desc";
 	static final String SQL_SELECT_ALL_PAGE = "SELECT * FROM(select* from(SELECT rownum num,a.* FROM (SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=? ORDER BY trans_date desc)a )WHERE num >=?)WHERE num<=?";	
 	static final String SQL_SELECT_KIND = "SELECT * FROM(select* from(SELECT rownum num,a.* FROM (SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=?and TRANS_KIND = ? ORDER BY trans_date desc)a )WHERE num >=?)WHERE num<=?";
+	static final String SQL_SELECT_TERM = "SELECT * FROM(select* from(SELECT rownum num,a.* FROM (SELECT * FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=?and TRANS_DATE BETWEEN ? AND ? ORDER BY TRANS_DATE desc)a )WHERE num >=?)WHERE num<=?";
+	static final String SQL_SELECT_TERM_COUNT = "SELECT COUNT(*) FROM ACC_LIST al JOIN ACCOUNT a using(ACCOUNT_ID) where ACC_NUMBER=? and TRANS_DATE BETWEEN ? AND ? ORDER BY TRANS_DATE desc";
 	Connection conn;
 	PreparedStatement st; 
 	ResultSet rs;
@@ -137,12 +139,14 @@ public class AcclistDAO {
 		}
 		return a;
 	}
-	public int SQL_SELECT_ALL_COUNT_IN(String id ) {
+	public int SQL_SELECT_ALL_COUNT_IN(String acc_num,String start_Term, String end_Term ) {
 		int a=0;
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(SQL_SELECT_ALL_COUNT_IN);
-			st.setString(1, id);
+			st.setString(1, acc_num);
+			st.setString(2, start_Term);
+			st.setString(3, end_Term);
 			rs = st.executeQuery();
 			
 			while (rs.next()) {
@@ -156,12 +160,14 @@ public class AcclistDAO {
 		}
 		return a;
 	}
-	public int SQL_SELECT_ALL_COUNT_OUT(String id ) {
+	public int SQL_SELECT_ALL_COUNT_OUT(String acc_num,String start_Term, String end_Term ) {
 		int a=0;
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(SQL_SELECT_ALL_COUNT_OUT);
-			st.setString(1, id);
+			st.setString(1, acc_num);
+			st.setString(2, start_Term);
+			st.setString(3, end_Term);
 			rs = st.executeQuery();
 			
 			while (rs.next()) {
@@ -183,4 +189,52 @@ public class AcclistDAO {
 	public AcclistDAO() {
 		
 	}
+	public List<AcclistVO> SQL_SELECT_TERM(String acc_num ,String start_Term, String end_Term,int page) {
+		List<AcclistVO> list = new ArrayList<AcclistVO>();
+		int startNum = (page-1)*10+1;
+	    int endNum = page*10;
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(SQL_SELECT_TERM);
+			st.setString(1, acc_num);
+			st.setString(2, start_Term);
+			st.setString(3, end_Term);
+			st.setInt(4, startNum);
+			st.setInt(5, endNum);
+			rs = st.executeQuery();
+			
+			while (rs.next()) {
+				list.add(makelist(rs));
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		
+		return list;
+	}
+	public int SQL_SELECT_TERM_COUNT(String acc_num, String start_Term, String end_Term ) {
+		int a=0;
+		conn = DBUtil.getConnection();
+		try {
+			st = conn.prepareStatement(SQL_SELECT_TERM_COUNT);
+			st.setString(1, acc_num);
+			st.setString(2, start_Term);
+			st.setString(3, end_Term);
+			rs = st.executeQuery();
+			
+			while (rs.next()) {
+				a= rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return a;
+	}
+	
 }

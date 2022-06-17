@@ -194,8 +194,7 @@ button:hover {
 </head>
 <body>
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-	<%String memberemail = request.getParameter("memberemail");
-		System.out.println(memberemail);%>
+	<%String memberemail = request.getParameter("memberemail");%>
 	<div style="margin-bottom: 30px;">
 		<div class="sendDiv align sendForm" style="margin-top: 10%;">
 			<label>성명</label> <label class="form-accSend">${memberinfo.name}</label>

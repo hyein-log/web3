@@ -23,8 +23,10 @@ import model.MyQnaService;
 public class MyQnaListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
@@ -35,12 +37,15 @@ public class MyQnaListServlet extends HttpServlet {
 
 		
 		if(memId == 0) {
+	
 			mlist = service.selectAll();
 			request.setAttribute("qnaDatas", mlist);
 			rd = request.getRequestDispatcher("../admin/qnaList.jsp");
 			rd.forward(request, response);
+
 		}else {
 			mlist = service.selectById(memId);
+
 			request.setAttribute("myqnaDatas", mlist);
 			rd = request.getRequestDispatcher("myqnaList.jsp");
 			rd.forward(request, response);

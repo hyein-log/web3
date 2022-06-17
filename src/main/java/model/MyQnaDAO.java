@@ -27,7 +27,7 @@ public class MyQnaDAO {
 	int result;
 	
 	
-	//ÀüÃ¼ ¸ñ·Ï Á¶È¸
+	//ì „ì²´ ëª©ë¡ ì¡°íšŒ
 	public List<MyQnaVO> selectAll() {
 		List<MyQnaVO> mlist = new ArrayList<>();
 		MyQnaVO myqna = null;
@@ -48,7 +48,7 @@ public class MyQnaDAO {
 		return mlist;
 	}
 
-	//·Î±×ÀÎÇÑ È¸¿ø °Ô½ÃÆÇ¸¸ º¸ÀÌ°Ô 
+	//ë¡œê·¸ì¸í•œ íšŒì› ê²Œì‹œíŒë§Œ ë³´ì´ê²Œ 
 	public List<MyQnaVO> selectById(int memId) {
 		List<MyQnaVO> list = new ArrayList<>();
 		MyQnaVO myqna = null;
@@ -67,7 +67,7 @@ public class MyQnaDAO {
 		} finally {
 			DBUtil.dbClose(rs, st, conn);
 		}		
-		//System.out.println(list);
+
 		return list;
 	}
 	
@@ -115,7 +115,7 @@ public class MyQnaDAO {
         conn = DBUtil.getConnection();
         try {
             st = conn.prepareStatement(INSERT_MYQNA);
-            st.setInt(1, my.getMember_id());	//¿Ü·¡Å°
+            st.setInt(1, my.getMember_id());	//ì™¸ë˜í‚¤
             st.setString(2,my.getQa_title());
             st.setString(3, my.getQa_content());
 
@@ -156,7 +156,7 @@ public class MyQnaDAO {
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(DELETE_MYQNA);
-			st.setInt(1, qaId);	//¿Ü·¡Å°
+			st.setInt(1, qaId);	//ì™¸ë˜í‚¤
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
