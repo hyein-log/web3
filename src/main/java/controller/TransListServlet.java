@@ -23,9 +23,9 @@ public class TransListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LocalDate now = LocalDate.now();
-		System.out.println("nownow : "+ now);
-		request.setCharacterEncoding("utf8");
-		response.setCharacterEncoding("utf8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession();
 		String accNum = request.getParameter("accNum");
 		request.setAttribute("accNum", accNum);

@@ -23,32 +23,30 @@ public class MemberDeleteServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-
-		int data_memberid = Integer.parseInt(request.getParameter("data_memberid"));
-		System.out.println(data_memberid);
-		session.setAttribute("memberid",data_memberid);
+		response.setContentType("text/html; charset=UTF-8");
+		int memberid = Integer.parseInt(request.getParameter("data_memberid"));
+		System.out.println(memberid);
+		session.setAttribute("memberid",memberid);
 		AccountService service = new AccountService();
-		int money = service.selectMemBal(data_memberid);
+		int money = service.selectMemBal(memberid);
 		PrintWriter writer = response.getWriter();
 		if (money == 0) {
 			MemberService memserService = new MemberService();
-			int result = memserService.DELETE_MEMBER(data_memberid);
+			int result = memserService.DELETE_MEMBER(memberid);
 			if (result > 0) {
-				writer.println("<script>alert('ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.');</script>");
-				response.setHeader("refresh", "0;url=../finances-master/main.jsp");
+				session.setAttribute("memberid",memberid);
+				writer.println("<script>alert('»èÁ¦µÇ¾ú½À´Ï´Ù.');</script>");
+				response.setHeader("refresh", "0;url=memDelete.jsp");
 			} else {
-				writer.println("<script>alert('ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.');</script>");
+				writer.println("<script>alert('´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.');</script>");
 				response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 			}
 		} else {
-			writer.println("<script>alert('ì”ì•¡ì´ ë‚¨ì€ ê³„ì¢ŒëŠ” í•´ì§€í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤!');</script>");
+			writer.println("<script>alert('ÀÜ¾×ÀÌ ³²Àº °èÁÂ´Â ÇØÁöÇÒ ¼ö ¾ø½À´Ï´Ù!');</script>");
 			response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 		}
-		// ìœ„ì„
-		RequestDispatcher rd = request.getRequestDispatcher("../finances-master/main.jsp");
-		rd.forward(request, response);
 	}
 
 }
