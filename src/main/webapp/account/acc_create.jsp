@@ -52,6 +52,7 @@ body {
     color: #495057;
     background-color: #fff;
   /*   margin-top: 3%; */
+  margin-left: 70px;
 }
 
 .form-accSend:active, .form-accSend:focus {
@@ -65,7 +66,7 @@ body {
 }
 
 .sendbtnDiv{
-   margin-left: 15%;
+   margin-left: 30%;
 }
 label{
     color:#000;
@@ -134,6 +135,7 @@ label{
 .accNum{
 	font-weight: bold;
 	font-size: 15px;
+	margin-left: 70px;
 }
 
 .passLink{
@@ -189,9 +191,9 @@ label{
 <div id="accSelect">
 	<br>
 
-	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금 통장" style="margin-left: 50px;" >입출금 통장
-	<input type="radio" name="bank_account" value="1" data-bank="적금 통장" style="margin-left: 50px;">적금 통장
-	<input type="radio" name="bank_account" value="2" data-bank="예금 통장" style="margin-left: 50px;">예금 통장
+	<input type="radio" name="bank_account" value="0" checked="checked" data-bank="입출금통장" style="margin-left: 50px;" >입출금통장
+	<input type="radio" name="bank_account" value="1" data-bank="적금통장" style="margin-left: 50px;">적금통장
+	<input type="radio" name="bank_account" value="2" data-bank="예금통장" style="margin-left: 50px;">예금통장
 
 </div>
 <br><br>
@@ -201,18 +203,17 @@ label{
 
         <div class="sendDiv align">
 
-            <label class="accNum">계좌 종류 :</label><br><br>
-           <span id="bankType" style="font-weight: bold;margin-left: 180px;font-size: 18px;">입출금 통장</span>
-
+            <label class="accNum">계좌 종류 :</label>
+           <span id="bankType" style="font-weight: bold;margin-left: 30px;font-size: 18px;">입출금 통장</span>
            <input type="hidden" name="bank_account"  id="bank_account" value="0">
         </div><br>
         <div class="sendDiv align">
-            <label class="accNum">성함 : </label>
-            <input type="text" name="member_id" value="${member.name }" style="border: none;font-size: 15px;"> 
+            <label class="accNum">이 름 : </label>
+            <input type="text" name="member_id" value="${member.name }" style="border: none;font-size: 18px;font-weight: bold;margin-left: 60px;"> 
         </div><br>
         <div class="sendDiv align">
             <label class="accNum">계좌 비밀번호 :</label><br><br>
-           <input type="password" name="acc_pass" class="form-accSend">
+           <input type="password" name="acc_pass" class="form-accSend" placeholder="비밀번호를 입력해주세요.">
         </div>
         <div class="sendbtnDiv">
 			<input type="submit" class="btnSubmit" value="개설하기" >

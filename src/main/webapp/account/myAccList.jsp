@@ -9,20 +9,71 @@
 <title>COS BANK 계좌관리</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
+<style type="text/css">
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
+
+
+
+.listTitle{
+	color: #007bff;
+	font-weight: 900;
+	font-size: 30px;
+	margin-top: 150px;
+	margin-left: 180px;
+}
+
+
+.listTable{
+	width: 80%;
+	margin: auto;
+	padding: 3%;
+	margin-top: 50px;
+    margin-bottom: 10%;
+    border: 1px solid #007bff;
+    text-align: center;
+    border-collapse: collapse;
+    
+}
+
+td{
+	border: 1px solid #007bff;
+}
+
+.trTitle{
+	padding: 10px 30px;
+}
+
+
+</style>
 </head>
+
+<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
+
+
 <body>
-	<h2>나의 계좌 리스트</h2>
+	<h2 class="listTitle">나의 계좌 정보</h2>
 	<c:set var="path" value="${pageContext.request.contextPath }"/>
-	<table>
-		<tr>
+	<table class="listTable">
+		<tr class="trTitle">
 			<td>생성일자</td>
 			<td>통장종류</td>
 			<td>계좌번호</td>
 			<td>잔액</td>
+			<td></td>
+			<td></td>
+			<td></td>
 		</tr>
 		<c:forEach items="${accLists }" var="acc">
-			<tr>
+			<tr class="trContent">
 				<td>${acc. makedate}</td>
 				<td>
 					<c:if test="${acc. accountType==0}">입출금 통장</c:if>
@@ -45,6 +96,10 @@
 		</c:forEach>
 	</table>
 </body>
+
+<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
+
+
 <script>
 
 	$(function() {

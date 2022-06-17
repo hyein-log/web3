@@ -33,11 +33,11 @@ public class MyQnaListServlet extends HttpServlet {
 		int memId = member.getMember_id();
 		RequestDispatcher rd;
 		MyQnaService service = new MyQnaService();
-
-		System.out.println("memId =" +memId);
 		List<MyQnaVO> mlist = new ArrayList<MyQnaVO>();
-		if(memId == 0) {
 
+		
+		if(memId == 0) {
+	
 			mlist = service.selectAll();
 			request.setAttribute("qnaDatas", mlist);
 			rd = request.getRequestDispatcher("../admin/qnaList.jsp");
