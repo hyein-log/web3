@@ -163,7 +163,9 @@ td{
 					   <button class="btnLimit" data-accNum="${acc.acc_number}">한도 변경</button>
 				   </c:if>
 				</td>
-				<td><button class="btnAuto" onclick="location.href = '../autosend/AutoSendList.do?accid=${acc.account_id}'">자동이체 관리</button></td>
+				<td><button class="btnAuto" onclick="location.href='../autosend/AutoSendList.do?accid=${acc.account_id}'">자동이체 관리</button></td>
+
+
 			</tr>
 		</c:forEach>
 	</table>
