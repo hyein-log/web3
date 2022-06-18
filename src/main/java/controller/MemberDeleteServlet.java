@@ -26,7 +26,7 @@ public class MemberDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		int memberid = Integer.parseInt(request.getParameter("data_memberid"));
+		int memberid = Integer.parseInt(request.getParameter("memberid"));
 		System.out.println(memberid);
 		session.setAttribute("memberid",memberid);
 		AccountService service = new AccountService();
@@ -36,8 +36,7 @@ public class MemberDeleteServlet extends HttpServlet {
 			MemberService memserService = new MemberService();
 			int result = memserService.DELETE_MEMBER(memberid);
 			if (result > 0) {
-				session.setAttribute("memberid",memberid);
-				writer.println("<script>alert('삭제되었습니다.');</script>");
+				writer.println("<script>alert('탈퇴되었습니다.');</script>");
 				response.setHeader("refresh", "0;url=memDelete.jsp");
 			} else {
 				writer.println("<script>alert('다시 시도해주세요.');</script>");

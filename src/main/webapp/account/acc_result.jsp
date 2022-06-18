@@ -80,7 +80,7 @@ body {
     font-weight: 400;
     height: 46px;
     width: 100%;
-   /*  margin-left: 5px; */
+    cursor:pointer;
 }
 
 .td1{

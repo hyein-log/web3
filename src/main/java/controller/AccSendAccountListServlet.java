@@ -19,7 +19,7 @@ import model.AccountService;
  * Servlet implementation class AccountList
  */
 @WebServlet("/account/accSendList.do")
-public class AccSendListServlet extends HttpServlet {
+public class AccSendAccountListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

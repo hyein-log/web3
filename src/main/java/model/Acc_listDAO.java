@@ -12,13 +12,13 @@ import dto.AcclistVO;
 import util.DBUtil;
 
 public class Acc_listDAO {
-	static final String INSERT_ACCLIST = "INSERT INTO ACC_LIST (TRANS_ID , ACCOUNT_ID, PAST_ACC, TRANS_ACC, TRANS_KIND) VALUES (acc_list_seq.nextval,?,?,?,?)";
+	static final String INSERT_ACCLIST = "INSERT INTO ACC_LIST (TRANS_ID , ACCOUNT_ID, PAST_ACC, TRANS_ACC, TRANS_KIND, Trans_name) VALUES (acc_list_seq.nextval,?,?,?,?,?)";
 	static final String SELECT_LIST_BY_TERM ="SELECT * FROM ACC_LIST al WHERE ACCOUNT_ID =? AND TRANS_DATE BETWEEN ? AND ?";
 	Connection conn;
 	PreparedStatement st;
 	ResultSet rs;
 	int result;
-	public int InsertAccList(int ACCOUNT_ID, int PAST_ACC, int TRANS_ACC, String TRANS_KIND) {
+	public int InsertAccList(int ACCOUNT_ID, int PAST_ACC, int TRANS_ACC, String TRANS_KIND, String TRANS_NAME) {
 		conn=DBUtil.getConnection();
 		try { 
 			st = conn.prepareStatement(INSERT_ACCLIST);
@@ -26,6 +26,7 @@ public class Acc_listDAO {
 			st.setInt(2, PAST_ACC);
 			st.setInt(3, TRANS_ACC);
 			st.setString(4, TRANS_KIND);
+			st.setString(5, TRANS_NAME);
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

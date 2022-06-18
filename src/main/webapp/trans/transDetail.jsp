@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 <title>결제내역 지도</title>
@@ -22,10 +22,15 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+	rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="css/timepicker.css">
@@ -41,17 +46,17 @@
 					showOn : "both",
 					buttonImage : "css/png.png",
 					buttonImageOnly : true,
-// 					changeMonth : true,
-// 					changeYear : true,
-// 					yearRange : "-1:+0",
-// 					showButtonPanel : true,
+					// 					changeMonth : true,
+					// 					changeYear : true,
+					// 					yearRange : "-1:+0",
+					// 					showButtonPanel : true,
 					multidate : true, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false 
-				    multidateSeparator :",", 
-				    templates : {
-				        leftArrow: '&laquo;',
-				        rightArrow: '&raquo;'
-				    },
-// 					currentText : '오늘 날짜',
+					multidateSeparator : ",",
+					templates : {
+						leftArrow : '&laquo;',
+						rightArrow : '&raquo;'
+					},
+					// 					currentText : '오늘 날짜',
 					dateFormat : 'yy년 mm월 dd일',
 					prevText : '이전 달',
 					nextText : '다음 달',
@@ -64,10 +69,10 @@
 					dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
 					showMonthAfterYear : true,
 					yearSuffix : '년',
-					
-					showButtonPanel: true,
-					dateFormat: "yy-mm-dd",
-					onClose: function(selectedDate) {
+
+					showButtonPanel : true,
+					dateFormat : "yy-mm-dd",
+					onClose : function(selectedDate) {
 
 						var eleId = $(this).attr("id");
 						var optionName = "";
@@ -80,25 +85,127 @@
 							optionName = "maxDate";
 						}
 
-						$("#" + eleId).datepicker("option", optionName, selectedDate);
+						$("#" + eleId).datepicker("option", optionName,
+								selectedDate);
 						$(".searchDate").find(".chkbox2").removeClass("on");
 					}
 				});
 	});
 </script>
+<style type="text/css">
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
+
+body {
+	min-height: 100%;
+}
+
+.listTitle {
+	color: #007bff;
+	font-weight: 900;
+	font-size: 30px;
+	margin-top: 130px;
+	margin-left: 80px;
+}
+
+.listTitle2 {
+	margin-left: 80px;
+	font-size: 14px;
+	margin-bottom: 3.5%;
+}
+
+td {
+	border: 1px solid #e9ecef;
+}
+
+.listTable {
+	width: 90%;
+	margin: auto;
+	padding: 3%;
+	margin-top: 50px;
+	margin-bottom: 10%;
+	/*   border: 1px solid #007bff; */
+	border-style: solid;
+	border-width: 3px 1px 1px 1px;
+	border-color: rgb(0 123 255/ 25%);
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.trTitle {
+	padding: 30px 30px;
+	font-weight: bold;
+	font-size: 17px;
+	color: #007bff;
+	background-color: #ECF7FF;
+	height: 50px;
+}
+
+.trContent {
+	height: 47px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #616161;
+}
+
+.wrap {
+	width: 35%;
+	margin: auto;
+	font-size: 18px;
+	margin-bottom: 2%;
+	text-align: center;
+}
+
+.wrap1 {
+	width: 50%;
+	margin: auto;
+	font-size: 18px;
+	margin-bottom: 2%;
+	text-align: center;
+}
+
+#data {
+	color: black;
+	font-weight: bold;
+}
+
+.paging {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+#loca {
+	text-align: center;
+	color: #444444;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 1.5rem;
+}
+
+.modal-close {
+	margin: auto;
+	margin-top: 2rem;
+	color : navy;
+	background-color: white;
+}
+</style>
+
 </head>
 <body>
 	<%
 	String accNum = (String) session.getAttribute("accNum");
 	String kind = (String) request.getAttribute("kind");
 	session.setAttribute("kind", kind);
-	String sel = (String)request.getAttribute("sel");
-	if(sel==null){
-		sel="0";
+	String sel = (String) request.getAttribute("sel");
+	if (sel == null) {
+		sel = "0";
 	}
-	String searchStartDate = (String)request.getAttribute("searchStartDate");
- 	session.setAttribute("searchStartDate", searchStartDate);
-	String searchEndDate = (String)request.getAttribute("searchEndDate");
+	String searchStartDate = (String) request.getAttribute("searchStartDate");
+	session.setAttribute("searchStartDate", searchStartDate);
+	String searchEndDate = (String) request.getAttribute("searchEndDate");
 	session.setAttribute("searchEndDate", searchEndDate);
 	long balance = (long) request.getAttribute("balance");
 	ArrayList<AcclistVO> list = (ArrayList) session.getAttribute("alist");
@@ -108,148 +215,158 @@
 	session.setAttribute("alist", list);
 	PagingVO paging = (PagingVO) session.getAttribute("paging");
 	%>
+
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-	<div class="d" style="font-size: 40px;">
-		<div class="o">거래내역</div>
-	</div>
+	<h2 class="listTitle">거래 내역 조회</h2>
+	<div class="listTitle2">고객님의 입/출금 거래내역을 확인할 수 있습니다.</div>
+	<hr>
 	<c:set var="path" value="${pageContext.request.contextPath }" />
 
 	<c:if test="${not empty alist }">
-		<div>
-			계좌번호 :
-			<%=accNum%></div>
-		<div>
-			잔액 :
-			<%=balance%></div>
-	 <form action="transIn.do" autocomplete="off">
+		<div class="wrap">
+			<div>
+				계좌번호 :
+				<%=accNum%></div>
+			<div id="data"></div>
+		</div>
 
-		<!-- search -->
-		<table class="searchBox">
-			<caption>조회</caption>
-			<colgroup>
-				<col width="123px">
-				<col width="*">
-			</colgroup>
-			<tbody>
-				<tr>
-					<th>조회기간</th>
-					<td>
-						<ul class="searchDate">
-							<li><span class="chkbox2"> <input type="radio"
-									name="dateType" id="dateType1" onclick="setSearchDate('0d')" />
-									<label for="dateType1">당일</label>
-							</span></li>
-							<li><span class="chkbox2"> <input type="radio"
-									name="dateType" id="dateType2" onclick="setSearchDate('3d')" />
-									<label for="dateType2">3일</label>
-							</span></li>
-							<li><span class="chkbox2"> <input type="radio"
-									name="dateType" id="dateType3" onclick="setSearchDate('1w')" />
-									<label for="dateType3">1주</label>
-							</span></li>
-							<li><span class="chkbox2"> <input type="radio"
-									name="dateType" id="dateType4" onclick="setSearchDate('2w')" />
-									<label for="dateType4">2주</label>
-							</span></li>
-							<li><span class="chkbox2"> <input type="radio"
-									name="dateType" id="dateType5" onclick="setSearchDate('1m')" />
-									<label for="dateType5">1개월</label>
-							</span></li>
-							<li><span class="chkbox2"> <input type="radio"
-									name="dateType" id="dateType6" onclick="setSearchDate('3m')" />
-									<label for="dateType6">3개월</label>
-							</span></li>
-							<li><span class="chkbox2"> <input type="radio"
-									name="dateType" id="dateType7" onclick="setSearchDate('6m')" />
-									<label for="dateType7">6개월</label>
-							</span></li>
-						</ul>
+		<form action="transIn.do" autocomplete="off">
 
-						<div class="clearfix">
-							<!-- 시작일 -->
-							<span class="dset"> <input type="text"
-								class="datepicker inpType" name="searchStartDate"
-								id="searchStartDate" value="<%=searchStartDate %>" >
-							</span> <span class="demi">~</span>
-							<!-- 종료일 -->
-							<span class="dset"> <input type="text"
-								class="datepicker inpType" name="searchEndDate"
-								id="searchEndDate" value="<%=searchEndDate%>">
-							</span> 
-							
-							<input type="hidden" name="accNum" value="<%=request.getAttribute("accNum") %>">
-							<input type="hidden" name="kind" value="<%=kind %>">
-							<input type="hidden" name="sel" value="1">
-							<span> <input type="submit" value="기간조회" id="termbtn"
-								class="btn btn-outline-primary buttonWH">
+			<!-- search -->
 
-							</span>
-						</div>
+			<table class="searchBox">
+				<caption>조회</caption>
+				<colgroup>
+					<col width="123px">
+					<col width="*">
+				</colgroup>
 
-					</td>
-				</tr>
-			<tbody>
-		</table>
-
-		        </form>
-	
-		<div class="table0">
-			<table id="table1" class="table">
-				<thead style="background-color: skyblue;">
+				<tbody>
 					<tr>
-						<td>ACCOUNTTYPE</td>
-						<td>PAST_ACC</td>
-						<td>TRANS_ACC</td>
-						<td>TRANS_DATE</td>
-						<td>TRANS_NAME</td>
-						<td>TRANS_KIND</td>
+						<th></th>
+						<td>
+							<div class="wrap1">
+								<ul class="searchDate">
+									<li>조회기간 :</li>
+									<li><span class="chkbox2"> <input type="radio"
+											name="dateType" id="dateType1" onclick="setSearchDate('0d')" />
+											<label for="dateType1">당일</label>
+									</span></li>
+									<li><span class="chkbox2"> <input type="radio"
+											name="dateType" id="dateType2" onclick="setSearchDate('3d')" />
+											<label for="dateType2">3일</label>
+									</span></li>
+									<li><span class="chkbox2"> <input type="radio"
+											name="dateType" id="dateType3" onclick="setSearchDate('1w')" />
+											<label for="dateType3">1주</label>
+									</span></li>
+									<li><span class="chkbox2"> <input type="radio"
+											name="dateType" id="dateType4" onclick="setSearchDate('2w')" />
+											<label for="dateType4">2주</label>
+									</span></li>
+									<li><span class="chkbox2"> <input type="radio"
+											name="dateType" id="dateType5" onclick="setSearchDate('1m')" />
+											<label for="dateType5">1개월</label>
+									</span></li>
+									<li><span class="chkbox2"> <input type="radio"
+											name="dateType" id="dateType6" onclick="setSearchDate('3m')" />
+											<label for="dateType6">3개월</label>
+									</span></li>
+									<li><span class="chkbox2"> <input type="radio"
+											name="dateType" id="dateType7" onclick="setSearchDate('6m')" />
+											<label for="dateType7">6개월</label>
+									</span></li>
+								</ul>
+
+								<div class="clearfix" style="margin-right: 150px">
+									<!-- 시작일 -->
+									<span class="dset"> <input type="text"
+										class="datepicker inpType" name="searchStartDate"
+										id="searchStartDate" value="<%=searchStartDate%>">
+									</span> <span class="demi">~</span>
+									<!-- 종료일 -->
+									<span class="dset"> <input type="text"
+										class="datepicker inpType" name="searchEndDate"
+										id="searchEndDate" value="<%=searchEndDate%>">
+									</span> <input type="hidden" name="accNum"
+										value="<%=request.getAttribute("accNum")%>"> <input
+										type="hidden" name="kind" value="<%=kind%>"> <input
+										type="hidden" name="sel" value="1"> <span> </span>
+								</div>
+							</div>
+						</td>
+					</tr>
+				<tbody>
+			</table>
+			<div class="wrap">
+				<input type="submit" value="기간조회" id="termbtn"
+					class="btn btn-outline-primary buttonWH">
+			</div>
+		</form>
+
+		<div class="table0">
+			<table id="table1" class="listTable">
+				<thead style="background-color: skyblue;">
+					<tr class="trTitle">
+						<td>통장 종류</td>
+						<td>이전 통장 잔액</td>
+						<td>거래 금액</td>
+						<td>거래 일자</td>
+						<td>거래 명</td>
+						<td>거래 유형</td>
 					</tr>
 				</thead>
 
 				<c:forEach items="${alist }" var="acclist">
 					<tbody>
-						<tr>
+						<tr class="trContent">
 							<td><c:if test="${acclist.accounttype==0}">입출금 통장</c:if> <c:if
 									test="${acclist.accounttype==1}">예금 통장</c:if> <c:if
 									test="${acclist.accounttype==2}">적금 통장</c:if></td>
-							<td>${acclist.past_acc }</td>
-							<td>${acclist.trans_acc }</td>
+							<td><fmt:formatNumber value="${acclist.past_acc }"
+									pattern="#,###" /></td>
+							<td><fmt:formatNumber value="${acclist.trans_acc }"
+									pattern="#,###" /></td>
 							<td>${acclist.trans_date }</td>
+							<c:if test="${empty acclist.trans_name }">
+							<td> - </td>
+							</c:if>
+							<c:if test="${not empty acclist.trans_name }">
 							<td>${acclist.trans_name }</td>
-							<td>
-							<c:choose>
-							<c:when test="${acclist.trans_kind=='결제'}">
-									<!-- 전체 레이아웃 -->
-									<div id="wrap">
-										<!-- Content -->
-										<section class="content">
-											<div class="container">
-												<!-- 팝업용 임시 버튼입니다. -->
-												<div class="btn-box">
-													<input type="button" value="결제 지도보기"
-														class="mapView btn btn-primary"
-														data-location="${acclist.location}"
-														data-id="${acclist.trans_id}"
-														onClick="javascript:popOpen();">
+							</c:if>
+							<td><c:choose>
+									<c:when test="${acclist.trans_kind=='결제'}">
+										<!-- 전체 레이아웃 -->
+										<div id="wrap">
+											<!-- Content -->
+											<section class="content">
+												<div class="container">
+													<!-- 팝업용 임시 버튼입니다. -->
+													<div class="btn-box">
+														<input type="button" value="결제 지도보기"
+															class="mapView btn btn-primary"
+															data-location="${acclist.location}"
+															data-id="${acclist.trans_id}"
+															onClick="javascript:popOpen();">
 
+													</div>
+													<!-- //팝업용 임시 버튼입니다. -->
 												</div>
-												<!-- //팝업용 임시 버튼입니다. -->
-											</div>
-										</section>
-										<!-- //Content -->
-									</div>
-									<!-- //전체 레이아웃 -->
+											</section>
+											<!-- //Content -->
+										</div>
+										<!-- //전체 레이아웃 -->
 
-								</c:when> 
-								<c:otherwise>${acclist.trans_kind}
+									</c:when>
+									<c:otherwise>${acclist.trans_kind}
 									</c:otherwise>
-								</c:choose>	</td>
+								</c:choose></td>
+								</tr>
 					</tbody>
-
 				</c:forEach>
 			</table>
 		</div>
-		<div class="paging">
+		<div class="wrap paging">
 			<jsp:include page="paging.jsp">
 				<jsp:param value="${paging.page }" name="page" />
 				<jsp:param value="${paging.beginPage }" name="beginPage" />
@@ -257,9 +374,9 @@
 				<jsp:param value="${paging.prev }" name="prev" />
 				<jsp:param value="${paging.next }" name="next" />
 				<jsp:param value="<%=kind%>" name="kind" />
-				<jsp:param value="<%=sel%>" name="sel" />			
-				<jsp:param value="<%=searchStartDate%>" name="searchStartDate" />			
-				<jsp:param value="<%=searchEndDate%>" name="searchEndDate" />			
+				<jsp:param value="<%=sel%>" name="sel" />
+				<jsp:param value="<%=searchStartDate%>" name="searchStartDate" />
+				<jsp:param value="<%=searchEndDate%>" name="searchEndDate" />
 				<jsp:param value="${acclist.acc_number}" name="accNum" />
 			</jsp:include>
 		</div>
@@ -281,8 +398,9 @@
 
 
 		<p style="margin-top: -12px"></p>
-		<div id="map" style="width: 50%; height: 500px; margin: auto;"></div>
-
+		<div id="map"
+			style="width: 80%; height: 350px; margin: auto; margin-top: 4rem; border-radius: 30px;"></div>
+		<div id="loca"></div>
 		<script type="text/javascript"
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0fe8ab83a2740ee68a1917df2e416f1&libraries=services"></script>
 
@@ -311,7 +429,7 @@
 				var geocoder = new kakao.maps.services.Geocoder();
 
 				var myAddress = [ addr ]; // "경기 성남시 분당구 성남대로 51 포스빌 1층 108호",		"경기 성남시 분당구 판교백현로 29", "경기 성남시 분당구 판교백현로 45" 
-
+				document.getElementById("loca").innerHTML = "상세 주소 :"+ myAddress[0]
 				function myMarker(won, address) {
 					// 주소로 좌표를 검색합니다
 					geocoder
@@ -366,9 +484,9 @@
 				}
 			}
 		</script>
-
-		<button class="modal-close" onClick="javascript:popClose();">닫기</button>
-
+		<div class="wrap">
+			<button class="modal-close btn btn-primary" onClick="javascript:popClose(); ">닫기</button>
+		</div>
 	</div>
 	<!-- //modal 영역 -->
 	<div class="o"></div>
@@ -413,5 +531,10 @@
 		$('html').removeAttr('style');
 	}
 </script>
-
+<script type="text/javascript">
+	var balance =
+<%=request.getAttribute("balance")%>
+	document.getElementById("data").innerHTML = "잔액 : "
+			+ balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "원";
+</script>
 </html>

@@ -12,7 +12,7 @@
 <html lang="en">
 
 <head>
-<title>Finances &mdash; Website Template by Colorlib</title>
+<title>COS BANK 거래내역</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <link rel="stylesheet"
@@ -41,7 +41,6 @@ body {
 .sendForm {
 	width: 30%;
 	margin: auto;
-	font-family: "Open Sans";
 	padding: 3%;
 	margin-top: 10%;
 	margin-bottom: 10%;
@@ -202,6 +201,9 @@ margin-bottom: 40px;
 div .text{
 margin: 10px;
 }
+li{
+color: #444444;
+}
 </style>
 </head>
 <body>
@@ -221,14 +223,14 @@ String start = end1.format(fm);
 <div class=parent style="font-family: 'Nanum Gothic', sans-serif;">
 	<div class="first bg a">
 		<h3 class="d">전체 거래내역</h3>
-		
+		<hr>
 		<br>
 		<div class="text">
 		<ul>
 
 			<li>고객님의 거래내역을 전부 확인할 수 있습니다.</li>
 			<li>모든 계좌의 거래를 한 페이지로 한 눈에 확인하세요.</li>
-			<li>특정 계좌의 거래내역도 조회하기버튼을 통해 확인 가능합니다.</li>
+			<li>특정 기간의 거래내역도 조회하기버튼을 통해 확인 가능합니다.</li>
 
 		</ul>
 		</div>
@@ -244,6 +246,7 @@ String start = end1.format(fm);
 	<div class="second bg a">
 
 		<h3 class="d">출금 내역</h3>
+		<hr>
 		<br>
 		<div class="text">
 		<ul>
@@ -264,12 +267,13 @@ String start = end1.format(fm);
 	</div>
 	<div class="third bg a">
 		<h3 class="d">입금 내역</h3>
+		<hr>
 		<br>
 		<div class="text"> 
 		<ul>
 
 			<li>고객님의 입금 내역을 조회하고 싶으시다면 클릭하세요.</li>
-			<li>입금 조회를 하고싶은 특정 계좌를 선택할 수 있습니다.</li>
+			<li>조회하기를 원하는 특정 기간을 선택하여 입금 내역을 조회하실 수 있습니다.</li>
 			<li>고객님 명의의 계좌 잔고를 확인 하실 수 있습니다.</li>
 		</ul>
 		</div>
