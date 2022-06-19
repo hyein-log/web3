@@ -37,32 +37,23 @@ public class AccSendInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		PrintWriter writer = response.getWriter();
 		String accnum_you = request.getParameter("accnum_you");
 		String accnum_me = request.getParameter("accnum_me");
-		System.out.println("----------------------");
-		System.out.println("accnum_you == "+accnum_you);
-		System.out.println("accnum_me == "+accnum_me);
 		int amount = Integer.parseInt(request.getParameter("amount")); //∫∏≥ª¥¬ µ∑
-//		System.out.println("accnum = "+accnum);
-//		System.out.println("amount = "+amount);
 		AccountVO you_acc = new AccountVO();
 		AccountVO me_acc = new AccountVO();
 		AccountService service = new AccountService();
 		you_acc = service.SELECT_ACCID_BY_ACCNUM(accnum_you);
 		me_acc = service.SELECT_ACCID_BY_ACCNUM(accnum_me);
-		System.out.println("----------------------");
-		System.out.println("you_acc = "+you_acc);
-		System.out.println("me_acc = "+me_acc);
 		int account_id_YOU = you_acc.getAccount_id();//ªÛ¥ÎπÊ ∞Ë¡¬ ID
 		int account_id_ME = me_acc.getAccount_id();//≥ª ∞Ë¡¬ ID
 		int past_acc_YOU = you_acc.getBalance(); //ªÛ¥ÎπÊ ¿‹∞Ì
 		int past_acc_ME = me_acc.getBalance(); //≥ª ¿‹∞Ì
-		System.out.println("account_id_YOU ="+account_id_YOU +"--"+"past_acc_YOU: "+past_acc_YOU);
-		System.out.println("account_id_ME ="+account_id_ME +"--"+"past_acc_ME: "+past_acc_ME);
-		System.out.println("amount = "+amount);
 		Acc_listService acc_listService = new Acc_listService();
 		int you_list = acc_listService.InsertAccList(account_id_YOU, past_acc_YOU, amount, "¿‘±›");
 		int me_list = acc_listService.InsertAccList(account_id_ME, past_acc_ME, amount, "√‚±›");

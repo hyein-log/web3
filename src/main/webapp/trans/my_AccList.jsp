@@ -43,12 +43,15 @@ body {
 }
 
 .margin {
+    color: #007bff;
+    font-weight: 900;
+    font-size: 30px;
 	margin-top: 8rem;
-	margin-left: 3%;
+	margin-left: 5%;
 }
 .txt{
 	font-size: 14px;
-	margin-left: 3%;
+	margin-left: 5%;
 }
 .listTable {
 	width: 90%;
