@@ -24,11 +24,11 @@ public class AccSendServlet extends HttpServlet {
        
    //내 계좌정보임
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		String accNum = request.getParameter("accNum");
-		System.out.println("accNum:"+accNum);
 		MemberAccountJoinService service = new MemberAccountJoinService();
 		MemberAccountJoinVO memberaccount = service.SELECT_BY_ACC_NUMBER(accNum);
 		HttpSession session = request.getSession();
@@ -41,6 +41,7 @@ public class AccSendServlet extends HttpServlet {
 			session.setAttribute("acc_balance", memberaccount.getBalance());
 			session.setAttribute("name", memberaccount.getName());
 			session.setAttribute("acc_num", memberaccount.getAcc_number());
+			session.setAttribute("limit_ox", memberaccount.getLimit_ox());
 		}
 	
 		RequestDispatcher rd = request.getRequestDispatcher("accSend.jsp");

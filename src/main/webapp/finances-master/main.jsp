@@ -197,55 +197,6 @@ body {
 							</c:if>
 						</div>
 					</div>
-					
-					<!-- 마이페이지 -->
-					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="team-member a">
-							<c:if test="${not empty member }">
-								<form action="../mypage/mypage.do" method="post">
-									<input type="hidden" name="memberid" value="<%=id%>"><br>
-									<input type="image" src="images/mypage.png"
-										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
-								</form>
-							</c:if>
-							<c:if test="${empty member }">
-								<input type="image" src="images/mypage.png"
-									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
-									onclick="empty();">
-							</c:if>
-						</div>
-					</div>
-
-					</div>
-				</div>
-			<div class="container">
-
-				<div class="row">
-
-					<!-- 입금하기 -->
-					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="team-member a">
-							<c:if test="${not empty member }">
-								<form action="" method="post">
-									<input type="hidden" name="memberid"><br>
-									<input type="image" src="images/deposit.png"
-										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
-								</form>
-							</c:if>
-							<c:if test="${empty member }">
-								<input type="image" src="images/deposit.png"
-									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
-									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
-									onclick="empty();">
-							</c:if>
-						</div>
-					</div>
-
 					<!-- 이체하기 -->
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="200">
@@ -266,7 +217,34 @@ body {
 							</c:if>
 						</div>
 					</div>
-						
+					
+
+					</div>
+				</div>
+			<div class="container">
+
+				<div class="row">
+					<!-- 마이페이지 -->
+					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
+						data-aos-delay="100">
+						<div class="team-member a">
+							<c:if test="${not empty member }">
+								<form action="../mypage/mypage.do" method="post">
+									<input type="hidden" name="memberid" value="<%=id%>"><br>
+									<input type="image" src="images/mypage.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/mypage.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
+						</div>
+					</div>
+					
 					<!-- 공지사항 -->
 					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
 						data-aos-delay="100">
@@ -288,7 +266,29 @@ body {
 
 						</div>
 					</div>
-
+					
+					
+					<!-- 1:1문의-->
+					<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up"
+						data-aos-delay="200">
+						<div class="team-member a">
+							<c:if test="${not empty member }">
+								<form action="../myqna/myqnalist.do" method="post">
+									<input type="hidden" name="memberid"><br>
+									<input type="image" src="images/qna.png"
+										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+										class="img-fluid mb-4 bg-white visual" alt="제출버튼">
+								</form>
+							</c:if>
+							<c:if test="${empty member }">
+								<input type="image" src="images/qna.png"
+									style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
+									class="img-fluid mb-4 bg-white visual" alt="제출버튼"
+									onclick="empty();">
+							</c:if>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 

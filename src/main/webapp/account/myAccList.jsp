@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +78,6 @@ td{
     background-color: #007bff;
     border: 1px solid #007bff;
     color: white;
-    font-size: 16px;
     font-size: 13px;
     border-radius: 5px;
     padding: 5px 10px;
@@ -98,13 +96,12 @@ td{
    background-color: white;
     border: 1px solid #007bff;
     color: #007bff;
-    font-size: 16px;
     font-size: 13px;
     border-radius: 5px;
     padding: 5px 10px;
     font-weight: bold;
     height: 30px;
-     cursor: pointer;
+    cursor: pointer;
 }
 
 .btnAuto:hover{
@@ -123,7 +120,6 @@ td{
     padding: 5px 10px;
     font-weight: 400;
     height: 30px;
-     cursor: pointer;
 }
 
 
@@ -157,20 +153,17 @@ td{
 					<c:if test="${acc. accountType==2}">적금 통장</c:if>
 				</td>
 				<td>${acc. acc_number}</td>
-				<td><fmt:formatNumber value="${acc. balance}"
-                                    pattern="#,###" /></td>
+				<td>${acc. balance}</td>
 				<td><button class="btnDel" data-accNum="${acc.acc_number}">해지하기</button></td>
 				<td>
 				   <c:if test="${fn:substring(acc.limit_ox,0,1)=='O'}">
-					   <button class="btnLimit" disabled="disabled" data-accNum="${acc.acc_number}">한도 변경</button>
+					   <button class="btnLimit" disabled="disabled" data-accNum="${acc.acc_number}" style="background-color: #bfdeff; border: none;">한도 변경</button>
 				   </c:if>
 				   <c:if test="${ fn:substring(acc.limit_ox,0,1)=='x'}">
-					   <button class="btnLimit" data-accNum="${acc.acc_number}">한도 변경</button>
+					   <button class="btnLimit" style="cursor: pointer;" data-accNum="${acc.acc_number}">한도 변경</button>
 				   </c:if>
 				</td>
-				<td><button class="btnAuto" onclick="location.href='../autosend/AutoSendList.do?accid=${acc.account_id}'">자동이체 관리</button></td>
-
-
+				<td><button class="btnAuto" onclick="location.href = '../autosend/AutoSendList.do?accid=${acc.account_id}'">자동이체 관리</button></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -200,4 +193,5 @@ td{
 	});
 	
 </script>
+
 </html>

@@ -39,7 +39,13 @@ body {
     min-height: 100%;
 }
 
-
+.margin {
+    color: #007bff;
+    font-weight: 900;
+    font-size: 30px;
+	margin-top: 8rem;
+	margin-left: 5%;
+  }
 
 .listTitle{
 	color: black
@@ -52,6 +58,7 @@ body {
 .listTitle2{
 	margin-left: 80px;
 	font-size: 14px;
+	margin-left: 5%;
 	margin-bottom: 2%;
 }
 

@@ -34,7 +34,7 @@ public class AutoSendInsertServlet extends HttpServlet {
 		int accid = Integer.parseInt(request.getParameter("accid"));
 		String autoCate = request.getParameter("autoCate");
 		String autoContent = request.getParameter("autoContent");
-		if(!autoCate.equals("��Ÿ")){
+		if(!autoCate.equals("기타")){
 			autoContent = autoCate;
 		}
 		int autoCost = Integer.parseInt(request.getParameter("autoCost"));
@@ -47,11 +47,20 @@ public class AutoSendInsertServlet extends HttpServlet {
 		Date endto;
 		
 		PrintWriter writer = response.getWriter();
+
+		if(autoContent.equals("")) {
+			autoContent= request.getParameter("selcontent");
+		}
+		
+		if(autoEnd==null) {
+			autoEnd= "9999-12-31";
+		} 
 		
 		AccountService accService = new AccountService();
 		int pwReal = accService.selectPw(accid);
-		System.out.println(pwReal);
-		System.out.println(pw);
+		
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+		Date endto;
 		
 		try {
 			endto = fm.parse(autoEnd);
@@ -62,10 +71,17 @@ public class AutoSendInsertServlet extends HttpServlet {
 			if(pw==pwReal) {
 				AutoSendService service = new AutoSendService();
 				int result = service.insertAuto(vo);
-				writer.println("<script>alert('�ڵ���ü�� �����Ǿ����ϴ�.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
-				writer.close();
+				
+				if(result >0) {
+					writer.println("<script>alert('자동이체가 설정되었습니다.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+					writer.close();
+				} else {
+					writer.println("<script>alert('자동이체 등록에 실패했습니다.\n관리자에게 문의해주세요.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+					writer.close();
+					
+				}
 			} else {
-	        	writer.println("<script>alert('�߸��� ��й�ȣ�Դϴ�.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+	        	writer.println("<script>alert('잘못된 비밀번호입니다.');location.href='"+"autoInsert.jsp?accid="+accid+"'</script>"); 
 	        	writer.close();
 			}
 		} catch (ParseException e) {

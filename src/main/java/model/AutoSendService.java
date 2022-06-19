@@ -22,4 +22,8 @@ public class AutoSendService {
 	public int insertAuto(AutoSendVO autosend) {
 		return dao.insertAuto(autosend);
 	}
+	
+	public int deleteAuto(int autoid) {
+		return dao.deleteAuto(autoid);
+	}
 }

@@ -39,30 +39,24 @@ public class AccSendInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+
 		PrintWriter writer = response.getWriter();
 		String accnum_you = request.getParameter("accnum_you");
 		String accnum_me = request.getParameter("accnum_me");
-		System.out.println("----------------------");
-		System.out.println("accnum_you == "+accnum_you);
-		System.out.println("accnum_me == "+accnum_me);
-		int amount = Integer.parseInt(request.getParameter("amount")); //º¸³»´Â µ·
-//		System.out.println("accnum = "+accnum);
-//		System.out.println("amount = "+amount);
+		int amount = Integer.parseInt(request.getParameter("amount")); //ë³´ë‚´ëŠ” ëˆ
 		AccountVO you_acc = new AccountVO();
 		AccountVO me_acc = new AccountVO();
 		AccountService service = new AccountService();
 		you_acc = service.SELECT_ACCID_BY_ACCNUM(accnum_you);
 		me_acc = service.SELECT_ACCID_BY_ACCNUM(accnum_me);
-		System.out.println("----------------------");
-		System.out.println("you_acc = "+you_acc);
-		System.out.println("me_acc = "+me_acc);
-		int account_id_YOU = you_acc.getAccount_id();//»ó´ë¹æ °èÁÂ ID
-		int account_id_ME = me_acc.getAccount_id();//³» °èÁÂ ID
-		int past_acc_YOU = you_acc.getBalance(); //»ó´ë¹æ ÀÜ°í
-		int past_acc_ME = me_acc.getBalance(); //³» ÀÜ°í
+		int account_id_YOU = you_acc.getAccount_id();//ìƒëŒ€ë°© ê³„ì¢Œ ID
+		int account_id_ME = me_acc.getAccount_id();//ë‚´ ê³„ì¢Œ ID
+		int past_acc_YOU = you_acc.getBalance(); //ìƒëŒ€ë°© ì”ê³ 
+		int past_acc_ME = me_acc.getBalance(); //ë‚´ ì”ê³ 
+
 		
 		MemberService memberService = new MemberService();
 		MemberVO you = memberService.selectMemberByMemberId(you_acc.getMember_id());
@@ -74,17 +68,17 @@ public class AccSendInsertServlet extends HttpServlet {
 		System.out.println("account_id_ME ="+account_id_ME +"--"+"past_acc_ME: "+past_acc_ME);
 		System.out.println("amount = "+amount);
 		Acc_listService acc_listService = new Acc_listService();
-		int you_list = acc_listService.InsertAccList(account_id_YOU, past_acc_YOU, amount, "ÀÔ±İ",me_name );
-		int me_list = acc_listService.InsertAccList(account_id_ME, past_acc_ME, amount, "Ãâ±İ",you_name );
+		int you_list = acc_listService.InsertAccList(account_id_YOU, past_acc_YOU, amount, "ì…ê¸ˆ",me_name );
+		int me_list = acc_listService.InsertAccList(account_id_ME, past_acc_ME, amount, "ì¶œê¸ˆ",you_name );
 		
 		int update_Ybal = service.UPDATE_BALANCE(past_acc_YOU+amount, account_id_YOU);
 		int update_Mbal = service.UPDATE_BALANCE(past_acc_ME-amount, account_id_ME);
 		if (you_list > 0 && me_list>0 &&update_Ybal>0 &&update_Mbal>0 ) {
-			writer.println("<script>alert('ÀÌÃ¼µÇ¾ú½À´Ï´Ù.');</script>");
+			writer.println("<script>alert('ì´ì²´ë˜ì—ˆìŠµë‹ˆë‹¤.');</script>");
 			response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 			
 		} else {
-			writer.println("<script>alert('ÀÌÃ¼ ½ÇÆĞÇß½À´Ï´Ù.\n´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä');</script>");
+			writer.println("<script>alert('ì´ì²´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”');</script>");
 		}
 	}
 
