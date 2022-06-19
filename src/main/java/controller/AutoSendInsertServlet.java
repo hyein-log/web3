@@ -32,12 +32,20 @@ public class AutoSendInsertServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int accid = Integer.parseInt(request.getParameter("accid"));
+		String autoCate = request.getParameter("autoCate");
 		String autoContent = request.getParameter("autoContent");
+		if(!autoCate.equals("ê¸°íƒ€")){
+			autoContent = autoCate;
+		}
 		int autoCost = Integer.parseInt(request.getParameter("autoCost"));
 		int autoDate = Integer.parseInt(request.getParameter("autoDate"));
 		int pw = Integer.parseInt(request.getParameter("pw"));
 		String autoEnd = request.getParameter("autoEnd");
-
+		if(autoEnd == null) autoEnd = "9998-12-31";
+		
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+		Date endto;
+		
 		PrintWriter writer = response.getWriter();
 
 		if(autoContent.equals("")) {
@@ -65,15 +73,15 @@ public class AutoSendInsertServlet extends HttpServlet {
 				int result = service.insertAuto(vo);
 				
 				if(result >0) {
-					writer.println("<script>alert('ÀÚµ¿ÀÌÃ¼°¡ ¼³Á¤µÇ¾ú½À´Ï´Ù.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+					writer.println("<script>alert('ìë™ì´ì²´ê°€ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
 					writer.close();
 				} else {
-					writer.println("<script>alert('ÀÚµ¿ÀÌÃ¼ µî·Ï¿¡ ½ÇÆĞÇß½À´Ï´Ù.\n°ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇØÁÖ¼¼¿ä.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+					writer.println("<script>alert('ìë™ì´ì²´ ë“±ë¡ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.\nê´€ë¦¬ìì—ê²Œ ë¬¸ì˜í•´ì£¼ì„¸ìš”.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
 					writer.close();
 					
 				}
 			} else {
-	        	writer.println("<script>alert('Àß¸øµÈ ºñ¹Ğ¹øÈ£ÀÔ´Ï´Ù.');location.href='"+"autoInsert.jsp?accid="+accid+"'</script>"); 
+	        	writer.println("<script>alert('ì˜ëª»ëœ ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤.');location.href='"+"autoInsert.jsp?accid="+accid+"'</script>"); 
 	        	writer.close();
 			}
 		} catch (ParseException e) {

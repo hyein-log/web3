@@ -24,7 +24,7 @@ body {
 }
 
 .container {
-	width: 70%;
+	width: 60%;
 	margin: auto;
 }
 
@@ -47,6 +47,7 @@ body {
 	margin-top: 10%;
 	float: right;
 	margin-bottom: 7%;
+	cursor: pointer;
 }
 /* .btnWrite:hover{
  	background-color: #424242;
@@ -79,7 +80,7 @@ table {
 	width: 100%;
 }
 
-th, td {
+th, .td1  {
 	text-align: center;
 	padding-top: 1%;
 	padding-bottom: 1%;
@@ -141,6 +142,13 @@ th {
 img {
 	margin-bottom: 10px;
 }
+
+.td2{
+	/* padding-left: 150px; */
+
+}
+
+
 </style>
 
 </head>
@@ -175,18 +183,18 @@ img {
 		<br> <br>
 		<table class="table table-hover">
 			<thead>
-				<tr align="center">
-					<th align="center">글번호</th>
-					<th align="center">제목</th>
-					<th align="center">작성일</th>
+				<tr>
+					<th class="td1">글번호</th>
+					<th class="td3">제목</th>
+					<th class="td1">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${myqnaDatas}" var="myqna">
+				<c:forEach items="${myqnaDatas}" var="myqna"  varStatus="status">
 					<tr>
-						<td>${myqna.qa_id}</td>
-						<td><a href="myqnaDetail.do?qaid=${myqna.qa_id}&admin=0" class="alink">${myqna.qa_title}</a></td>
-						<td>${myqna.qa_date}</td>
+						<td class="td1">${status.count }</td>
+						<td class="td2"><a href="myqnaDetail.do?qaid=${myqna.qa_id}&admin=0" class="alink">${myqna.qa_title}</a></td>
+						<td class="td1">${myqna.qa_date}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

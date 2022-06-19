@@ -113,6 +113,7 @@ img {
 					<form action="memberInfo.jsp" method="post">
 						<input type="hidden" name="memberInfo" value="${memberinfo}"><br>
 						<input type="image" src="infoManage.png"
+
 							style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 							class="img-fluid mb-4 bg-white visual" alt="개인정보관리">
 					</form>

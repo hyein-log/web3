@@ -24,7 +24,6 @@ public class PwChangeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
 		String pass = request.getParameter("password");
-		
 		MemberVO member = new MemberVO(pass,email);
 		MemberService service = new MemberService();
 		int result = service.passwordUpdate(member);

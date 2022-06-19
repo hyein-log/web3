@@ -20,31 +20,35 @@ import model.MemberService;
 @WebServlet("/mypage/mypage.do")
 public class MypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		doPost(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		   HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		PrintWriter writer = response.getWriter();
-		   String memberid = request.getParameter("memberid");
-		   System.out.println("memberid : "+memberid);
-		   MemberVO memberinfo = new MemberVO();
-		   MemberService service = new MemberService();
-		   if(memberid==null)  return ;
-	        int i_memberid =Integer.parseInt(memberid);
-	        memberinfo = service.selectMemberByMemberId(i_memberid);
-	        System.out.println("member == "+memberinfo);
-	        session.setAttribute("member", memberinfo);
-	        session.setAttribute("memberemail", memberinfo.getEmail());
-		   RequestDispatcher rd;
-		   rd = request.getRequestDispatcher("mypage.jsp");
-			rd.forward(request, response);
+		String memberid = request.getParameter("memberid");
+		MemberVO memberinfo = new MemberVO();
+		MemberService service = new MemberService();
+		if (memberid == null)
+			return;
+		int i_memberid = Integer.parseInt(memberid);
+		memberinfo = service.selectMemberByMemberId(i_memberid);
+		session.setAttribute("member", memberinfo);
+		session.setAttribute("email", memberinfo.getEmail());
+		session.setAttribute("name", memberinfo.getName());
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("mypage.jsp");
+		rd.forward(request, response);
 	}
 
 }

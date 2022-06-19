@@ -23,26 +23,29 @@ body {
 
 .wrap {
 	width:35%;
-	margin: auto;
-	padding-top: 5rem;
+	margin: auto; 
+	/* padding-top: 5rem; */
+	/*  margin-left: 50px; */
 } 
 
 .sendForm{
-    width: 40%;
-    margin-left: 520px;
+    width: 50%;
+    margin-left: 390px;
   /*   font-family: 'Nanum Gothic', sans-serif; */
-    padding: 3%;
-    margin-top: 2%;
-    margin-bottom: 10%;
-    margin-left: 400px;
+    padding: 1%; 
+   /*  margin-top: 2%; */
+    margin-bottom: 5%;
  /*    margin: auto; */
-    border: 10px solid #B6D9FF;
+/*     border-top: 1px solid #B3B3B3;
+    border-bottom: 1px solid #B3B3B3; */
+    
 }
 
 .h2{
-	margin-left: 400px;
-	margin-top: 100px; 
+	margin-left: 410px;
+	margin-top: 80px; 
 	color: #007bff;
+/* 	margin-bottom: 20px; */
 }
 	
 	
@@ -64,11 +67,12 @@ body {
 
 
 .sendbtnDiv{
-    margin-bottom: 10px;
-    margin-left: 380px;
+	/* margin-top: 5px; */
+    margin-bottom: 5px;
+    margin-left: 520px;
     color: #007bff;
 }
-.btnList, #updateBtn, .deleteBtn{
+/* .btnList, #updateBtn, .deleteBtn{
     background-color: white;
     border: 1px solid #007bff;
     color: #007bff;
@@ -77,29 +81,31 @@ body {
     padding: 10px 20px;
     font-weight: 400;
     height: 46px;
+     cursor: pointer;
+} 
+ */
+.btnList, #updateBtn, .deleteBtn {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-weight: 400;
+    height: 46px;
+    cursor: pointer;
 } 
 
-.btnList {
+/*  .btnList:hover, #updateBtn:hover, .deleteBtn:hover {
     background-color: #007bff;
-    border: none;
+    border: 1px solid #007bff;
     color: #fff;
     font-size: 15px;
     border-radius: 15px;
     padding: 10px 20px;
     font-weight: 400;
     height: 46px;
-} 
-
- #updateBtn:hover, .deleteBtn:hover {
-    background-color: #007bff;
-    border: none;
-    color: #fff;
-    font-size: 15px;
-    border-radius: 15px;
-    padding: 10px 20px;
-    font-weight: 400;
-    height: 46px;
-} 
+}  */
 
 .title{
 	font-size: 15px;
@@ -148,6 +154,9 @@ body {
 	resize: none;
 	font-family: 'Nanum Gothic', sans-serif;
 	line-height: 25px;
+	margin-left: 25px;
+	margin-top: 20px;
+	margin-bottom: 25px;
 }
 
 .content2{
@@ -179,10 +188,54 @@ body {
 	font-size: 12px;
 }
 
+#answer_btn{
+	cursor: pointer;
+	background-color: white;
+    border: #007bff;
+    color: #007bff;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 10px 10px;
+    font-weight: bold;
+/*     height: 46px; */
+}
+#answer_btn:hover{
+	cursor: pointer;
+	background-color: #007bff;
+    border: 1xp solid #007bff;
+    color: white;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 10px 10px;
+    font-weight: bold;
+/*     height: 46px; */
+}
+
 /* #admin_time{
 	visibility: hidden;
 } */
 
+
+.total{
+	margin-left: 25px;
+}
+
+.hr1{
+	width: 730px;
+	margin-left: 2px;
+	height:2px;
+	border:none;
+	background-color: #F1F1F1;
+	color: #F1F1F1;
+}
+.hr2{
+	width: 750px;
+	margin-left: 2px;
+	height:2px;
+	border:none;
+	background-color: #D9D9D9;
+	color: #D9D9D9;
+}
 </style>
 </head>
 <body>
@@ -192,13 +245,15 @@ body {
 <h2 class="h2">[문의 내용]</h2>	
 
 <form action="myqnaUpdate.do" method="post" class="sendForm">
-
-<span class="title">제목 :</span> 
+<hr class="hr2">
+<br>
+<!-- <span class="title">제목 :</span>  -->
 <input type="text" name="title"  value="${myqna.qa_title }"  class="title2">
-<hr style="width: 480px;margin-left: 2px">
 
 
+<br><br>
 <!-- 글번호 -->
+<div class="total">
 <img alt="" src="../finances-master/images/num5.png" class="num">
 <span class="num2"> ${myqna.qa_id} 
 <input type="hidden" name="qaid" value="${myqna.qa_id}" id="qaid"></span>
@@ -211,19 +266,25 @@ body {
 <span class="date">
 <img src="../finances-master/images/time1.png" class="time"> ${myqna.qa_date}</span>
 
-<br><br><br><br>
+<hr class="hr1">
 
-<span class="content2">내용 :</span> <br><br>
+
+<br><br><br><br>
+</div>
+<!-- <span class="content2">내용 :</span> <br><br> -->
 <textarea rows="5" cols="70" name="content" class="content">${myqna.qa_content }</textarea>
 <%-- <input type="text" name="content"  value="${myqna.qa_content }" class="content">  --%>
 
 
 <br><br>
 
-<hr style="color: gray;">
+<hr class="hr2">
 
 <p>
 <br>
+
+<!-- 댓글 -->
+<!-- 사용자  -->
 <c:if test="${not empty myqna.qa_answer}">
 <span id="admin_time">
 	<span><img alt="" src="../finances-master/images/admin.jpg" class="admin"></span>
@@ -234,6 +295,8 @@ body {
 
 </c:if>
 
+
+<!-- admin이면,  -->
 <c:if test="${member.id=='admin'}">
 <!-- 사진+시간 -->
 <span id="admin_time">
@@ -246,7 +309,7 @@ body {
 <!-- 관리자 댓글 -->
 <span name="admin_detail" id="admin_detail">
 	<br>
-	<textarea rows="6" cols="60" name="qna_answer" id="qna_answer"></textarea>
+	<textarea rows="6" cols="90" name="qna_answer" id="qna_answer"></textarea>
 	<br>
     <input type="button" id="answer_btn" value="답변하기">
     </span>
@@ -256,12 +319,12 @@ body {
 </p>
 
 <br><br><br>
+
 <div class="sendbtnDiv">
 	<input type="button"   class="btnList" value="목록"> 
 	<input type="submit" id="updateBtn" value="수정">
 	<input type="button" class="deleteBtn" data-qaid="${myqna.qa_id}" value="삭제">
 </div>
-
 
 </form>
 </div>

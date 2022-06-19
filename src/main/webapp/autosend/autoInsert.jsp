@@ -173,6 +173,7 @@ String accid = request.getParameter("accid");
 			name="autoEnd"><br /> <Br> <label class="accNum">계좌
 			비밀번호</label> <input type="password" name="pw" class="form-accSend" required><br />
 
+
 		<div class="sendbtnDiv">
 			<input type="submit" id="insertBtn" class="btnSubmit" value="등록하기">
 		</div>

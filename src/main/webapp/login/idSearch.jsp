@@ -106,6 +106,10 @@ label{
 	padding-left: 310px;
 }
 
+.btnSubmit{
+	cursor: pointer;
+}
+
 </style>
 </head>
 
@@ -115,7 +119,7 @@ label{
 <h2 id="signIn">ID Search.</h2>
 <br><br>
         <div class="sendDiv align">
-            <label class="accNum">ID *</label>
+            <label class="accNum">Name*</label>
             <input type="text" class="form-accSend" name="name" id="name">
         </div>
         <div class="sendDiv align">

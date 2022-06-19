@@ -73,7 +73,7 @@ label{
     margin-bottom: 0.5rem;
     font-size: 16px;
 }
-.btnSubmit {
+.btnSubmit, .btnCencel {
     background-color: #007bff;
     border: none;
     color: #fff;
@@ -85,10 +85,11 @@ label{
     padding: 10px 30px;
     font-weight: 400;
     height: 46px;
+    cursor: pointer;
 }
 
 
-.btnCencel{
+/* .btnCencel{
  	background-color: #fff;
     border: 1px solid #007bff;
     color: #007bff;
@@ -100,9 +101,10 @@ label{
     padding: 10px 30px;
     font-weight: 400;
     height: 46px;
-}
+    cursor: pointer;
+} */
 
-.btnCencel:hover{
+/* .btnCencel:hover{
 	background-color: #007bff;
 	color: #fff;
     font-size: 16px;
@@ -113,7 +115,7 @@ label{
     padding: 10px 30px;
     font-weight: 400;
     height: 46px;
-}
+} */
 
 
 .#accCreat {
@@ -174,7 +176,7 @@ label{
     margin-top: -80px;
     background-color: white;
     border: 1px solid white;
-    width: 140px;
+    width: 150px;
     height: 4px;
     position: absolute;
 }
@@ -186,7 +188,7 @@ label{
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 
 
-<div id="accCreat1"><h2 >개설계좌선택</h2></div>
+<div id="accCreat1"><h2 >개설계좌 선택</h2></div>
 
 <div id="accSelect">
 	<br>

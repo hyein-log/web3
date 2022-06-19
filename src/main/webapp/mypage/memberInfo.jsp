@@ -1,3 +1,4 @@
+<%@page import="dto.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -111,6 +112,33 @@ button:hover {
 	height: 160px;
 	width: 350px;
 }
+#popupDelete {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .7);
+	z-index: 1;
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+}
+
+#popupDelete.hide {
+	display: none;
+}
+
+#popupDelete .content {
+	padding: 20px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+	height: 350px;
+	width: 550px;
+}
 
 #popupPhone {
 	display: flex;
@@ -192,21 +220,31 @@ button:hover {
 	color :#fff;
 	background-color: #007bff;
 }
-.deleteBtn {
-	float: right;
-	background-color: #c8c8c8;
-	border: none;
-	color: #fff;
+#deleteBtn {
+	color : #c8c8c8;
+	background-color: #fff;
 	font-size: 13px;
 	border-radius: 30px;
 	padding: 5px 10px;
 	font-weight: 400;
 	height: 30px;
-}
-.deleteBtn:hover {
-	color : #c8c8c8;
-	background-color: #fff;
 	border: 1px solid #c8c8c8;
+	cursor: pointer;
+}
+#deleteBtn:hover {
+	color : #fff;
+	background-color: #c8c8c8;
+	border: 1px solid #c8c8c8;
+}
+li{
+	color: red;
+}
+.btnEmail, .btnPhone, .btnPhone, .marBtn{
+	cursor: pointer;
+}
+.button, .btn{
+	
+	cursor: pointer;
 }
 </style>
 <script type="text/javascript">
@@ -218,16 +256,14 @@ button:hover {
 			window.history.forward();
 
 		}
-
+	
          </script>
 </head>
 <body>
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
-	<%String memberemail = request.getParameter("memberemail");%>
 	<div class="wrap">
 		<div class="sendDiv align sendForm">
-			<label>성명</label> <label class="form-accSend">${memberinfo.name}</label>
-
+			<label>성명</label> <label class="form-accSend">${member.name}</label>
 			<input class="form-control" type="hidden" name="name"
 				value="${member.name}">
 		</div>
@@ -256,9 +292,9 @@ button:hover {
 		<div class="sendDiv align sendForm wid">
 
 			<input class="form-control" type="hidden" name="password"
-				value="${memberinfo.password}">
+				value="${member.password}">
 			<button class="marBtn" onclick="showPopup3()">비밀번호변경</button>
-			<input type="button" class="deleteBtn" data-memberid="${memberinfo.member_id}" value="탈퇴하기">
+			<button class="marBtn" onclick="showPopup4()">탈퇴하기</button>
 
 		</div>
 
@@ -280,7 +316,7 @@ button:hover {
 					<input type="hidden" name="subscri_ox"value="${member.subscri_ox}">  
 					<input class="form-accSend popwidth" type="text" name="email"value="${member.email}"> 
 					<input class="btn btn-primary" type="submit" value="이메일 변경"> 
-					<input type="button" value="닫기" class="button" onClick="javascript:closePopupEmail();">
+					<input type="reset" value="닫기" class="button" onClick="javascript:closePopupEmail();">
 				</div>
 			</form>
 
@@ -302,7 +338,7 @@ button:hover {
 					<input type="hidden" name="email"value="${member.email}">  
 					<input class="form-accSend popwidth" type="text" name="phonenum"value="${member.phoneNum}"> 
 						<input class="btn btn-primary" type="submit" value="전화번호 변경"> <input
-						type="button" value="닫기" class="button"
+						type="reset" value="닫기" class="button"
 						onClick="javascript:closePopupPhone();">
 				</div>
 			</form>
@@ -313,20 +349,17 @@ button:hover {
 	<div id="popupPW" class="hide">
 		<div class="content">
 				<div class="sendDiv align">
-					<input   type="hidden" name="subscri_ox" value="${memberinfo.subscri_ox}"> 새 비밀번호
-						<input class="form-accSend widinput" type="password" name="password1" id="password1"><br> 새 비밀번호 확인
-						<input  class="form-accSend widinput" type="password" name="password2" id="password2"><br>
+					새 비밀번호<input class="form-accSend widinput" type="password" name="password1" id="password1"><br> 
+					새 비밀번호 확인<input  class="form-accSend widinput" type="password" name="password2" id="password2"><br>
 					<input class="btn btn-primary" type="button" id="change_btn" value="비밀번호 변경">
-					<input class="btn btn-primary" type="button" value="닫기" onClick="javascript:closePopupPW();">
+					<input class="btn btn-primary" type="reset" value="닫기" onClick="javascript:closePopupPW();">
 
 					<script>
 						$("#change_btn").on("click",function() {
-											var email = "${member.email}"
 											var password1 = $("#password1").val();
 											var password2 = $("#password2").val();
 											if (password1.length < 1&& password2.length < 1) {
 												alert("패드워드를 입력해주세요!");
-												alert(email);
 												return false;
 											}
 											if ($("#password1").val() != $(
@@ -335,7 +368,7 @@ button:hover {
 												return false;
 											}
 											location.href = "../login/pwChange.do?password="
-													+ password1+"&email="+email;
+													+ password1;
 										});
 					</script>
 					
@@ -344,6 +377,42 @@ button:hover {
 
 		</div>
 	</div>
+	<div id="popupDelete" class="hide">
+		<div class="content">
+			<form action="memberDelete.do" method="get">
+				<div class="sendDiv align">
+				<div>
+				<div><h1>회원탈퇴</h1></div><hr>
+				<div>
+				<p>회원탈퇴 즉시 개인정보 및 COSBANK에서 만들어진 모든 데이터는 삭제됩니다.</p>
+				<p>탈퇴 후에는 개인정보가 모두 삭제되어 재가입시에도 복원되지 않습니다.<br><br>
+				<ul>
+				<li>탈퇴하실 경우 모든 잔고는 삭제되며, 되돌려 드리지 않습니다.</li>
+				<br>
+				<li>탈퇴 전, 보유하신 잔고를 출금해주세요.</li><br>
+				</ul>
+				
+				<p>정말 탈퇴하시겠습니까?
+				</div>
+				</div><div style="margin-top: 15px; float: right;">
+						<input  type="button" id="deleteBtn" value="탈퇴" >
+						<input type="reset" value="닫기" class="button" onClick="javascript:closePopupDelete();">
+						
+						<script>
+						$("#deleteBtn").on("click",function() {
+								var memberid ="${member.member_id}";
+								location.href = "memberDelete.do?memberid="+memberid;
+									
+							});
+
+						</script>
+						</div>
+				</div>
+			</form>
+			</p>
+		</div>
+	</div>
+	
 	<jsp:include page="../finances-master/footer/footer.jsp"></jsp:include>
 
 
@@ -365,6 +434,11 @@ button:hover {
 
 		popup.classList.remove('hide');
 	}
+	function showPopup4() {
+		const popup = document.querySelector('#popupDelete');
+
+		popup.classList.remove('hide');
+	}
 
 	function closePopupEmail() {
 		const popup = document.querySelector('#popupEmail');
@@ -378,14 +452,9 @@ button:hover {
 		const popup = document.querySelector('#popupPW');
 		popup.classList.add('hide');
 	}
-	$(function() {
-		$(".deleteBtn").click(function() {
-			var data_memberid = $(this).attr("data-memberid");
-			if (confirm("탈퇴하시겠습니까?")) {
-				location.href = "memberDelete.do?data_memberid=" + data_memberid;
-			}
-		});
-
-	});
+	function closePopupDelete() {
+		const popup = document.querySelector('#popupDelete');
+		popup.classList.add('hide');
+	}
 </script>
 </html>
