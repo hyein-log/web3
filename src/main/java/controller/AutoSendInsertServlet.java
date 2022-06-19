@@ -32,20 +32,12 @@ public class AutoSendInsertServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int accid = Integer.parseInt(request.getParameter("accid"));
-		String autoCate = request.getParameter("autoCate");
 		String autoContent = request.getParameter("autoContent");
-		if(!autoCate.equals("기타")){
-			autoContent = autoCate;
-		}
 		int autoCost = Integer.parseInt(request.getParameter("autoCost"));
 		int autoDate = Integer.parseInt(request.getParameter("autoDate"));
 		int pw = Integer.parseInt(request.getParameter("pw"));
 		String autoEnd = request.getParameter("autoEnd");
-		if(autoEnd == null) autoEnd = "9998-12-31";
-		
-		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-		Date endto;
-		
+
 		PrintWriter writer = response.getWriter();
 
 		if(autoContent.equals("")) {
