@@ -186,12 +186,14 @@ label {
 .modal-wrap {
 	display: none;
 	position: absolute;
-	top: 50%;
+	top: 70%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 500px;
 	height: 600px;
-	background: #fff;
+	background: #fbfbfd;
+	border-radius: 30px;
+	border: 5px solid #007bff;
 	z-index: 1000;
 }
 

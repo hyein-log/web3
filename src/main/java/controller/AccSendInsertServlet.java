@@ -12,11 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import dto.Acc_listVO;
 import dto.AcclistVO;
 import dto.AccountVO;
+import dto.MemberVO;
 import model.Acc_listService;
 import model.AcclistDAO;
 import model.AcclistService;
 import model.AccountDAO;
 import model.AccountService;
+import model.MemberService;
 
 /**
  * Servlet implementation class AccSendInsertServlet
@@ -39,6 +41,7 @@ public class AccSendInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		String accnum_you = request.getParameter("accnum_you");
 		String accnum_me = request.getParameter("accnum_me");
@@ -60,12 +63,19 @@ public class AccSendInsertServlet extends HttpServlet {
 		int account_id_ME = me_acc.getAccount_id();//내 계좌 ID
 		int past_acc_YOU = you_acc.getBalance(); //상대방 잔고
 		int past_acc_ME = me_acc.getBalance(); //내 잔고
+		
+		MemberService memberService = new MemberService();
+		MemberVO you = memberService.selectMemberByMemberId(you_acc.getMember_id());
+		MemberVO me = memberService.selectMemberByMemberId(me_acc.getMember_id());
+		String you_name = you.getName();
+		String me_name = me.getName();
+		
 		System.out.println("account_id_YOU ="+account_id_YOU +"--"+"past_acc_YOU: "+past_acc_YOU);
 		System.out.println("account_id_ME ="+account_id_ME +"--"+"past_acc_ME: "+past_acc_ME);
 		System.out.println("amount = "+amount);
 		Acc_listService acc_listService = new Acc_listService();
-		int you_list = acc_listService.InsertAccList(account_id_YOU, past_acc_YOU, amount, "입금");
-		int me_list = acc_listService.InsertAccList(account_id_ME, past_acc_ME, amount, "출금");
+		int you_list = acc_listService.InsertAccList(account_id_YOU, past_acc_YOU, amount, "입금",me_name );
+		int me_list = acc_listService.InsertAccList(account_id_ME, past_acc_ME, amount, "출금",you_name );
 		
 		int update_Ybal = service.UPDATE_BALANCE(past_acc_YOU+amount, account_id_YOU);
 		int update_Mbal = service.UPDATE_BALANCE(past_acc_ME-amount, account_id_ME);

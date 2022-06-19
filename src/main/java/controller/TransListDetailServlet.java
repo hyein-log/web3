@@ -30,13 +30,12 @@ import model.MemberService;
 public class TransListDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	public TransListDetailServlet() {
 		super();
 	}
-	
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -44,59 +43,93 @@ public class TransListDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
 		String kind = request.getParameter("kind");
 		session.setAttribute("kind", kind);
 		String accNum = request.getParameter("accNum");
 		session.setAttribute("accNum", accNum);
-		String searchStartDate = (String)request.getParameter("searchStartDate");
-		String searchEndDate = (String)request.getParameter("searchEndDate");
-		
-		
+		String searchStartDate = (String) request.getParameter("searchStartDate");
+		String searchEndDate = (String) request.getParameter("searchEndDate");
+
 		String sel = request.getParameter("sel");
 		AcclistDAO dao = AcclistDAO.getInstance();
 		int page = 1;
-		if(request.getParameter("page")!=null) {
+		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		PagingVO paging = new PagingVO();
-		int count =0;
-		if(kind.equals("all")) {
-		count = dao.SQL_SELECT_TERM_COUNT(accNum,searchStartDate,searchEndDate  );
-		}else if(kind.equals("입금")) {
-			count = dao.SQL_SELECT_ALL_COUNT_IN(accNum,searchStartDate,searchEndDate );
-		}else {
-			count= dao.SQL_SELECT_ALL_COUNT_OUT(accNum, searchStartDate, searchEndDate);
+		int count = 0;
+		if (kind.equals("all")) {
+			count = dao.SQL_SELECT_TERM_COUNT(accNum, searchStartDate, searchEndDate);
+		} else if (kind.equals("입금")) {
+			count = dao.SQL_SELECT_ALL_COUNT_IN(accNum, searchStartDate, searchEndDate);
+		} else {
+			count = dao.SQL_SELECT_ALL_COUNT_OUT(accNum, searchStartDate, searchEndDate);
 		}
 		paging.setPage(page);
 		paging.setTotalCount(count);
 		AcclistService acclistService = new AcclistService();
 		List<AcclistVO> alist = new ArrayList<AcclistVO>();
-	
-		if(sel.equals("1")) {
-		if (kind.equals("all")) {
-			alist = acclistService.SQL_SELECT_TERM(accNum,searchStartDate, searchEndDate, page);
-			session.setAttribute("alist", alist);
-		} else if (kind.equals("입금")) {
-			alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
-			session.setAttribute("alist", alist);
-			System.out.println(alist);
-		} else if (kind.equals("출금")) {
-			alist = acclistService.SQL_SELECT_KIND(accNum, kind,page);
-			session.setAttribute("alist", alist);
-		}
-		}else {
+
+		if (sel.equals("1")) {
 			if (kind.equals("all")) {
-				alist = dao.SQL_SELECT_ALL_PAGE(accNum, page);
-				session.setAttribute("alist", alist);
+				alist = acclistService.SQL_SELECT_TERM(accNum, searchStartDate, searchEndDate, page);
+				if (alist.size() == 0) {
+					alist = dao.SQL_SELECT_ALL_PAGE(accNum, page);					
+					writer.println("<script>alert('조회할 내역이 없습니다.'); location.href='" + "../transDetail.jsp" + "';</script>");
+				} else {
+					session.setAttribute("alist", alist);
+				}
 			} else if (kind.equals("입금")) {
 				alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
-				session.setAttribute("alist", alist);
-				System.out.println(alist);
+				if (alist.size() == 0) {
+					alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
+					writer.println(
+							"<script>alert('조회할 내역이 없습니다.'); location.href='" + "../transDetail.jsp" + "';</script>");
+				} else {
+					session.setAttribute("alist", alist);
+				}
 			} else if (kind.equals("출금")) {
-				alist = acclistService.SQL_SELECT_KIND(accNum, kind,page);
-				session.setAttribute("alist", alist);
+				alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
+				if (alist.size() == 0) {
+					alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
+					writer.println("<script>alert('조회할 내역이 없습니다.'); location.href='" + "../transDetail.jsp"
+							+ "';</script>");
+					writer.close();
+				} else {
+					session.setAttribute("alist", alist);
+				}
+			}
+		} else {
+			if (kind.equals("all")) {
+				alist = dao.SQL_SELECT_ALL_PAGE(accNum, page);
+				if (alist.size() == 0) {
+					writer.println("<script>alert('조회할 내역이 없습니다.'); location.href='" + "../finances-master/main.jsp"
+							+ "';</script>");
+					writer.close();
+				} else {
+					session.setAttribute("alist", alist);
+				}
+			} else if (kind.equals("입금")) {
+				alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
+				if (alist.size() == 0) {
+					writer.println("<script>alert('조회할 내역이 없습니다.'); location.href='" + "../finances-master/main.jsp"
+							+ "';</script>");
+					writer.close();
+				} else {
+					session.setAttribute("alist", alist);
+				}
+			} else if (kind.equals("출금")) {
+				alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
+				if (alist.size() == 0) {
+					writer.println("<script>alert('조회할 내역이 없습니다.'); location.href='" + "../finances-master/main.jsp"
+							+ "';</script>");
+					writer.close();
+				} else {
+					session.setAttribute("alist", alist);
+				}
 			}
 		}
 		RequestDispatcher rd;

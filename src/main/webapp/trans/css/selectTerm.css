@@ -1,15 +1,5 @@
 @charset "UTF-8";
 
-/* Default */
-input[type=text], input[type=password] {
-	font-family: "Malgun Gothic", "맑은 고딕", Dotum, "돋움", Arial, sans-serif
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	font-family: "Malgun Gothic", "맑은 고딕", Dotum, "돋움", Arial, sans-serif
-}
 
 body {
 	font-size: 12px;
@@ -112,13 +102,13 @@ header, footer, aside, nav, section, article {
 	text-align: left;
 	vertical-align: top;
 	border: none;
-	background: #e6e6e6
+	background:rgb(0 65 135 / 8%);
 }
 
 .searchBox tbody td {
 	padding: 12px 10px 12px 25px;
 	border: none;
-	background-color: #efefef
+	background-color:rgb(0 65 135 / 8%);
 }
 
 .searchDate {
@@ -151,16 +141,17 @@ header, footer, aside, nav, section, article {
 
 .searchDate li .chkbox2 label {
 	display: block;
-	width: 72px;
+	width: 50px;
 	height: 26px;
 	font-size: 14px;
 	font-weight: bold;
-	color: #fff;
+	color: #495057;
 	text-align: center;
 	line-height: 25px;
 	text-decoration: none;
 	cursor: pointer;
-	background: #a5b0b6
+	background:white;
+	border-radius: 40px;
 }
 
 .searchDate li .chkbox2.on label {
