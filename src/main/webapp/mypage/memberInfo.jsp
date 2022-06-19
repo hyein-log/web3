@@ -73,7 +73,6 @@ button {
 	padding: 5px 10px;
 	font-weight: 400;
 	height: 30px;
-	cursor: pointer;
 }
 
 button:hover {
@@ -239,6 +238,13 @@ button:hover {
 }
 li{
 	color: red;
+}
+.btnEmail, .btnPhone, .btnPhone, .marBtn{
+	cursor: pointer;
+}
+.button, .btn{
+	
+	cursor: pointer;
 }
 </style>
 <script type="text/javascript">
