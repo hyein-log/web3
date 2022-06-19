@@ -73,6 +73,7 @@ button {
 	padding: 5px 10px;
 	font-weight: 400;
 	height: 30px;
+	cursor: pointer;
 }
 
 button:hover {
@@ -229,6 +230,7 @@ button:hover {
 	font-weight: 400;
 	height: 30px;
 	border: 1px solid #c8c8c8;
+	cursor: pointer;
 }
 #deleteBtn:hover {
 	color : #fff;
