@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ID 중복 확인</title>
+<title>COS BANK ID 중복 확인</title>
 
 <style type="text/css">
 

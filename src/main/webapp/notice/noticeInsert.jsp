@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 등록</title>
+<title>COS BANK 공지사항 등록</title>
 
 <style type="text/css">
 .wrap{

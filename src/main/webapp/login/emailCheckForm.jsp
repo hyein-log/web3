@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EMAIL 중복 확인</title>
+<title>COS BANK EMAIL 중복 확인</title>
 
 <style type="text/css">
 

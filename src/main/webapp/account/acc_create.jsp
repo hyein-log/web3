@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 
-<title>계좌개설</title>
+<title>COS BANK 계좌개설</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 

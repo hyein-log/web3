@@ -11,7 +11,7 @@
 <html lang="ko">
 
 <head>
-<title>결제내역 지도</title>
+<title>COS BANK 결제내역 지도</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>

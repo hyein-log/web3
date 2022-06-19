@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>계좌 생성완료</title>
+<title>COS BANK 계좌 생성완료</title>
 <style type="text/css">
 html {
 	position: relative;

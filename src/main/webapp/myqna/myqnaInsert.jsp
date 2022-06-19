@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-<title>1:1 문의하기</title>
+<title>COS BANK 1:1 문의하기</title>
 <meta charset="utf-8">
 <style type="text/css">
 html {

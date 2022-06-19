@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
-<title>아이디 찾기</title>
+<title>COS BANK 아이디/비밀번호 찾기</title>
 
 <style type="text/css">
 html {

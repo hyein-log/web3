@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-  <title>Finances &mdash; Website Template by Colorlib</title>
+  <title>COS BANK 비밀번호 찾기</title>
   <meta charset="utf-8">
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">

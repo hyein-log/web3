@@ -87,12 +87,12 @@ public class MailSendServlet extends HttpServlet {
 
         try {
             MimeMessage msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress(user,"KO3BANK"));
+            msg.setFrom(new InternetAddress(user,"COSBANK"));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             
 
             //메일 제목
-            msg.setSubject("안녕하세요 KO3 BANK 인증 메일입니다.");
+            msg.setSubject("안녕하세요 COS BANK 인증 메일입니다.");
             //메일 내용
             msg.setText("인증 번호는    :   "+temp);
             

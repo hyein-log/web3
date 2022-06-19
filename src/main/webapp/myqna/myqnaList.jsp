@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>1:1 문의</title>
+<title>COS BANK 1:1 문의</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
