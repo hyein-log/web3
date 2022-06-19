@@ -146,6 +146,11 @@ label{
 .accNum {
 	color: #007bff;
 }
+
+
+#dbCheckId, #dbCheckEmail, .btnSubmit{
+	cursor: pointer;
+}
 </style>
 
 </head>
