@@ -109,9 +109,9 @@ a:hover{
         <td class="td1">작성일</td>
         <td class="td1">삭제여부</td>
     </tr>
-    <c:forEach items="${notiList}" var="notice">
+    <c:forEach items="${notiList}" var="notice"  varStatus="status">
         <tr>
-            <td class="td1"><a href="noticeDetail.do?noticeid=${notice.notice_id}">${notice.notice_id}</a></td>
+            <td class="td1"><a href="noticeDetail.do?noticeid=${notice.notice_id}">${status.count }</a></td>
             <td class="td2"><a href="noticeDetail.do?noticeid=${notice.notice_id}">${notice.notice_title}</a></td>
            <%--  <td>${notice.notice_content}</td> --%>
             <td class="td1">${notice.notice_date}</td>

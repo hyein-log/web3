@@ -176,7 +176,7 @@ label{
     margin-top: -80px;
     background-color: white;
     border: 1px solid white;
-    width: 140px;
+    width: 150px;
     height: 4px;
     position: absolute;
 }

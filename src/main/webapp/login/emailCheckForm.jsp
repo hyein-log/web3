@@ -75,7 +75,7 @@
 	}
 </script>
 </head>
-<body>
+<body onresize="parent.resizeTo(500,400)" onload="parent.resizeTo(500,400)">
 	<b><font size="4" color="gray" style="margin-left: 12px;margin-top: 20px;">EMAIL 중복 확인</font></b>
 	<br>
 	<form name="checkEmailForm">

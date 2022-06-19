@@ -190,9 +190,9 @@ img {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${myqnaDatas}" var="myqna">
+				<c:forEach items="${myqnaDatas}" var="myqna"  varStatus="status">
 					<tr>
-						<td class="td1">${myqna.qa_id}</td>
+						<td class="td1">${status.count }</td>
 						<td class="td2"><a href="myqnaDetail.do?qaid=${myqna.qa_id}&admin=0" class="alink">${myqna.qa_title}</a></td>
 						<td class="td1">${myqna.qa_date}</td>
 					</tr>
