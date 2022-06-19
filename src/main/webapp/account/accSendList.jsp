@@ -34,7 +34,14 @@ $(function() {
 	});
 });
 	
+	
 </script>
+
+<style type="text/css">
+	.btnSel{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>

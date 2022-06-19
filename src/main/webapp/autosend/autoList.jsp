@@ -81,6 +81,7 @@ td{
     font-weight: bold;
     height: 30px;
     margin-left: 1275px;
+     cursor: pointer;
 
 }
 

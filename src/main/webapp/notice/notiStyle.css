@@ -1,4 +1,4 @@
-html {
+ html {
     position: relative;
     min-height: 100%;
     margin: 0;
@@ -69,6 +69,7 @@ td {
 
 .clickList {
 	cursor: pointer;
+	
 }
 
 .col1 {
@@ -81,4 +82,4 @@ td {
 
 .col3 {
 	width: 50%;
-}
+} 

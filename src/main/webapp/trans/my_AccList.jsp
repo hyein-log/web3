@@ -90,6 +90,7 @@ td {
 	padding: 5px 10px;
 	font-weight: 400;
 	height: 30px;
+	cursor: pointer;
 }
 .btnSel:hover {
 	background-color: #007bff;

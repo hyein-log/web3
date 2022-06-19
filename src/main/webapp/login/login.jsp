@@ -106,6 +106,10 @@ label{
 	margin-right: 20px;
 }
 
+.btnSubmit{
+	cursor: pointer;
+}
+
 </style>
 </head>
 

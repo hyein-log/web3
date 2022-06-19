@@ -202,12 +202,23 @@ button:hover {
 	padding: 5px 10px;
 	font-weight: 400;
 	height: 30px;
+	cursor: pointer;
 }
 .deleteBtn:hover {
 	color : #c8c8c8;
 	background-color: #fff;
 	border: 1px solid #c8c8c8;
 }
+
+.btnEmail, .btnPhone, .btnPhone, .marBtn{
+	cursor: pointer;
+}
+
+.button, .btn{
+	
+	cursor: pointer;
+}
+
 </style>
 <script type="text/javascript">
 
@@ -240,7 +251,7 @@ button:hover {
 			<label class="">이메일</label> <label class="form-accSend">${member.email}</label>
 			<input class="form-control" type="hidden" name="email"
 				value="${member.email}">
-			<button onclick="showPopup1()">이메일변경</button>
+			<button onclick="showPopup1()" class="btnEmail">이메일변경</button>
 		</div>
 		<div class="sendDiv align sendForm">
 			<label class="">주소</label> <label class="form-accSend">${member.address}</label>
@@ -251,13 +262,13 @@ button:hover {
 			<label class="">전화번호</label> <label class="form-accSend">${member.phoneNum}</label>
 			<input class="form-control" type="hidden" name="phoneNum"
 				value="${member.phoneNum}">
-			<button onclick="showPopup2()">전화번호변경</button>
+			<button onclick="showPopup2()" class="btnPhone">전화번호변경</button>
 		</div>
 		<div class="sendDiv align sendForm wid">
 
 			<input class="form-control" type="hidden" name="password"
 				value="${memberinfo.password}">
-			<button class="marBtn" onclick="showPopup3()">비밀번호변경</button>
+			<button class="marBtn" onclick="showPopup3()" >비밀번호변경</button>
 			<input type="button" class="deleteBtn" data-memberid="${memberinfo.member_id}" value="탈퇴하기">
 
 		</div>

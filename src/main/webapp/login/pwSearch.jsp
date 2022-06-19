@@ -106,6 +106,10 @@ label{
 	padding-left: 310px;
 }
 
+.btnSubmit{
+	cursor: pointer;
+
+}
 </style>
 </head>
 

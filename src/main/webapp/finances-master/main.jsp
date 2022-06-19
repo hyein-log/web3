@@ -46,11 +46,9 @@ html {
 	min-height: 100%;
 	margin: 0;
 }
-
 body {
 	min-height: 100%;
 }
-
 .a img {
 	transition: all 0.2s linear;
 }
@@ -63,7 +61,6 @@ body {
 .a:hover img {
 	transform: scale(1.1);
 }
-
 .visual {
 	/* 마우스 커서를 포인터 모양으로 변경 */
 	cursor: pointer;
@@ -359,4 +356,3 @@ body {
 
 </body>
 </html>
-

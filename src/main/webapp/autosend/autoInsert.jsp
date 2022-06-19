@@ -118,6 +118,7 @@ body {
     padding: 10px 30px;
     font-weight: 400;
     height: 46px;
+     cursor: pointer;
 }
 
 #seltype{

@@ -81,6 +81,7 @@ label{
     height: 45px;
     margin-top: 2%;
     float: right;
+    cursor: pointer;
 }
 .btnSubmit:hover{
  	background-color: #fff;
