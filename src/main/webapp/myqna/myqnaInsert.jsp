@@ -111,6 +111,7 @@ h2{
     padding: 10px 30px;
     font-weight: 400;
     height: 40px;
+    cursor: pointer;
 
 }
 
@@ -135,6 +136,7 @@ background-color: #fff;
     padding: 10px 30px;
     font-weight: 400;
     height: 40px;
+       cursor: pointer;
 
 }
 
