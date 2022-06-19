@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +34,14 @@ $(function() {
 	});
 });
 	
+	
 </script>
+
+<style type="text/css">
+	.btnSel{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 <jsp:include page="../finances-master/header/header.jsp"></jsp:include>
@@ -59,8 +65,7 @@ $(function() {
 					<c:if test="${acc. accountType==2}">적금 통장</c:if>
 				</td>
 				<td>${acc. acc_number}</td>
-				<td><fmt:formatNumber value="${acc. balance}"
-									pattern="#,###" />원</td>
+				<td>${acc. balance}원</td>
 				<td><button class="btnSel" data-accNum="${acc.acc_number}">선택하기</button></td>
 				
 			</tr>

@@ -84,6 +84,7 @@ td{
     padding: 5px 10px;
     font-weight: 400;
     height: 30px;
+    cursor: pointer;
 }
 
 /* .btnDel:hover {
@@ -102,6 +103,7 @@ td{
     padding: 5px 10px;
     font-weight: bold;
     height: 30px;
+     cursor: pointer;
 }
 
 .btnAuto:hover{
@@ -120,6 +122,7 @@ td{
     padding: 5px 10px;
     font-weight: 400;
     height: 30px;
+     cursor: pointer;
 }
 
 
