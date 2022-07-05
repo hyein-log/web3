@@ -78,7 +78,7 @@ public class AccSendInsertServlet extends HttpServlet {
 			response.setHeader("refresh", "0;url=../finances-master/main.jsp");
 			
 		} else {
-			writer.println("<script>alert('이체 실패했습니다.\n다시 시도해주세요');</script>");
+			writer.println("<script>alert('이체 실패했습니다.\\n다시 시도해주세요.');</script>");
 		}
 	}
 

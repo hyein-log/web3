@@ -69,9 +69,9 @@ a:hover{
 			<td class="td3">제목</td>
 			<td class="td1">작성일</td>
 		</tr>
-		<c:forEach items="${qnaDatas}" var="qna">
+		<c:forEach items="${qnaDatas}" var="qna" varStatus="status">
 			<tr>
-				<td class="td1">${qna.qa_id}</td>
+				<td class="td1">${status.count }</td>
 				<td class="td2"><a href="myqnaDetail.do?qaid=${qna.qa_id}&admin=1">${qna.qa_title}</a></td>
 				<td class="td1">${qna.qa_date}</td>
 			</tr>

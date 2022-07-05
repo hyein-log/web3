@@ -65,15 +65,15 @@ public class AutoSendInsertServlet extends HttpServlet {
 				int result = service.insertAuto(vo);
 				
 				if(result >0) {
-					writer.println("<script>alert('ìë™ì´ì²´ê°€ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+					writer.println("<script>alert('ÀÚµ¿ÀÌÃ¼°¡ ¼³Á¤µÇ¾ú½À´Ï´Ù.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
 					writer.close();
 				} else {
-					writer.println("<script>alert('ìë™ì´ì²´ ë“±ë¡ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.\nê´€ë¦¬ìì—ê²Œ ë¬¸ì˜í•´ì£¼ì„¸ìš”.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
+					writer.println("<script>alert('ÀÚµ¿ÀÌÃ¼ µî·Ï¿¡ ½ÇÆĞÇß½À´Ï´Ù.\\n°ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇØÁÖ¼¼¿ä.');location.href='"+"AutoSendList.do?accid="+accid+"'</script>"); 
 					writer.close();
 					
 				}
 			} else {
-	        	writer.println("<script>alert('ì˜ëª»ëœ ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤.');location.href='"+"autoInsert.jsp?accid="+accid+"'</script>"); 
+	        	writer.println("<script>alert('Àß¸øµÈ ºñ¹Ğ¹øÈ£ÀÔ´Ï´Ù.');location.href='"+"autoInsert.jsp?accid="+accid+"'</script>"); 
 	        	writer.close();
 			}
 		} catch (ParseException e) {

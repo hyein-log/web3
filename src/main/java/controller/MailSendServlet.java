@@ -39,16 +39,9 @@ public class MailSendServlet extends HttpServlet {
         //SMTP 서버 정보를 설정한다.
 
         Properties props = new Properties();
-//        props.put("mail.smtp.host", "smtp.gmail.com");
-//        props.put("mail.smtp.port", 587);
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.ssl.enable", "true");
-//        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         props.put("mail.smtp.host", "smtp.naver.com");
         props.put("mail.smtp.port", 587);
         props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.ssl.enable", "true");
-//        props.put("mail.smtp.ssl.trust", "smtp.naver.com");
         
 
         //인증 번호 생성기

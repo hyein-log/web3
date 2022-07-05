@@ -20,7 +20,7 @@ body {
 
 #mailConfirm{
     width: 40%;
-    margin-left: 470px;
+    margin-left: 450px;
     font-family: 'Nanum Gothic', sans-serif;
     padding: 2%;
      margin-top: 2%; 
@@ -33,7 +33,7 @@ body {
 	color: #007bff;
 	font-weight: 900;
 	font-size: 30px;
-	margin-left: 480px;
+	margin-left: 670px;
 	margin-top: 150px;
 	/* margin-bottom: 3%; */
 	font-family: 'Nanum Gothic', sans-serif;
