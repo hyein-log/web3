@@ -46,16 +46,16 @@ public class AccSendInsertServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		String accnum_you = request.getParameter("accnum_you");
 		String accnum_me = request.getParameter("accnum_me");
-		int amount = Integer.parseInt(request.getParameter("amount")); //蹂대궡�뒗 �룉
+		int amount = Integer.parseInt(request.getParameter("amount")); //보내는 돈
 		AccountVO you_acc = new AccountVO();
 		AccountVO me_acc = new AccountVO();
 		AccountService service = new AccountService();
 		you_acc = service.SELECT_ACCID_BY_ACCNUM(accnum_you);
 		me_acc = service.SELECT_ACCID_BY_ACCNUM(accnum_me);
-		int account_id_YOU = you_acc.getAccount_id();//�긽��諛� 怨꾩쥖 ID
-		int account_id_ME = me_acc.getAccount_id();//�궡 怨꾩쥖 ID
-		int past_acc_YOU = you_acc.getBalance(); //�긽��諛� �옍怨�
-		int past_acc_ME = me_acc.getBalance(); //�궡 �옍怨�
+		int account_id_YOU = you_acc.getAccount_id();//상대방 계좌ID
+		int account_id_ME = me_acc.getAccount_id();//내 계좌 ID
+		int past_acc_YOU = you_acc.getBalance(); //상대방 잔고
+		int past_acc_ME = me_acc.getBalance(); //내 잔고
 
 		
 		MemberService memberService = new MemberService();
@@ -68,8 +68,8 @@ public class AccSendInsertServlet extends HttpServlet {
 		System.out.println("account_id_ME ="+account_id_ME +"--"+"past_acc_ME: "+past_acc_ME);
 		System.out.println("amount = "+amount);
 		Acc_listService acc_listService = new Acc_listService();
-		int you_list = acc_listService.InsertAccList(account_id_YOU, past_acc_YOU, amount, "�엯湲�",me_name );
-		int me_list = acc_listService.InsertAccList(account_id_ME, past_acc_ME, amount, "異쒓툑",you_name );
+		int you_list = acc_listService.InsertAccList(account_id_YOU, past_acc_YOU, amount, "입금",me_name );
+		int me_list = acc_listService.InsertAccList(account_id_ME, past_acc_ME, amount, "출금",you_name );
 		
 		int update_Ybal = service.UPDATE_BALANCE(past_acc_YOU+amount, account_id_YOU);
 		int update_Mbal = service.UPDATE_BALANCE(past_acc_ME-amount, account_id_ME);

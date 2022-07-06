@@ -140,14 +140,14 @@ public class AcclistDAO {
 		}
 		return a;
 	}
-	public int SQL_SELECT_ALL_COUNT_IN(String acc_num,Date searchStartDate, Date searchEndDate ) {
+	public int SQL_SELECT_ALL_COUNT_IN(String acc_num,String searchStartDate, String searchEndDate ) {
 		int a=0;
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(SQL_SELECT_ALL_COUNT_IN);
 			st.setString(1, acc_num);
-			st.setDate(2, searchStartDate);
-			st.setDate(3, searchEndDate);
+			st.setString(2, searchStartDate);
+			st.setString(3, searchEndDate);
 			rs = st.executeQuery();
 			
 			while (rs.next()) {
@@ -161,14 +161,14 @@ public class AcclistDAO {
 		}
 		return a;
 	}
-	public int SQL_SELECT_ALL_COUNT_OUT(String acc_num,Date searchStartDate, Date searchEndDate ) {
+	public int SQL_SELECT_ALL_COUNT_OUT(String acc_num,String searchStartDate, String searchEndDate ) {
 		int a=0;
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(SQL_SELECT_ALL_COUNT_OUT);
 			st.setString(1, acc_num);
-			st.setDate(2, searchStartDate);
-			st.setDate(3, searchEndDate);
+			st.setString(2, searchStartDate);
+			st.setString(3, searchEndDate);
 			rs = st.executeQuery();
 			
 			while (rs.next()) {
@@ -190,7 +190,7 @@ public class AcclistDAO {
 	public AcclistDAO() {
 		
 	}
-	public List<AcclistVO> SQL_SELECT_TERM(String acc_num ,Date start_Term, Date end_Term,int page) {
+	public List<AcclistVO> SQL_SELECT_TERM(String acc_num ,String start_Term, String end_Term,int page) {
 		List<AcclistVO> list = new ArrayList<AcclistVO>();
 		int startNum = (page-1)*10+1;
 	    int endNum = page*10;
@@ -198,8 +198,8 @@ public class AcclistDAO {
 		try {
 			st = conn.prepareStatement(SQL_SELECT_TERM);
 			st.setString(1, acc_num);
-			st.setDate(2, start_Term);
-			st.setDate(3, end_Term);
+			st.setString(2, start_Term);
+			st.setString(3, end_Term);
 			st.setInt(4, startNum);
 			st.setInt(5, endNum);
 			rs = st.executeQuery();
@@ -216,14 +216,14 @@ public class AcclistDAO {
 		
 		return list;
 	}
-	public int SQL_SELECT_TERM_COUNT(String acc_num, Date start_Term, Date end_Term ) {
+	public int SQL_SELECT_TERM_COUNT(String acc_num, String searchStartDate, String searchEndDate ) {
 		int a=0;
 		conn = DBUtil.getConnection();
 		try {
 			st = conn.prepareStatement(SQL_SELECT_TERM_COUNT);
 			st.setString(1, acc_num);
-			st.setDate(2, start_Term);
-			st.setDate(3, end_Term);
+			st.setString(2, searchStartDate);
+			st.setString(3, searchEndDate);
 			rs = st.executeQuery();
 			
 			while (rs.next()) {

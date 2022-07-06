@@ -282,12 +282,12 @@ td {
 									<!-- 시작일 -->
 									<span class="dset"> <input type="text"
 										class="datepicker inpType" name="searchStartDate"
-										id="searchStartDate" value="${StartDate}">
+										id="searchStartDate" value="${searchStartDate}">
 									</span> <span class="demi">~</span>
 									<!-- 종료일 -->
 									<span class="dset"> <input type="text"
 										class="datepicker inpType" name="searchEndDate"
-										id="searchEndDate" value="${EndDate}">
+										id="searchEndDate" value="${searchEndDate}">
 									</span> <input type="hidden" name="accNum"
 										value="${accNum}"> <input
 										type="hidden" name="kind" value="${kind}"> <input

@@ -51,29 +51,14 @@ public class TransListDetailServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
 		String kind = request.getParameter("kind");
-		System.out.println(kind);
 		session.setAttribute("kind", kind);
-		String accNum = request.getParameter("accNum");
-		System.out.println(accNum);
+		String accNum = (String) session.getAttribute("accNum");
 		session.setAttribute("accNum", accNum);
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		Date searchStartDate1 = null;
-		Date searchEndDate1 =null;
-		request.setAttribute("StartDate", request.getParameter("searchStartDate"));
-		request.setAttribute("EndDate", request.getParameter("searchEndDate"));
-		try {
-			searchStartDate1 = df.parse(request.getParameter("searchStartDate"));
-			
-	    searchEndDate1 = df.parse(request.getParameter("searchEndDate"));
-	    
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	    java.sql.Date searchStartDate = new java.sql.Date(searchStartDate1.getTime());
-	    java.sql.Date searchEndDate = new java.sql.Date(searchEndDate1.getTime());
-	    
+		
+		String searchStartDate = (String) session.getAttribute("start");
+		String searchEndDate = (String) session.getAttribute("end");
+		
 		int sel = Integer.parseInt(request.getParameter("sel"));
-		System.out.println(sel+"!!!");
 		AcclistDAO dao = AcclistDAO.getInstance();
 		int page = 1;
 		if (request.getParameter("page") != null) {
@@ -133,7 +118,6 @@ public class TransListDetailServlet extends HttpServlet {
 					session.setAttribute("alist", alist);
 				}
 			} else if (kind.equals("입금")) {
-				System.out.println("들어옴");
 				alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
 				if (alist.size() == 0) {
 					writer.println("<script>alert('조회할 내역이 없습니다.'); location.href='" + "../finances-master/main.jsp"
@@ -153,6 +137,7 @@ public class TransListDetailServlet extends HttpServlet {
 				}
 			}
 		}
+		
 		RequestDispatcher rd;
 		request.setAttribute("alist", alist);
 		request.setAttribute("balance", alist.get(0).getBalance());

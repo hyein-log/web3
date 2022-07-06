@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/trans/trans.do")
@@ -22,6 +23,7 @@ public class TransListServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		LocalDate date = LocalDate.now();
 		DateTimeFormatter fm = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String end = date.format(fm);
@@ -31,10 +33,10 @@ public class TransListServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String accNum = request.getParameter("accNum");
-		request.setAttribute("accNum", accNum);
-		request.setAttribute("now", date);
-		request.setAttribute("end", end);
-		request.setAttribute("start", start);
+		session.setAttribute("accNum", accNum);
+		session.setAttribute("now", date);
+		session.setAttribute("end", end);
+		session.setAttribute("start", start);
 		RequestDispatcher rd; 
 		rd = request.getRequestDispatcher("transList.jsp");
 		rd.forward(request, response);

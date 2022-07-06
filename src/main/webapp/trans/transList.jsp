@@ -276,7 +276,7 @@ li {
 			
 			<form >
 				<input type="button" value="입금내역 조회"class="btn btn-outline-primary d buttonWH"
-				onclick="post_to_url('transIn.do', {'kind':'입금','searchEndDate':${end},'searchStartDate':${start},'sel':0,'accNum':${accNum}});" >
+				onclick="post_to_url('transIn.do', {'kind':'입금','sel':0});" >
 			</form>
 
 		</div>
