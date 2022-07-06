@@ -162,7 +162,6 @@ body {
 						<div class="team-member a">
 							<c:if test="${not empty member }">
 								<form action="../trans/MyAccountList.do" method="post">
-									<input type="hidden" name="memberid" value="<%=id%>"><br>
 									<input type="image" src="images/list.png"
 										style="border-radius: 20px 20px; box-shadow: 5px 5px 10px grey;"
 										class="img-fluid mb-4 bg-white visual" alt="제출버튼">

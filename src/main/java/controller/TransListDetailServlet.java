@@ -2,7 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -29,7 +33,7 @@ import model.MemberService;
 @WebServlet("/trans/transIn.do")
 public class TransListDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	public TransListDetailServlet() {
 		super();
 	}
@@ -47,13 +51,29 @@ public class TransListDetailServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
 		String kind = request.getParameter("kind");
+		System.out.println(kind);
 		session.setAttribute("kind", kind);
 		String accNum = request.getParameter("accNum");
+		System.out.println(accNum);
 		session.setAttribute("accNum", accNum);
-		String searchStartDate = (String) request.getParameter("searchStartDate");
-		String searchEndDate = (String) request.getParameter("searchEndDate");
-
-		String sel = request.getParameter("sel");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date searchStartDate1 = null;
+		Date searchEndDate1 =null;
+		request.setAttribute("StartDate", request.getParameter("searchStartDate"));
+		request.setAttribute("EndDate", request.getParameter("searchEndDate"));
+		try {
+			searchStartDate1 = df.parse(request.getParameter("searchStartDate"));
+			
+	    searchEndDate1 = df.parse(request.getParameter("searchEndDate"));
+	    
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    java.sql.Date searchStartDate = new java.sql.Date(searchStartDate1.getTime());
+	    java.sql.Date searchEndDate = new java.sql.Date(searchEndDate1.getTime());
+	    
+		int sel = Integer.parseInt(request.getParameter("sel"));
+		System.out.println(sel+"!!!");
 		AcclistDAO dao = AcclistDAO.getInstance();
 		int page = 1;
 		if (request.getParameter("page") != null) {
@@ -73,7 +93,7 @@ public class TransListDetailServlet extends HttpServlet {
 		AcclistService acclistService = new AcclistService();
 		List<AcclistVO> alist = new ArrayList<AcclistVO>();
 
-		if (sel.equals("1")) {
+		if (sel==1) {
 			if (kind.equals("all")) {
 				alist = acclistService.SQL_SELECT_TERM(accNum, searchStartDate, searchEndDate, page);
 				if (alist.size() == 0) {
@@ -113,6 +133,7 @@ public class TransListDetailServlet extends HttpServlet {
 					session.setAttribute("alist", alist);
 				}
 			} else if (kind.equals("입금")) {
+				System.out.println("들어옴");
 				alist = acclistService.SQL_SELECT_KIND(accNum, kind, page);
 				if (alist.size() == 0) {
 					writer.println("<script>alert('조회할 내역이 없습니다.'); location.href='" + "../finances-master/main.jsp"

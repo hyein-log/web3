@@ -195,26 +195,26 @@ td {
 
 </head>
 <body>
-	<%
-	String accNum = (String) session.getAttribute("accNum");
-	String kind = (String) request.getAttribute("kind");
-	session.setAttribute("kind", kind);
-	String sel = (String) request.getAttribute("sel");
-	if (sel == null) {
-		sel = "0";
-	}
-	String searchStartDate = (String) request.getAttribute("searchStartDate");
-	session.setAttribute("searchStartDate", searchStartDate);
-	String searchEndDate = (String) request.getAttribute("searchEndDate");
-	session.setAttribute("searchEndDate", searchEndDate);
-	long balance = (long) request.getAttribute("balance");
-	ArrayList<AcclistVO> list = (ArrayList) session.getAttribute("alist");
-	if (list == null) {
-		list = new ArrayList<AcclistVO>();
-	}
-	session.setAttribute("alist", list);
-	PagingVO paging = (PagingVO) session.getAttribute("paging");
-	%>
+<%-- <%-- 	<% --%> --%>
+<!-- // 	String accNum = (String) session.getAttribute("accNum"); -->
+<!-- // 	String kind = (String) request.getAttribute("kind"); -->
+<!-- // 	session.setAttribute("kind", kind); -->
+<!-- // 	String sel = (String) request.getAttribute("sel"); -->
+<!-- // 	if (sel == null) { -->
+<!-- // 		sel = "0"; -->
+<!-- // 	} -->
+<!-- // 	String searchStartDate = (String) request.getAttribute("searchStartDate"); -->
+<!-- // 	session.setAttribute("searchStartDate", searchStartDate); -->
+<!-- // 	String searchEndDate = (String) request.getAttribute("searchEndDate"); -->
+<!-- // 	session.setAttribute("searchEndDate", searchEndDate); -->
+<!-- // 	long balance = (long) request.getAttribute("balance"); -->
+<!-- // 	ArrayList<AcclistVO> list = (ArrayList) session.getAttribute("alist"); -->
+<!-- // 	if (list == null) { -->
+<!-- // 		list = new ArrayList<AcclistVO>(); -->
+<!-- // 	} -->
+<!-- // 	session.setAttribute("alist", list); -->
+<!-- // 	PagingVO paging = (PagingVO) session.getAttribute("paging"); -->
+<%-- <%-- 	%> --%> --%>
 
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<h2 class="listTitle">거래 내역 조회</h2>
@@ -226,7 +226,7 @@ td {
 		<div class="wrap">
 			<div>
 				계좌번호 :
-				<%=accNum%></div>
+				${accNum}</div>
 			<div id="data"></div>
 		</div>
 
@@ -282,15 +282,15 @@ td {
 									<!-- 시작일 -->
 									<span class="dset"> <input type="text"
 										class="datepicker inpType" name="searchStartDate"
-										id="searchStartDate" value="<%=searchStartDate%>">
+										id="searchStartDate" value="${StartDate}">
 									</span> <span class="demi">~</span>
 									<!-- 종료일 -->
 									<span class="dset"> <input type="text"
 										class="datepicker inpType" name="searchEndDate"
-										id="searchEndDate" value="<%=searchEndDate%>">
+										id="searchEndDate" value="${EndDate}">
 									</span> <input type="hidden" name="accNum"
-										value="<%=request.getAttribute("accNum")%>"> <input
-										type="hidden" name="kind" value="<%=kind%>"> <input
+										value="${accNum}"> <input
+										type="hidden" name="kind" value="${kind}"> <input
 										type="hidden" name="sel" value="1"> <span> </span>
 								</div>
 							</div>
@@ -373,11 +373,11 @@ td {
 				<jsp:param value="${paging.endPage }" name="endPage" />
 				<jsp:param value="${paging.prev }" name="prev" />
 				<jsp:param value="${paging.next }" name="next" />
-				<jsp:param value="<%=kind%>" name="kind" />
-				<jsp:param value="<%=sel%>" name="sel" />
-				<jsp:param value="<%=searchStartDate%>" name="searchStartDate" />
-				<jsp:param value="<%=searchEndDate%>" name="searchEndDate" />
-				<jsp:param value="${acclist.acc_number}" name="accNum" />
+				<jsp:param value="${kind}" name="kind" />
+				<jsp:param value="${sel}" name="sel" />
+				<jsp:param value="${searchStartDate}" name="searchStartDate" />
+				<jsp:param value="${searchEndDate}" name="searchEndDate" />
+				<jsp:param value="${accNum}" name="accNum" />
 			</jsp:include>
 		</div>
 	</c:if>
