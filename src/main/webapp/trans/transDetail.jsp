@@ -195,26 +195,7 @@ td {
 
 </head>
 <body>
-<%-- <%-- 	<% --%> --%>
-<!-- // 	String accNum = (String) session.getAttribute("accNum"); -->
-<!-- // 	String kind = (String) request.getAttribute("kind"); -->
-<!-- // 	session.setAttribute("kind", kind); -->
-<!-- // 	String sel = (String) request.getAttribute("sel"); -->
-<!-- // 	if (sel == null) { -->
-<!-- // 		sel = "0"; -->
-<!-- // 	} -->
-<!-- // 	String searchStartDate = (String) request.getAttribute("searchStartDate"); -->
-<!-- // 	session.setAttribute("searchStartDate", searchStartDate); -->
-<!-- // 	String searchEndDate = (String) request.getAttribute("searchEndDate"); -->
-<!-- // 	session.setAttribute("searchEndDate", searchEndDate); -->
-<!-- // 	long balance = (long) request.getAttribute("balance"); -->
-<!-- // 	ArrayList<AcclistVO> list = (ArrayList) session.getAttribute("alist"); -->
-<!-- // 	if (list == null) { -->
-<!-- // 		list = new ArrayList<AcclistVO>(); -->
-<!-- // 	} -->
-<!-- // 	session.setAttribute("alist", list); -->
-<!-- // 	PagingVO paging = (PagingVO) session.getAttribute("paging"); -->
-<%-- <%-- 	%> --%> --%>
+
 
 	<jsp:include page="../finances-master/header/header.jsp"></jsp:include>
 	<h2 class="listTitle">거래 내역 조회</h2>
@@ -533,7 +514,7 @@ td {
 </script>
 <script type="text/javascript">
 	var balance =
-<%=request.getAttribute("balance")%>
+${"balance"}
 	document.getElementById("data").innerHTML = "잔액 : "
 			+ balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "원";
 </script>

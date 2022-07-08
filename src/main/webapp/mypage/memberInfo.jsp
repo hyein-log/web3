@@ -342,7 +342,7 @@ li{
 						onClick="javascript:closePopupPhone();">
 				</div>
 			</form>
-			</p>
+			
 		</div>
 	</div>
 
